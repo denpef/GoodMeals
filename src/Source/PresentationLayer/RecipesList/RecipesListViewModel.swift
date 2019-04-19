@@ -1,9 +1,15 @@
-//
-//  RecipesListViewModel.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 4/15/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import Foundation
+import RxSwift
+
+class RecipesListViewModel: ViewModel {
+    let factory: ViewModelFactory
+    private var disposeBag = DisposeBag()
+    
+    required init(factory: ViewModelFactory) {
+        self.factory = factory
+    }
+    
+    func viewModel(for segueIdentifier: String?, sender: ViewModel?) -> ViewModel? {
+        return nil
+    }
+}

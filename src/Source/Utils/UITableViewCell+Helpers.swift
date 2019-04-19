@@ -1,9 +1,13 @@
-//
-//  UITableViewCell+Helpers.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 4/15/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
+import UIKit
 
-import Foundation
+protocol ReusableView {
+    static var reuseIdentifier: String { get }
+}
+
+extension ReusableView {
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UITableViewCell: ReusableView {}

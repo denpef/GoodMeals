@@ -1,9 +1,16 @@
-//
-//  DependencyContainer.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 4/15/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import Foundation
+import RxSwift
+
+class DependencyContainer {}
+
+extension DependencyContainer: ViewModelFactory {
+    func makeRecipesListViewModel() -> RecipesListViewModel {
+        return RecipesListViewModel(factory: self)
+    }
+}
+
+extension DependencyContainer: ViewControllerFactory {
+    func makeRecipesListViewController() -> RecipesListViewController {
+        return RecipesListViewController(factory: self)
+    }
+}

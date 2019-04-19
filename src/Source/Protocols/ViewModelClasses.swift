@@ -3,13 +3,13 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum MVVM {
-    class ViewController<V: ViewModel>: UIViewController, ViewModelBased {
-        typealias ViewModelType = V
-        
-        let disposeBag = DisposeBag()
-        
+enum ViewModelClasses {
+    
+    class ViewController<T: ViewModel>: UIViewController, ViewModelBased {
+        typealias ViewModelType = T
         var model: ViewModelType?
+        
+        private let disposeBag = DisposeBag()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -17,7 +17,8 @@ enum MVVM {
         }
         
         func bind() {
-            fatalError("Must be overriden")
+            fatalError("Must override")
         }
     }
+
 }

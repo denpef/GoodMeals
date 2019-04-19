@@ -1,21 +1,11 @@
-//
-//  RootRouter.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 4/16/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import UIKit
 
 protocol RootRouter {
-    func attachMainController()
+    func presentMainController()
 }
 
 class RootRouterImpl: RootRouter {
-    
-    let factory: ViewControllerFactory
-    
+    private let factory: ViewControllerFactory
     private let window: UIWindow
     
     init(window: UIWindow, factory: ViewControllerFactory) {
@@ -23,29 +13,27 @@ class RootRouterImpl: RootRouter {
         self.factory = factory
     }
     
-    func attachMainController() {
-        self.animatedTransition(to: self.getMainController())
-        window.makeKeyAndVisible()
+    func presentMainController() {
+        transition(to: factory.makeRecipesListViewController())
     }
     
     // MARK: - Private methods
     
-    private func animatedTransition(to vc: UIViewController) {
-        guard let currentVC = window.rootViewController else {
-            window.rootViewController = vc
+    func transition(to newViewController: UIViewController) {
+        guard let rootViewController = window.rootViewController else {
+            showWindow(with: newViewController)
             return
         }
-        
-        UIView.transition(from: currentVC.view,
-                          to: vc.view,
-                          duration: 0.4,
+        UIView.transition(from: rootViewController.view,
+                          to: newViewController.view,
+                          duration: 3,
                           options: [.curveEaseOut, .transitionFlipFromLeft]) { _ in
-                            self.window.rootViewController = vc
+                            self.showWindow(with: newViewController)
         }
     }
     
-    private func getMainController() -> UIViewController {
-        return factory.makeRecipesListViewController()
-        
+    private func showWindow(with viewController: UIViewController) {
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
     }
 }
