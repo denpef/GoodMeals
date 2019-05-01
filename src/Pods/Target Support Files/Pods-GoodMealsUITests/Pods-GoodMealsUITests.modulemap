@@ -1,6 +1,0 @@
-framework module Pods_GoodMealsUITests {
-  umbrella header "Pods-GoodMealsUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
