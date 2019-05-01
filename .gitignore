@@ -7,6 +7,11 @@ build/
 DerivedData/
 */**/*xcuserdata*
 */**/IDEWorkspaceChecks.plist
+**/build/
+*/**/*.ipa
+.idea
+*.lock
+**/*.lock
 
 **/build/
 */**/*.ipa
