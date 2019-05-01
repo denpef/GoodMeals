@@ -31,6 +31,9 @@
 		02E5F6942263B61700DD04AF /* RecipesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
 		02EBA67C2245D89E00CFD295 /* DefaultServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBA67B2245D89E00CFD295 /* DefaultServiceLocator.swift */; };
+		24BCD9FC0E1F84FC36BECB7F /* Pods_GoodMeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974F696AA98870056F3656D7 /* Pods_GoodMeals.framework */; };
+		85941D5726E18DADAEF04BAF /* Pods_GoodMealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */; };
+		A5843838E194671D33D74B48 /* Pods_GoodMealsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,15 @@
 		02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewModel.swift; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
 		02EBA67B2245D89E00CFD295 /* DefaultServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceLocator.swift; sourceTree = "<group>"; };
+		0AB3432C95389D5D0C3CED77 /* Pods-GoodMealsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsUITests.release.xcconfig"; path = "Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		671416E1558ECFD4B0C8497D /* Pods-GoodMealsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsTests.release.xcconfig"; path = "Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests.release.xcconfig"; sourceTree = "<group>"; };
+		8C194CC6E9280117656E3B66 /* Pods-GoodMealsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		974F696AA98870056F3656D7 /* Pods_GoodMeals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMeals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2AC6056FD999ADE2FF17AF1 /* Pods-GoodMeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMeals.debug.xcconfig"; path = "Target Support Files/Pods-GoodMeals/Pods-GoodMeals.debug.xcconfig"; sourceTree = "<group>"; };
+		DCBC49B4F58681EF64CAA6E4 /* Pods-GoodMeals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMeals.release.xcconfig"; path = "Target Support Files/Pods-GoodMeals/Pods-GoodMeals.release.xcconfig"; sourceTree = "<group>"; };
+		E6AB5ED3A49CA1BB1D49EEF6 /* Pods-GoodMealsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24BCD9FC0E1F84FC36BECB7F /* Pods_GoodMeals.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85941D5726E18DADAEF04BAF /* Pods_GoodMealsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5843838E194671D33D74B48 /* Pods_GoodMealsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +133,7 @@
 				021ED8A8223E2D30009FA238 /* UnitTests */,
 				021ED874223E0EE0009FA238 /* Products */,
 				3917B9C3BC9E8CE61A29490C /* Pods */,
+				C708BBA6F605784FDC45155E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,8 +340,24 @@
 		3917B9C3BC9E8CE61A29490C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				C2AC6056FD999ADE2FF17AF1 /* Pods-GoodMeals.debug.xcconfig */,
+				DCBC49B4F58681EF64CAA6E4 /* Pods-GoodMeals.release.xcconfig */,
+				8C194CC6E9280117656E3B66 /* Pods-GoodMealsTests.debug.xcconfig */,
+				671416E1558ECFD4B0C8497D /* Pods-GoodMealsTests.release.xcconfig */,
+				E6AB5ED3A49CA1BB1D49EEF6 /* Pods-GoodMealsUITests.debug.xcconfig */,
+				0AB3432C95389D5D0C3CED77 /* Pods-GoodMealsUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C708BBA6F605784FDC45155E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				974F696AA98870056F3656D7 /* Pods_GoodMeals.framework */,
+				1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */,
+				57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,9 +367,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 021ED89B223E0EE1009FA238 /* Build configuration list for PBXNativeTarget "GoodMeals" */;
 			buildPhases = (
+				8A2985E6D292F2AFB7E97376 /* [CP] Check Pods Manifest.lock */,
 				021ED86F223E0EE0009FA238 /* Sources */,
 				021ED870223E0EE0009FA238 /* Frameworks */,
 				021ED871223E0EE0009FA238 /* Resources */,
+				1F1C23C97D6116BA09A3F32F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,9 +386,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 021ED89E223E0EE1009FA238 /* Build configuration list for PBXNativeTarget "GoodMealsTests" */;
 			buildPhases = (
+				CC2A12D9359588B66C2C16BA /* [CP] Check Pods Manifest.lock */,
 				021ED883223E0EE1009FA238 /* Sources */,
 				021ED884223E0EE1009FA238 /* Frameworks */,
 				021ED885223E0EE1009FA238 /* Resources */,
+				8F76B2058739769104E35EF3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,9 +406,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 021ED8A1223E0EE1009FA238 /* Build configuration list for PBXNativeTarget "GoodMealsUITests" */;
 			buildPhases = (
+				B881D6F550CA417943470174 /* [CP] Check Pods Manifest.lock */,
 				021ED88E223E0EE1009FA238 /* Sources */,
 				021ED88F223E0EE1009FA238 /* Frameworks */,
 				021ED890223E0EE1009FA238 /* Resources */,
+				3D265256D558C63588A2A6ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -452,6 +490,159 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F1C23C97D6116BA09A3F32F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMeals/Pods-GoodMeals-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodMeals/Pods-GoodMeals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D265256D558C63588A2A6ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A2985E6D292F2AFB7E97376 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodMeals-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F76B2058739769104E35EF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B881D6F550CA417943470174 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodMealsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC2A12D9359588B66C2C16BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodMealsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		021ED86F223E0EE0009FA238 /* Sources */ = {
@@ -635,6 +826,7 @@
 		};
 		021ED89C223E0EE1009FA238 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2AC6056FD999ADE2FF17AF1 /* Pods-GoodMeals.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -655,6 +847,7 @@
 		};
 		021ED89D223E0EE1009FA238 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCBC49B4F58681EF64CAA6E4 /* Pods-GoodMeals.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -675,6 +868,7 @@
 		};
 		021ED89F223E0EE1009FA238 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C194CC6E9280117656E3B66 /* Pods-GoodMealsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -696,6 +890,7 @@
 		};
 		021ED8A0223E0EE1009FA238 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 671416E1558ECFD4B0C8497D /* Pods-GoodMealsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -717,6 +912,7 @@
 		};
 		021ED8A2223E0EE1009FA238 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6AB5ED3A49CA1BB1D49EEF6 /* Pods-GoodMealsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
@@ -737,6 +933,7 @@
 		};
 		021ED8A3223E0EE1009FA238 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AB3432C95389D5D0C3CED77 /* Pods-GoodMealsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
