@@ -1,9 +1,18 @@
 # OS X
 .DS_Store
 
+# Xcode
 ## Build generated
 build/
 DerivedData/
+*/**/*xcuserdata*
+*/**/IDEWorkspaceChecks.plist
+
+**/build/
+*/**/*.ipa
+.idea
+*.lock
+**/*.lock
 
 ## Various settings
 *.pbxuser
