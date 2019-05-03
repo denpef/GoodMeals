@@ -16,7 +16,7 @@ enum Controllers {
         }
         
         func bind() {
-            fatalError("Must override")
+            fatalError("bind is not overriden")
         }
     }
     
@@ -39,7 +39,7 @@ enum Controllers {
             }
             
             func bind() {
-                fatalError("Must override")
+                fatalError("bind is not overriden")
             }
         }
         
@@ -48,7 +48,7 @@ enum Controllers {
             typealias CellType = Cell
             
             var collectionView: UICollectionView {
-                fatalError("Must be overriden")
+                fatalError("collectionView is not overriden")
             }
             
             override func viewDidLoad() {
@@ -58,11 +58,11 @@ enum Controllers {
             }
             
             func bindItems() {
-                model?.collection.bind(to: collectionView.rx.items(cellIdentifier: CellType.reuseIdentifier,
-                                                                   cellType: CellType.self)) { row, model, cell in
-                    
-                    cell.model = model
-                    
+                model?
+                    .collection
+                    .bind(to: collectionView.rx.items(cellIdentifier: CellType.reuseIdentifier,
+                                                      cellType: CellType.self)) { row, model, cell in
+                                                        cell.model = model
                     }.disposed(by: disposeBag)
             }
         }

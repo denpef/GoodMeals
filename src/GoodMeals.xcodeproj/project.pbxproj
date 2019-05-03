@@ -30,7 +30,9 @@
 		02E5F6922263B5FC00DD04AF /* RecipesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6912263B5FC00DD04AF /* RecipesListRouter.swift */; };
 		02E5F6942263B61700DD04AF /* RecipesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
-		02EBA67C2245D89E00CFD295 /* DefaultServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBA67B2245D89E00CFD295 /* DefaultServiceLocator.swift */; };
+		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
+		02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D0227B7539000F0576 /* PersistenceService.swift */; };
+		02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */; };
 		24BCD9FC0E1F84FC36BECB7F /* Pods_GoodMeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974F696AA98870056F3656D7 /* Pods_GoodMeals.framework */; };
 		85941D5726E18DADAEF04BAF /* Pods_GoodMealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */; };
 		A5843838E194671D33D74B48 /* Pods_GoodMealsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */; };
@@ -83,7 +85,9 @@
 		02E5F6912263B5FC00DD04AF /* RecipesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListRouter.swift; sourceTree = "<group>"; };
 		02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewModel.swift; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
-		02EBA67B2245D89E00CFD295 /* DefaultServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceLocator.swift; sourceTree = "<group>"; };
+		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
+		02E7D4D0227B7539000F0576 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistenceService.swift; sourceTree = "<group>"; };
 		0AB3432C95389D5D0C3CED77 /* Pods-GoodMealsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsUITests.release.xcconfig"; path = "Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +130,7 @@
 		021ED86A223E0EE0009FA238 = {
 			isa = PBXGroup;
 			children = (
+				02E7D4CE227B61AB000F0576 /* APICache */,
 				021ED8A5223E2C97009FA238 /* Resources */,
 				021ED8A4223E2C88009FA238 /* Source */,
 				021ED875223E0EE0009FA238 /* GoodMeals */,
@@ -263,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */,
-				02EBA67B2245D89E00CFD295 /* DefaultServiceLocator.swift */,
 			);
 			path = ServiceLocator;
 			sourceTree = "<group>";
@@ -304,6 +308,7 @@
 		02CBF5AD223E5D340009158E /* ServicesLayer */ = {
 			isa = PBXGroup;
 			children = (
+				02E7D4CA227B1349000F0576 /* Services */,
 				02B4EE0E2240C56100BDE05D /* ServiceLocator */,
 			);
 			path = ServicesLayer;
@@ -326,6 +331,39 @@
 				0225EFD5226C68BA004A4F60 /* Extensions */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		02E7D4CA227B1349000F0576 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				02E7D4CF227B750B000F0576 /* Persistence */,
+				02E7D4CB227B1358000F0576 /* Ingredients */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		02E7D4CB227B1358000F0576 /* Ingredients */ = {
+			isa = PBXGroup;
+			children = (
+				02E7D4CC227B1393000F0576 /* IngredientsService.swift */,
+			);
+			path = Ingredients;
+			sourceTree = "<group>";
+		};
+		02E7D4CE227B61AB000F0576 /* APICache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APICache;
+			sourceTree = "<group>";
+		};
+		02E7D4CF227B750B000F0576 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				02E7D4D0227B7539000F0576 /* PersistenceService.swift */,
+				02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		02EBA6842245DD4200CFD295 /* Protocols */ = {
@@ -502,6 +540,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoodMeals/Pods-GoodMeals-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -511,6 +551,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -530,6 +572,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -539,6 +583,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -580,6 +626,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -589,6 +637,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -655,10 +705,12 @@
 				02367DB7225BCAEF00BD1217 /* IngredientCategory.swift in Sources */,
 				021EFD4C226642FD001CA0A3 /* RootRouter.swift in Sources */,
 				02E5F6942263B61700DD04AF /* RecipesListViewModel.swift in Sources */,
-				02EBA67C2245D89E00CFD295 /* DefaultServiceLocator.swift in Sources */,
 				02367DB5225BCA4800BD1217 /* Ingredient.swift in Sources */,
+				02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */,
 				02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */,
+				02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */,
 				025FFD0E2264D73200CBD0EC /* ViewModelFactory.swift in Sources */,
+				02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */,
 				02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */,
 				0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */,
 				021EFD4A22664042001CA0A3 /* Coordinator.swift in Sources */,

@@ -2,6 +2,11 @@ import Foundation
 import RxSwift
 
 class RecipesListViewModel: ViewModelWithCollection {
+    required init(withServices services: IngredientsService) {
+        
+    }
+    
+    typealias Services = IngredientsService
     
     var collection: Observable<[RecipesCellViewModel]>
     
@@ -13,9 +18,5 @@ class RecipesListViewModel: ViewModelWithCollection {
     required init(factory: ViewModelFactory) {
         self.factory = factory
         self.collection = _collection.asObservable()
-    }
-    
-    func viewModel(for segueIdentifier: String?, sender: ViewModel?) -> ViewModel? {
-        return nil
     }
 }

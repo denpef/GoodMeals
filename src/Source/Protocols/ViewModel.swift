@@ -1,7 +1,10 @@
 import Foundation
 import RxSwift
 
-protocol ViewModel {}
+protocol ViewModel {
+    associatedtype Services
+    init (withServices services: Services)
+}
 
 protocol ViewModelBased: AnyObject {
     associatedtype ViewModelType: ViewModel

@@ -51,5 +51,9 @@ class RecipesCollectionViewCell: Controllers.CollectionView.Cell<RecipesCellView
 }
 
 class RecipesCellViewModel: ViewModel {
+    required init(withServices services: IngredientsService) {
+        self.init()
+    }
     
+    typealias Services = IngredientsService
 }
