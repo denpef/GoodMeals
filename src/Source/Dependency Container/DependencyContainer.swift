@@ -1,15 +1,19 @@
-import Foundation
-
-class DependencyContainer {}
+class DependencyContainer {
+    let serviceLocator: ServiceLocatorType
+    
+    init(serviceLocator: ServiceLocatorType) {
+        self.serviceLocator = serviceLocator
+    }
+}
 
 extension DependencyContainer: ViewModelFactory {
-    func makeRecipesListViewModel() -> RecipesListViewModel {
-        return RecipesListViewModel(factory: self)
+    func makeIngredientsListViewModel() -> IngredientsListViewModel {
+        return IngredientsListViewModel(ingredientsService: serviceLocator.ingredientsService)
     }
 }
 
 extension DependencyContainer: ViewControllerFactory {
-    func makeRecipesListViewController() -> RecipesListViewController {
-        return RecipesListViewController(factory: self)
+    func makeIngredientsListViewController() -> IngredientsListViewController {
+        return IngredientsListViewController(factory: self)
     }
 }

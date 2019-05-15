@@ -19,20 +19,19 @@
 		02367DB7225BCAEF00BD1217 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB6225BCAEF00BD1217 /* IngredientCategory.swift */; };
 		02367DBB225BCB8A00BD1217 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DBA225BCB8A00BD1217 /* Recipes.swift */; };
 		02367DBF225BCCB800BD1217 /* RecipeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DBE225BCCB800BD1217 /* RecipeCategory.swift */; };
+		025A06BD228C86620008258F /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A06BC228C86620008258F /* ReusableView.swift */; };
+		025A06BF228C86A80008258F /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A06BE228C86A80008258F /* IngredientCell.swift */; };
 		025FFD0E2264D73200CBD0EC /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FFD0D2264D73200CBD0EC /* ViewModelFactory.swift */; };
 		025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */; };
 		027932F7226A3B3500401912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027932F6226A3B2100401912 /* LaunchScreen.storyboard */; };
 		027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027932F8226A3F7700401912 /* ViewControllerFactory.swift */; };
 		02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */; };
-		02E5F6832263964900DD04AF /* RecipesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6822263964900DD04AF /* RecipesListViewController.swift */; };
-		02E5F6862263B44F00DD04AF /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6852263B44F00DD04AF /* Controllers.swift */; };
-		02E5F6882263B4AC00DD04AF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6872263B4AC00DD04AF /* ViewModel.swift */; };
-		02E5F6922263B5FC00DD04AF /* RecipesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6912263B5FC00DD04AF /* RecipesListRouter.swift */; };
-		02E5F6942263B61700DD04AF /* RecipesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
 		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
 		02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D0227B7539000F0576 /* PersistenceService.swift */; };
 		02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */; };
+		02E7D518228802E6000F0576 /* IngredientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D517228802E6000F0576 /* IngredientsListViewController.swift */; };
+		02E7D51A22882ABE000F0576 /* IngredientsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D51922882ABE000F0576 /* IngredientsListViewModel.swift */; };
 		24BCD9FC0E1F84FC36BECB7F /* Pods_GoodMeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974F696AA98870056F3656D7 /* Pods_GoodMeals.framework */; };
 		85941D5726E18DADAEF04BAF /* Pods_GoodMealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */; };
 		A5843838E194671D33D74B48 /* Pods_GoodMealsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */; };
@@ -74,20 +73,19 @@
 		02367DB6225BCAEF00BD1217 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
 		02367DBA225BCB8A00BD1217 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		02367DBE225BCCB800BD1217 /* RecipeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategory.swift; sourceTree = "<group>"; };
+		025A06BC228C86620008258F /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		025A06BE228C86A80008258F /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		025FFD0D2264D73200CBD0EC /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		027932F6226A3B2100401912 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = /Users/denisefimov/Documents/Goodmeals/src/GoodMeals/LaunchScreen.storyboard; sourceTree = "<absolute>"; };
 		027932F8226A3F7700401912 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
-		02E5F6822263964900DD04AF /* RecipesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewController.swift; sourceTree = "<group>"; };
-		02E5F6852263B44F00DD04AF /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
-		02E5F6872263B4AC00DD04AF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		02E5F6912263B5FC00DD04AF /* RecipesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListRouter.swift; sourceTree = "<group>"; };
-		02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewModel.swift; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
 		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
 		02E7D4D0227B7539000F0576 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistenceService.swift; sourceTree = "<group>"; };
+		02E7D517228802E6000F0576 /* IngredientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewController.swift; sourceTree = "<group>"; };
+		02E7D51922882ABE000F0576 /* IngredientsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewModel.swift; sourceTree = "<group>"; };
 		0AB3432C95389D5D0C3CED77 /* Pods-GoodMealsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsUITests.release.xcconfig"; path = "Target Support Files/Pods-GoodMealsUITests/Pods-GoodMealsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1EC569E1F886D079E65CE3F8 /* Pods_GoodMealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C6F978539E2FFBDAA2FCAE /* Pods_GoodMealsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +128,6 @@
 		021ED86A223E0EE0009FA238 = {
 			isa = PBXGroup;
 			children = (
-				02E7D4CE227B61AB000F0576 /* APICache */,
 				021ED8A5223E2C97009FA238 /* Resources */,
 				021ED8A4223E2C88009FA238 /* Source */,
 				021ED875223E0EE0009FA238 /* GoodMeals */,
@@ -167,10 +164,9 @@
 				027932FA226A3FE600401912 /* Coordinator */,
 				025FFD0C2264D71100CBD0EC /* Dependency Container */,
 				02E5F69722643D2800DD04AF /* Utils */,
-				02EBA6842245DD4200CFD295 /* Protocols */,
 				02CBF5AA223E37520009158E /* Models */,
 				02CBF5A7223E371D0009158E /* BusinessLogicLayer */,
-				02CBF5A8223E37340009158E /* PresentationLayer */,
+				02CBF5A8223E37340009158E /* Scenes */,
 				02CBF5A6223E37110009158E /* AppDelegate */,
 			);
 			path = Source;
@@ -179,7 +175,6 @@
 		021ED8A5223E2C97009FA238 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				021ED8A7223E2D0E009FA238 /* Localization */,
 				021ED8A6223E2CD1009FA238 /* Assets */,
 			);
 			path = Resources;
@@ -191,13 +186,6 @@
 				021ED87D223E0EE1009FA238 /* Assets.xcassets */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		021ED8A7223E2D0E009FA238 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		021ED8A8223E2D30009FA238 /* UnitTests */ = {
@@ -288,12 +276,13 @@
 			path = BusinessLogicLayer;
 			sourceTree = "<group>";
 		};
-		02CBF5A8223E37340009158E /* PresentationLayer */ = {
+		02CBF5A8223E37340009158E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				02E7D516228802CB000F0576 /* IngredientsList */,
 				02E5F681226395E300DD04AF /* RecipesList */,
 			);
-			path = PresentationLayer;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		02CBF5AA223E37520009158E /* Models */ = {
@@ -317,9 +306,6 @@
 		02E5F681226395E300DD04AF /* RecipesList */ = {
 			isa = PBXGroup;
 			children = (
-				02E5F6822263964900DD04AF /* RecipesListViewController.swift */,
-				02E5F6932263B61700DD04AF /* RecipesListViewModel.swift */,
-				02E5F6912263B5FC00DD04AF /* RecipesListRouter.swift */,
 			);
 			path = RecipesList;
 			sourceTree = "<group>";
@@ -327,6 +313,7 @@
 		02E5F69722643D2800DD04AF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				025A06BC228C86620008258F /* ReusableView.swift */,
 				02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */,
 				0225EFD5226C68BA004A4F60 /* Extensions */,
 			);
@@ -350,13 +337,6 @@
 			path = Ingredients;
 			sourceTree = "<group>";
 		};
-		02E7D4CE227B61AB000F0576 /* APICache */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = APICache;
-			sourceTree = "<group>";
-		};
 		02E7D4CF227B750B000F0576 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,13 +346,14 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
-		02EBA6842245DD4200CFD295 /* Protocols */ = {
+		02E7D516228802CB000F0576 /* IngredientsList */ = {
 			isa = PBXGroup;
 			children = (
-				02E5F6852263B44F00DD04AF /* Controllers.swift */,
-				02E5F6872263B4AC00DD04AF /* ViewModel.swift */,
+				02E7D517228802E6000F0576 /* IngredientsListViewController.swift */,
+				025A06BE228C86A80008258F /* IngredientCell.swift */,
+				02E7D51922882ABE000F0576 /* IngredientsListViewModel.swift */,
 			);
-			path = Protocols;
+			path = IngredientsList;
 			sourceTree = "<group>";
 		};
 		3917B9C3BC9E8CE61A29490C /* Pods */ = {
@@ -704,23 +685,22 @@
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
 				02367DB7225BCAEF00BD1217 /* IngredientCategory.swift in Sources */,
 				021EFD4C226642FD001CA0A3 /* RootRouter.swift in Sources */,
-				02E5F6942263B61700DD04AF /* RecipesListViewModel.swift in Sources */,
 				02367DB5225BCA4800BD1217 /* Ingredient.swift in Sources */,
 				02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */,
 				02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */,
+				02E7D518228802E6000F0576 /* IngredientsListViewController.swift in Sources */,
 				02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */,
 				025FFD0E2264D73200CBD0EC /* ViewModelFactory.swift in Sources */,
+				025A06BD228C86620008258F /* ReusableView.swift in Sources */,
 				02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */,
 				02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */,
 				0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */,
+				02E7D51A22882ABE000F0576 /* IngredientsListViewModel.swift in Sources */,
 				021EFD4A22664042001CA0A3 /* Coordinator.swift in Sources */,
-				02E5F6862263B44F00DD04AF /* Controllers.swift in Sources */,
 				02367DBB225BCB8A00BD1217 /* Recipes.swift in Sources */,
-				02E5F6922263B5FC00DD04AF /* RecipesListRouter.swift in Sources */,
-				02E5F6882263B4AC00DD04AF /* ViewModel.swift in Sources */,
 				025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */,
-				02E5F6832263964900DD04AF /* RecipesListViewController.swift in Sources */,
 				021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */,
+				025A06BF228C86A80008258F /* IngredientCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

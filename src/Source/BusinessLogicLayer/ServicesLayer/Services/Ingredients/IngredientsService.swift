@@ -1,30 +1,20 @@
-//
-//  IngredientsService.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/2/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import Foundation
+import RxSwift
+import RealmSwift
 
-protocol IngredientsService {
-    func getIngredients(category: IngredientCategory) -> [Ingredient]
+protocol IngredientsServiceType {
     func add(new: Ingredient)
     func remove(_ ingredient: Ingredient)
     func replace(_ ingredient: Ingredient)
+    func all() -> Observable<[Ingredient]>
 }
 
-final class IngredientsServiceImpl: IngredientsService {
-    
+final class IngredientsService: IngredientsServiceType {
+
     let persistenceService: RealmPersistenceService
     
     init(persistenceService: RealmPersistenceService) {
         self.persistenceService = persistenceService
-    }
-    
-    func getIngredients(category: IngredientCategory) -> [Ingredient] {
-        return persistenceService.fetch(with: FetchRequest<Ingredient, IngredientObject>)
     }
     
     func add(new: Ingredient) {
@@ -37,5 +27,24 @@ final class IngredientsServiceImpl: IngredientsService {
     
     func replace(_ ingredient: Ingredient) {
         
+    }
+    
+    func all() -> Observable<[Ingredient]> {
+//        let result = withRealm("getting tasks") { realm -> Observable<Results<Ingredient>> in
+//            let realm = try Realm()
+//            return realm.objects(Ingredient.self)
+//        }
+//        return result ?? .empty()
+        return Observable.of([Ingredient(name: "Potato")])
+    }
+    
+    private func withRealm<T>(_ operation: String, action: (Realm) throws -> T) -> T? {
+        do {
+            let realm = try Realm()
+            return try action(realm)
+        } catch let err {
+            print("Failed \(operation) realm with error: \(err)")
+            return nil
+        }
     }
 }

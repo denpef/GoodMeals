@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.backgroundColor = .white
         self.window = window
         
-        let factory = DependencyContainer()
+        let serviceLocator = ServiceLocator()
+        let factory = DependencyContainer(serviceLocator: serviceLocator)
         let rootRouter: RootRouter = RootRouterImpl(window: window, factory: factory)
         let coordinator = Coordinator(rootRouter: rootRouter)
         

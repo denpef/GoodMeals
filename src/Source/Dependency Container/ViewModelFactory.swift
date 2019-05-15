@@ -1,3 +1,3 @@
 protocol ViewModelFactory {
-    func makeRecipesListViewModel() -> RecipesListViewModel
+    func makeIngredientsListViewModel() -> IngredientsListViewModel
 }

@@ -1,3 +1,3 @@
 protocol ViewControllerFactory {
-    func makeRecipesListViewController() -> RecipesListViewController
+    func makeIngredientsListViewController() -> IngredientsListViewController
 }
