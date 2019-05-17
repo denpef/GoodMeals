@@ -14,7 +14,8 @@ class RootRouterImpl: RootRouter {
     }
     
     func presentMainController() {
-        transition(to: factory.makeIngredientsListViewController())
+        let ingredientsListViewController = factory.makeIngredientsListViewController()
+        transition(to: factory.makeNavigationController(rootViewController: ingredientsListViewController))
     }
     
     // MARK: - Private methods

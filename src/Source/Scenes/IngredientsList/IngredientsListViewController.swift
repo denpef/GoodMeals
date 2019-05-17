@@ -3,7 +3,9 @@ import RxSwift
 import RxDataSources
 
 final class IngredientsListViewController: UIViewController {
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    private var viewModel: IngredientsListViewModel
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.estimatedRowHeight = 90
@@ -11,7 +13,9 @@ final class IngredientsListViewController: UIViewController {
         tableView.register(IngredientCell.self, forCellReuseIdentifier: IngredientCell.reuseIdentifier)
         return tableView
     }()
-    private var viewModel: IngredientsListViewModel
+    private lazy var addNewItemButton = {
+        return UIButton()
+    }()
     
     init(factory: ViewModelFactory) {
         viewModel = factory.makeIngredientsListViewModel()
@@ -25,7 +29,7 @@ final class IngredientsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Ingredients"
-        view.setTopToBottomGradientBackground(topColor: .black, bottomColor: .yellow)
+        
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -33,16 +37,34 @@ final class IngredientsListViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.setTopToBottomGradientBackground(topColor: .red, bottomColor: .green)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: nil,
+                                                            action: nil)
+        
         bind()
     }
     
     func bind() {
         viewModel
             .items
-            .bind(to: tableView.rx.items(
-                cellIdentifier: IngredientCell.reuseIdentifier,
-                cellType: IngredientCell.self)) { row, model, cell in
-                   cell.textLabel?.text = model.name
-            }.disposed(by: disposeBag)
+            .bind(to: tableView.rx.items(cellIdentifier: IngredientCell.reuseIdentifier))
+                { row, ingredient, cell in
+                    cell.textLabel?.text = ingredient.name
+                    cell.selectionStyle = .none
+                }.disposed(by: disposeBag)
+        
+        navigationItem.rightBarButtonItem?.rx.tap
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .bind(to: viewModel.addNewItem)
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Ingredient.self)
+            .bind(to: viewModel.selectItem)
+            .disposed(by: disposeBag)
     }
+}
+
+class IngredientViewModel {
+    
 }

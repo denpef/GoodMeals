@@ -8,16 +8,42 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import RxDataSources
 
 struct IngredientsListViewModel {
-    let ingredientsService: IngredientsServiceType
+
+    // MARK: - Input
     
-    var items: Observable<[Ingredient]>
+    /// Call to show add new item screen
+    let addNewItem: PublishRelay<Void> = PublishRelay<Void>()
+
+    /// Call to open item page
+    let selectItem: PublishRelay<Ingredient> = PublishRelay<Ingredient>()
+    
+    // MARK: - Output
+    
+    var items: BehaviorRelay<[Ingredient]> = BehaviorRelay(value: [])
+
+    // MARK: - Private properties
+    
+    private let disposeBag = DisposeBag()
+    private let ingredientsService: IngredientsServiceType
+    
+    // MARK: - Init
     
     init(ingredientsService: IngredientsServiceType) {
         self.ingredientsService = ingredientsService
+        
         items = ingredientsService.all()
+        
+        selectItem.asObservable().subscribe(onNext: {
+            print($0.name)
+        }).disposed(by: disposeBag)
+        
+        addNewItem.asObservable().subscribe(onNext: {
+            print("add+")
+        }).disposed(by: disposeBag)
     }
 }
 

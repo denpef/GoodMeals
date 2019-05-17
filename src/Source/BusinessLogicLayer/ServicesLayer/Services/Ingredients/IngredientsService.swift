@@ -1,12 +1,13 @@
 import Foundation
 import RxSwift
 import RealmSwift
+import RxCocoa
 
 protocol IngredientsServiceType {
     func add(new: Ingredient)
     func remove(_ ingredient: Ingredient)
     func replace(_ ingredient: Ingredient)
-    func all() -> Observable<[Ingredient]>
+    func all() -> BehaviorRelay<[Ingredient]>
 }
 
 final class IngredientsService: IngredientsServiceType {
@@ -29,13 +30,13 @@ final class IngredientsService: IngredientsServiceType {
         
     }
     
-    func all() -> Observable<[Ingredient]> {
+    func all() -> BehaviorRelay<[Ingredient]> {
 //        let result = withRealm("getting tasks") { realm -> Observable<Results<Ingredient>> in
 //            let realm = try Realm()
 //            return realm.objects(Ingredient.self)
 //        }
 //        return result ?? .empty()
-        return Observable.of([Ingredient(name: "Potato")])
+        return BehaviorRelay(value: [Ingredient(name: "Potato")])
     }
     
     private func withRealm<T>(_ operation: String, action: (Realm) throws -> T) -> T? {

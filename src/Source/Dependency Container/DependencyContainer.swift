@@ -1,3 +1,5 @@
+import UIKit
+
 class DependencyContainer {
     let serviceLocator: ServiceLocatorType
     
@@ -15,5 +17,9 @@ extension DependencyContainer: ViewModelFactory {
 extension DependencyContainer: ViewControllerFactory {
     func makeIngredientsListViewController() -> IngredientsListViewController {
         return IngredientsListViewController(factory: self)
+    }
+    
+    func makeNavigationController(rootViewController: UIViewController) -> UINavigationController {
+        return UINavigationController(rootViewController: rootViewController)
     }
 }
