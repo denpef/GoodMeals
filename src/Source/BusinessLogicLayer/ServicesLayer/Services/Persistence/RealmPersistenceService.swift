@@ -1,107 +1,85 @@
 import Foundation
 import RealmSwift
 
-struct FetchRequest<Model, RealmObject: Object> {
-    let predicate: NSPredicate?
-    let sortDescriptors: [SortDescriptor]
-    let transformer: (Results<RealmObject>) -> Model
-}
 
-//final class IngredientCategoryObject: Object {
-//    @objc dynamic var categoryID: String = UUID().uuidString
-//    @objc dynamic var name: String = ""
-//    
-//    override static func primaryKey() -> String? {
-//        return "categoryID"
-//    }
-//}
-//
-//extension IngredientCategoryObject {
-//    convenience init(ingredientCategory: IngredientCategory) {
-//        self.init()
-//        
-//        if !ingredientCategory.categoryID.isEmpty {
-//            self.categoryID = ingredientCategory.categoryID
-//        }
-//        
-//        self.name = ingredientCategory.name
-//    }
-//}
-
-//final class IngredientObject: Object {
-//    @objc dynamic var ingredientID: String = UUID().uuidString
-//    @objc dynamic var name: String = ""
-//    @objc dynamic var calorific: Int = 0
-//    @objc dynamic var category: String = ""
-//
-//    override static func primaryKey() -> String? {
-//        return "ingredientID"
-//    }
-//}
-//
-//extension IngredientObject {
-//    convenience init(ingredient: Ingredient) {
-//        self.init()
-//
-//        if !ingredient.ingredientID.isEmpty {
-//            self.ingredientID = ingredient.ingredientID
-//        }
-//
-//        self.name = ingredient.name
-//        self.calorific = ingredient.calorific
-//        self.category = ingredient.category
-//    }
-//}
-
-//extension Ingredient {
-//    static let all = FetchRequest<[Ingredient], IngredientObject>(predicate: nil,
-//                                                                  sortDescriptors: [SortDescriptor.name],
-//                                                                  transformer: {
-//                                                                    $0.map(Ingredient.init)
-//
-//    })
-//}
-
-final class RealmPersistenceService {
-    private let realm: Realm
+final class RealmPersistenceService: PersistenceService {
+    private var config: Realm.Configuration
     
-    init(realm: Realm = try! Realm()) {
-        self.realm = realm
+    public convenience init(inMemoryIdentifier: String) {
+        var configuration = Realm.Configuration()
+        configuration.inMemoryIdentifier = inMemoryIdentifier
+        self.init(configuration: configuration)
     }
     
-    func createOrUpdate<Model, RealmObject: Object>(model: Model, with reverseTransformer: (Model) -> RealmObject) {
-        let object = reverseTransformer(model)
-        try! realm.write {
-            realm.add(object, update: true)
-        }
+    required init(configuration: Realm.Configuration) {
+        self.config = configuration
     }
     
-    func fetch<Model, RealmObject>(with request: FetchRequest<Model, RealmObject>) -> Model {
-        var results = realm.objects(RealmObject.self)
+    func add<T: Persistable>(_ value: T, update: Bool = false) {
+        let realm = getRealm()
+        realm.add(value.managedObject, update: update)
+    }
+    
+    func add<T: Sequence>(_ values: T, update: Bool = false) where T.Iterator.Element: Persistable {
+        values.forEach { add($0, update: update) }
+    }
+    
+    func delete<T: Persistable>(_ value: T) {
+        let realm = getRealm()
+        realm.delete(value.managedObject)
+    }
+    
+    func delete<T: Sequence>(_ values: T) where T.Iterator.Element: Persistable {
+        let realm = getRealm()
+        realm.delete(values.map { $0.managedObject })
+    }
+    
+    func objects<T: Persistable>(_ type: T.Type,
+                                 filter: NSPredicate?,
+                                 sortDescriptors: [SortDescriptor]? = nil) -> [T] {
         
-        if let predicate = request.predicate {
-            results = results.filter(predicate)
+        let realm = getRealm()
+        
+        var objects: Results<T.ManagedObject> = realm.objects(type.ManagedObject.self)
+        
+        if let predicate = filter {
+            objects = objects.filter(predicate)
         }
         
-        if request.sortDescriptors.count > 0 {
-            results = results.sorted(by: request.sortDescriptors)
+        if let sortDescriptors = sortDescriptors, !sortDescriptors.isEmpty {
+            objects = objects.sorted(by: sortDescriptors)
         }
         
-        return request.transformer(results)
+        return objects.map { T(managedObject: $0) }
     }
     
-    func delete<RealmObject: Object>(type: RealmObject.Type, with primaryKey: String) {
-        let object = realm.object(ofType: type, forPrimaryKey: primaryKey)
-        if let object = object {
-            try! realm.write {
-                realm.delete(object)
-            }
-        }
-    }
-    
-    func deleteAll() {
-        try! realm.write {
+    func clearAll() {
+        let realm = getRealm()
+        write(realm: realm) {
             realm.deleteAll()
+        }
+    }
+    
+    // MARK: -Private functions
+    
+    private func write(realm: Realm?, _ block: (() -> Void)) {
+        if let realm = realm {
+            if realm.isInWriteTransaction {
+                block()
+            } else {
+                try! realm.write(block)
+            }
+        } else {
+            assertionFailure("Realm not found")
+        }
+    }
+    
+    private func getRealm() -> Realm {
+        do {
+            let realm = try Realm(configuration: config)
+            return realm
+        } catch {
+            fatalError("Realm schema changed. Error: \(error.localizedDescription)")
         }
     }
 }

@@ -15,8 +15,8 @@
 		021EFD4C226642FD001CA0A3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4B226642FD001CA0A3 /* RootRouter.swift */; };
 		0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */; };
 		0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */; };
-		02367DB5225BCA4800BD1217 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB4225BCA4800BD1217 /* Ingredient.swift */; };
-		02367DB7225BCAEF00BD1217 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB6225BCAEF00BD1217 /* IngredientCategory.swift */; };
+		02367DB5225BCA4800BD1217 /* IngredientObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB4225BCA4800BD1217 /* IngredientObject.swift */; };
+		02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB6225BCAEF00BD1217 /* IngredientCategoryObject.swift */; };
 		02367DBB225BCB8A00BD1217 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DBA225BCB8A00BD1217 /* Recipes.swift */; };
 		02367DBF225BCCB800BD1217 /* RecipeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DBE225BCCB800BD1217 /* RecipeCategory.swift */; };
 		025A06BD228C86620008258F /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A06BC228C86620008258F /* ReusableView.swift */; };
@@ -25,6 +25,10 @@
 		025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */; };
 		027932F7226A3B3500401912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027932F6226A3B2100401912 /* LaunchScreen.storyboard */; };
 		027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027932F8226A3F7700401912 /* ViewControllerFactory.swift */; };
+		028C86B5228FDE420051E852 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86B4228FDE420051E852 /* Persistable.swift */; };
+		028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BA228FE7D20051E852 /* IngredientCategory.swift */; };
+		028C86BD228FEB140051E852 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BC228FEB140051E852 /* Ingredient.swift */; };
+		028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */; };
 		02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
 		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
@@ -69,8 +73,8 @@
 		021EFD4B226642FD001CA0A3 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		02367DB4225BCA4800BD1217 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		02367DB6225BCAEF00BD1217 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
+		02367DB4225BCA4800BD1217 /* IngredientObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientObject.swift; sourceTree = "<group>"; };
+		02367DB6225BCAEF00BD1217 /* IngredientCategoryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategoryObject.swift; sourceTree = "<group>"; };
 		02367DBA225BCB8A00BD1217 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		02367DBE225BCCB800BD1217 /* RecipeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategory.swift; sourceTree = "<group>"; };
 		025A06BC228C86620008258F /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
@@ -79,6 +83,10 @@
 		025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		027932F6226A3B2100401912 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = /Users/denisefimov/Documents/Goodmeals/src/GoodMeals/LaunchScreen.storyboard; sourceTree = "<absolute>"; };
 		027932F8226A3F7700401912 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		028C86B4228FDE420051E852 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		028C86BA228FE7D20051E852 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
+		028C86BC228FEB140051E852 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDefaultConfiguration.swift; sourceTree = "<group>"; };
 		02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
 		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
@@ -218,8 +226,8 @@
 		02367DB8225BCB4C00BD1217 /* Ingredients */ = {
 			isa = PBXGroup;
 			children = (
-				02367DB4225BCA4800BD1217 /* Ingredient.swift */,
-				02367DB6225BCAEF00BD1217 /* IngredientCategory.swift */,
+				02367DB4225BCA4800BD1217 /* IngredientObject.swift */,
+				02367DB6225BCAEF00BD1217 /* IngredientCategoryObject.swift */,
 			);
 			path = Ingredients;
 			sourceTree = "<group>";
@@ -250,6 +258,32 @@
 				021EFD4922664042001CA0A3 /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		028C86B6228FE7450051E852 /* DatabaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				02367DB8225BCB4C00BD1217 /* Ingredients */,
+				02367DB9225BCB6900BD1217 /* Recipes */,
+			);
+			path = DatabaseModels;
+			sourceTree = "<group>";
+		};
+		028C86B7228FE7570051E852 /* InternalModels */ = {
+			isa = PBXGroup;
+			children = (
+				028C86B8228FE7A70051E852 /* Ingredients */,
+			);
+			path = InternalModels;
+			sourceTree = "<group>";
+		};
+		028C86B8228FE7A70051E852 /* Ingredients */ = {
+			isa = PBXGroup;
+			children = (
+				028C86BC228FEB140051E852 /* Ingredient.swift */,
+				028C86BA228FE7D20051E852 /* IngredientCategory.swift */,
+			);
+			path = Ingredients;
 			sourceTree = "<group>";
 		};
 		02B4EE0E2240C56100BDE05D /* ServiceLocator */ = {
@@ -288,8 +322,8 @@
 		02CBF5AA223E37520009158E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				02367DB9225BCB6900BD1217 /* Recipes */,
-				02367DB8225BCB4C00BD1217 /* Ingredients */,
+				028C86B7228FE7570051E852 /* InternalModels */,
+				028C86B6228FE7450051E852 /* DatabaseModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				02E7D4D0227B7539000F0576 /* PersistenceService.swift */,
+				028C86B4228FDE420051E852 /* Persistable.swift */,
+				028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */,
 				02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */,
 			);
 			path = Persistence;
@@ -683,9 +719,9 @@
 				02367DBF225BCCB800BD1217 /* RecipeCategory.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
-				02367DB7225BCAEF00BD1217 /* IngredientCategory.swift in Sources */,
+				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
 				021EFD4C226642FD001CA0A3 /* RootRouter.swift in Sources */,
-				02367DB5225BCA4800BD1217 /* Ingredient.swift in Sources */,
+				02367DB5225BCA4800BD1217 /* IngredientObject.swift in Sources */,
 				02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */,
 				02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */,
 				02E7D518228802E6000F0576 /* IngredientsListViewController.swift in Sources */,
@@ -693,14 +729,18 @@
 				025FFD0E2264D73200CBD0EC /* ViewModelFactory.swift in Sources */,
 				025A06BD228C86620008258F /* ReusableView.swift in Sources */,
 				02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */,
+				028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */,
 				02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */,
 				0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */,
 				02E7D51A22882ABE000F0576 /* IngredientsListViewModel.swift in Sources */,
 				021EFD4A22664042001CA0A3 /* Coordinator.swift in Sources */,
 				02367DBB225BCB8A00BD1217 /* Recipes.swift in Sources */,
 				025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */,
+				028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */,
+				028C86BD228FEB140051E852 /* Ingredient.swift in Sources */,
 				021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */,
 				025A06BF228C86A80008258F /* IngredientCell.swift in Sources */,
+				028C86B5228FDE420051E852 /* Persistable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

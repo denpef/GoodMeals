@@ -1,6 +1,6 @@
 import RealmSwift
 
-final class IngredientCategory: Object {
+final class IngredientCategoryObject: Object {
     // MARK: - Properties
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
@@ -16,3 +16,9 @@ final class IngredientCategory: Object {
         self.name = name
     }
 }
+
+//extension IngredientCategoryObject: DatabaseObject {
+//    var internalModel: IngredientCategory {
+//        return IngredientCategory(name: name)
+//    }
+//}

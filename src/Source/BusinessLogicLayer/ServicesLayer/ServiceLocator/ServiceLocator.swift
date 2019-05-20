@@ -8,7 +8,7 @@ final class ServiceLocator: ServiceLocatorType {
     var ingredientsService: IngredientsServiceType
     
     init() {
-        let persistenceService = RealmPersistenceService()
+        let persistenceService = RealmPersistenceService.init(configuration: RealmDefaultConfiguration.config)
         self.ingredientsService = IngredientsService(persistenceService: persistenceService)
     }
 }

@@ -19,11 +19,11 @@ struct IngredientsListViewModel {
     let addNewItem: PublishRelay<Void> = PublishRelay<Void>()
 
     /// Call to open item page
-    let selectItem: PublishRelay<Ingredient> = PublishRelay<Ingredient>()
+    let selectItem: PublishRelay<IngredientObject> = PublishRelay<IngredientObject>()
     
     // MARK: - Output
     
-    var items: BehaviorRelay<[Ingredient]> = BehaviorRelay(value: [])
+    var items: BehaviorRelay<[IngredientObject]>
 
     // MARK: - Private properties
     

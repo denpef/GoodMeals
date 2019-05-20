@@ -6,7 +6,7 @@ final class Recipe: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var category: RecipeCategory?
     
-    var ingredients: List<Ingredient> = List<Ingredient>()
+    var ingredients: List<IngredientObject> = List<IngredientObject>()
     var calorific: Int = 0
     
     // MARK: - Meta
@@ -16,7 +16,7 @@ final class Recipe: Object {
     
     // MARK: Convenience Init
     convenience required init(name: String,
-                              ingredients: [Ingredient] = [],
+                              ingredients: [IngredientObject] = [],
                               category: RecipeCategory? = nil) {
         self.init()
         self.name = name

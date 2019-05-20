@@ -4,39 +4,39 @@ import RealmSwift
 import RxCocoa
 
 protocol IngredientsServiceType {
-    func add(new: Ingredient)
-    func remove(_ ingredient: Ingredient)
-    func replace(_ ingredient: Ingredient)
-    func all() -> BehaviorRelay<[Ingredient]>
+    func add(new: IngredientObject)
+    func remove(_ ingredient: IngredientObject)
+    func replace(_ ingredient: IngredientObject)
+    func all() -> BehaviorRelay<[IngredientObject]>
 }
 
 final class IngredientsService: IngredientsServiceType {
 
-    let persistenceService: RealmPersistenceService
+    let persistenceService: PersistenceService
     
-    init(persistenceService: RealmPersistenceService) {
+    init(persistenceService: PersistenceService) {
         self.persistenceService = persistenceService
     }
     
-    func add(new: Ingredient) {
+    func add(new: IngredientObject) {
         
     }
     
-    func remove(_ ingredient: Ingredient) {
+    func remove(_ ingredient: IngredientObject) {
         
     }
     
-    func replace(_ ingredient: Ingredient) {
+    func replace(_ ingredient: IngredientObject) {
         
     }
     
-    func all() -> BehaviorRelay<[Ingredient]> {
+    func all() -> BehaviorRelay<[IngredientObject]> {
 //        let result = withRealm("getting tasks") { realm -> Observable<Results<Ingredient>> in
 //            let realm = try Realm()
 //            return realm.objects(Ingredient.self)
 //        }
 //        return result ?? .empty()
-        return BehaviorRelay(value: [Ingredient(name: "Potato")])
+        return BehaviorRelay(value: [IngredientObject(name: "Potato")])
     }
     
     private func withRealm<T>(_ operation: String, action: (Realm) throws -> T) -> T? {
