@@ -1,10 +1,6 @@
 import UIKit
 
-protocol RootRouter {
-    func presentMainController()
-}
-
-class RootRouterImpl: RootRouter {
+final class SceneCoordinator {
     private let factory: ViewControllerFactory
     private let window: UIWindow
     
@@ -13,14 +9,33 @@ class RootRouterImpl: RootRouter {
         self.factory = factory
     }
     
-    func presentMainController() {
+    func showRootViewController() {
         let ingredientsListViewController = factory.makeIngredientsListViewController()
         transition(to: factory.makeNavigationController(rootViewController: ingredientsListViewController))
     }
     
+    func showIngredient(sender: UIViewController, ingredientId: String? = nil) {
+        show(target: factory.makeIngredientViewController(ingredientId: ingredientId), sender: sender)
+    }
+    
+    private func show(target: UIViewController, sender: UIViewController) {
+        if let nav = sender as? UINavigationController {
+            //push root controller on navigation stack
+            nav.pushViewController(target, animated: false)
+            return
+        }
+        
+        if let nav = sender.navigationController {
+            //add controller to navigation stack
+            nav.pushViewController(target, animated: true)
+        } else {
+            //present modally
+            sender.present(target, animated: true, completion: nil)
+        }
+    }
     // MARK: - Private methods
     
-    func transition(to newViewController: UIViewController) {
+    private func transition(to newViewController: UIViewController) {
         guard let rootViewController = window.rootViewController else {
             showWindow(with: newViewController)
             return

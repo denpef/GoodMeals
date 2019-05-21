@@ -12,11 +12,11 @@ import RxCocoa
 import RxDataSources
 
 struct IngredientsListViewModel {
-
+    
     // MARK: - Input
     
     /// Call to show add new item screen
-    let addNewItem: PublishRelay<Void> = PublishRelay<Void>()
+//    let addNewItem: PublishRelay<Void> = PublishRelay<Void>()
 
     /// Call to open item page
     let selectItem: PublishRelay<Ingredient> = PublishRelay<Ingredient>()
@@ -27,12 +27,14 @@ struct IngredientsListViewModel {
 
     // MARK: - Private properties
     
+    private let coordinator: SceneCoordinator
     private let disposeBag = DisposeBag()
     private let ingredientsService: IngredientsServiceType
     
     // MARK: - Init
     
-    init(ingredientsService: IngredientsServiceType) {
+    init(coordinator: SceneCoordinator, ingredientsService: IngredientsServiceType) {
+        self.coordinator = coordinator
         self.ingredientsService = ingredientsService
         
         //ingredientsService.clearAll()
@@ -42,10 +44,9 @@ struct IngredientsListViewModel {
             print($0.name)
         }).disposed(by: disposeBag)
         
-        addNewItem.asObservable().subscribe(onNext: {
-            ingredientsService.update(Ingredient(name: "Potato"))
-            ingredientsService.update(Ingredient(name: "Bread"))
-        }).disposed(by: disposeBag)
+//        addNewItem.asObservable().subscribe(onNext: {
+//
+//            // routing to the new ingredient
+//        }).disposed(by: disposeBag)
     }
 }
-
