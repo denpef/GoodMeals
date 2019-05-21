@@ -19,11 +19,11 @@ struct IngredientsListViewModel {
     let addNewItem: PublishRelay<Void> = PublishRelay<Void>()
 
     /// Call to open item page
-    let selectItem: PublishRelay<IngredientObject> = PublishRelay<IngredientObject>()
+    let selectItem: PublishRelay<Ingredient> = PublishRelay<Ingredient>()
     
     // MARK: - Output
     
-    var items: BehaviorRelay<[IngredientObject]>
+    var items: BehaviorRelay<[Ingredient]>
 
     // MARK: - Private properties
     
@@ -35,6 +35,7 @@ struct IngredientsListViewModel {
     init(ingredientsService: IngredientsServiceType) {
         self.ingredientsService = ingredientsService
         
+        //ingredientsService.clearAll()
         items = ingredientsService.all()
         
         selectItem.asObservable().subscribe(onNext: {
@@ -42,7 +43,8 @@ struct IngredientsListViewModel {
         }).disposed(by: disposeBag)
         
         addNewItem.asObservable().subscribe(onNext: {
-            print("add+")
+            ingredientsService.update(Ingredient(name: "Potato"))
+            ingredientsService.update(Ingredient(name: "Bread"))
         }).disposed(by: disposeBag)
     }
 }

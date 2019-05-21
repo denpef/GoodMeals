@@ -4,10 +4,11 @@ import RealmSwift
 import RxCocoa
 
 protocol IngredientsServiceType {
-    func add(new: IngredientObject)
-    func remove(_ ingredient: IngredientObject)
-    func replace(_ ingredient: IngredientObject)
-    func all() -> BehaviorRelay<[IngredientObject]>
+    func add(_ ingredient: Ingredient)
+    func remove(_ ingredient: Ingredient)
+    func update(_ ingredient: Ingredient)
+    func all() -> BehaviorRelay<[Ingredient]>
+    func clearAll()
 }
 
 final class IngredientsService: IngredientsServiceType {
@@ -18,34 +19,26 @@ final class IngredientsService: IngredientsServiceType {
         self.persistenceService = persistenceService
     }
     
-    func add(new: IngredientObject) {
-        
+    func add(_ ingredient: Ingredient) {
+        persistenceService.add(ingredient, update: false)
     }
     
-    func remove(_ ingredient: IngredientObject) {
-        
+    func remove(_ ingredient: Ingredient) {
+        persistenceService.delete(ingredient)
     }
     
-    func replace(_ ingredient: IngredientObject) {
-        
+    func update(_ ingredient: Ingredient) {
+        persistenceService.add(ingredient, update: true)
     }
     
-    func all() -> BehaviorRelay<[IngredientObject]> {
-//        let result = withRealm("getting tasks") { realm -> Observable<Results<Ingredient>> in
-//            let realm = try Realm()
-//            return realm.objects(Ingredient.self)
-//        }
-//        return result ?? .empty()
-        return BehaviorRelay(value: [IngredientObject(name: "Potato")])
+    func all() -> BehaviorRelay<[Ingredient]> {
+        let objects = persistenceService.objects(Ingredient.self,
+                                                 filter: nil,
+                                                 sortDescriptors: nil)
+        return BehaviorRelay(value: objects)
     }
     
-    private func withRealm<T>(_ operation: String, action: (Realm) throws -> T) -> T? {
-        do {
-            let realm = try Realm()
-            return try action(realm)
-        } catch let err {
-            print("Failed \(operation) realm with error: \(err)")
-            return nil
-        }
+    func clearAll() {
+        persistenceService.clearAll()
     }
 }

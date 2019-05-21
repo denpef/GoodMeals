@@ -11,7 +11,7 @@ import Foundation
 struct Ingredient {
     // MARK: - Properties
     
-    var id: String = UUID().uuidString
+    var id: String
     var name: String = ""
     var calorific: Int = 0
     var category: IngredientCategory?
@@ -19,6 +19,7 @@ struct Ingredient {
     // MARK: Init
     
     init(name: String, calorific: Int = 0, category: IngredientCategory? = nil) {
+        self.id = UUID().uuidString
         self.name = name
         self.calorific = calorific
         self.category = category
@@ -27,6 +28,7 @@ struct Ingredient {
 
 extension Ingredient: Persistable {
     init(managedObject: IngredientObject) {
+        self.id = managedObject.id
         self.name = managedObject.name
         self.calorific = managedObject.calorific
         if let category = managedObject.category {
@@ -35,7 +37,8 @@ extension Ingredient: Persistable {
     }
     
     var managedObject: IngredientObject {
-        return IngredientObject(name: name,
+        return IngredientObject(id: id,
+                                name: name,
                                 calorific: calorific,
                                 category: category?.managedObject)
     }

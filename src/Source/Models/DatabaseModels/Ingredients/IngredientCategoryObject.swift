@@ -2,7 +2,7 @@ import RealmSwift
 
 final class IngredientCategoryObject: Object {
     // MARK: - Properties
-    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
     
     // MARK: - Meta
@@ -11,14 +11,9 @@ final class IngredientCategoryObject: Object {
     }
     
     // MARK: Convenience Init
-    convenience required init(name: String) {
+    convenience required init(id: String, name: String) {
         self.init()
+        self.id = id
         self.name = name
     }
 }
-
-//extension IngredientCategoryObject: DatabaseObject {
-//    var internalModel: IngredientCategory {
-//        return IngredientCategory(name: name)
-//    }
-//}

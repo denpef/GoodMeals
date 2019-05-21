@@ -1,7 +1,6 @@
 import Foundation
 import RealmSwift
 
-
 final class RealmPersistenceService: PersistenceService {
     private var config: Realm.Configuration
     
@@ -17,21 +16,32 @@ final class RealmPersistenceService: PersistenceService {
     
     func add<T: Persistable>(_ value: T, update: Bool = false) {
         let realm = getRealm()
-        realm.add(value.managedObject, update: update)
+        write(realm: realm) {
+            realm.add(value.managedObject, update: update)
+        }
     }
     
     func add<T: Sequence>(_ values: T, update: Bool = false) where T.Iterator.Element: Persistable {
-        values.forEach { add($0, update: update) }
+        let realm = getRealm()
+        write(realm: realm) {
+            values.forEach {
+                add($0, update: update)
+            }
+        }
     }
     
     func delete<T: Persistable>(_ value: T) {
         let realm = getRealm()
-        realm.delete(value.managedObject)
+        write(realm: realm) {
+            realm.delete(value.managedObject)
+        }
     }
     
     func delete<T: Sequence>(_ values: T) where T.Iterator.Element: Persistable {
         let realm = getRealm()
-        realm.delete(values.map { $0.managedObject })
+        write(realm: realm) {
+            realm.delete(values.map { $0.managedObject })
+        }
     }
     
     func objects<T: Persistable>(_ type: T.Type,
@@ -50,7 +60,9 @@ final class RealmPersistenceService: PersistenceService {
             objects = objects.sorted(by: sortDescriptors)
         }
         
-        return objects.map { T(managedObject: $0) }
+        return objects.map {
+            T(managedObject: $0)
+        }
     }
     
     func clearAll() {

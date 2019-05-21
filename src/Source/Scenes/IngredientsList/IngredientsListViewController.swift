@@ -59,7 +59,7 @@ final class IngredientsListViewController: UIViewController {
             .bind(to: viewModel.addNewItem)
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(IngredientObject.self)
+        tableView.rx.modelSelected(Ingredient.self)
             .bind(to: viewModel.selectItem)
             .disposed(by: disposeBag)
     }
