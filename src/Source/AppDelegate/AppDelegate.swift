@@ -21,10 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let serviceLocator = ServiceLocator()
         let factory = DependencyContainer(serviceLocator: serviceLocator)
-        let sceneCoordinator = SceneCoordinator(window: window, factory: factory)
-        // TODO: - Refactor this injection
-        factory.coordinator = sceneCoordinator
-        sceneCoordinator.showRootViewController()
+        let router = RootRouter(window: window, factory: factory)
+        router.showRootViewController()
         return true
     }
 }

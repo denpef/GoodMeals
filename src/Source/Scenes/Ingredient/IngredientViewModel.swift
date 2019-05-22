@@ -18,14 +18,12 @@ struct IngredientViewModel {
     
     // MARK: - Private properties
     
-    private let coordinator: SceneCoordinator
     private let disposeBag = DisposeBag()
     private let ingredientsService: IngredientsServiceType
     
     // MARK: - Init
     
-    init(coordinator: SceneCoordinator, ingredientsService: IngredientsServiceType, ingredientId: String?) {
-        self.coordinator = coordinator
+    init(ingredientsService: IngredientsServiceType, ingredientId: String?) {
         self.ingredientsService = ingredientsService
         //ingredientsService.object
     }

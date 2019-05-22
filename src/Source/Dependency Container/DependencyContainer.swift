@@ -2,12 +2,13 @@ import UIKit
 
 class DependencyContainer {
     let serviceLocator: ServiceLocatorType
-    var coordinator: SceneCoordinator!
     
     init(serviceLocator: ServiceLocatorType) {
         self.serviceLocator = serviceLocator
     }
 }
+
+// MARK: - ViewController Factory -
 
 extension DependencyContainer: ViewControllerFactory {
     func makeIngredientViewController(ingredientId: String?) -> IngredientViewController {
@@ -17,7 +18,12 @@ extension DependencyContainer: ViewControllerFactory {
     
     func makeIngredientsListViewController() -> IngredientsListViewController {
         let vm = makeIngredientsListViewModel()
-        return IngredientsListViewController(viewModel: vm, coordinator: coordinator)
+        let router = IngredientsListRouter(factory: self)
+        let vc = IngredientsListViewController(viewModel: vm)
+        
+        vm.router = router
+        router.viewController = vc
+        return vc
     }
     
     func makeNavigationController(rootViewController: UIViewController) -> UINavigationController {
@@ -25,17 +31,15 @@ extension DependencyContainer: ViewControllerFactory {
     }
 }
 
-// MARK: - ViewModelFactory -
+// MARK: - ViewModel Factory -
 
 extension DependencyContainer {
     func makeIngredientViewModel(_ ingredientId: String?) -> IngredientViewModel {
-        return IngredientViewModel(coordinator: coordinator,
-                                   ingredientsService: serviceLocator.ingredientsService,
+        return IngredientViewModel(ingredientsService: serviceLocator.ingredientsService,
                                    ingredientId: ingredientId)
     }
     
     func makeIngredientsListViewModel() -> IngredientsListViewModel {
-        return IngredientsListViewModel(coordinator: coordinator,
-                                        ingredientsService: serviceLocator.ingredientsService)
+        return IngredientsListViewModel(ingredientsService: serviceLocator.ingredientsService)
     }
 }

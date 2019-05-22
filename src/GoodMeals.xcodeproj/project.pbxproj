@@ -11,7 +11,7 @@
 		021ED87E223E0EE1009FA238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021ED87D223E0EE1009FA238 /* Assets.xcassets */; };
 		021ED88C223E0EE1009FA238 /* GoodMealsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021ED88B223E0EE1009FA238 /* GoodMealsTests.swift */; };
 		021ED897223E0EE1009FA238 /* GoodMealsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021ED896223E0EE1009FA238 /* GoodMealsUITests.swift */; };
-		021EFD4A22664042001CA0A3 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4922664042001CA0A3 /* SceneCoordinator.swift */; };
+		021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4922664042001CA0A3 /* RootRouter.swift */; };
 		0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */; };
 		0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */; };
 		02367DB5225BCA4800BD1217 /* IngredientObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB4225BCA4800BD1217 /* IngredientObject.swift */; };
@@ -25,6 +25,7 @@
 		0269D0B12294748200503C85 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269D0B02294748200503C85 /* IngredientViewModel.swift */; };
 		027932F7226A3B3500401912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027932F6226A3B2100401912 /* LaunchScreen.storyboard */; };
 		027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027932F8226A3F7700401912 /* ViewControllerFactory.swift */; };
+		028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028274642295A8310025A023 /* IngredientsListRouter.swift */; };
 		028C86B5228FDE420051E852 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86B4228FDE420051E852 /* Persistable.swift */; };
 		028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BA228FE7D20051E852 /* IngredientCategory.swift */; };
 		028C86BD228FEB140051E852 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BC228FEB140051E852 /* Ingredient.swift */; };
@@ -69,7 +70,7 @@
 		021ED892223E0EE1009FA238 /* GoodMealsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodMealsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		021ED896223E0EE1009FA238 /* GoodMealsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodMealsUITests.swift; sourceTree = "<group>"; };
 		021ED898223E0EE1009FA238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		021EFD4922664042001CA0A3 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		021EFD4922664042001CA0A3 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		02367DB4225BCA4800BD1217 /* IngredientObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientObject.swift; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		0269D0B02294748200503C85 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		027932F6226A3B2100401912 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = /Users/denisefimov/Documents/Goodmeals/src/GoodMeals/LaunchScreen.storyboard; sourceTree = "<absolute>"; };
 		027932F8226A3F7700401912 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		028274642295A8310025A023 /* IngredientsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListRouter.swift; sourceTree = "<group>"; };
 		028C86B4228FDE420051E852 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		028C86BA228FE7D20051E852 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
 		028C86BC228FEB140051E852 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -169,8 +171,6 @@
 		021ED8A4223E2C88009FA238 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0269D0B222947E7400503C85 /* Protocols */,
-				027932FA226A3FE600401912 /* Coordinator */,
 				025FFD0C2264D71100CBD0EC /* Dependency Container */,
 				02E5F69722643D2800DD04AF /* Utils */,
 				02CBF5AA223E37520009158E /* Models */,
@@ -260,21 +260,6 @@
 			path = Ingredient;
 			sourceTree = "<group>";
 		};
-		0269D0B222947E7400503C85 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		027932FA226A3FE600401912 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				021EFD4922664042001CA0A3 /* SceneCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		028C86B6228FE7450051E852 /* DatabaseModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +297,7 @@
 		02CBF5A6223E37110009158E /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				021EFD4922664042001CA0A3 /* RootRouter.swift */,
 				021ED876223E0EE0009FA238 /* AppDelegate.swift */,
 			);
 			path = AppDelegate;
@@ -330,7 +316,6 @@
 			children = (
 				0269D0AD229473DC00503C85 /* Ingredient */,
 				02E7D516228802CB000F0576 /* IngredientsList */,
-				02E5F681226395E300DD04AF /* RecipesList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -351,13 +336,6 @@
 				02B4EE0E2240C56100BDE05D /* ServiceLocator */,
 			);
 			path = ServicesLayer;
-			sourceTree = "<group>";
-		};
-		02E5F681226395E300DD04AF /* RecipesList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RecipesList;
 			sourceTree = "<group>";
 		};
 		02E5F69722643D2800DD04AF /* Utils */ = {
@@ -402,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				02E7D517228802E6000F0576 /* IngredientsListViewController.swift */,
+				028274642295A8310025A023 /* IngredientsListRouter.swift */,
 				025A06BE228C86A80008258F /* IngredientCell.swift */,
 				02E7D51922882ABE000F0576 /* IngredientsListViewModel.swift */,
 			);
@@ -733,6 +712,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02367DBF225BCCB800BD1217 /* RecipeCategory.swift in Sources */,
+				028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
 				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
@@ -749,7 +729,7 @@
 				02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */,
 				0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */,
 				02E7D51A22882ABE000F0576 /* IngredientsListViewModel.swift in Sources */,
-				021EFD4A22664042001CA0A3 /* SceneCoordinator.swift in Sources */,
+				021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */,
 				02367DBB225BCB8A00BD1217 /* Recipes.swift in Sources */,
 				025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */,
 				028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */,

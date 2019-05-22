@@ -5,7 +5,6 @@ import RxDataSources
 final class IngredientsListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var viewModel: IngredientsListViewModel
-    private var coordinator: SceneCoordinator
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -18,9 +17,8 @@ final class IngredientsListViewController: UIViewController {
         return UIButton()
     }()
     
-    init(viewModel: IngredientsListViewModel, coordinator: SceneCoordinator) {
+    init(viewModel: IngredientsListViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,11 +56,8 @@ final class IngredientsListViewController: UIViewController {
         
         navigationItem.rightBarButtonItem?.rx.tap
             .throttle(0.5, scheduler: MainScheduler.instance)
-            .subscribe(onNext: {
-                self.coordinator.showIngredient(sender: self)
-            }).disposed(by: disposeBag)
-//            .bind(to: viewModel.addNewItem)
-//            .disposed(by: disposeBag)
+            .bind(to: viewModel.addNewItem)
+            .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(Ingredient.self)
             .bind(to: viewModel.selectItem)
