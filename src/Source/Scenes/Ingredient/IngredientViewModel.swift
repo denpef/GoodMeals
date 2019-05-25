@@ -14,7 +14,6 @@ class IngredientViewModel {
     
     // MARK: - Input
     
-    let editMode = BehaviorRelay<Bool>(value: true)
     let name: BehaviorRelay<String>
     let tap = PublishRelay<Void>()
     
@@ -22,6 +21,8 @@ class IngredientViewModel {
     var ingredientId: String?
     
     // MARK: - Output
+    
+    let isSaved = BehaviorRelay<Bool>(value: true)
     
     // MARK: - Private properties
     
@@ -34,36 +35,29 @@ class IngredientViewModel {
         self.ingredientsService = ingredientsService
         self.ingredientId = ingredientId
         
-        if let ingredientId = ingredientId {
-            if let ingredient = ingredientsService.getModel(by: ingredientId) {
-                self.ingredient = ingredient
-            } else {
-                ingredient = Ingredient(name: "")
-                editMode.accept(false)
-            }
+        if let ingredientId = ingredientId,
+            let ingredient = ingredientsService.getModel(by: ingredientId) {
+            self.ingredient = ingredient
         } else {
             ingredient = Ingredient(name: "")
-            editMode.accept(false)
+            isSaved.accept(false)
         }
         
         name = BehaviorRelay(value: ingredient.name)
-        name.subscribe(onNext: { [weak self] in
-                self?.ingredient.name = $0
-                self?.editMode.accept(false)
+        name.subscribe(onNext: {
+                self.ingredient.name = $0
+                self.isSaved.accept(false)
             })
             .disposed(by: disposeBag)
         
-        tap.subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
+        tap.subscribe(onNext: {
                 if let _ = self.ingredientId {
                     self.ingredientsService.update(self.ingredient)
                 } else {
                     self.ingredientsService.add(self.ingredient)
                     self.ingredientId = self.ingredient.id
                 }
-                self.editMode.accept(true)
+                self.isSaved.accept(true)
                 // router navigate to pop
         }).disposed(by: disposeBag)
     }

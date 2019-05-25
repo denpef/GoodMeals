@@ -380,9 +380,9 @@
 			isa = PBXGroup;
 			children = (
 				02E7D517228802E6000F0576 /* IngredientsListViewController.swift */,
+				02E7D51922882ABE000F0576 /* IngredientsListViewModel.swift */,
 				028274642295A8310025A023 /* IngredientsListRouter.swift */,
 				025A06BE228C86A80008258F /* IngredientCell.swift */,
-				02E7D51922882ABE000F0576 /* IngredientsListViewModel.swift */,
 			);
 			path = IngredientsList;
 			sourceTree = "<group>";

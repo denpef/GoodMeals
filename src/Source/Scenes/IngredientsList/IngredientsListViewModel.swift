@@ -37,9 +37,6 @@ class IngredientsListViewModel {
     init(ingredientsService: IngredientsServiceType) {
         self.ingredientsService = ingredientsService
         
-        // TODO: - remove
-        //ingredientsService.clearAll()
-        
         items = ingredientsService.all()
         
         selectItem.subscribe(onNext: { [weak self] ingredient in

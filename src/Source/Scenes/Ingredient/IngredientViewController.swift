@@ -85,7 +85,7 @@ final class IngredientViewController: UIViewController {
             .bind(to: viewModel.tap)
             .disposed(by: disposeBag)
         
-        viewModel.editMode
+        viewModel.isSaved
             .asDriver()
             .drive(saveButton.rx.isHidden)
             .disposed(by: disposeBag)
