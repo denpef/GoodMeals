@@ -46,12 +46,12 @@ final class IngredientsListViewController: UIViewController {
     }
     
     func bind() {
-        viewModel
-            .items
+        viewModel.items
             .bind(to: tableView.rx.items(cellIdentifier: IngredientCell.reuseIdentifier))
                 { row, ingredient, cell in
                     cell.textLabel?.text = ingredient.name
                     cell.selectionStyle = .none
+                    cell.backgroundColor = .blue
                 }.disposed(by: disposeBag)
         
         navigationItem.rightBarButtonItem?.rx.tap

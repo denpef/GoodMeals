@@ -18,14 +18,14 @@ class IngredientsListViewModel {
     // MARK: - Input
     
     /// Call to show add new item screen
-    let addNewItem = PublishRelay<Void>()
+    let addNewItem = PublishSubject<Void>()
 
     /// Call to open item page
-    let selectItem = PublishRelay<Ingredient>()
+    let selectItem = PublishSubject<Ingredient>()
     
     // MARK: - Output
     
-    var items: BehaviorRelay<[Ingredient]>
+    var items: BehaviorSubject<[Ingredient]>
 
     // MARK: - Private properties
     
@@ -37,15 +37,19 @@ class IngredientsListViewModel {
     init(ingredientsService: IngredientsServiceType) {
         self.ingredientsService = ingredientsService
         
+        // TODO: - remove
+        //ingredientsService.clearAll()
+        
         items = ingredientsService.all()
         
-        selectItem.asObservable().subscribe(onNext: { [weak self] in
-            self?.router?.navigateToIngredient(ingredientId: $0.id)
-        }).disposed(by: disposeBag)
+        selectItem.subscribe(onNext: { [weak self] ingredient in
+                self?.router?.navigateToIngredient(ingredientId: ingredient.id)
+            }).disposed(by: disposeBag)
         
-        addNewItem.asObservable().subscribe(onNext: { [weak self] in
-            self?.router?.navigateToIngredient(ingredientId: nil)
-        }).disposed(by: disposeBag)
+        addNewItem
+            .subscribe(onNext: { [weak self] in
+                self?.router?.navigateToIngredient(ingredientId: nil)
+            }).disposed(by: disposeBag)
     }
     
 }
