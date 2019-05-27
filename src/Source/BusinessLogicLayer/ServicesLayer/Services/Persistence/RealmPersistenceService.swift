@@ -1,6 +1,16 @@
 import Foundation
 import RealmSwift
 
+public protocol PersistenceNotificationOutput: class {
+    func didChanged<T: Persistable>(_ changes: PersistenceNotification<T>)
+}
+
+public enum PersistenceNotification<T> {
+    case error(Error)
+    case initial([T])
+    case update([T], deletions: [Int], insertions: [Int], modifications: [Int])
+}
+
 final class RealmPersistenceService: PersistenceService {
     private var config: Realm.Configuration
     
@@ -52,8 +62,8 @@ final class RealmPersistenceService: PersistenceService {
         
         var objects: Results<T.ManagedObject> = realm.objects(type.ManagedObject.self)
         
-        if let predicate = filter {
-            objects = objects.filter(predicate)
+        if let filter = filter {
+            objects = objects.filter(filter)
         }
         
         if let sortDescriptors = sortDescriptors, !sortDescriptors.isEmpty {
@@ -62,6 +72,38 @@ final class RealmPersistenceService: PersistenceService {
         
         return objects.map {
             T(managedObject: $0)
+        }
+    }
+    
+    func subscribeCollection<T: Persistable>(_ type: T.Type,
+                                             subscriber: PersistenceNotificationOutput,
+                                             filter: NSPredicate? = nil,
+                                             sortDescriptors: [SortDescriptor]? = nil) -> NotificationToken {
+        
+        let realm = getRealm()
+        var results = realm.objects(type.ManagedObject.self)
+        
+        if let filter = filter {
+            results = results.filter(filter)
+        }
+        
+        if let sortDescriptors = sortDescriptors, !sortDescriptors.isEmpty {
+            results = results.sorted(by: sortDescriptors)
+        }
+        
+        return results.observe { [weak subscriber] change in
+            switch change {
+            case let .error(error):
+                subscriber?.didChanged(PersistenceNotification<T>.error(error))
+            case let .initial(objects):
+                subscriber?.didChanged(.initial(objects.map { T.init(managedObject: $0) }))
+            case let .update(updates, deletions, insertions, modifications):
+                subscriber?.didChanged(.update(updates.map { T.init(managedObject: $0) },
+                                               deletions: deletions,
+                                               insertions: insertions,
+                                               modifications: modifications)
+                )
+            }
         }
     }
     

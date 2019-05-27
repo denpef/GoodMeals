@@ -1,11 +1,11 @@
 import RealmSwift
 
-final class IngredientObject: Object {
+@objcMembers final class IngredientObject: Object {
     // MARK: - Properties
-    @objc dynamic var id: String = ""
-    @objc dynamic var name: String = ""
-    @objc dynamic var calorific: Int = 0
-    @objc dynamic var category: IngredientCategoryObject?
+    dynamic var id: String = ""
+    dynamic var name: String = ""
+    dynamic var calorific: Int = 0
+    dynamic var category: IngredientCategoryObject?
     
     // MARK: - Meta
     override static func primaryKey() -> String? {

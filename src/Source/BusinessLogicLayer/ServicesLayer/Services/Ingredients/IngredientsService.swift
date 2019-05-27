@@ -8,13 +8,15 @@ protocol IngredientsServiceType {
     func add(_ ingredient: Ingredient)
     func remove(_ ingredient: Ingredient)
     func update(_ ingredient: Ingredient)
-    func all() -> BehaviorSubject<[Ingredient]>
+    func all() -> [Ingredient]
+    func subscribeCollection(subscriber: PersistenceNotificationOutput)
     func clearAll()
 }
 
 final class IngredientsService: IngredientsServiceType {
 
     let persistenceService: PersistenceService
+    var token: NotificationToken?
     
     init(persistenceService: PersistenceService) {
         self.persistenceService = persistenceService
@@ -39,11 +41,19 @@ final class IngredientsService: IngredientsServiceType {
         persistenceService.add(ingredient, update: true)
     }
     
-    func all() -> BehaviorSubject<[Ingredient]> {
+    func all() -> [Ingredient] {
         let objects = persistenceService.objects(Ingredient.self,
                                                  filter: nil,
                                                  sortDescriptors: nil)
-        return BehaviorSubject(value: objects)
+        return objects
+    }
+    
+    func subscribeCollection(subscriber: PersistenceNotificationOutput) {
+        // TODO: - token invalidation
+        token = persistenceService.subscribeCollection(Ingredient.self,
+                                                       subscriber: subscriber,
+                                                       filter: nil,
+                                                       sortDescriptors: nil)
     }
     
     func clearAll() {

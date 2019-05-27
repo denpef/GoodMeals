@@ -8,4 +8,8 @@ protocol PersistenceService {
     func delete<T: Sequence>(_ values: T) where T.Iterator.Element: Persistable
     func objects<T: Persistable>(_ type: T.Type, filter: NSPredicate?, sortDescriptors: [SortDescriptor]?) -> [T]
     func clearAll()
+    func subscribeCollection<T: Persistable>(_ type: T.Type,
+                                             subscriber: PersistenceNotificationOutput,
+                                             filter: NSPredicate?,
+                                             sortDescriptors: [SortDescriptor]?) -> NotificationToken
 }

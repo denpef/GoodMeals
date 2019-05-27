@@ -37,7 +37,9 @@ class IngredientsListViewModel {
     init(ingredientsService: IngredientsServiceType) {
         self.ingredientsService = ingredientsService
         
-        items = ingredientsService.all()
+        items = BehaviorSubject(value: ingredientsService.all())
+        
+        ingredientsService.subscribeCollection(subscriber: self)
         
         selectItem.subscribe(onNext: { [weak self] ingredient in
                 self?.router?.navigateToIngredient(ingredientId: ingredient.id)
@@ -49,4 +51,19 @@ class IngredientsListViewModel {
             }).disposed(by: disposeBag)
     }
     
+}
+
+extension IngredientsListViewModel: PersistenceNotificationOutput {
+    func didChanged<T>(_ changes: PersistenceNotification<T>) {
+        if let changes = changes as? PersistenceNotification<Ingredient> {
+            switch changes {
+            case let .error(error):
+                break
+            case let .initial(objects):
+                items.on(.next(ingredientsService.all()))
+            case let .update(objects, deletions, insertions, modifications):
+                items.on(.next(ingredientsService.all()))
+            }
+        }
+    }
 }
