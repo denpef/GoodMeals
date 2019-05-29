@@ -16,7 +16,3 @@ end
 target 'GoodMealsTests' do
   shared_pods
 end
-
-target 'GoodMealsUITests' do
-  shared_pods
-end

@@ -13,7 +13,7 @@ import RxDataSources
 
 class IngredientsListViewModel {
     
-    var router: IngredientsListRouter?
+    var router: IngredientsListRouterType?
     
     // MARK: - Input
     

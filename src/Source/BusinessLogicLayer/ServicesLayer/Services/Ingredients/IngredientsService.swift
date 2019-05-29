@@ -3,6 +3,7 @@ import RxSwift
 import RealmSwift
 import RxCocoa
 
+// sourcery:begin: AutoMockable
 protocol IngredientsServiceType {
     func getModel(by id: String) -> Ingredient?
     func add(_ ingredient: Ingredient)

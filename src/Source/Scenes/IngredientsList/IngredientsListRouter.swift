@@ -1,5 +1,6 @@
 import UIKit
 
+// sourcery:begin: AutoMockable
 protocol IngredientsListRouterType {
     func navigateToIngredient(ingredientId: String?)
 }
