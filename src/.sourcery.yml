@@ -1,0 +1,6 @@
+sources:
+  - Source/
+templates:
+  - Templates/
+output:
+  path: Generated/AutoMockable.swift
