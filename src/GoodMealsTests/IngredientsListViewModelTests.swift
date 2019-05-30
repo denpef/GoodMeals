@@ -38,9 +38,7 @@ class IngredientsListViewModelTests: XCTestCase {
         selectItem?.onNext(ingredient)
         XCTAssertTrue(router.navigateToIngredientIngredientIdCalled, "routing is failed")
         XCTAssertEqual(router.navigateToIngredientIngredientIdCallsCount, 1, "routing is failed")
-        XCTAssertEqual(router.navigateToIngredientIngredientIdReceivedIngredientId,
-                       ingredient.id,
-                       "incorrect id when navigation is beginnig")
+        XCTAssertEqual(router.navigateToIngredientIngredientIdReceivedIngredientId, ingredient.id, "incorrect id when navigation is beginnig")
     }
     
     func testAddNewItem() {
