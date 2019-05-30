@@ -37,6 +37,7 @@
 		028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BA228FE7D20051E852 /* IngredientCategory.swift */; };
 		028C86BD228FEB140051E852 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BC228FEB140051E852 /* Ingredient.swift */; };
 		028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */; };
+		02AE962322A03DAA00F3CD1B /* RecipesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */; };
 		02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
 		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
@@ -93,6 +94,7 @@
 		028C86BA228FE7D20051E852 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
 		028C86BC228FEB140051E852 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDefaultConfiguration.swift; sourceTree = "<group>"; };
+		02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewModelTests.swift; sourceTree = "<group>"; };
 		02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
 		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			children = (
 				02EB0CA5229EEA4B00A84E4C /* Generated */,
 				02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */,
+				02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */,
 				02EB0C9C229EDEF300A84E4C /* Info.plist */,
 			);
 			path = GoodMealsTests;
@@ -728,6 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02EB0CA7229EEAF900A84E4C /* AutoMockable.swift in Sources */,
+				02AE962322A03DAA00F3CD1B /* RecipesListViewModelTests.swift in Sources */,
 				02EB0C9B229EDEF300A84E4C /* IngredientsListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
