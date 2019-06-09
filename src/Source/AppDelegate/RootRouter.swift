@@ -10,8 +10,19 @@ final class RootRouter {
     }
     
     func showRootViewController() {
-        let ingredientsListViewController = factory.makeIngredientsListViewController()
-        transition(to: factory.makeNavigationController(rootViewController: ingredientsListViewController))
+        let todayMenu = UINavigationController(rootViewController: factory.makeTodayMenuViewController())
+        todayMenu.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 3)
+        
+        let recipesList = UINavigationController(rootViewController: factory.makeRecipesListViewController())
+        recipesList.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        
+        let shoppingList = UINavigationController(rootViewController: factory.makeShoppingListViewController())
+        shoppingList.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        
+        let tabBarController = UITabBarController(nibName: nil, bundle: nil)
+        tabBarController.viewControllers = [todayMenu, shoppingList, recipesList]
+        
+        transition(to: tabBarController)
     }
     
     // MARK: - Private methods

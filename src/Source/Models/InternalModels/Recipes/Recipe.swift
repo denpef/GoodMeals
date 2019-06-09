@@ -16,6 +16,7 @@ struct Recipe {
     var name: String = ""
     var calorific: Int = 0
     var category: RecipeCategory?
+    var image: String = "https://www.eatthis.com/wp-content/uploads//media/images/ext/832643962/bbq-sauce-sandwich.jpg"
     
     // MARK: Init
     

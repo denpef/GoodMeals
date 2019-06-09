@@ -18,4 +18,20 @@ extension UIColor {
             return #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) // #79D6F9
         }
     }
+    
+    /**
+     Create round image filled by current color
+     
+     - Parameters:
+     - diameter: size of width and height of image
+     */
+    func roundFilledImage(diameter: CGFloat) -> UIImage? {
+        let size = CGSize(width: diameter, height: diameter)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        setFill()
+        UIBezierPath(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: diameter / 2).fill()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

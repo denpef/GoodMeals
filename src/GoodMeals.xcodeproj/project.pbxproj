@@ -32,6 +32,10 @@
 		0269D0B12294748200503C85 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269D0B02294748200503C85 /* IngredientViewModel.swift */; };
 		027932F7226A3B3500401912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027932F6226A3B2100401912 /* LaunchScreen.storyboard */; };
 		027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027932F8226A3F7700401912 /* ViewControllerFactory.swift */; };
+		027F655222A963410033D29D /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F655122A963410033D29D /* ShoppingListViewController.swift */; };
+		027F655422A963510033D29D /* TodayMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F655322A963510033D29D /* TodayMenuViewController.swift */; };
+		027F655622A963CF0033D29D /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F655522A963CF0033D29D /* ShoppingListViewModel.swift */; };
+		027F655822A964030033D29D /* TodayMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F655722A964030033D29D /* TodayMenuViewModel.swift */; };
 		028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028274642295A8310025A023 /* IngredientsListRouter.swift */; };
 		028C86B5228FDE420051E852 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86B4228FDE420051E852 /* Persistable.swift */; };
 		028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BA228FE7D20051E852 /* IngredientCategory.swift */; };
@@ -39,6 +43,14 @@
 		028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */; };
 		02AE962322A03DAA00F3CD1B /* RecipesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */; };
 		02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */; };
+		02BEF98022AD007200E8C741 /* MealPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF97F22AD007200E8C741 /* MealPlanObject.swift */; };
+		02BEF98222AD00B500E8C741 /* DailyPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98122AD00B500E8C741 /* DailyPlanObject.swift */; };
+		02BEF98422AD02DE00E8C741 /* MealObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98322AD02DE00E8C741 /* MealObject.swift */; };
+		02BEF98722AD06FC00E8C741 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98622AD06FC00E8C741 /* Meal.swift */; };
+		02BEF98922AD139200E8C741 /* DailyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98822AD139200E8C741 /* DailyPlan.swift */; };
+		02BEF98B22AD159900E8C741 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98A22AD159900E8C741 /* MealPlan.swift */; };
+		02BEF98D22AD3A2000E8C741 /* SelectedMealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98C22AD3A2000E8C741 /* SelectedMealPlan.swift */; };
+		02BEF98F22AD3A3000E8C741 /* SelectedMealPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
 		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
 		02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D0227B7539000F0576 /* PersistenceService.swift */; };
@@ -89,6 +101,10 @@
 		0269D0B02294748200503C85 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		027932F6226A3B2100401912 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = /Users/denisefimov/Documents/Goodmeals/src/GoodMeals/LaunchScreen.storyboard; sourceTree = "<absolute>"; };
 		027932F8226A3F7700401912 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		027F655122A963410033D29D /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
+		027F655322A963510033D29D /* TodayMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuViewController.swift; sourceTree = "<group>"; };
+		027F655522A963CF0033D29D /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
+		027F655722A964030033D29D /* TodayMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuViewModel.swift; sourceTree = "<group>"; };
 		028274642295A8310025A023 /* IngredientsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListRouter.swift; sourceTree = "<group>"; };
 		028C86B4228FDE420051E852 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		028C86BA228FE7D20051E852 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
@@ -96,6 +112,14 @@
 		028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDefaultConfiguration.swift; sourceTree = "<group>"; };
 		02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewModelTests.swift; sourceTree = "<group>"; };
 		02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		02BEF97F22AD007200E8C741 /* MealPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanObject.swift; sourceTree = "<group>"; };
+		02BEF98122AD00B500E8C741 /* DailyPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanObject.swift; sourceTree = "<group>"; };
+		02BEF98322AD02DE00E8C741 /* MealObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealObject.swift; sourceTree = "<group>"; };
+		02BEF98622AD06FC00E8C741 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		02BEF98822AD139200E8C741 /* DailyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlan.swift; sourceTree = "<group>"; };
+		02BEF98A22AD159900E8C741 /* MealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
+		02BEF98C22AD3A2000E8C741 /* SelectedMealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMealPlan.swift; sourceTree = "<group>"; };
+		02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMealPlanObject.swift; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
 		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
 		02E7D4D0227B7539000F0576 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -279,9 +303,28 @@
 			path = Ingredient;
 			sourceTree = "<group>";
 		};
+		027F654F22A963110033D29D /* TodayMenu */ = {
+			isa = PBXGroup;
+			children = (
+				027F655322A963510033D29D /* TodayMenuViewController.swift */,
+				027F655722A964030033D29D /* TodayMenuViewModel.swift */,
+			);
+			path = TodayMenu;
+			sourceTree = "<group>";
+		};
+		027F655022A963220033D29D /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				027F655122A963410033D29D /* ShoppingListViewController.swift */,
+				027F655522A963CF0033D29D /* ShoppingListViewModel.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
 		028C86B6228FE7450051E852 /* DatabaseModels */ = {
 			isa = PBXGroup;
 			children = (
+				02BEF97E22AD003C00E8C741 /* MealPlan */,
 				02367DB8225BCB4C00BD1217 /* Ingredients */,
 				02367DB9225BCB6900BD1217 /* Recipes */,
 			);
@@ -291,6 +334,7 @@
 		028C86B7228FE7570051E852 /* InternalModels */ = {
 			isa = PBXGroup;
 			children = (
+				02BEF98522AD06EE00E8C741 /* MealPlan */,
 				023CDD2C22A032D8003ACDF3 /* Recipes */,
 				028C86B8228FE7A70051E852 /* Ingredients */,
 			);
@@ -314,6 +358,28 @@
 			path = ServiceLocator;
 			sourceTree = "<group>";
 		};
+		02BEF97E22AD003C00E8C741 /* MealPlan */ = {
+			isa = PBXGroup;
+			children = (
+				02BEF98322AD02DE00E8C741 /* MealObject.swift */,
+				02BEF98122AD00B500E8C741 /* DailyPlanObject.swift */,
+				02BEF97F22AD007200E8C741 /* MealPlanObject.swift */,
+				02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */,
+			);
+			path = MealPlan;
+			sourceTree = "<group>";
+		};
+		02BEF98522AD06EE00E8C741 /* MealPlan */ = {
+			isa = PBXGroup;
+			children = (
+				02BEF98622AD06FC00E8C741 /* Meal.swift */,
+				02BEF98822AD139200E8C741 /* DailyPlan.swift */,
+				02BEF98A22AD159900E8C741 /* MealPlan.swift */,
+				02BEF98C22AD3A2000E8C741 /* SelectedMealPlan.swift */,
+			);
+			path = MealPlan;
+			sourceTree = "<group>";
+		};
 		02CBF5A6223E37110009158E /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +400,8 @@
 		02CBF5A8223E37340009158E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				027F655022A963220033D29D /* ShoppingList */,
+				027F654F22A963110033D29D /* TodayMenu */,
 				023CDD2422A031F6003ACDF3 /* Recipe */,
 				023CDD1F22A0318C003ACDF3 /* RecipeList */,
 				0269D0AD229473DC00503C85 /* Ingredient */,
@@ -689,6 +757,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02367DBF225BCCB800BD1217 /* RecipeCategoryObject.swift in Sources */,
+				027F655822A964030033D29D /* TodayMenuViewModel.swift in Sources */,
 				028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
@@ -699,10 +768,17 @@
 				02E7D518228802E6000F0576 /* IngredientsListViewController.swift in Sources */,
 				0269D0B12294748200503C85 /* IngredientViewModel.swift in Sources */,
 				02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */,
+				02BEF98422AD02DE00E8C741 /* MealObject.swift in Sources */,
 				0269D0AF229473F400503C85 /* IngredientViewController.swift in Sources */,
+				027F655622A963CF0033D29D /* ShoppingListViewModel.swift in Sources */,
+				02BEF98B22AD159900E8C741 /* MealPlan.swift in Sources */,
 				023CDD2322A031D2003ACDF3 /* RecipeListViewController.swift in Sources */,
+				02BEF98022AD007200E8C741 /* MealPlanObject.swift in Sources */,
+				02BEF98222AD00B500E8C741 /* DailyPlanObject.swift in Sources */,
+				02BEF98722AD06FC00E8C741 /* Meal.swift in Sources */,
 				025A06BD228C86620008258F /* ReusableView.swift in Sources */,
 				023CDD2822A03214003ACDF3 /* RecipeViewController.swift in Sources */,
+				02BEF98D22AD3A2000E8C741 /* SelectedMealPlan.swift in Sources */,
 				023CDD3422A0390B003ACDF3 /* RecipesListRouter.swift in Sources */,
 				02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */,
 				028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */,
@@ -714,12 +790,16 @@
 				02E7D51A22882ABE000F0576 /* IngredientsListViewModel.swift in Sources */,
 				021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */,
 				023CDD3022A032F9003ACDF3 /* RecipeCategory.swift in Sources */,
+				02BEF98F22AD3A3000E8C741 /* SelectedMealPlanObject.swift in Sources */,
+				027F655422A963510033D29D /* TodayMenuViewController.swift in Sources */,
 				02367DBB225BCB8A00BD1217 /* RecipeObject.swift in Sources */,
 				025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */,
 				028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */,
 				023CDD2622A03206003ACDF3 /* RecipeViewModel.swift in Sources */,
 				028C86BD228FEB140051E852 /* Ingredient.swift in Sources */,
 				021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */,
+				027F655222A963410033D29D /* ShoppingListViewController.swift in Sources */,
+				02BEF98922AD139200E8C741 /* DailyPlan.swift in Sources */,
 				025A06BF228C86A80008258F /* IngredientCell.swift in Sources */,
 				028C86B5228FDE420051E852 /* Persistable.swift in Sources */,
 				023CDD2E22A032EA003ACDF3 /* Recipe.swift in Sources */,
@@ -876,7 +956,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D7933757WH;
 				INFOPLIST_FILE = GoodMeals/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -897,7 +977,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D7933757WH;
 				INFOPLIST_FILE = GoodMeals/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

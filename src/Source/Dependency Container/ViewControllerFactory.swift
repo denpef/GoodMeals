@@ -1,7 +1,8 @@
 import UIKit
 
 protocol ViewControllerFactory {
-    func makeNavigationController(rootViewController: UIViewController) -> UINavigationController
+    func makeTodayMenuViewController() -> TodayMenuViewController
+    func makeShoppingListViewController() -> ShoppingListViewController
     func makeIngredientsListViewController() -> IngredientsListViewController
     func makeIngredientViewController(ingredientId: String?) -> IngredientViewController
     func makeRecipesListViewController() -> RecipesListViewController

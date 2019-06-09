@@ -11,6 +11,7 @@ class DependencyContainer {
 // MARK: - ViewController Factory -
 
 extension DependencyContainer: ViewControllerFactory {
+    
     func makeRecipesListViewController() -> RecipesListViewController {
         let vm = makeRecipesListViewModel()
         let router = RecipesListRouter(factory: self)
@@ -41,8 +42,14 @@ extension DependencyContainer: ViewControllerFactory {
         return vc
     }
     
-    func makeNavigationController(rootViewController: UIViewController) -> UINavigationController {
-        return UINavigationController(rootViewController: rootViewController)
+    func makeTodayMenuViewController() -> TodayMenuViewController {
+        let vm = makeTodayMenuViewModel()
+        return TodayMenuViewController(viewModel: vm)
+    }
+    
+    func makeShoppingListViewController() -> ShoppingListViewController {
+        let vm = makeShoppingListViewModel()
+        return ShoppingListViewController(viewModel: vm)
     }
 }
 
@@ -65,5 +72,13 @@ extension DependencyContainer {
     
     func makeRecipesListViewModel() -> RecipesListViewModel {
         return RecipesListViewModel(recipesService: serviceLocator.recipesService)
+    }
+    
+    func makeTodayMenuViewModel() -> TodayMenuViewModel {
+        return TodayMenuViewModel()
+    }
+    
+    func makeShoppingListViewModel() -> ShoppingListViewModel {
+        return ShoppingListViewModel()
     }
 }
