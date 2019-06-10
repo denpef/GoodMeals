@@ -19,8 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.backgroundColor = .white
         self.window = window
         
-        let serviceLocator = ServiceLocator()
-        let factory = DependencyContainer(serviceLocator: serviceLocator)
+        let serviceContainer = ServiceContainer()
+        
+        #if DEBUG
+            setupStubTestableVersion(serviceContainer)
+        #endif
+        
+        let factory = DependencyContainer(serviceContainer: serviceContainer)
         let router = RootRouter(window: window, factory: factory)
         router.showRootViewController()
         return true

@@ -5,25 +5,13 @@ import RxCocoa
 final class TodayMenuViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
-    private let collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    private var tableView: UITableView = {
+        let view = UITableView(frame: .zero, style: .plain)
+        view.rowHeight = 284
         view.backgroundColor = .clear
-        view.alwaysBounceVertical = false
-        view.alwaysBounceHorizontal = true
-        view.showsHorizontalScrollIndicator = false
-        view.isPagingEnabled = true
+        view.separatorStyle = .none
+        view.allowsSelection = false
         return view
-    }()
-    
-    private let pageControl: UIPageControl = {
-        let pageControl = UIPageControl(frame: .zero)
-        pageControl.currentPage = 0
-        pageControl.numberOfPages = 3
-        pageControl.currentPageIndicatorTintColor = .magenta
-        pageControl.pageIndicatorTintColor = .black
-        return pageControl
     }()
     
     private var viewModel: TodayMenuViewModel
@@ -40,64 +28,157 @@ final class TodayMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Today menu"
+        setupTableView()
+        bind()
+    }
+    
+    private func setupTableView() {
+        tableView.register(TodayMenuCell.self, forCellReuseIdentifier: "TableViewCellId")
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.topAnchor),
+                                     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
+    }
+    
+    private func bind() {
+        viewModel.items
+            .bind(to: tableView.rx
+                .items(cellIdentifier: "TableViewCellId", cellType: TodayMenuCell.self)) { row, item, cell in
+                    //print(item.id)
+                    cell.configure(with: item.meals)
+            }.disposed(by: disposeBag)
+        
+        //        viewModel.items
+        //            .asObservable()
+        //            .map { $0.count }
+        //            .bind(to: pageControl.rx.numberOfPages)
+        //            .disposed(by: disposeBag)
+        
+        //        viewModel.items
+        //            .asObservable()
+        //            .map { plans -> [DailyPlan] in
+        //                if let dailyPlans = plans.first?.mealPlan?.dailyPlans {
+        //                    return dailyPlans
+        //                }
+        //                return []
+        //            }
+        //            .bind(to: collectionView.rx
+        //                .items(cellIdentifier: "CellId")) { row, item, cell in
+        //                    cell.backgroundColor = .clear
+        //                    let imageView = UIImageView(frame: .zero)
+        //                    imageView.backgroundColor = .orange
+        //                    imageView.contentMode = .scaleAspectFill
+        //                    cell.addSubview(imageView)
+        //                    imageView.translatesAutoresizingMaskIntoConstraints = false
+        //                    NSLayoutConstraint.activate([
+        //                        imageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 30),
+        //                        imageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -30),
+        //                        imageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 30),
+        //                        imageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -30)])
+        //                    imageView.clipsToBounds = true
+        //                    imageView.layer.cornerRadius = 20
+        //                    print(item.id)
+        //                    if let path = item[.breakfast]?.image {
+        //                        imageView.loadImage(from: path)
+        //                    }
+        //            }.disposed(by: disposeBag)
+    }
+}
+
+final  class TodayMenuCell: UITableViewCell {
+    private let disposeBag = DisposeBag()
+    
+    private let collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.backgroundColor = .clear
+        view.alwaysBounceVertical = false
+        view.alwaysBounceHorizontal = true
+        view.showsHorizontalScrollIndicator = false
+        view.isPagingEnabled = true
+        return view
+    }()
+    
+    private let pageControl: UIPageControl = {
+        let pageControl = UIPageControl(frame: .zero)
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .magenta
+        pageControl.pageIndicatorTintColor = .black
+        return pageControl
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupCollectionView()
         setupPageControl()
-        bind()
+    }
+    
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupCollectionView() {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
-        view.addSubview(collectionView)
+        contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-                                     collectionView.heightAnchor.constraint(equalToConstant: 250),
-                                     collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-                                     collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)])
+        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                                     collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -34),
+                                     collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                                     collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
     
     private func setupPageControl() {
-        view.addSubview(pageControl)
+        contentView.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+        NSLayoutConstraint.activate([pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 4),
                                      pageControl.heightAnchor.constraint(equalToConstant: 30),
                                      pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
                                      pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor)])
     }
     
-    private func bind() {
-        viewModel.items
+    func configure(with plans: [Meal]?) {
+        
+        let observablePlans = Observable.from(optional: plans)
+        
+        observablePlans
+            .map { $0.count }
+            .bind(to: pageControl.rx.numberOfPages)
+            .disposed(by: disposeBag)
+        
+        observablePlans
             .bind(to: collectionView.rx
                 .items(cellIdentifier: "CellId")) { row, item, cell in
                     cell.backgroundColor = .clear
-                    let image = UIImageView(frame: .zero)
-                    cell.addSubview(image)
-                    switch item {
-                    case "1":
-                        image.backgroundColor = UIColor.Common.controlBackground
-                    case "2":
-                        image.backgroundColor = UIColor.yellow
-                    default:
-                        image.backgroundColor = UIColor.green
-                    }
-                    image.translatesAutoresizingMaskIntoConstraints = false
+                    let imageView = UIImageView(frame: .zero)
+                    imageView.backgroundColor = .orange
+                    imageView.contentMode = .scaleAspectFill
+                    cell.addSubview(imageView)
+                    imageView.translatesAutoresizingMaskIntoConstraints = false
                     NSLayoutConstraint.activate([
-                        image.topAnchor.constraint(equalTo: cell.topAnchor, constant: 30),
-                        image.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -30),
-                        image.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 30),
-                        image.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -30)])
-                    image.clipsToBounds = true
-                    image.layer.cornerRadius = 20
-            }.disposed(by: disposeBag)
+                        imageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 30),
+                        imageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -30),
+                        imageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 30),
+                        imageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -30)])
+                    imageView.clipsToBounds = true
+                    imageView.layer.cornerRadius = 20
+                    if let path = item.recipe?.image {
+                        imageView.loadImage(from: path)
+                        //print("\(item.recipe?.name) - \(path)")
+                    }
+                }.disposed(by: disposeBag)
     }
 }
 
-extension TodayMenuViewController: UICollectionViewDelegateFlowLayout {
+extension TodayMenuCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

@@ -39,7 +39,7 @@ class RecipeViewModel {
             let recipe = recipesService.getModel(by: recipeId) {
             self.recipe = recipe
         } else {
-            recipe = Recipe(name: "")
+            recipe = Recipe(name: "", image: "")
             isSaved.accept(false)
         }
         

@@ -1,10 +1,10 @@
 import UIKit
 
 class DependencyContainer {
-    let serviceLocator: ServiceLocatorType
+    let serviceContainer: ServiceContainerType
     
-    init(serviceLocator: ServiceLocatorType) {
-        self.serviceLocator = serviceLocator
+    init(serviceContainer: ServiceContainerType) {
+        self.serviceContainer = serviceContainer
     }
 }
 
@@ -57,25 +57,25 @@ extension DependencyContainer: ViewControllerFactory {
 
 extension DependencyContainer {
     func makeIngredientViewModel(_ ingredientId: String?) -> IngredientViewModel {
-        return IngredientViewModel(ingredientsService: serviceLocator.ingredientsService,
+        return IngredientViewModel(ingredientsService: serviceContainer.ingredientsService,
                                    ingredientId: ingredientId)
     }
     
     func makeIngredientsListViewModel() -> IngredientsListViewModel {
-        return IngredientsListViewModel(ingredientsService: serviceLocator.ingredientsService)
+        return IngredientsListViewModel(ingredientsService: serviceContainer.ingredientsService)
     }
     
     func makeRecipeViewModel(_ recipeId: String?) -> RecipeViewModel {
-        return RecipeViewModel(recipesService: serviceLocator.recipesService,
+        return RecipeViewModel(recipesService: serviceContainer.recipesService,
                                recipeId: recipeId)
     }
     
     func makeRecipesListViewModel() -> RecipesListViewModel {
-        return RecipesListViewModel(recipesService: serviceLocator.recipesService)
+        return RecipesListViewModel(recipesService: serviceContainer.recipesService)
     }
     
     func makeTodayMenuViewModel() -> TodayMenuViewModel {
-        return TodayMenuViewModel()
+        return TodayMenuViewModel(persistanceService: serviceContainer.persistenceService)
     }
     
     func makeShoppingListViewModel() -> ShoppingListViewModel {

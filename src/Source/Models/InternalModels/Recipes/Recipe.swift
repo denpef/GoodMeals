@@ -16,13 +16,14 @@ struct Recipe {
     var name: String = ""
     var calorific: Int = 0
     var category: RecipeCategory?
-    var image: String = "https://www.eatthis.com/wp-content/uploads//media/images/ext/832643962/bbq-sauce-sandwich.jpg"
+    var image: String = ""
     
     // MARK: Init
     
-    init(name: String, calorific: Int = 0, category: RecipeCategory? = nil) {
+    init(name: String, image: String, calorific: Int = 0, category: RecipeCategory? = nil) {
         self.id = UUID().uuidString
         self.name = name
+        self.image = image
         self.calorific = calorific
         self.category = category
     }
@@ -32,6 +33,7 @@ extension Recipe: Persistable {
     init(managedObject: RecipeObject) {
         self.id = managedObject.id
         self.name = managedObject.name
+        self.image = managedObject.image
         self.ingredients = managedObject.ingredients.map { Ingredient(managedObject: $0) }
         self.calorific = managedObject.calorific
         if let category = managedObject.category {
@@ -42,6 +44,7 @@ extension Recipe: Persistable {
     var managedObject: RecipeObject {
         return RecipeObject(id: id,
                             name: name,
+                            image: image,
                             ingredients: ingredients.map { $0.managedObject },
                             category: category?.managedObject,
                             calorific: calorific)

@@ -42,7 +42,7 @@
 		028C86BD228FEB140051E852 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BC228FEB140051E852 /* Ingredient.swift */; };
 		028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */; };
 		02AE962322A03DAA00F3CD1B /* RecipesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */; };
-		02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */; };
+		02B4EE102240C57C00BDE05D /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B4EE0F2240C57C00BDE05D /* ServiceContainer.swift */; };
 		02BEF98022AD007200E8C741 /* MealPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF97F22AD007200E8C741 /* MealPlanObject.swift */; };
 		02BEF98222AD00B500E8C741 /* DailyPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98122AD00B500E8C741 /* DailyPlanObject.swift */; };
 		02BEF98422AD02DE00E8C741 /* MealObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98322AD02DE00E8C741 /* MealObject.swift */; };
@@ -51,6 +51,8 @@
 		02BEF98B22AD159900E8C741 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98A22AD159900E8C741 /* MealPlan.swift */; };
 		02BEF98D22AD3A2000E8C741 /* SelectedMealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98C22AD3A2000E8C741 /* SelectedMealPlan.swift */; };
 		02BEF98F22AD3A3000E8C741 /* SelectedMealPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */; };
+		02BEF99122AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF99022AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift */; };
+		02BEF9FB22AE3BC400E8C741 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */; };
 		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
 		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
 		02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D0227B7539000F0576 /* PersistenceService.swift */; };
@@ -111,7 +113,7 @@
 		028C86BC228FEB140051E852 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		028C86C022915EC30051E852 /* RealmDefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDefaultConfiguration.swift; sourceTree = "<group>"; };
 		02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewModelTests.swift; sourceTree = "<group>"; };
-		02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		02B4EE0F2240C57C00BDE05D /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		02BEF97F22AD007200E8C741 /* MealPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanObject.swift; sourceTree = "<group>"; };
 		02BEF98122AD00B500E8C741 /* DailyPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanObject.swift; sourceTree = "<group>"; };
 		02BEF98322AD02DE00E8C741 /* MealObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealObject.swift; sourceTree = "<group>"; };
@@ -120,6 +122,8 @@
 		02BEF98A22AD159900E8C741 /* MealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
 		02BEF98C22AD3A2000E8C741 /* SelectedMealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMealPlan.swift; sourceTree = "<group>"; };
 		02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMealPlanObject.swift; sourceTree = "<group>"; };
+		02BEF99022AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+StubTestableVersion.swift"; sourceTree = "<group>"; };
+		02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
 		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
 		02E7D4D0227B7539000F0576 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -198,7 +202,7 @@
 				025FFD0C2264D71100CBD0EC /* Dependency Container */,
 				02E5F69722643D2800DD04AF /* Utils */,
 				02CBF5AA223E37520009158E /* Models */,
-				02CBF5A7223E371D0009158E /* BusinessLogicLayer */,
+				02CBF5A7223E371D0009158E /* BusinessLogic */,
 				02CBF5A8223E37340009158E /* Scenes */,
 				02CBF5A6223E37110009158E /* AppDelegate */,
 			);
@@ -226,6 +230,7 @@
 			children = (
 				0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */,
 				0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */,
+				02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -350,14 +355,6 @@
 			path = Ingredients;
 			sourceTree = "<group>";
 		};
-		02B4EE0E2240C56100BDE05D /* ServiceLocator */ = {
-			isa = PBXGroup;
-			children = (
-				02B4EE0F2240C57C00BDE05D /* ServiceLocator.swift */,
-			);
-			path = ServiceLocator;
-			sourceTree = "<group>";
-		};
 		02BEF97E22AD003C00E8C741 /* MealPlan */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,16 +382,17 @@
 			children = (
 				021EFD4922664042001CA0A3 /* RootRouter.swift */,
 				021ED876223E0EE0009FA238 /* AppDelegate.swift */,
+				02BEF99022AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		02CBF5A7223E371D0009158E /* BusinessLogicLayer */ = {
+		02CBF5A7223E371D0009158E /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				02CBF5AD223E5D340009158E /* ServicesLayer */,
+				02CBF5AD223E5D340009158E /* Services */,
 			);
-			path = BusinessLogicLayer;
+			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
 		02CBF5A8223E37340009158E /* Scenes */ = {
@@ -419,13 +417,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		02CBF5AD223E5D340009158E /* ServicesLayer */ = {
+		02CBF5AD223E5D340009158E /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				02E7D4CA227B1349000F0576 /* Services */,
-				02B4EE0E2240C56100BDE05D /* ServiceLocator */,
 			);
-			path = ServicesLayer;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		02E5F69722643D2800DD04AF /* Utils */ = {
@@ -441,6 +438,7 @@
 		02E7D4CA227B1349000F0576 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				02B4EE0F2240C57C00BDE05D /* ServiceContainer.swift */,
 				02E7D4CF227B750B000F0576 /* Persistence */,
 				02E7D4CB227B1358000F0576 /* Ingredients */,
 				023CDD2922A032A1003ACDF3 /* Recipes */,
@@ -647,26 +645,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoodMeals/Pods-GoodMeals-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMeals/Pods-GoodMeals-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMeals/Pods-GoodMeals-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -679,26 +662,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -757,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02367DBF225BCCB800BD1217 /* RecipeCategoryObject.swift in Sources */,
+				02BEF9FB22AE3BC400E8C741 /* UIImageView+Extensions.swift in Sources */,
 				027F655822A964030033D29D /* TodayMenuViewModel.swift in Sources */,
 				028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
@@ -764,7 +733,7 @@
 				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
 				02367DB5225BCA4800BD1217 /* IngredientObject.swift in Sources */,
 				02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */,
-				02B4EE102240C57C00BDE05D /* ServiceLocator.swift in Sources */,
+				02B4EE102240C57C00BDE05D /* ServiceContainer.swift in Sources */,
 				02E7D518228802E6000F0576 /* IngredientsListViewController.swift in Sources */,
 				0269D0B12294748200503C85 /* IngredientViewModel.swift in Sources */,
 				02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */,
@@ -803,6 +772,7 @@
 				025A06BF228C86A80008258F /* IngredientCell.swift in Sources */,
 				028C86B5228FDE420051E852 /* Persistable.swift in Sources */,
 				023CDD2E22A032EA003ACDF3 /* Recipe.swift in Sources */,
+				02BEF99122AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,10 @@ struct DailyPlan {
         self.id = UUID().uuidString
         self.meals = meals
     }
+    
+    subscript(mealtime: Mealtime) -> Recipe? {
+        return meals.first(where: { $0.mealtime == mealtime })?.recipe
+    }
 }
 
 extension DailyPlan: Persistable {

@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 final class TodayMenuViewModel {
     
@@ -8,7 +9,7 @@ final class TodayMenuViewModel {
     
     // MARK: - Output
     
-    var items: BehaviorSubject<[String]>
+    var items: BehaviorSubject<[DailyPlan]>
     
     // MARK: - Private properties
     
@@ -16,7 +17,16 @@ final class TodayMenuViewModel {
     
     // MARK: - Init
     
-    init() {
-        items = BehaviorSubject(value:["1","2","3"])
+    init(persistanceService: PersistenceService) {
+        let filter = NSPredicate(format: #keyPath(SelectedMealPlanObject.startDate) + "<= %@", Date() as NSDate)
+        let sortDescription = SortDescriptor(keyPath: #keyPath(SelectedMealPlanObject.startDate), ascending: false)
+        let plans = persistanceService.objects(SelectedMealPlan.self,
+                                               filter: filter,
+                                               sortDescriptors: [sortDescription])
+        if let dailyPlans = plans.first?.mealPlan?.dailyPlans {
+            items = BehaviorSubject(value: dailyPlans)
+        } else {
+            items = BehaviorSubject(value: [])
+        }
     }
 }
