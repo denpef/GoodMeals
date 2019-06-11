@@ -16,7 +16,7 @@ protocol RecipesServiceType {
 
 final class RecipesService: RecipesServiceType {
     
-    let persistenceService: PersistenceService
+    private let persistenceService: PersistenceService
     var token: NotificationToken?
     
     init(persistenceService: PersistenceService) {

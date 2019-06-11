@@ -51,6 +51,21 @@ extension DependencyContainer: ViewControllerFactory {
         let vm = makeShoppingListViewModel()
         return ShoppingListViewController(viewModel: vm)
     }
+    
+    func makeMealPlansListViewController() -> MealPlansListViewController {
+        let vm = makeMealPlansListViewModel()
+        let router = MealPlansListRouter(factory: self)
+        let vc = MealPlansListViewController(viewModel: vm)
+        
+        vm.router = router
+        router.viewController = vc
+        return vc
+    }
+    
+    func makeMealPlanViewController(mealPlan: MealPlan) -> MealPlanViewController {
+        let vm = makeMealPlanViewModel(mealPlan: mealPlan)
+        return MealPlanViewController(viewModel: vm)
+    }
 }
 
 // MARK: - ViewModel Factory -
@@ -80,5 +95,13 @@ extension DependencyContainer {
     
     func makeShoppingListViewModel() -> ShoppingListViewModel {
         return ShoppingListViewModel()
+    }
+    
+    func makeMealPlansListViewModel() -> MealPlansListViewModel {
+        return MealPlansListViewModel(persistanceService: serviceContainer.persistenceService)
+    }
+    
+    func makeMealPlanViewModel(mealPlan: MealPlan) -> MealPlanViewModel {
+        return MealPlanViewModel(mealPlanService: serviceContainer.mealPlanService, mealPlan: mealPlan)
     }
 }

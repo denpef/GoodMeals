@@ -127,7 +127,7 @@ final  class TodayMenuCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                                     collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -34),
+                                     collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
                                      collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                                      collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
@@ -136,7 +136,7 @@ final  class TodayMenuCell: UITableViewCell {
         contentView.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 4),
-                                     pageControl.heightAnchor.constraint(equalToConstant: 30),
+                                     pageControl.heightAnchor.constraint(equalToConstant: 16),
                                      pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
                                      pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor)])
     }
@@ -160,12 +160,12 @@ final  class TodayMenuCell: UITableViewCell {
                     cell.addSubview(imageView)
                     imageView.translatesAutoresizingMaskIntoConstraints = false
                     NSLayoutConstraint.activate([
-                        imageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 30),
-                        imageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -30),
-                        imageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 30),
-                        imageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -30)])
+                        imageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 16),
+                        imageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -16),
+                        imageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 16),
+                        imageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -16)])
                     imageView.clipsToBounds = true
-                    imageView.layer.cornerRadius = 20
+                    imageView.layer.cornerRadius = 15
                     if let path = item.recipe?.image {
                         imageView.loadImage(from: path)
                         //print("\(item.recipe?.name) - \(path)")
