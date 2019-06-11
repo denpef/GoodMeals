@@ -7,10 +7,9 @@ final class MealPlansListViewController: UIViewController {
     
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
-        view.rowHeight = 284
+        view.rowHeight = 264
         view.backgroundColor = .clear
         view.separatorStyle = .none
-        view.allowsSelection = true
         return view
     }()
     
@@ -33,7 +32,7 @@ final class MealPlansListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.register(MealPlanCell.self, forCellReuseIdentifier: "TableViewCellId")
+        tableView.register(MealPlanCell.self, forCellReuseIdentifier: MealPlanCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -44,7 +43,7 @@ final class MealPlansListViewController: UIViewController {
     
     private func bind() {
         viewModel.items
-            .bind(to: tableView.rx.items(cellIdentifier: "TableViewCellId",
+            .bind(to: tableView.rx.items(cellIdentifier: MealPlanCell.reuseIdentifier,
                                          cellType: MealPlanCell.self)) { _, item, cell in
                                             cell.configure(with: item.dailyPlans)
             }.disposed(by: disposeBag)

@@ -57,8 +57,8 @@ final class RecipeViewController: UIViewController {
         NSLayoutConstraint.activate([
             saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            saveButton.heightAnchor.constraint(equalToConstant: 24),
-            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26)
+            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
         
         self.nameTextField.text = viewModel.name.value

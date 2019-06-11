@@ -64,7 +64,33 @@ extension DependencyContainer: ViewControllerFactory {
     
     func makeMealPlanViewController(mealPlan: MealPlan) -> MealPlanViewController {
         let vm = makeMealPlanViewModel(mealPlan: mealPlan)
-        return MealPlanViewController(viewModel: vm)
+        let router = MealPlanRouter(factory: self)
+        let vc = MealPlanViewController(viewModel: vm)
+        
+        vm.router = router
+        router.viewController = vc
+        return vc
+    }
+    
+    func makeMealPlanDateSelectionViewController(mealPlan: MealPlan) -> MealPlanDateSelectionViewController {
+        let vm = MealPlanDateSelectionViewModel(mealPlanService: serviceContainer.mealPlanService,
+                                                mealPlan: mealPlan)
+        let router = MealPlanDateSelectionRouter(factory: self)
+        let vc = MealPlanDateSelectionViewController(viewModel: vm)
+        
+        vm.router = router
+        router.viewController = vc
+        return vc
+    }
+    
+    func makeMealPlanSelectionResultViewController() -> MealPlanSelectionResultViewController {
+        let vm = MealPlanSelectionResultViewModel()
+        let router = MealPlanSelectionResultRouter(factory: self)
+        let vc = MealPlanSelectionResultViewController(viewModel: vm)
+        
+        vm.router = router
+        router.viewController = vc
+        return vc
     }
 }
 
@@ -103,5 +129,9 @@ extension DependencyContainer {
     
     func makeMealPlanViewModel(mealPlan: MealPlan) -> MealPlanViewModel {
         return MealPlanViewModel(mealPlanService: serviceContainer.mealPlanService, mealPlan: mealPlan)
+    }
+    
+    func makeMealPlanDateSelectionViewModel(mealPlanService: MealPlanServiceType, mealPlan: MealPlan) -> MealPlanDateSelectionViewModel {
+        return MealPlanDateSelectionViewModel(mealPlanService: mealPlanService, mealPlan: mealPlan)
     }
 }

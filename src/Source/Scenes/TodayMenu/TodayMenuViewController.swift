@@ -33,7 +33,7 @@ final class TodayMenuViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.register(TodayMenuCell.self, forCellReuseIdentifier: "TableViewCellId")
+        tableView.register(TodayMenuCell.self, forCellReuseIdentifier: TodayMenuCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -45,45 +45,9 @@ final class TodayMenuViewController: UIViewController {
     private func bind() {
         viewModel.items
             .bind(to: tableView.rx
-                .items(cellIdentifier: "TableViewCellId", cellType: TodayMenuCell.self)) { row, item, cell in
-                    //print(item.id)
+                .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { row, item, cell in
                     cell.configure(with: item.meals)
             }.disposed(by: disposeBag)
-        
-        //        viewModel.items
-        //            .asObservable()
-        //            .map { $0.count }
-        //            .bind(to: pageControl.rx.numberOfPages)
-        //            .disposed(by: disposeBag)
-        
-        //        viewModel.items
-        //            .asObservable()
-        //            .map { plans -> [DailyPlan] in
-        //                if let dailyPlans = plans.first?.mealPlan?.dailyPlans {
-        //                    return dailyPlans
-        //                }
-        //                return []
-        //            }
-        //            .bind(to: collectionView.rx
-        //                .items(cellIdentifier: "CellId")) { row, item, cell in
-        //                    cell.backgroundColor = .clear
-        //                    let imageView = UIImageView(frame: .zero)
-        //                    imageView.backgroundColor = .orange
-        //                    imageView.contentMode = .scaleAspectFill
-        //                    cell.addSubview(imageView)
-        //                    imageView.translatesAutoresizingMaskIntoConstraints = false
-        //                    NSLayoutConstraint.activate([
-        //                        imageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 30),
-        //                        imageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -30),
-        //                        imageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 30),
-        //                        imageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -30)])
-        //                    imageView.clipsToBounds = true
-        //                    imageView.layer.cornerRadius = 20
-        //                    print(item.id)
-        //                    if let path = item[.breakfast]?.image {
-        //                        imageView.loadImage(from: path)
-        //                    }
-        //            }.disposed(by: disposeBag)
     }
 }
 
@@ -122,7 +86,7 @@ final  class TodayMenuCell: UITableViewCell {
     }
     
     private func setupCollectionView() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: TodayMenuCell.reuseIdentifier)
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +116,7 @@ final  class TodayMenuCell: UITableViewCell {
         
         observablePlans
             .bind(to: collectionView.rx
-                .items(cellIdentifier: "CellId")) { row, item, cell in
+                .items(cellIdentifier: TodayMenuCell.reuseIdentifier)) { row, item, cell in
                     cell.backgroundColor = .clear
                     let imageView = UIImageView(frame: .zero)
                     imageView.backgroundColor = .orange
@@ -168,7 +132,6 @@ final  class TodayMenuCell: UITableViewCell {
                     imageView.layer.cornerRadius = 15
                     if let path = item.recipe?.image {
                         imageView.loadImage(from: path)
-                        //print("\(item.recipe?.name) - \(path)")
                     }
                 }.disposed(by: disposeBag)
     }

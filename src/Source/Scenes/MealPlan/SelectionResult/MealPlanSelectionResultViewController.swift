@@ -1,21 +1,15 @@
-//
-//  RecipeViewController.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/21/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
 import UIKit
 import RxSwift
 
-final class MealPlanViewController: UIViewController {
+final class MealPlanSelectionResultViewController: UIViewController {
     private let disposeBag = DisposeBag()
-    private var viewModel: MealPlanViewModel
+    private var viewModel: MealPlanSelectionResultViewModel
     
     private var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.Common.controlText
         label.backgroundColor = UIColor.Common.controlBackground
+        label.text = "Success"
         return label
     }()
     
@@ -25,11 +19,11 @@ final class MealPlanViewController: UIViewController {
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.textColor = UIColor.Common.controlText
         button.backgroundColor = UIColor.Common.controlBackground
-        button.setTitle("Select plan", for: .normal)
+        button.setTitle("Back to plans ->", for: .normal)
         return button
     }()
     
-    init(viewModel: MealPlanViewModel) {
+    init(viewModel: MealPlanSelectionResultViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,16 +34,15 @@ final class MealPlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Meal plan"
+        title = "Select date"
         
         view.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            nameLabel.heightAnchor.constraint(equalToConstant: 30)
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             ])
         
         view.addSubview(selectButton)
@@ -65,12 +58,6 @@ final class MealPlanViewController: UIViewController {
     }
     
     func bind() {
-        viewModel.plan
-            .asObservable()
-            .map { $0.id }
-            .bind(to: nameLabel.rx.text)
-            .disposed(by: disposeBag)
-        
         selectButton.rx
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)

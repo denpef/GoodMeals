@@ -2,31 +2,32 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MealPlanViewModel {
+class MealPlanDateSelectionViewModel {
     
-    var router: MealPlanRouterType?
+    var router: MealPlanDateSelectionRouterType?
     
     // MARK: - Input
     
     let tap = PublishRelay<Void>()
     
-    // MARK: - Output
-    
-    var plan: BehaviorRelay<MealPlan>
-    
     // MARK: - Private properties
     
     private let disposeBag = DisposeBag()
     private let mealPlanService: MealPlanServiceType
+    private let mealPlan: MealPlan
     
     // MARK: - Init
     
     init(mealPlanService: MealPlanServiceType, mealPlan: MealPlan) {
         self.mealPlanService = mealPlanService
-        plan = BehaviorRelay(value: mealPlan)
+        self.mealPlan = mealPlan
         
-        tap.subscribe(onNext: {
-            self.router?.navigateToDateSelection(mealPlan: self.plan.value)
+        tap.subscribe(onNext: { [weak self] _ in
+            self?.savePlan()
         }).disposed(by: disposeBag)
+    }
+    
+    private func savePlan() {
+        router?.navigateToResult()
     }
 }
