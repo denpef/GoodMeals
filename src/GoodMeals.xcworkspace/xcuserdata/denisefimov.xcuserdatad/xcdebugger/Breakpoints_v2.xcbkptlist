@@ -9,29 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/IngredientsList/IngredientsListViewModel.swift"
-            timestampString = "580854517.252942"
+            filePath = "Source/Scenes/TodayMenu/TodayMenuViewModel.swift"
+            timestampString = "581880716.786061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "IngredientsListViewModel"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/IngredientsList/IngredientsListViewModel.swift"
-            timestampString = "580854517.253013"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "didChanged(_:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "init(persistanceService:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/BusinessLogicLayer/ServicesLayer/Services/Ingredients/IngredientsService.swift"
-            timestampString = "580854517.2530659"
+            filePath = "Source/Scenes/TodayMenu/TodayMenuViewModel.swift"
+            timestampString = "581880716.786272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "subscribeCollection(subscriber:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "init(persistanceService:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,204 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/BusinessLogicLayer/ServicesLayer/Services/Persistence/RealmPersistenceService.swift"
-            timestampString = "580622141.457894"
+            filePath = "Source/Utils/Extensions/UIImageView+Extensions.swift"
+            timestampString = "581880716.786316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "subscribeCollection(_:subscriber:filter:sortDescriptors:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/BusinessLogicLayer/ServicesLayer/Services/Persistence/RealmPersistenceService.swift"
-            timestampString = "580622141.45837"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "subscribeCollection(_:subscriber:filter:sortDescriptors:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoodMeals.RealmPersistenceService.subscribeCollection&lt;A where A: GoodMeals.Persistable&gt;(_: A.Type, subscriber: GoodMeals.PersistenceNotificationOutput, filter: Swift.Optional&lt;__C.NSPredicate&gt;, sortDescriptors: Swift.Optional&lt;Swift.Array&lt;RealmSwift.SortDescriptor&gt;&gt;) -&gt; __C.RLMNotificationToken"
-                  moduleName = "GoodMeals"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/BusinessLogicLayer/ServicesLayer/Services/Persistence/RealmPersistenceService.swift"
-                  timestampString = "580584194.885375"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "757">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoodMeals.RealmPersistenceService.subscribeCollection&lt;A where A: GoodMeals.Persistable&gt;(_: A.Type, subscriber: GoodMeals.PersistenceNotificationOutput, filter: Swift.Optional&lt;__C.NSPredicate&gt;, sortDescriptors: Swift.Optional&lt;Swift.Array&lt;RealmSwift.SortDescriptor&gt;&gt;) -&gt; __C.RLMNotificationToken"
-                  moduleName = "GoodMeals"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/BusinessLogicLayer/ServicesLayer/Services/Persistence/RealmPersistenceService.swift"
-                  timestampString = "580584194.886704"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "826">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.AnyRealmCollection&lt;A.ManagedObject&gt;&gt;) -&gt; () in GoodMeals.RealmPersistenceService.subscribeCollection&lt;A where A: GoodMeals.Persistable&gt;(_: A.Type, subscriber: GoodMeals.PersistenceNotificationOutput, filter: Swift.Optional&lt;__C.NSPredicate&gt;, sortDescriptors: Swift.Optional&lt;Swift.Array&lt;RealmSwift.SortDescriptor&gt;&gt;) -&gt; __C.RLMNotificationToken"
-                  moduleName = "GoodMeals"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/BusinessLogicLayer/ServicesLayer/Services/Persistence/RealmPersistenceService.swift"
-                  timestampString = "580584194.888032"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "123">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/RealmSwift/RealmSwift/Results.swift"
-            timestampString = "580582169.6716321"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "observe(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RealmSwift.Results.observe((RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;A&gt;&gt;) -&gt; ()) -&gt; __C.RLMNotificationToken"
-                  moduleName = "RealmSwift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Pods/RealmSwift/RealmSwift/Results.swift"
-                  timestampString = "580622068.210793"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "372"
-                  endingLineNumber = "372"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.RLMResults&lt;Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__C.RLMCollectionChange&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RealmSwift.Results.observe((RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;A&gt;&gt;) -&gt; ()) -&gt; __C.RLMNotificationToken"
-                  moduleName = "RealmSwift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Pods/RealmSwift/RealmSwift/Results.swift"
-                  timestampString = "580622068.2128609"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "373"
-                  endingLineNumber = "373"
-                  offsetFromSymbolStart = "81">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/RealmSwift/RealmSwift/Results.swift"
-            timestampString = "580582169.6726789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
-            landmarkName = "_observe(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/Ingredient/IngredientViewModel.swift"
-            timestampString = "580622141.458645"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "init(ingredientsService:ingredientId:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/Ingredient/IngredientViewModel.swift"
-            timestampString = "580622141.458905"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "init(ingredientsService:ingredientId:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/BusinessLogicLayer/ServicesLayer/Services/Persistence/RealmPersistenceService.swift"
-            timestampString = "580622141.458963"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "add(_:update:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/TodayMenu/TodayMenuViewController.swift"
-            timestampString = "581688482.727935"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "loadImage(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
