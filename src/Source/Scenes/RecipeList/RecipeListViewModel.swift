@@ -1,70 +1,69 @@
-import UIKit
+//
+//  RecipesListViewModel.swift
+//  GoodMeals
+//
+//  Created by Denis Efimov on 5/12/19.
+//  Copyright © 2019 Denis Efimov. All rights reserved.
+//
+
+import Foundation
 import RxSwift
+import RxCocoa
 import RxDataSources
 
-final class RecipesListViewController: UIViewController {
+class RecipesListViewModel {
+    
+    var router: RecipesListRouterType?
+    
+    // MARK: - Input
+    
+    /// Call to show add new item screen
+    let addNewItem = PublishSubject<Void>()
+    
+    /// Call to open item page
+    let selectItem = PublishSubject<Recipe>()
+    
+    // MARK: - Output
+    
+    var items: BehaviorSubject<[Recipe]>
+    
+    // MARK: - Private properties
+    
     private let disposeBag = DisposeBag()
-    private var viewModel: RecipesListViewModel
+    private let recipesService: RecipesServiceType
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.estimatedRowHeight = 90
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
-        return tableView
-    }()
-    private lazy var addNewItemButton = {
-        return UIButton()
-    }()
+    // MARK: - Init
     
-    init(viewModel: RecipesListViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+    init(recipesService: RecipesServiceType) {
+        self.recipesService = recipesService
+        
+        items = BehaviorSubject(value: recipesService.all())
+        
+        recipesService.subscribeCollection(subscriber: self)
+        
+        selectItem.subscribe(onNext: { [weak self] recipe in
+            self?.router?.navigateToRecipe(recipeId: recipe.id)
+        }).disposed(by: disposeBag)
+        
+        addNewItem
+            .subscribe(onNext: { [weak self] in
+                self?.router?.navigateToRecipe(recipeId: nil)
+            }).disposed(by: disposeBag)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Recipes"
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
-        tableView.setTopToBottomGradientBackground(topColor: .red, bottomColor: .green)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: nil,
-                                                            action: nil)
-        
-        bind()
-    }
-    
-    func bind() {
-        viewModel.items
-            .bind(to: tableView.rx.items(cellIdentifier: RecipeCell.reuseIdentifier))
-            { row, Recipe, cell in
-                cell.textLabel?.text = Recipe.name
-                cell.selectionStyle = .none
-                cell.backgroundColor = .blue
-            }.disposed(by: disposeBag)
-        
-        navigationItem.rightBarButtonItem?.rx.tap
-            .throttle(0.5, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.addNewItem)
-            .disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(Recipe.self)
-            .bind(to: viewModel.selectItem)
-            .disposed(by: disposeBag)
+}
+
+extension RecipesListViewModel: PersistenceNotificationOutput {
+    func didChanged<T>(_ changes: PersistenceNotification<T>) {
+        if let changes = changes as? PersistenceNotification<Recipe> {
+            switch changes {
+            case let .error(error):
+                break
+            case let .initial(objects):
+                items.on(.next(recipesService.all()))
+            case let .update(objects, deletions, insertions, modifications):
+                items.on(.next(recipesService.all()))
+            }
+        }
     }
 }
