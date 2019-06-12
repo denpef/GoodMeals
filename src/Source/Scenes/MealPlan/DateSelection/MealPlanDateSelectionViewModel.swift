@@ -9,6 +9,7 @@ class MealPlanDateSelectionViewModel {
     // MARK: - Input
     
     let tap = PublishRelay<Void>()
+    let date = BehaviorRelay(value: Date())
     
     // MARK: - Private properties
     
@@ -28,6 +29,8 @@ class MealPlanDateSelectionViewModel {
     }
     
     private func savePlan() {
+        let selectedPlan = SelectedMealPlan(startDate: date.value, mealPlan: mealPlan)
+        mealPlanService.add(selectedPlan)
         router?.navigateToResult()
     }
 }

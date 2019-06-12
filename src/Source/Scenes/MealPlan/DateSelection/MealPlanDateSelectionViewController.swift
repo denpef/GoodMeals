@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class MealPlanDateSelectionViewController: UIViewController {
     private let disposeBag = DisposeBag()
@@ -13,6 +14,12 @@ final class MealPlanDateSelectionViewController: UIViewController {
         button.backgroundColor = UIColor.Common.controlBackground
         button.setTitle("Select plan", for: .normal)
         return button
+    }()
+    
+    private var datePicker: UIDatePicker = {
+        let control = UIDatePicker(frame: .zero)
+        control.datePickerMode = .date
+        return control
     }()
     
     init(viewModel: MealPlanDateSelectionViewModel) {
@@ -34,8 +41,15 @@ final class MealPlanDateSelectionViewController: UIViewController {
             selectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             selectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             selectButton.heightAnchor.constraint(equalToConstant: 50),
-            selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            ])
+            selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+        
+        view.addSubview(datePicker)
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            datePicker.heightAnchor.constraint(equalToConstant: 162),
+            datePicker.bottomAnchor.constraint(equalTo: selectButton.topAnchor)])
         
         bind()
     }
@@ -45,6 +59,10 @@ final class MealPlanDateSelectionViewController: UIViewController {
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)
             .bind(to: viewModel.tap)
+            .disposed(by: disposeBag)
+        
+        datePicker.rx.value
+            .bind(to: viewModel.date)
             .disposed(by: disposeBag)
     }
 }
