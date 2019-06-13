@@ -116,7 +116,7 @@ extension DependencyContainer {
     }
     
     func makeTodayMenuViewModel() -> TodayMenuViewModel {
-        return TodayMenuViewModel(persistanceService: serviceContainer.persistenceService)
+        return TodayMenuViewModel(mealPlanService: serviceContainer.mealPlanService)
     }
     
     func makeShoppingListViewModel() -> ShoppingListViewModel {

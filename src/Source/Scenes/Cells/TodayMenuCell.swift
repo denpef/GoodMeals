@@ -2,9 +2,9 @@ import UIKit
 import RxSwift
 
 final  class TodayMenuCell: UITableViewCell {
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -16,7 +16,7 @@ final  class TodayMenuCell: UITableViewCell {
         return view
     }()
     
-    private let pageControl: UIPageControl = {
+    let pageControl: UIPageControl = {
         let pageControl = UIPageControl(frame: .zero)
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = .magenta
@@ -35,8 +35,13 @@ final  class TodayMenuCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     private func setupCollectionView() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: TodayMenuCell.reuseIdentifier)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +71,7 @@ final  class TodayMenuCell: UITableViewCell {
         
         observablePlans
             .bind(to: collectionView.rx
-                .items(cellIdentifier: TodayMenuCell.reuseIdentifier)) { row, item, cell in
+                .items(cellIdentifier: "UICollectionViewCell")) { row, item, cell in
                     cell.backgroundColor = .clear
                     let imageView = UIImageView(frame: .zero)
                     imageView.backgroundColor = .orange

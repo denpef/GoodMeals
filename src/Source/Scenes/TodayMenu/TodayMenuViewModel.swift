@@ -7,9 +7,11 @@ final class TodayMenuViewModel {
     
     // MARK: - Input
     
+    var mealPlanService: MealPlanServiceType
+    
     // MARK: - Output
     
-    var items: BehaviorSubject<[DailyPlan]>
+    var items: BehaviorSubject<[DailyPlan]> = BehaviorSubject(value: [])
     
     // MARK: - Private properties
     
@@ -17,16 +19,30 @@ final class TodayMenuViewModel {
     
     // MARK: - Init
     
-    init(persistanceService: PersistenceService) {
-        let filter = NSPredicate(format: #keyPath(SelectedMealPlanObject.startDate) + "<= %@", Date() as NSDate)
-        let sortDescription = SortDescriptor(keyPath: #keyPath(SelectedMealPlanObject.startDate), ascending: false)
-        let plans = persistanceService.objects(SelectedMealPlan.self,
-                                               filter: filter,
-                                               sortDescriptors: [sortDescription])
-        if let dailyPlans = plans.first?.mealPlan?.dailyPlans {
-            items = BehaviorSubject(value: dailyPlans)
+    init(mealPlanService: MealPlanServiceType) {
+        self.mealPlanService = mealPlanService
+        mealPlanService.subscribeCollection(subscriber: self)
+    }
+    
+    private func updateMealPlan() {
+        let currentMealPlan = mealPlanService.getCurrentMealPlan()
+        if let dailyPlans = currentMealPlan?.mealPlan?.dailyPlans {
+            items.onNext(dailyPlans)
         } else {
-            items = BehaviorSubject(value: [])
+            items.onNext([])
+        }
+    }
+}
+
+extension TodayMenuViewModel: PersistenceNotificationOutput {
+    func didChanged<T>(_ changes: PersistenceNotification<T>) {
+        if let changes = changes as? PersistenceNotification<SelectedMealPlan> {
+            switch changes {
+            case .initial, .update:
+                updateMealPlan()
+            default:
+                break
+            }
         }
     }
 }
