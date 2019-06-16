@@ -7,32 +7,50 @@
 //
 import UIKit
 import RxSwift
+import RxCocoa
+import RxDataSources
 
 final class RecipeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var viewModel: RecipeViewModel
+    private let dataSource: RxCollectionViewSectionedReloadDataSource<RecipeSection>
     
-    private var nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.adjustsFontSizeToFitWidth = true
-        textField.textColor = UIColor.Common.controlText
-        textField.backgroundColor = UIColor.Common.controlBackground
-        return textField
-    }()
-    
-    private var saveButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.textAlignment = .center
-        button.titleLabel?.textColor = UIColor.Common.controlText
-        button.backgroundColor = UIColor.Common.controlBackground
-        button.setTitle("Save", for: .normal)
-        return button
+    let collectionView: UICollectionView = {
+        let flowLayout = StretchyHeaderLayout()
+        flowLayout.scrollDirection = .vertical
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.backgroundColor = .white
+        view.alwaysBounceVertical = true
+        view.alwaysBounceHorizontal = false
+        view.showsHorizontalScrollIndicator = false
+        return view
     }()
     
     init(viewModel: RecipeViewModel) {
         self.viewModel = viewModel
+        collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
+        collectionView.register(RecipeInfoCell.self, forCellWithReuseIdentifier: RecipeInfoCell.reuseIdentifier)
+        //collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
+        dataSource = RxCollectionViewSectionedReloadDataSource<RecipeSection>(
+            configureCell: { dataSource, collectionView, indexPath, item in
+                switch item {
+                case let .IngredientItem(ingredient: ingredientAmount):
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
+                    cell.configure(ingredientAmount: ingredientAmount)
+                    return cell
+                case let .RecipeInfoItem(calorific: calorific, timeForPreparing: time):
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeInfoCell.reuseIdentifier, for: indexPath) as! RecipeInfoCell
+                    cell.configure(calorifical: calorific, timeForPreparing: time)
+                    return cell
+                }
+        }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
+                    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                 withReuseIdentifier: "HeaderId",
+                                                                                 for: indexPath) as! RecipeHeaderView
+                    header.setImage(viewModel.recipe.image)
+            
+                    return header
+        })
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,54 +58,81 @@ final class RecipeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Recipe"
-        
-        view.addSubview(nameTextField)
-        NSLayoutConstraint.activate([
-            nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            nameTextField.heightAnchor.constraint(equalToConstant: 30)
-            ])
-        
-        view.addSubview(saveButton)
-        NSLayoutConstraint.activate([
-            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            saveButton.heightAnchor.constraint(equalToConstant: 50),
-            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            ])
-        
-        self.nameTextField.text = viewModel.name.value
+        title = viewModel.recipe.name
+        navigationItem.largeTitleDisplayMode = .never
+        configureCollectionView()
         
         bind()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.nameTextField.becomeFirstResponder()
+    func bind() {
+        
+        viewModel.items
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+//        addToShoppingListButton.rx
+//            .tap
+//            .debounce(0.2, scheduler: MainScheduler.instance)
+//            .bind(to: viewModel.addToShoppingList)
+//            .disposed(by: disposeBag)
+        
+//        viewModel.isAdded
+//            .asDriver()
+//            .drive(saveButton.rx.isHidden)
+//            .disposed(by: disposeBag)
+        
+        
+//        let sections: [MultipleSectionModel] = [
+//            .ImageProvidableSection(title: "Section 1",
+//                                    items: [.ImageSectionItem(image: UIImage(named: "settings")!, title: "General")]),
+//            .ToggleableSection(title: "Section 2",
+//                               items: [.ToggleableSectionItem(title: "On", enabled: true)]),
+//            .StepperableSection(title: "Section 3",
+//                                items: [.StepperSectionItem(title: "1")])
+//        ]
+//
+//        let dataSource = MultipleSectionModelViewController.dataSource()
+//
+//        viewModel.sections
+//            .bind(to: tableView.rx.items(dataSource: dataSource))
+//            .disposed(by: disposeBag)
     }
     
-    func bind() {
-        nameTextField.rx
-            .text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: viewModel.name)
-            .disposed(by: disposeBag)
+    private func configureCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+//        collectionView.dataSource = self
         
-        saveButton.rx
-            .tap
-            .debounce(0.2, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.tap)
-            .disposed(by: disposeBag)
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
         
-        viewModel.isSaved
-            .asDriver()
-            .drive(saveButton.rx.isHidden)
-            .disposed(by: disposeBag)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        
+        collectionView.register(RecipeHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "HeaderId")
+    }
+}
+
+extension RecipeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 300)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
     }
 }

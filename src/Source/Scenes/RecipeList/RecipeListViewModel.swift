@@ -45,10 +45,10 @@ class RecipesListViewModel {
             self?.router?.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
         
-        addNewItem
-            .subscribe(onNext: { [weak self] in
-                self?.router?.navigateToRecipe(recipeId: nil)
-            }).disposed(by: disposeBag)
+//        addNewItem
+//            .subscribe(onNext: { [weak self] in
+//                self?.router?.navigateToRecipe(recipeId: nil)
+//            }).disposed(by: disposeBag)
     }
     
 }

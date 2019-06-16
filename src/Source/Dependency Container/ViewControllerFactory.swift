@@ -10,5 +10,5 @@ protocol ViewControllerFactory {
     func makeIngredientsListViewController() -> IngredientsListViewController
     func makeIngredientViewController(ingredientId: String?) -> IngredientViewController
     func makeRecipesListViewController() -> RecipesListViewController
-    func makeRecipeViewController(recipeId: String?) -> RecipeViewController
+    func makeRecipeViewController(recipeId: String) -> RecipeViewController
 }

@@ -10,19 +10,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
 class RecipeViewModel {
     
     // MARK: - Input
     
     let name: BehaviorRelay<String>
-    let tap = PublishRelay<Void>()
+//    let tap = PublishRelay<Void>()
+    let items: BehaviorSubject<[RecipeSection]>
     
     var recipe: Recipe
-    var recipeId: String?
-    
-    // MARK: - Output
-    
-    let isSaved = BehaviorRelay<Bool>(value: true)
     
     // MARK: - Private properties
     
@@ -31,34 +28,28 @@ class RecipeViewModel {
     
     // MARK: - Init
     
-    init(recipesService: RecipesServiceType, recipeId: String?) {
+    init(recipesService: RecipesServiceType, recipeId: String) {
         self.recipesService = recipesService
-        self.recipeId = recipeId
-        
-        if let recipeId = recipeId,
-            let recipe = recipesService.getModel(by: recipeId) {
-            self.recipe = recipe
-        } else {
-            recipe = Recipe(name: "", image: "")
-            isSaved.accept(false)
-        }
+        self.recipe = recipesService.getModel(by: recipeId)!
         
         name = BehaviorRelay(value: recipe.name)
-        name.subscribe(onNext: {
-            self.recipe.name = $0
-            self.isSaved.accept(false)
-        })
-            .disposed(by: disposeBag)
         
-        tap.subscribe(onNext: {
-            if let _ = self.recipeId {
-                self.recipesService.update(self.recipe)
-            } else {
-                self.recipesService.add(self.recipe)
-                self.recipeId = self.recipe.id
-            }
-            self.isSaved.accept(true)
-            // router navigate to pop
-        }).disposed(by: disposeBag)
+        var items = [RecipeItem]()
+        items.append(.RecipeInfoItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
+        recipe.ingredients.forEach {
+            items.append(.IngredientItem(ingredient: $0))
+        }
+        self.items = BehaviorSubject(value: [RecipeSection(items: items)])
+        
+//        tap.subscribe(onNext: {
+//            if let _ = self.recipeId {
+//                self.recipesService.update(self.recipe)
+//            } else {
+//                self.recipesService.add(self.recipe)
+//                self.recipeId = self.recipe.id
+//            }
+//            self.isSaved.accept(true)
+//            // router navigate to pop
+//        }).disposed(by: disposeBag)
     }
 }

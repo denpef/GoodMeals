@@ -3,8 +3,8 @@ import Foundation
 extension AppDelegate {
     private struct StubIngredientList {
         var ingredients = [Ingredient]()
-        subscript(name: String) -> Ingredient {
-            return ingredients.first(where: { $0.name == name })!
+        subscript(name: String) -> IngredientAmount {
+            return IngredientAmount(ingredient: ingredients.first(where: { $0.name == name })!, amount: 300)
         }
     }
     
@@ -60,6 +60,7 @@ extension AppDelegate {
         // MARK: - Day: 1
         var muesli = Recipe(name: "Muesli with Raspberries",
                             image: "http://images.media-allrecipes.com/userphotos/960x960/5486559.jpg",
+                            timeForPreparing: "30 min",
                             calorific: 287,
                             category: nil)
         muesli.ingredients.append(ingredientList["Muesli"])
@@ -68,6 +69,7 @@ extension AppDelegate {
         
         var whiteBeans = Recipe(name: "White Bean & Veggie Salad",
                                 image: "http://images.media-allrecipes.com/userphotos/960x960/4548021.jpg",
+                                timeForPreparing: "20 min",
                                 calorific: 360,
                                 category: nil)
         whiteBeans.ingredients.append(ingredientList["Mixed salad greens"])
@@ -81,6 +83,7 @@ extension AppDelegate {
         
         var dijonChicken = Recipe(name: "Balsamic-Dijon Chicken",
                                   image: "http://images.media-allrecipes.com/userphotos/960x960/5180145.jpg",
+                                  timeForPreparing: "50 min",
                                   calorific: 161,
                                   category: nil)
         dijonChicken.ingredients.append(ingredientList["Dijon-style mustard"])
@@ -92,6 +95,7 @@ extension AppDelegate {
         // MARK: - Day: 2
         var avocadoToast = Recipe(name: "Avocado-Egg Toast",
                                   image: "http://images.media-allrecipes.com/userphotos/960x960/5631902.jpg",
+                                  timeForPreparing: "40 min",
                                   calorific: 271,
                                   category: nil)
         avocadoToast.ingredients.append(ingredientList["Avocado"])
@@ -105,6 +109,7 @@ extension AppDelegate {
         
         var redCurry = Recipe(name: "Squash & Red Lentil Curry",
                               image: "http://images.media-allrecipes.com/userphotos/960x960/3759121.jpg",
+                              timeForPreparing: "25 min",
                               calorific: 326,
                               category: nil)
         redCurry.ingredients.append(ingredientList["Canola oil"])

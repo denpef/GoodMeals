@@ -22,7 +22,7 @@ extension DependencyContainer: ViewControllerFactory {
         return vc
     }
     
-    func makeRecipeViewController(recipeId: String?) -> RecipeViewController {
+    func makeRecipeViewController(recipeId: String) -> RecipeViewController {
         let vm = makeRecipeViewModel(recipeId)
         return RecipeViewController(viewModel: vm)
     }
@@ -106,7 +106,7 @@ extension DependencyContainer {
         return IngredientsListViewModel(ingredientsService: serviceContainer.ingredientsService)
     }
     
-    func makeRecipeViewModel(_ recipeId: String?) -> RecipeViewModel {
+    func makeRecipeViewModel(_ recipeId: String) -> RecipeViewModel {
         return RecipeViewModel(recipesService: serviceContainer.recipesService,
                                recipeId: recipeId)
     }

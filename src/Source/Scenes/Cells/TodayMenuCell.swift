@@ -4,7 +4,7 @@ import RxSwift
 final  class TodayMenuCell: UITableViewCell {
     private var disposeBag = DisposeBag()
     
-    let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -16,7 +16,7 @@ final  class TodayMenuCell: UITableViewCell {
         return view
     }()
     
-    let pageControl: UIPageControl = {
+    private let pageControl: UIPageControl = {
         let pageControl = UIPageControl(frame: .zero)
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = .magenta
