@@ -15,6 +15,7 @@ class RecipeViewModel {
     
     // MARK: - Input
     
+    let serving = BehaviorRelay<Int>(value: 2)
     let name: BehaviorRelay<String>
 //    let tap = PublishRelay<Void>()
     let items: BehaviorSubject<[RecipeSection]>
@@ -36,11 +37,15 @@ class RecipeViewModel {
         
         var items = [RecipeItem]()
         items.append(.RecipeInfoItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
+        items.append(.ServingItem)
         recipe.ingredients.forEach {
             items.append(.IngredientItem(ingredient: $0))
         }
         self.items = BehaviorSubject(value: [RecipeSection(items: items)])
         
+        serving.subscribe(onNext: { (val) in
+            print("\(self.serving.value)")
+        }).disposed(by: disposeBag)
 //        tap.subscribe(onNext: {
 //            if let _ = self.recipeId {
 //                self.recipesService.update(self.recipe)

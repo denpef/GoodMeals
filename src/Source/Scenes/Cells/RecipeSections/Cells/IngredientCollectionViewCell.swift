@@ -1,26 +1,51 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class IngredientCollectionViewCell: UICollectionViewCell {
-    let nameLabel: UILabel = {
+    
+    var serving = BehaviorRelay<Int>(value: 0)
+    
+    private var amount: Float = 0
+    private var ingredient: Ingredient?
+    
+    private var disposeBag = DisposeBag()
+    
+    private let nameLabel: UILabel = {
         return UILabel()
     }()
     
-    let amountLabel: UILabel = {
+    private let amountLabel: UILabel = {
         return UILabel()
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureLabels()
+        bind()
+    }
+    
+    private func bind() {
+        serving.map { (val) -> String in
+                String(Float(val) * self.amount)
+            }.bind(to: amountLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     func configure(ingredientAmount: IngredientAmount) {
-        self.nameLabel.text = ingredientAmount.ingredient?.name
-        self.amountLabel.text = ingredientAmount.amount.description
+        self.ingredient = ingredientAmount.ingredient
+        self.amount = ingredientAmount.amount
+        self.nameLabel.text = ingredient?.name
+        self.amountLabel.text = amount.description
     }
     
     private func configureLabels() {
