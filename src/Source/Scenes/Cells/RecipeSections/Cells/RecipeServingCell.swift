@@ -4,7 +4,7 @@ import RxCocoa
 
 final class RecipeServingCell: UICollectionViewCell {
     
-    var countOfServing = BehaviorRelay<Int>(value: 0)
+    var countOfServing = BehaviorRelay<Int>(value: 2)
     
     private var disposeBag: DisposeBag
     
@@ -15,14 +15,20 @@ final class RecipeServingCell: UICollectionViewCell {
     
     private let plusButton: UIButton = {
         let button = UIButton(frame: .zero)
+        button.backgroundColor = UIColor.Common.controlBackground
+        button.layer.cornerRadius = 15
+        button.clipsToBounds = true
+        button.setTitleColor(.white, for: .normal)
         button.setTitle("+", for: .normal)
-        button.tintColor = .black
         return button
     }()
     
     private let minusButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.tintColor = .black
+        button.backgroundColor = UIColor.Common.controlBackground
+        button.layer.cornerRadius = 15
+        button.clipsToBounds = true
+        button.setTitleColor(.white, for: .normal)
         button.setTitle("-", for: .normal)
         return button
     }()
