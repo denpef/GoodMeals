@@ -37,6 +37,7 @@
 		025E08F122B7FC2D0086458A /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F022B7FC2D0086458A /* GroceryItem.swift */; };
 		025E08F422B7FC500086458A /* GroceryItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F322B7FC500086458A /* GroceryItemObject.swift */; };
 		025E08F722B802BC0086458A /* ShoppingListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F622B802BC0086458A /* ShoppingListService.swift */; };
+		025E08F922B80AA30086458A /* GroceryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F822B80AA30086458A /* GroceryCell.swift */; };
 		025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */; };
 		02674C2722B02888005F940D /* MealPlanRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2622B02888005F940D /* MealPlanRouter.swift */; };
 		02674C2A22B0292F005F940D /* MealPlanDateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */; };
@@ -135,6 +136,7 @@
 		025E08F022B7FC2D0086458A /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		025E08F322B7FC500086458A /* GroceryItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemObject.swift; sourceTree = "<group>"; };
 		025E08F622B802BC0086458A /* ShoppingListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListService.swift; sourceTree = "<group>"; };
+		025E08F822B80AA30086458A /* GroceryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCell.swift; sourceTree = "<group>"; };
 		025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		02674C2622B02888005F940D /* MealPlanRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanRouter.swift; sourceTree = "<group>"; };
 		02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanDateSelectionViewController.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				025A06BE228C86A80008258F /* IngredientCell.swift */,
 				02674C9F22B0AB98005F940D /* MealPlanCell.swift */,
 				02674CA122B0ABF0005F940D /* TodayMenuCell.swift */,
+				025E08F822B80AA30086458A /* GroceryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				02674CA222B0ABF0005F940D /* TodayMenuCell.swift in Sources */,
 				028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */,
 				02674CA022B0AB98005F940D /* MealPlanCell.swift in Sources */,
+				025E08F922B80AA30086458A /* GroceryCell.swift in Sources */,
 				02674C2E22B02C13005F940D /* MealPlanDateSelectionRouter.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,

@@ -12,10 +12,13 @@ extension AppDelegate {
         serviceContainer.persistenceService.clearAll()
         
         createMealPlans(serviceContainer.persistenceService,
-                        createIngredients(serviceContainer.ingredientsService))
+                        createIngredients(ingredientService: serviceContainer.ingredientsService,
+                                          shoppingListService: serviceContainer.shoppingListService)
+        )
     }
     
-    private func createIngredients(_ service: IngredientsServiceType) -> StubIngredientList {
+    private func createIngredients(ingredientService: IngredientsServiceType,
+                                   shoppingListService: ShoppingListServiceType) -> StubIngredientList {
         var list = StubIngredientList()
         list.ingredients.append(Ingredient(name: "Muesli", calorific: 0, category: nil))
         list.ingredients.append(Ingredient(name: "Raspberries", calorific: 0, category: nil))
@@ -50,8 +53,16 @@ extension AppDelegate {
         list.ingredients.append(Ingredient(name: "Cilantro", calorific: 0, category: nil))
         
         list.ingredients.forEach {
-            service.add($0)
+            ingredientService.add($0)
         }
+        
+        // ShoppingList
+        
+        shoppingListService.add(GroceryItem(ingredient: list["Squash"].ingredient!, amount: Float(451), marked: false))
+        shoppingListService.add(GroceryItem(ingredient: list["Lime"].ingredient!, amount: 150, marked: false))
+        shoppingListService.add(GroceryItem(ingredient: list["Egg"].ingredient!, amount: 999, marked: false))
+        shoppingListService.add(GroceryItem(ingredient: list["Mixed salad greens"].ingredient!, amount: 1001, marked: false))
+        
         return list
     }
     

@@ -29,14 +29,13 @@ final class ShoppingListViewModel {
 
 extension ShoppingListViewModel: PersistenceNotificationOutput {
     func didChanged<T>(_ changes: PersistenceNotification<T>) {
-        if let changes = changes as? PersistenceNotification<Recipe> {
+        if let changes = changes as? PersistenceNotification<GroceryItem> {
             switch changes {
-            case let .error(error):
+            case .initial, .update:
+                let newItems = shoppingListService.all()
+                items.onNext(newItems)
+            default:
                 break
-            case let .initial(objects):
-                items.on(.next(shoppingListService.all()))
-            case let .update(objects, deletions, insertions, modifications):
-                items.on(.next(shoppingListService.all()))
             }
         }
     }

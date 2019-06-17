@@ -28,7 +28,7 @@ final class ShoppingListService: ShoppingListServiceType {
     }
     
     func add(_ groceryItem: GroceryItem) {
-        persistenceService.add(groceryItem, update: false)
+        persistenceService.add(groceryItem, update: true)
     }
     
     func remove(_ groceryItem: GroceryItem) {

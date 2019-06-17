@@ -108,6 +108,7 @@ extension DependencyContainer {
     
     func makeRecipeViewModel(_ recipeId: String) -> RecipeViewModel {
         return RecipeViewModel(recipesService: serviceContainer.recipesService,
+                               shoppingListService: serviceContainer.shoppingListService,
                                recipeId: recipeId)
     }
     

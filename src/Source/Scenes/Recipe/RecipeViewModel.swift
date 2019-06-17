@@ -17,6 +17,9 @@ class RecipeViewModel {
     
     let serving = BehaviorRelay<Int>(value: 2)
     let name: BehaviorRelay<String>
+    let addToShoppingList = PublishRelay<Void>()
+    let inShoppingList = BehaviorRelay<Bool>(value: false)
+    
 //    let tap = PublishRelay<Void>()
     let items: BehaviorSubject<[RecipeSection]>
     
@@ -26,11 +29,13 @@ class RecipeViewModel {
     
     private let disposeBag = DisposeBag()
     private let recipesService: RecipesServiceType
+    private let shoppingListService: ShoppingListServiceType
     
     // MARK: - Init
     
-    init(recipesService: RecipesServiceType, recipeId: String) {
+    init(recipesService: RecipesServiceType, shoppingListService: ShoppingListServiceType, recipeId: String) {
         self.recipesService = recipesService
+        self.shoppingListService = shoppingListService
         self.recipe = recipesService.getModel(by: recipeId)!
         
         name = BehaviorRelay(value: recipe.name)
@@ -45,6 +50,18 @@ class RecipeViewModel {
         
         serving.subscribe(onNext: { (val) in
             print("\(self.serving.value)")
+        }).disposed(by: disposeBag)
+        
+        addToShoppingList.subscribe(onNext: { [weak self] _ in
+            guard let self = self else {
+                return
+            }
+            self.recipe.ingredients.forEach {
+                let item = GroceryItem(ingredient: $0.ingredient,
+                                       amount: $0.amount * Float(self.serving.value),
+                                       marked: false)
+                self.shoppingListService.add(item)
+            }
         }).disposed(by: disposeBag)
 //        tap.subscribe(onNext: {
 //            if let _ = self.recipeId {

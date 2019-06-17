@@ -6,7 +6,7 @@ final class RecipeServingCell: UICollectionViewCell {
     
     var countOfServing = BehaviorRelay<Int>(value: 2)
     
-    private var disposeBag: DisposeBag
+    var disposeBag: DisposeBag
     
     private var countLabel: UILabel = {
         let label = UILabel()
@@ -30,6 +30,16 @@ final class RecipeServingCell: UICollectionViewCell {
         button.clipsToBounds = true
         button.setTitleColor(.white, for: .normal)
         button.setTitle("-", for: .normal)
+        return button
+    }()
+    
+    let addToShoppingListButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.backgroundColor = UIColor.Common.controlBackground
+        button.layer.cornerRadius = 15
+        button.clipsToBounds = true
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Add", for: .normal)
         return button
     }()
     
@@ -89,5 +99,13 @@ final class RecipeServingCell: UICollectionViewCell {
             minusButton.heightAnchor.constraint(equalToConstant: 50),
             minusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 198),
             minusButton.widthAnchor.constraint(equalToConstant: 50)])
+        
+        addSubview(addToShoppingListButton)
+        addToShoppingListButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addToShoppingListButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            addToShoppingListButton.heightAnchor.constraint(equalToConstant: 50),
+            addToShoppingListButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 260),
+            addToShoppingListButton.widthAnchor.constraint(equalToConstant: 50)])
     }
 }

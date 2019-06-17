@@ -70,7 +70,11 @@ final class RecipeViewController: UIViewController {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
                     cell.countOfServing
                         .bind(to: self.viewModel.serving)
-                        .disposed(by: self.disposeBag)
+                        .disposed(by: cell.disposeBag)
+                    cell.addToShoppingListButton.rx
+                        .tap
+                        .bind(to: self.viewModel.addToShoppingList)
+                        .disposed(by: cell.disposeBag)
                     return cell
                 }
         }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
