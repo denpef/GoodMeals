@@ -5,6 +5,7 @@ protocol ServiceContainerType {
     var ingredientsService: IngredientsServiceType { get }
     var recipesService: RecipesServiceType { get }
     var mealPlanService: MealPlanServiceType { get }
+    var shoppingListService: ShoppingListServiceType { get }
 }
 
 final class ServiceContainer: ServiceContainerType {
@@ -12,6 +13,7 @@ final class ServiceContainer: ServiceContainerType {
     let ingredientsService: IngredientsServiceType
     let recipesService: RecipesServiceType
     let mealPlanService: MealPlanServiceType
+    var shoppingListService: ShoppingListServiceType
     
     init() {
         persistenceService = RealmPersistenceService.init(configuration: RealmDefaultConfiguration.config)
@@ -19,5 +21,6 @@ final class ServiceContainer: ServiceContainerType {
         ingredientsService = IngredientsService(persistenceService: persistenceService)
         recipesService = RecipesService(persistenceService: persistenceService)
         mealPlanService = MealPlanService(persistenceService: persistenceService)
+        shoppingListService = ShoppingListService(persistenceService: persistenceService)
     }
 }

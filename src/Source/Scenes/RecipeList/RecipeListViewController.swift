@@ -14,9 +14,10 @@ final class RecipesListViewController: UIViewController {
         view.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         return view
     }()
-    private lazy var addNewItemButton = {
-        return UIButton()
-    }()
+    
+//    private lazy var addNewItemButton = {
+//        return UIButton()
+//    }()
     
     init(viewModel: RecipesListViewModel) {
         self.viewModel = viewModel
@@ -41,11 +42,10 @@ final class RecipesListViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
-        tableView.setTopToBottomGradientBackground(topColor: .red, bottomColor: .green)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: nil,
-                                                            action: nil)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+//                                                            target: nil,
+//                                                            action: nil)
         
         bind()
     }
@@ -57,10 +57,10 @@ final class RecipesListViewController: UIViewController {
                 cell.configure(with: recipe)
             }.disposed(by: disposeBag)
         
-        navigationItem.rightBarButtonItem?.rx.tap
-            .throttle(0.5, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.addNewItem)
-            .disposed(by: disposeBag)
+//        navigationItem.rightBarButtonItem?.rx.tap
+//            .throttle(0.5, scheduler: MainScheduler.instance)
+//            .bind(to: viewModel.addNewItem)
+//            .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(Recipe.self)
             .bind(to: viewModel.selectItem)

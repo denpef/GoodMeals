@@ -6,9 +6,9 @@ import RxCocoa
 // sourcery:begin: AutoMockable
 protocol RecipesServiceType {
     func getModel(by id: String) -> Recipe?
-    func add(_ Recipe: Recipe)
-    func remove(_ Recipe: Recipe)
-    func update(_ Recipe: Recipe)
+    func add(_ recipe: Recipe)
+    func remove(_ recipe: Recipe)
+    func update(_ recipe: Recipe)
     func all() -> [Recipe]
     func subscribeCollection(subscriber: PersistenceNotificationOutput)
     func clearAll()
@@ -30,16 +30,16 @@ final class RecipesService: RecipesServiceType {
                                           sortDescriptors: nil).first
     }
     
-    func add(_ Recipe: Recipe) {
-        persistenceService.add(Recipe, update: false)
+    func add(_ recipe: Recipe) {
+        persistenceService.add(recipe, update: false)
     }
     
-    func remove(_ Recipe: Recipe) {
-        persistenceService.delete(Recipe)
+    func remove(_ recipe: Recipe) {
+        persistenceService.delete(recipe)
     }
     
-    func update(_ Recipe: Recipe) {
-        persistenceService.add(Recipe, update: true)
+    func update(_ recipe: Recipe) {
+        persistenceService.add(recipe, update: true)
     }
     
     func all() -> [Recipe] {

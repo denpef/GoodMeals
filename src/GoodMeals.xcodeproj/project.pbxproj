@@ -34,6 +34,9 @@
 		025E075322B649DF0086458A /* RecipeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E075222B649DF0086458A /* RecipeItem.swift */; };
 		025E075622B64AD20086458A /* IngredientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E075522B64AD20086458A /* IngredientCollectionViewCell.swift */; };
 		025E07BB22B66A0C0086458A /* RecipeServingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E07BA22B66A0C0086458A /* RecipeServingCell.swift */; };
+		025E08F122B7FC2D0086458A /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F022B7FC2D0086458A /* GroceryItem.swift */; };
+		025E08F422B7FC500086458A /* GroceryItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F322B7FC500086458A /* GroceryItemObject.swift */; };
+		025E08F722B802BC0086458A /* ShoppingListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F622B802BC0086458A /* ShoppingListService.swift */; };
 		025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */; };
 		02674C2722B02888005F940D /* MealPlanRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2622B02888005F940D /* MealPlanRouter.swift */; };
 		02674C2A22B0292F005F940D /* MealPlanDateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */; };
@@ -129,6 +132,9 @@
 		025E075222B649DF0086458A /* RecipeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItem.swift; sourceTree = "<group>"; };
 		025E075522B64AD20086458A /* IngredientCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCollectionViewCell.swift; sourceTree = "<group>"; };
 		025E07BA22B66A0C0086458A /* RecipeServingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServingCell.swift; sourceTree = "<group>"; };
+		025E08F022B7FC2D0086458A /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		025E08F322B7FC500086458A /* GroceryItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemObject.swift; sourceTree = "<group>"; };
+		025E08F622B802BC0086458A /* ShoppingListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListService.swift; sourceTree = "<group>"; };
 		025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		02674C2622B02888005F940D /* MealPlanRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanRouter.swift; sourceTree = "<group>"; };
 		02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanDateSelectionViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +363,30 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		025E08EF22B7FBAE0086458A /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				025E08F022B7FC2D0086458A /* GroceryItem.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		025E08F222B7FC3A0086458A /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				025E08F322B7FC500086458A /* GroceryItemObject.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		025E08F522B8029A0086458A /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				025E08F622B802BC0086458A /* ShoppingListService.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
 		025FFD0C2264D71100CBD0EC /* Dependency Container */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +458,7 @@
 		028C86B6228FE7450051E852 /* DatabaseModels */ = {
 			isa = PBXGroup;
 			children = (
+				025E08F222B7FC3A0086458A /* ShoppingList */,
 				02BEF97E22AD003C00E8C741 /* MealPlan */,
 				02367DB8225BCB4C00BD1217 /* Ingredients */,
 				02367DB9225BCB6900BD1217 /* Recipes */,
@@ -438,6 +469,7 @@
 		028C86B7228FE7570051E852 /* InternalModels */ = {
 			isa = PBXGroup;
 			children = (
+				025E08EF22B7FBAE0086458A /* ShoppingList */,
 				02BEF98522AD06EE00E8C741 /* MealPlan */,
 				023CDD2C22A032D8003ACDF3 /* Recipes */,
 				028C86B8228FE7A70051E852 /* Ingredients */,
@@ -541,6 +573,7 @@
 		02E7D4CA227B1349000F0576 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				025E08F522B8029A0086458A /* ShoppingList */,
 				02B4EE0F2240C57C00BDE05D /* ServiceContainer.swift */,
 				02E7D4CF227B750B000F0576 /* Persistence */,
 				02E7D4CB227B1358000F0576 /* Ingredients */,
@@ -880,6 +913,7 @@
 				02E87BAA22B0020300237CD2 /* MealPlansListViewController.swift in Sources */,
 				02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */,
 				02BEF98422AD02DE00E8C741 /* MealObject.swift in Sources */,
+				025E08F122B7FC2D0086458A /* GroceryItem.swift in Sources */,
 				0269D0AF229473F400503C85 /* IngredientViewController.swift in Sources */,
 				027F655622A963CF0033D29D /* ShoppingListViewModel.swift in Sources */,
 				02BEF98B22AD159900E8C741 /* MealPlan.swift in Sources */,
@@ -890,6 +924,7 @@
 				02B41EFD22B3E12A004E93A4 /* StretchyHeaderLayout.swift in Sources */,
 				02BEF98722AD06FC00E8C741 /* Meal.swift in Sources */,
 				025A06BD228C86620008258F /* ReusableView.swift in Sources */,
+				025E08F422B7FC500086458A /* GroceryItemObject.swift in Sources */,
 				023CDD2822A03214003ACDF3 /* RecipeViewController.swift in Sources */,
 				02BEF98D22AD3A2000E8C741 /* SelectedMealPlan.swift in Sources */,
 				023CDD3422A0390B003ACDF3 /* RecipesListRouter.swift in Sources */,
@@ -917,6 +952,7 @@
 				028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */,
 				023CDD2622A03206003ACDF3 /* RecipeViewModel.swift in Sources */,
 				025E075622B64AD20086458A /* IngredientCollectionViewCell.swift in Sources */,
+				025E08F722B802BC0086458A /* ShoppingListService.swift in Sources */,
 				028C86BD228FEB140051E852 /* Ingredient.swift in Sources */,
 				021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */,
 				027F655222A963410033D29D /* ShoppingListViewController.swift in Sources */,

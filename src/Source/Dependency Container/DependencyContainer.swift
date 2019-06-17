@@ -120,7 +120,7 @@ extension DependencyContainer {
     }
     
     func makeShoppingListViewModel() -> ShoppingListViewModel {
-        return ShoppingListViewModel()
+        return ShoppingListViewModel(shoppingListService: serviceContainer.shoppingListService)
     }
     
     func makeMealPlansListViewModel() -> MealPlansListViewModel {
