@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let serviceContainer = ServiceContainer()
         
         #if DEBUG
-            //setupStubTestableVersion(serviceContainer)
+            setupStubTestableVersion(serviceContainer)
         #endif
         
         let factory = DependencyContainer(serviceContainer: serviceContainer)

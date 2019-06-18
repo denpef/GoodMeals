@@ -2,7 +2,7 @@ import Foundation
 
 struct GroceryItem {
     // MARK: - Properties
-
+    
     var id: String
     var ingredient: Ingredient?
     var amount: Float = 0
@@ -30,5 +30,20 @@ extension GroceryItem: Persistable {
     
     var managedObject: GroceryItemObject {
         return GroceryItemObject(id: id, ingredient: ingredient?.managedObject, amount: amount, marked: marked)
+    }
+}
+
+extension GroceryItem: Hashable {
+    static func == (lhs: GroceryItem, rhs: GroceryItem) -> Bool {
+        return lhs.id == lhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+        hasher.combine(self.amount)
+        hasher.combine(self.marked)
+        if let ingredient = self.ingredient {
+            hasher.combine(ingredient.id.hashValue)
+        }
     }
 }
