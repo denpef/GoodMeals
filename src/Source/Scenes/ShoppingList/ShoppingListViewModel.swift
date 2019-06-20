@@ -6,7 +6,8 @@ final class ShoppingListViewModel {
     
     // MARK: - Input
     
-    var marked = PublishRelay<GroceryItem>()
+    var markedItem = PublishRelay<GroceryItem>()
+    var deleteItem = PublishRelay<GroceryItem>()
     
     // MARK: - Output
     
@@ -26,9 +27,13 @@ final class ShoppingListViewModel {
         
         shoppingListService.subscribeCollection(subscriber: self)
         
-        marked.subscribe(onNext: { item in
+        markedItem.subscribe(onNext: { item in
             shoppingListService.marked(item)
-        })
+        }).disposed(by: disposeBag)
+        
+        deleteItem.subscribe(onNext: { item in
+            shoppingListService.delete(item)
+        }).disposed(by: disposeBag)
     }
     
 }

@@ -532,7 +532,7 @@
 		02CBF5A7223E371D0009158E /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				02CBF5AD223E5D340009158E /* Services */,
+				02E7D4CA227B1349000F0576 /* Services */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -560,14 +560,6 @@
 				028C86B6228FE7450051E852 /* DatabaseModels */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		02CBF5AD223E5D340009158E /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				02E7D4CA227B1349000F0576 /* Services */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		02E5F69722643D2800DD04AF /* Utils */ = {

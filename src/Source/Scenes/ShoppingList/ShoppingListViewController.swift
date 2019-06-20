@@ -51,7 +51,12 @@ final class ShoppingListViewController: UIViewController {
                 cell.configure(with: vm)
                 vm.markedChange
                     .map { vm.item }
-                    .bind(to: self.viewModel.marked)
+                    .bind(to: self.viewModel.markedItem)
+                    .disposed(by: cell.disposeBag)
+                
+                vm.delete
+                    .map { vm.item }
+                    .bind(to: self.viewModel.deleteItem)
                     .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
     }
