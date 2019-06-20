@@ -7,13 +7,14 @@ import RxCocoa
 protocol ShoppingListServiceType {
     func getModel(by id: String) -> GroceryItem?
     func add(_ groceryItem: GroceryItem)
-    func remove(_ groceryItem: GroceryItem)
+    func delete(_ groceryItem: GroceryItem)
     func update(_ groceryItem: GroceryItem)
     func all() -> [GroceryItem]
     func add(by recipe: Recipe)
     func add(by recipes: [Recipe])
     func subscribeCollection(subscriber: PersistenceNotificationOutput)
     func marked(_ item: GroceryItem)
+    func deleteAllList()
 }
 
 final class ShoppingListService: ShoppingListServiceType {
@@ -41,7 +42,7 @@ final class ShoppingListService: ShoppingListServiceType {
         }
     }
     
-    func remove(_ groceryItem: GroceryItem) {
+    func delete(_ groceryItem: GroceryItem) {
         persistenceService.delete(groceryItem)
     }
     
@@ -116,5 +117,9 @@ final class ShoppingListService: ShoppingListServiceType {
         var editableItem = item
         editableItem.marked = !item.marked
         update(editableItem)
+    }
+    
+    func deleteAllList() {
+        persistenceService.delete(type: GroceryItem.self)
     }
 }

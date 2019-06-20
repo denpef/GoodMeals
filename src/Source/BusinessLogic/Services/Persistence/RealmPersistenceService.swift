@@ -27,7 +27,7 @@ final class RealmPersistenceService: PersistenceService {
     func add<T: Persistable>(_ value: T, update: Bool = false) {
         let realm = getRealm()
         write(realm: realm) {
-            realm.add(value.managedObject, update: update)
+            realm.add(value.managedObject, update: update ? .all : .error)
         }
     }
     
@@ -42,8 +42,15 @@ final class RealmPersistenceService: PersistenceService {
     
     func delete<T: Persistable>(_ value: T) {
         let realm = getRealm()
-        write(realm: realm) {
-            realm.delete(value.managedObject)
+        let managedType = T.ManagedObject.self
+        if
+            let primaryKeyType = managedType.primaryKey(),
+            let primaryKeyValue = value.managedObject.value(forKey: primaryKeyType) {
+            if let objectForDelete = realm.object(ofType: managedType, forPrimaryKey: primaryKeyValue) {
+                write(realm: realm) {
+                    realm.delete(objectForDelete)
+                }
+            }
         }
     }
     
@@ -51,6 +58,13 @@ final class RealmPersistenceService: PersistenceService {
         let realm = getRealm()
         write(realm: realm) {
             realm.delete(values.map { $0.managedObject })
+        }
+    }
+    
+    func delete<T: Persistable>(type: T.Type) {
+        let realm = getRealm()
+        write(realm: realm) {
+            realm.delete(realm.objects(type.ManagedObject.self))
         }
     }
     
