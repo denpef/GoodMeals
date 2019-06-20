@@ -8,6 +8,7 @@ final class ShoppingListViewModel {
     
     var markedItem = PublishRelay<GroceryItem>()
     var deleteItem = PublishRelay<GroceryItem>()
+    var deleteAllList = PublishRelay<Void>()
     
     // MARK: - Output
     
@@ -34,8 +35,11 @@ final class ShoppingListViewModel {
         deleteItem.subscribe(onNext: { item in
             shoppingListService.delete(item)
         }).disposed(by: disposeBag)
+        
+        deleteAllList.subscribe(onNext: { item in
+            shoppingListService.deleteAllList()
+        }).disposed(by: disposeBag)
     }
-    
 }
 
 extension ShoppingListViewModel: PersistenceNotificationOutput {

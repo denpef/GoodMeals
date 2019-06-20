@@ -25,12 +25,18 @@ final class ShoppingListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func tap() {
+        print("tap")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Shopping list"
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        
+        let delelteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
+        navigationItem.rightBarButtonItem = delelteItem
         
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,5 +65,10 @@ final class ShoppingListViewController: UIViewController {
                     .bind(to: self.viewModel.deleteItem)
                     .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
+        
+        navigationItem.rightBarButtonItem?.rx
+            .tap
+            .bind(to: viewModel.deleteAllList)
+            .disposed(by: disposeBag)
     }
 }
