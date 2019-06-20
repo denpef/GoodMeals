@@ -6,6 +6,8 @@ final class ShoppingListViewModel {
     
     // MARK: - Input
     
+    var marked = PublishRelay<GroceryItem>()
+    
     // MARK: - Output
     
     var items: BehaviorSubject<[GroceryItem]>
@@ -23,6 +25,10 @@ final class ShoppingListViewModel {
         items = BehaviorSubject(value: shoppingListService.all())
         
         shoppingListService.subscribeCollection(subscriber: self)
+        
+        marked.subscribe(onNext: { item in
+            shoppingListService.marked(item)
+        })
     }
     
 }

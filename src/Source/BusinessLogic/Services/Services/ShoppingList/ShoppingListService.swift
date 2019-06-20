@@ -13,6 +13,7 @@ protocol ShoppingListServiceType {
     func add(by recipe: Recipe)
     func add(by recipes: [Recipe])
     func subscribeCollection(subscriber: PersistenceNotificationOutput)
+    func marked(_ item: GroceryItem)
 }
 
 final class ShoppingListService: ShoppingListServiceType {
@@ -109,5 +110,11 @@ final class ShoppingListService: ShoppingListServiceType {
                                                        subscriber: subscriber,
                                                        filter: nil,
                                                        sortDescriptors: nil)
+    }
+    
+    func marked(_ item: GroceryItem) {
+        var editableItem = item
+        editableItem.marked = !item.marked
+        update(editableItem)
     }
 }

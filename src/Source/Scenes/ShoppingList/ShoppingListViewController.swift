@@ -9,6 +9,7 @@ final class ShoppingListViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.rowHeight = 60
+        view.allowsSelection = false
         view.backgroundColor = .clear
         view.separatorStyle = .none
         view.register(GroceryCell.self, forCellReuseIdentifier: GroceryCell.reuseIdentifier)
@@ -46,7 +47,12 @@ final class ShoppingListViewController: UIViewController {
         viewModel.items
             .bind(to: tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier, cellType: GroceryCell.self))
             { row, item, cell in
-                cell.configure(with: item)
+                let vm = GroceryCellViewModel(with: item)
+                cell.configure(with: vm)
+                vm.markedChange
+                    .map { vm.item }
+                    .bind(to: self.viewModel.marked)
+                    .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
     }
 }

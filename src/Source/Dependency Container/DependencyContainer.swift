@@ -136,3 +136,9 @@ extension DependencyContainer {
         return MealPlanDateSelectionViewModel(mealPlanService: mealPlanService, mealPlan: mealPlan)
     }
 }
+
+extension DependencyContainer: CellViewModelFactory {
+    func makeGroceryCellViewModel(item: GroceryItem) -> GroceryCellViewModel {
+        return GroceryCellViewModel(with: item)
+    }
+}

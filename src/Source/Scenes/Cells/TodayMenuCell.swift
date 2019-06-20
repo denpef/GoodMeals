@@ -61,15 +61,9 @@ final  class TodayMenuCell: UITableViewCell {
     }
     
     func configure(with plans: [Meal]?) {
+        pageControl.numberOfPages = plans?.count ?? 0
         
-        let observablePlans = Observable.from(optional: plans)
-        
-        observablePlans
-            .map { $0.count }
-            .bind(to: pageControl.rx.numberOfPages)
-            .disposed(by: disposeBag)
-        
-        observablePlans
+        Observable.from(optional: plans)
             .bind(to: collectionView.rx
                 .items(cellIdentifier: "UICollectionViewCell")) { row, item, cell in
                     cell.backgroundColor = .clear

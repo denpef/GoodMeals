@@ -90,6 +90,8 @@
 		02E87BB522B0142100237CD2 /* MealPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E87BB422B0142100237CD2 /* MealPlanService.swift */; };
 		02EB0C9B229EDEF300A84E4C /* IngredientsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */; };
 		02EB0CA7229EEAF900A84E4C /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB0CA6229EEAF900A84E4C /* AutoMockable.swift */; };
+		02EEE7F822BBA535008ED084 /* CellViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEE7F722BBA535008ED084 /* CellViewModelFactory.swift */; };
+		02EEE7FB22BBA9D8008ED084 /* GroceryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEE7FA22BBA9D8008ED084 /* GroceryCellViewModel.swift */; };
 		B15B9A709747C629AA364BCB /* Pods_GoodMealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F82C4005FF8B82A49A33AA /* Pods_GoodMealsTests.framework */; };
 		DFC714C5ABBA32381BD8440C /* Pods_GoodMeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7465929D7348B108B52BDBFD /* Pods_GoodMeals.framework */; };
 /* End PBXBuildFile section */
@@ -192,6 +194,8 @@
 		02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewModelTests.swift; sourceTree = "<group>"; };
 		02EB0C9C229EDEF300A84E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02EB0CA6229EEAF900A84E4C /* AutoMockable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
+		02EEE7F722BBA535008ED084 /* CellViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModelFactory.swift; sourceTree = "<group>"; };
+		02EEE7FA22BBA9D8008ED084 /* GroceryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCellViewModel.swift; sourceTree = "<group>"; };
 		18F82C4005FF8B82A49A33AA /* Pods_GoodMealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F9FD630BA12BE52F55CCF9 /* Pods-GoodMeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMeals.debug.xcconfig"; path = "Target Support Files/Pods-GoodMeals/Pods-GoodMeals.debug.xcconfig"; sourceTree = "<group>"; };
 		7465929D7348B108B52BDBFD /* Pods_GoodMeals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMeals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,6 +400,7 @@
 			children = (
 				025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */,
 				027932F8226A3F7700401912 /* ViewControllerFactory.swift */,
+				02EEE7F722BBA535008ED084 /* CellViewModelFactory.swift */,
 			);
 			path = "Dependency Container";
 			sourceTree = "<group>";
@@ -428,7 +433,7 @@
 				025A06BE228C86A80008258F /* IngredientCell.swift */,
 				02674C9F22B0AB98005F940D /* MealPlanCell.swift */,
 				02674CA122B0ABF0005F940D /* TodayMenuCell.swift */,
-				025E08F822B80AA30086458A /* GroceryCell.swift */,
+				02EEE7F922BBA9CA008ED084 /* GroceryCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -666,6 +671,15 @@
 			);
 			name = Generated;
 			path = ../Generated;
+			sourceTree = "<group>";
+		};
+		02EEE7F922BBA9CA008ED084 /* GroceryCell */ = {
+			isa = PBXGroup;
+			children = (
+				025E08F822B80AA30086458A /* GroceryCell.swift */,
+				02EEE7FA22BBA9D8008ED084 /* GroceryCellViewModel.swift */,
+			);
+			path = GroceryCell;
 			sourceTree = "<group>";
 		};
 		3917B9C3BC9E8CE61A29490C /* Pods */ = {
@@ -915,6 +929,7 @@
 				02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */,
 				025E074E22B634630086458A /* IngredientAmountObject.swift in Sources */,
 				02B4EE102240C57C00BDE05D /* ServiceContainer.swift in Sources */,
+				02EEE7F822BBA535008ED084 /* CellViewModelFactory.swift in Sources */,
 				02E7D518228802E6000F0576 /* IngredientsListViewController.swift in Sources */,
 				0269D0B12294748200503C85 /* IngredientViewModel.swift in Sources */,
 				02E87BAA22B0020300237CD2 /* MealPlansListViewController.swift in Sources */,
@@ -968,6 +983,7 @@
 				02BEF98922AD139200E8C741 /* DailyPlan.swift in Sources */,
 				025A06BF228C86A80008258F /* IngredientCell.swift in Sources */,
 				028C86B5228FDE420051E852 /* Persistable.swift in Sources */,
+				02EEE7FB22BBA9D8008ED084 /* GroceryCellViewModel.swift in Sources */,
 				02B41EFF22B3E187004E93A4 /* RecipeHeaderView.swift in Sources */,
 				023CDD2E22A032EA003ACDF3 /* Recipe.swift in Sources */,
 				02BEF99122AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift in Sources */,

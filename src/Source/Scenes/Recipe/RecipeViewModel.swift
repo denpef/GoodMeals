@@ -10,29 +10,22 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
 class RecipeViewModel {
-    
-    // MARK: - Input
-    
-    let serving = BehaviorRelay<Int>(value: 2)
-    let name: BehaviorRelay<String>
-    let addToShoppingList = PublishRelay<Void>()
-    let inShoppingList = BehaviorRelay<Bool>(value: false)
-    
-//    let tap = PublishRelay<Void>()
-    let items: BehaviorSubject<[RecipeSection]>
-    
     var recipe: Recipe
     
-    // MARK: - Private properties
+    // MARK: - Input
+    let name: BehaviorRelay<String>
+    let serving = BehaviorRelay<Int>(value: 2)
+    let addToShoppingList = PublishRelay<Void>()
+    let inShoppingList = BehaviorRelay<Bool>(value: false)
+    let items: BehaviorSubject<[RecipeSection]>
     
+    // MARK: - Private properties
     private let disposeBag = DisposeBag()
     private let recipesService: RecipesServiceType
     private let shoppingListService: ShoppingListServiceType
     
     // MARK: - Init
-    
     init(recipesService: RecipesServiceType, shoppingListService: ShoppingListServiceType, recipeId: String) {
         self.recipesService = recipesService
         self.shoppingListService = shoppingListService
@@ -48,10 +41,6 @@ class RecipeViewModel {
         }
         self.items = BehaviorSubject(value: [RecipeSection(items: items)])
         
-        serving.subscribe(onNext: { (val) in
-            print("\(self.serving.value)")
-        }).disposed(by: disposeBag)
-        
         addToShoppingList.subscribe(onNext: { [weak self] _ in
             guard let self = self else {
                 return
@@ -63,15 +52,5 @@ class RecipeViewModel {
                 self.shoppingListService.add(item)
             }
         }).disposed(by: disposeBag)
-//        tap.subscribe(onNext: {
-//            if let _ = self.recipeId {
-//                self.recipesService.update(self.recipe)
-//            } else {
-//                self.recipesService.add(self.recipe)
-//                self.recipeId = self.recipe.id
-//            }
-//            self.isSaved.accept(true)
-//            // router navigate to pop
-//        }).disposed(by: disposeBag)
     }
 }
