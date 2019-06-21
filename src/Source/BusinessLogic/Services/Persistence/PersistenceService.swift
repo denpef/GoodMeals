@@ -1,6 +1,7 @@
 import Foundation
 import RealmSwift
 
+// sourcery:begin: AutoMockable
 protocol PersistenceService {
     func add<T: Persistable>(_ value: T, update: Bool)
     func add<T: Sequence>(_ values: T, update: Bool) where T.Iterator.Element: Persistable
