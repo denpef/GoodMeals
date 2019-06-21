@@ -5,14 +5,14 @@ import RxCocoa
 class MealPlanViewModel {
     
     var router: MealPlanRouterType?
+    var mealPlan: MealPlan
+    var title: String
     
     // MARK: - Input
-    
     let tap = PublishRelay<Void>()
     
     // MARK: - Output
-    
-    var plan: BehaviorRelay<MealPlan>
+    var sections = [MealPlanTableViewSection]()
     
     // MARK: - Private properties
     
@@ -23,10 +23,16 @@ class MealPlanViewModel {
     
     init(mealPlanService: MealPlanServiceType, mealPlan: MealPlan) {
         self.mealPlanService = mealPlanService
-        plan = BehaviorRelay(value: mealPlan)
+        self.mealPlan = mealPlan
+        title = mealPlan.name
         
         tap.subscribe(onNext: {
-            self.router?.navigateToDateSelection(mealPlan: self.plan.value)
+            self.router?.navigateToConfirmation(mealPlan: self.mealPlan)
         }).disposed(by: disposeBag)
+        
+        mealPlan.dailyPlans.forEach { dailyPlan in
+            let section = MealPlanTableViewSection(header: "Day \(dailyPlan.dayNumber)", items: dailyPlan.meals.compactMap { $0.recipe })
+            sections.append(section)
+        }
     }
 }

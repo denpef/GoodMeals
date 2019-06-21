@@ -1,8 +1,6 @@
 import UIKit
 
 final class MealPlanCell: UITableViewCell {
-    //    private let disposeBag = DisposeBag()
-    
     private lazy var titleIMageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = .scaleAspectFill

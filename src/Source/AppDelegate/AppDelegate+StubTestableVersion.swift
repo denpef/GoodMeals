@@ -150,7 +150,7 @@ extension AppDelegate {
         service.add(firstLunch, update: true)
         service.add(firstDinner, update: true)
         
-        var firstDayPlan = DailyPlan(meals: [firstBreakfast, firstLunch, firstDinner])
+        var firstDayPlan = DailyPlan(dayNumber: 1, meals: [firstBreakfast, firstLunch, firstDinner])
         
         service.add(firstDayPlan, update: true)
         
@@ -162,11 +162,11 @@ extension AppDelegate {
         service.add(secondLunch, update: true)
         service.add(secondDinner, update: true)
         
-        var secondDayPlan = DailyPlan(meals: [secondBreakfast, secondLunch, secondDinner])
+        var secondDayPlan = DailyPlan(dayNumber: 2, meals: [secondBreakfast, secondLunch, secondDinner])
         
         service.add(secondDayPlan, update: true)
         
-        let plan = MealPlan(dailyPlans: [firstDayPlan, secondDayPlan])
+        let plan = MealPlan(name: "Plan #1", dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan, update: true)
         
         // MARK: - 2st Plans
@@ -178,7 +178,7 @@ extension AppDelegate {
         service.add(firstLunch, update: true)
         service.add(firstDinner, update: true)
         
-        firstDayPlan = DailyPlan(meals: [firstBreakfast, firstLunch, firstDinner])
+        firstDayPlan = DailyPlan(dayNumber: 1, meals: [firstBreakfast, firstLunch, firstDinner])
         
         service.add(firstDayPlan, update: true)
         
@@ -190,11 +190,11 @@ extension AppDelegate {
         service.add(secondLunch, update: true)
         service.add(secondDinner, update: true)
         
-        secondDayPlan = DailyPlan(meals: [secondBreakfast, secondLunch, secondDinner])
+        secondDayPlan = DailyPlan(dayNumber: 2, meals: [secondBreakfast, secondLunch, secondDinner])
         
         service.add(secondDayPlan, update: true)
         
-        let plan2 = MealPlan(dailyPlans: [firstDayPlan, secondDayPlan])
+        let plan2 = MealPlan(name: "Plan #2", dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan2, update: true)
         
         let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: plan)

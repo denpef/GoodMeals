@@ -10,20 +10,14 @@ import Foundation
 import UIKit
 
 // sourcery:begin: AutoMockable
-protocol MealPlanSelectionResultRouterType {
-    func navigateToPlans()
+protocol MealPlanConfirmationRouterType {
+    func dismiss()
 }
 
-class MealPlanSelectionResultRouter: MealPlanSelectionResultRouterType {
+class MealPlanConfirmationRouter: MealPlanConfirmationRouterType {
     weak var viewController: UIViewController?
     
-    private let factory: ViewControllerFactory
-    
-    init(factory: ViewControllerFactory) {
-        self.factory = factory
-    }
-    
-    func navigateToPlans() {
+    func dismiss() {
         viewController?.navigationController?.popToRootViewController(animated: true)
     }
 }

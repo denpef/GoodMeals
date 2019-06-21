@@ -3,10 +3,12 @@ import Foundation
 struct DailyPlan {
     // MARK: - Properties
     var id: String
+    var dayNumber: Int
     var meals = [Meal]()
     
-    init(meals: [Meal]) {
+    init(dayNumber: Int, meals: [Meal]) {
         self.id = UUID().uuidString
+        self.dayNumber = dayNumber
         self.meals = meals
     }
     
@@ -18,11 +20,12 @@ struct DailyPlan {
 extension DailyPlan: Persistable {
     init(managedObject: DailyPlanObject) {
         self.id = managedObject.id
+        self.dayNumber = managedObject.dayNumber
         self.meals = managedObject.meals.map { Meal(managedObject: $0) }
     }
     
     var managedObject: DailyPlanObject {
-        return DailyPlanObject(id: id, meals: meals.map { $0.managedObject })
+        return DailyPlanObject(id: id, dayNumber: dayNumber, meals: meals.map { $0.managedObject })
     }
 }
 

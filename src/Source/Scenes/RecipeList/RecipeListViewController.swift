@@ -43,10 +43,6 @@ final class RecipesListViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-//                                                            target: nil,
-//                                                            action: nil)
-        
         bind()
     }
     

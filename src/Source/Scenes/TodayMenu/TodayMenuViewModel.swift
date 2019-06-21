@@ -5,9 +5,12 @@ import RealmSwift
 
 final class TodayMenuViewModel {
     
+    var router: TodayMenuRouterType?
+    
     // MARK: - Input
     
     var mealPlanService: MealPlanServiceType
+    var showMealPlans = PublishRelay<Void>()
     
     // MARK: - Output
     
@@ -22,6 +25,10 @@ final class TodayMenuViewModel {
     init(mealPlanService: MealPlanServiceType) {
         self.mealPlanService = mealPlanService
         mealPlanService.subscribeCollection(subscriber: self)
+        
+        showMealPlans.subscribe(onNext: { item in
+            self.router?.navigateToMealPlansList()
+        }).disposed(by: disposeBag)
     }
     
     private func updateMealPlan() {

@@ -28,6 +28,9 @@ final class TodayMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Today menu"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        
         setupTableView()
         bind()
     }
@@ -48,6 +51,11 @@ final class TodayMenuViewController: UIViewController {
                 .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { row, item, cell in
                     cell.configure(with: item.meals)
             }.disposed(by: disposeBag)
+        
+        navigationItem.rightBarButtonItem?.rx
+            .tap
+            .bind(to: viewModel.showMealPlans)
+            .disposed(by: disposeBag)
     }
 }
 

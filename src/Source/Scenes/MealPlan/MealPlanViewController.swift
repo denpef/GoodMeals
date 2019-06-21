@@ -7,16 +7,18 @@
 //
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class MealPlanViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var viewModel: MealPlanViewModel
     
-    private var nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.Common.controlText
-        label.backgroundColor = UIColor.Common.controlBackground
-        return label
+    private lazy var tableView: UITableView = {
+        let view = UITableView(frame: .zero)
+        view.rowHeight = 264
+        view.backgroundColor = .clear
+        view.separatorStyle = .none
+        return view
     }()
     
     private var selectButton: UIButton = {
@@ -40,17 +42,8 @@ final class MealPlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Meal plan"
         
-        view.addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            nameLabel.heightAnchor.constraint(equalToConstant: 30)
-            ])
+        title = viewModel.title
         
         view.addSubview(selectButton)
         selectButton.translatesAutoresizingMaskIntoConstraints = false
@@ -61,20 +54,38 @@ final class MealPlanViewController: UIViewController {
             selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
         
+        tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: selectButton.topAnchor)])
+        
         bind()
     }
     
     func bind() {
-        viewModel.plan
-            .asObservable()
-            .map { $0.id }
-            .bind(to: nameLabel.rx.text)
-            .disposed(by: disposeBag)
-        
         selectButton.rx
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)
             .bind(to: viewModel.tap)
+            .disposed(by: disposeBag)
+        
+        let dataSource = RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>(
+            configureCell: { dataSource, tableView, indexPath, recipe in
+                let cell = tableView.dequeueReusableCell(withIdentifier: RecipeCell.reuseIdentifier) as! RecipeCell
+                cell.configure(with: recipe)
+                return cell
+        })
+        
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].header
+        }
+        
+        Observable.just(viewModel.sections)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 }

@@ -44,7 +44,12 @@ extension DependencyContainer: ViewControllerFactory {
     
     func makeTodayMenuViewController() -> TodayMenuViewController {
         let vm = makeTodayMenuViewModel()
-        return TodayMenuViewController(viewModel: vm)
+        let router = TodayMenuRouter(factory: self)
+        let vc = TodayMenuViewController(viewModel: vm)
+        
+        vm.router = router
+        router.viewController = vc
+        return vc
     }
     
     func makeShoppingListViewController() -> ShoppingListViewController {
@@ -72,21 +77,11 @@ extension DependencyContainer: ViewControllerFactory {
         return vc
     }
     
-    func makeMealPlanDateSelectionViewController(mealPlan: MealPlan) -> MealPlanDateSelectionViewController {
-        let vm = MealPlanDateSelectionViewModel(mealPlanService: serviceContainer.mealPlanService,
-                                                mealPlan: mealPlan)
-        let router = MealPlanDateSelectionRouter(factory: self)
-        let vc = MealPlanDateSelectionViewController(viewModel: vm)
-        
-        vm.router = router
-        router.viewController = vc
-        return vc
-    }
-    
-    func makeMealPlanSelectionResultViewController() -> MealPlanSelectionResultViewController {
-        let vm = MealPlanSelectionResultViewModel()
-        let router = MealPlanSelectionResultRouter(factory: self)
-        let vc = MealPlanSelectionResultViewController(viewModel: vm)
+    func makeMealPlanConfirmationViewController(mealPlan: MealPlan) -> MealPlanConfirmationViewController {
+        let vm = MealPlanConfirmationViewModel(mealPlanService: serviceContainer.mealPlanService,
+                                                  mealPlan: mealPlan)
+        let router = MealPlanConfirmationRouter()
+        let vc = MealPlanConfirmationViewController(viewModel: vm)
         
         vm.router = router
         router.viewController = vc
@@ -130,10 +125,6 @@ extension DependencyContainer {
     
     func makeMealPlanViewModel(mealPlan: MealPlan) -> MealPlanViewModel {
         return MealPlanViewModel(mealPlanService: serviceContainer.mealPlanService, mealPlan: mealPlan)
-    }
-    
-    func makeMealPlanDateSelectionViewModel(mealPlanService: MealPlanServiceType, mealPlan: MealPlan) -> MealPlanDateSelectionViewModel {
-        return MealPlanDateSelectionViewModel(mealPlanService: mealPlanService, mealPlan: mealPlan)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020B572322BC901D0098E57C /* TodayMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B572222BC901D0098E57C /* TodayMenuRouter.swift */; };
 		021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021ED876223E0EE0009FA238 /* AppDelegate.swift */; };
 		021ED87E223E0EE1009FA238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021ED87D223E0EE1009FA238 /* Assets.xcassets */; };
 		021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4922664042001CA0A3 /* RootRouter.swift */; };
@@ -41,12 +42,9 @@
 		025E08F922B80AA30086458A /* GroceryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025E08F822B80AA30086458A /* GroceryCell.swift */; };
 		025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */; };
 		02674C2722B02888005F940D /* MealPlanRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2622B02888005F940D /* MealPlanRouter.swift */; };
-		02674C2A22B0292F005F940D /* MealPlanDateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */; };
-		02674C2C22B0293D005F940D /* MealPlanDateSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2B22B0293D005F940D /* MealPlanDateSelectionViewModel.swift */; };
-		02674C2E22B02C13005F940D /* MealPlanDateSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C2D22B02C13005F940D /* MealPlanDateSelectionRouter.swift */; };
-		02674C3122B02C76005F940D /* MealPlanSelectionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C3022B02C76005F940D /* MealPlanSelectionResultViewController.swift */; };
-		02674C3322B02C7F005F940D /* MealPlanSelectionResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C3222B02C7F005F940D /* MealPlanSelectionResultViewModel.swift */; };
-		02674C3522B02C88005F940D /* MealPlanSelectionResultViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C3422B02C88005F940D /* MealPlanSelectionResultViewRouter.swift */; };
+		02674C3122B02C76005F940D /* MealPlanConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C3022B02C76005F940D /* MealPlanConfirmationViewController.swift */; };
+		02674C3322B02C7F005F940D /* MealPlanConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C3222B02C7F005F940D /* MealPlanConfirmationViewModel.swift */; };
+		02674C3522B02C88005F940D /* MealPlanConfirmationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C3422B02C88005F940D /* MealPlanConfirmationRouter.swift */; };
 		02674CA022B0AB98005F940D /* MealPlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674C9F22B0AB98005F940D /* MealPlanCell.swift */; };
 		02674CA222B0ABF0005F940D /* TodayMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02674CA122B0ABF0005F940D /* TodayMenuCell.swift */; };
 		0269D0AF229473F400503C85 /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269D0AE229473F400503C85 /* IngredientViewController.swift */; };
@@ -88,6 +86,7 @@
 		02E87BB022B013AF00237CD2 /* MealPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E87BAF22B013AF00237CD2 /* MealPlanViewController.swift */; };
 		02E87BB222B013B800237CD2 /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E87BB122B013B800237CD2 /* MealPlanViewModel.swift */; };
 		02E87BB522B0142100237CD2 /* MealPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E87BB422B0142100237CD2 /* MealPlanService.swift */; };
+		02E93E5F22BBF83800D18DE4 /* MealPlanTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E93E5E22BBF83800D18DE4 /* MealPlanTableViewSection.swift */; };
 		02EB0C9B229EDEF300A84E4C /* IngredientsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */; };
 		02EB0CA7229EEAF900A84E4C /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB0CA6229EEAF900A84E4C /* AutoMockable.swift */; };
 		02EEE7F822BBA535008ED084 /* CellViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEE7F722BBA535008ED084 /* CellViewModelFactory.swift */; };
@@ -107,6 +106,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020B572222BC901D0098E57C /* TodayMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuRouter.swift; sourceTree = "<group>"; };
 		021ED873223E0EE0009FA238 /* GoodMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		021ED876223E0EE0009FA238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		021ED87D223E0EE1009FA238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,12 +143,9 @@
 		025E08F822B80AA30086458A /* GroceryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCell.swift; sourceTree = "<group>"; };
 		025FFD0F2264D79F00CBD0EC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		02674C2622B02888005F940D /* MealPlanRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanRouter.swift; sourceTree = "<group>"; };
-		02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanDateSelectionViewController.swift; sourceTree = "<group>"; };
-		02674C2B22B0293D005F940D /* MealPlanDateSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanDateSelectionViewModel.swift; sourceTree = "<group>"; };
-		02674C2D22B02C13005F940D /* MealPlanDateSelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanDateSelectionRouter.swift; sourceTree = "<group>"; };
-		02674C3022B02C76005F940D /* MealPlanSelectionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanSelectionResultViewController.swift; sourceTree = "<group>"; };
-		02674C3222B02C7F005F940D /* MealPlanSelectionResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanSelectionResultViewModel.swift; sourceTree = "<group>"; };
-		02674C3422B02C88005F940D /* MealPlanSelectionResultViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanSelectionResultViewRouter.swift; sourceTree = "<group>"; };
+		02674C3022B02C76005F940D /* MealPlanConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanConfirmationViewController.swift; sourceTree = "<group>"; };
+		02674C3222B02C7F005F940D /* MealPlanConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanConfirmationViewModel.swift; sourceTree = "<group>"; };
+		02674C3422B02C88005F940D /* MealPlanConfirmationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanConfirmationRouter.swift; sourceTree = "<group>"; };
 		02674C9F22B0AB98005F940D /* MealPlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanCell.swift; sourceTree = "<group>"; };
 		02674CA122B0ABF0005F940D /* TodayMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuCell.swift; sourceTree = "<group>"; };
 		0269D0AE229473F400503C85 /* IngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +187,7 @@
 		02E87BAF22B013AF00237CD2 /* MealPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewController.swift; sourceTree = "<group>"; };
 		02E87BB122B013B800237CD2 /* MealPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		02E87BB422B0142100237CD2 /* MealPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanService.swift; sourceTree = "<group>"; };
+		02E93E5E22BBF83800D18DE4 /* MealPlanTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewSection.swift; sourceTree = "<group>"; };
 		02EB0C98229EDEF300A84E4C /* GoodMealsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodMealsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewModelTests.swift; sourceTree = "<group>"; };
 		02EB0C9C229EDEF300A84E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -405,22 +403,12 @@
 			path = "Dependency Container";
 			sourceTree = "<group>";
 		};
-		02674C2822B0290C005F940D /* DateSelection */ = {
-			isa = PBXGroup;
-			children = (
-				02674C2922B0292F005F940D /* MealPlanDateSelectionViewController.swift */,
-				02674C2B22B0293D005F940D /* MealPlanDateSelectionViewModel.swift */,
-				02674C2D22B02C13005F940D /* MealPlanDateSelectionRouter.swift */,
-			);
-			path = DateSelection;
-			sourceTree = "<group>";
-		};
 		02674C2F22B02C64005F940D /* SelectionResult */ = {
 			isa = PBXGroup;
 			children = (
-				02674C3022B02C76005F940D /* MealPlanSelectionResultViewController.swift */,
-				02674C3222B02C7F005F940D /* MealPlanSelectionResultViewModel.swift */,
-				02674C3422B02C88005F940D /* MealPlanSelectionResultViewRouter.swift */,
+				02674C3022B02C76005F940D /* MealPlanConfirmationViewController.swift */,
+				02674C3222B02C7F005F940D /* MealPlanConfirmationViewModel.swift */,
+				02674C3422B02C88005F940D /* MealPlanConfirmationRouter.swift */,
 			);
 			path = SelectionResult;
 			sourceTree = "<group>";
@@ -431,7 +419,7 @@
 				023CDD3122A03841003ACDF3 /* RecipeCell.swift */,
 				025E074F22B649BB0086458A /* RecipeSections */,
 				025A06BE228C86A80008258F /* IngredientCell.swift */,
-				02674C9F22B0AB98005F940D /* MealPlanCell.swift */,
+				02E93E5D22BBF82A00D18DE4 /* MealPlan */,
 				02674CA122B0ABF0005F940D /* TodayMenuCell.swift */,
 				02EEE7F922BBA9CA008ED084 /* GroceryCell */,
 			);
@@ -452,6 +440,7 @@
 			children = (
 				027F655322A963510033D29D /* TodayMenuViewController.swift */,
 				027F655722A964030033D29D /* TodayMenuViewModel.swift */,
+				020B572222BC901D0098E57C /* TodayMenuRouter.swift */,
 			);
 			path = TodayMenu;
 			sourceTree = "<group>";
@@ -629,7 +618,6 @@
 			isa = PBXGroup;
 			children = (
 				02674C2F22B02C64005F940D /* SelectionResult */,
-				02674C2822B0290C005F940D /* DateSelection */,
 				02E87BAF22B013AF00237CD2 /* MealPlanViewController.swift */,
 				02E87BB122B013B800237CD2 /* MealPlanViewModel.swift */,
 				02674C2622B02888005F940D /* MealPlanRouter.swift */,
@@ -641,6 +629,15 @@
 			isa = PBXGroup;
 			children = (
 				02E87BB422B0142100237CD2 /* MealPlanService.swift */,
+			);
+			path = MealPlan;
+			sourceTree = "<group>";
+		};
+		02E93E5D22BBF82A00D18DE4 /* MealPlan */ = {
+			isa = PBXGroup;
+			children = (
+				02674C9F22B0AB98005F940D /* MealPlanCell.swift */,
+				02E93E5E22BBF83800D18DE4 /* MealPlanTableViewSection.swift */,
 			);
 			path = MealPlan;
 			sourceTree = "<group>";
@@ -902,7 +899,7 @@
 				02367DBF225BCCB800BD1217 /* RecipeCategoryObject.swift in Sources */,
 				02BEF9FB22AE3BC400E8C741 /* UIImageView+Extensions.swift in Sources */,
 				025E075322B649DF0086458A /* RecipeItem.swift in Sources */,
-				02674C3322B02C7F005F940D /* MealPlanSelectionResultViewModel.swift in Sources */,
+				02674C3322B02C7F005F940D /* MealPlanConfirmationViewModel.swift in Sources */,
 				027F655822A964030033D29D /* TodayMenuViewModel.swift in Sources */,
 				025E07BB22B66A0C0086458A /* RecipeServingCell.swift in Sources */,
 				025E075122B649D20086458A /* RecipeSection.swift in Sources */,
@@ -910,14 +907,13 @@
 				028274652295A8310025A023 /* IngredientsListRouter.swift in Sources */,
 				02674CA022B0AB98005F940D /* MealPlanCell.swift in Sources */,
 				025E08F922B80AA30086458A /* GroceryCell.swift in Sources */,
-				02674C2E22B02C13005F940D /* MealPlanDateSelectionRouter.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
 				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
-				02674C3122B02C76005F940D /* MealPlanSelectionResultViewController.swift in Sources */,
-				02674C2C22B0293D005F940D /* MealPlanDateSelectionViewModel.swift in Sources */,
+				02674C3122B02C76005F940D /* MealPlanConfirmationViewController.swift in Sources */,
 				025E074C22B6337C0086458A /* IngredientAmount.swift in Sources */,
 				02367DB5225BCA4800BD1217 /* IngredientObject.swift in Sources */,
+				02E93E5F22BBF83800D18DE4 /* MealPlanTableViewSection.swift in Sources */,
 				02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */,
 				025E074E22B634630086458A /* IngredientAmountObject.swift in Sources */,
 				02B4EE102240C57C00BDE05D /* ServiceContainer.swift in Sources */,
@@ -945,7 +941,8 @@
 				023CDD3422A0390B003ACDF3 /* RecipesListRouter.swift in Sources */,
 				02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */,
 				028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */,
-				02674C3522B02C88005F940D /* MealPlanSelectionResultViewRouter.swift in Sources */,
+				020B572322BC901D0098E57C /* TodayMenuRouter.swift in Sources */,
+				02674C3522B02C88005F940D /* MealPlanConfirmationRouter.swift in Sources */,
 				02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */,
 				023CDD2B22A032BB003ACDF3 /* RecipesService.swift in Sources */,
 				025E068022B609DD0086458A /* RecipeInfoCell.swift in Sources */,
@@ -959,7 +956,6 @@
 				02E87BB222B013B800237CD2 /* MealPlanViewModel.swift in Sources */,
 				023CDD3022A032F9003ACDF3 /* RecipeCategory.swift in Sources */,
 				02BEF98F22AD3A3000E8C741 /* SelectedMealPlanObject.swift in Sources */,
-				02674C2A22B0292F005F940D /* MealPlanDateSelectionViewController.swift in Sources */,
 				027F655422A963510033D29D /* TodayMenuViewController.swift in Sources */,
 				02367DBB225BCB8A00BD1217 /* RecipeObject.swift in Sources */,
 				02E87BB022B013AF00237CD2 /* MealPlanViewController.swift in Sources */,

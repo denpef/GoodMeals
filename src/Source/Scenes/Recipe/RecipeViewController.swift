@@ -88,43 +88,14 @@ final class RecipeViewController: UIViewController {
     }
     
     func bind() {
-        
         viewModel.items
             .bind(to: collectionView.rx.items(dataSource: dataSource!))
             .disposed(by: disposeBag)
-        
-//        addToShoppingListButton.rx
-//            .tap
-//            .debounce(0.2, scheduler: MainScheduler.instance)
-//            .bind(to: viewModel.addToShoppingList)
-//            .disposed(by: disposeBag)
-        
-//        viewModel.isAdded
-//            .asDriver()
-//            .drive(saveButton.rx.isHidden)
-//            .disposed(by: disposeBag)
-        
-        
-//        let sections: [MultipleSectionModel] = [
-//            .ImageProvidableSection(title: "Section 1",
-//                                    items: [.ImageSectionItem(image: UIImage(named: "settings")!, title: "General")]),
-//            .ToggleableSection(title: "Section 2",
-//                               items: [.ToggleableSectionItem(title: "On", enabled: true)]),
-//            .StepperableSection(title: "Section 3",
-//                                items: [.StepperSectionItem(title: "1")])
-//        ]
-//
-//        let dataSource = MultipleSectionModelViewController.dataSource()
-//
-//        viewModel.sections
-//            .bind(to: tableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
     }
     
     private func configureCollectionView() {
         view.addSubview(collectionView)
         collectionView.delegate = self
-//        collectionView.dataSource = self
         
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.translatesAutoresizingMaskIntoConstraints = false

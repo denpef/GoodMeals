@@ -44,11 +44,6 @@ class RecipesListViewModel {
         selectItem.subscribe(onNext: { [weak self] recipe in
             self?.router?.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
-        
-//        addNewItem
-//            .subscribe(onNext: { [weak self] in
-//                self?.router?.navigateToRecipe(recipeId: nil)
-//            }).disposed(by: disposeBag)
     }
     
 }
@@ -57,12 +52,10 @@ extension RecipesListViewModel: PersistenceNotificationOutput {
     func didChanged<T>(_ changes: PersistenceNotification<T>) {
         if let changes = changes as? PersistenceNotification<Recipe> {
             switch changes {
-            case let .error(error):
+            case .initial, .update:
+                items.on(.next(recipesService.all()))
+            default:
                 break
-            case let .initial(objects):
-                items.on(.next(recipesService.all()))
-            case let .update(objects, deletions, insertions, modifications):
-                items.on(.next(recipesService.all()))
             }
         }
     }
