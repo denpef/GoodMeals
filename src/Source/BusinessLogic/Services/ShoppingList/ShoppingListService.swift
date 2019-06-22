@@ -1,7 +1,7 @@
 import Foundation
-import RxSwift
 import RealmSwift
 import RxCocoa
+import RxSwift
 
 // sourcery:begin: AutoMockable
 protocol ShoppingListServiceType {
@@ -10,8 +10,8 @@ protocol ShoppingListServiceType {
     func delete(_ groceryItem: GroceryItem)
     func update(_ groceryItem: GroceryItem)
     func all() -> [GroceryItem]
-    func add(by recipe: Recipe)
-    func add(by recipes: [Recipe])
+    func addByRecipe(_ recipe: Recipe)
+    func addByRecipes(_ recipes: [Recipe])
     func subscribeCollection(subscriber: PersistenceNotificationOutput)
     func marked(_ item: GroceryItem)
     func deleteAllList()
@@ -19,19 +19,19 @@ protocol ShoppingListServiceType {
 
 final class ShoppingListService: ShoppingListServiceType {
     typealias Item = (ingredient: Ingredient, amount: Float)
-    
+
     private let persistenceService: PersistenceService
     var token: NotificationToken?
-    
+
     init(persistenceService: PersistenceService) {
         self.persistenceService = persistenceService
     }
-    
+
     func getModel(by id: String) -> GroceryItem? {
         let filter = NSPredicate(format: "id == %@", id)
         return persistenceService.objects(GroceryItem.self, filter: filter, sortDescriptors: nil).first
     }
-    
+
     func add(_ groceryItem: GroceryItem) {
         let allItems = all()
         if var item = allItems.first(where: { $0.ingredient == groceryItem.ingredient && !$0.marked }) {
@@ -41,18 +41,18 @@ final class ShoppingListService: ShoppingListServiceType {
             persistenceService.add(groceryItem, update: true)
         }
     }
-    
+
     func delete(_ groceryItem: GroceryItem) {
         persistenceService.delete(groceryItem)
     }
-    
+
     func update(_ groceryItem: GroceryItem) {
         persistenceService.add(groceryItem, update: true)
     }
-    
-    func add(by recipe: Recipe) {
+
+    func addByRecipe(_ recipe: Recipe) {
         var groceryItems = [GroceryItem]()
-        let allItems = self.all().filter { !$0.marked }
+        let allItems = all().filter { !$0.marked }
         recipe.ingredients.forEach { ingredientAmount in
             if var item = allItems.first(where: { $0.ingredient == ingredientAmount.ingredient }) {
                 item.amount += ingredientAmount.amount
@@ -67,8 +67,8 @@ final class ShoppingListService: ShoppingListServiceType {
             persistenceService.add(groceryItems, update: true)
         }
     }
-    
-    func add(by recipes: [Recipe]) {
+
+    func addByRecipes(_ recipes: [Recipe]) {
         var items = [Item]()
         recipes.forEach { recipe in
             for amount in recipe.ingredients {
@@ -85,7 +85,7 @@ final class ShoppingListService: ShoppingListServiceType {
         }
 
         var groceryItems = [GroceryItem]()
-        let allItems = self.all().filter { !$0.marked }
+        let allItems = all().filter { !$0.marked }
         items.forEach { ingredientAmount in
             if var item = allItems.first(where: { $0.ingredient == ingredientAmount.ingredient }) {
                 item.amount += ingredientAmount.amount
@@ -100,11 +100,11 @@ final class ShoppingListService: ShoppingListServiceType {
             persistenceService.add(groceryItems, update: true)
         }
     }
-    
+
     func all() -> [GroceryItem] {
         return persistenceService.objects(GroceryItem.self, filter: nil, sortDescriptors: nil)
     }
-    
+
     func subscribeCollection(subscriber: PersistenceNotificationOutput) {
         // TODO: - token invalidation
         token = persistenceService.subscribeCollection(GroceryItem.self,
@@ -112,13 +112,13 @@ final class ShoppingListService: ShoppingListServiceType {
                                                        filter: nil,
                                                        sortDescriptors: nil)
     }
-    
+
     func marked(_ item: GroceryItem) {
         var editableItem = item
         editableItem.marked = !item.marked
         update(editableItem)
     }
-    
+
     func deleteAllList() {
         persistenceService.delete(type: GroceryItem.self)
     }

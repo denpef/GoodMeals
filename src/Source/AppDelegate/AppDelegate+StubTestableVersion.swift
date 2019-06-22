@@ -7,16 +7,15 @@ extension AppDelegate {
             return IngredientAmount(ingredient: ingredients.first(where: { $0.name == name })!, amount: 300)
         }
     }
-    
+
     func setupStubTestableVersion(_ serviceContainer: ServiceContainerType) {
         serviceContainer.persistenceService.clearAll()
-        
+
         createMealPlans(serviceContainer.persistenceService,
                         createIngredients(ingredientService: serviceContainer.ingredientsService,
-                                          shoppingListService: serviceContainer.shoppingListService)
-        )
+                                          shoppingListService: serviceContainer.shoppingListService))
     }
-    
+
     private func createIngredients(ingredientService: IngredientsServiceType,
                                    shoppingListService: ShoppingListServiceType) -> StubIngredientList {
         var list = StubIngredientList()
@@ -51,24 +50,26 @@ extension AppDelegate {
         list.ingredients.append(Ingredient(name: "Coconut milk", calorific: 0, category: nil))
         list.ingredients.append(Ingredient(name: "Lime", calorific: 0, category: nil))
         list.ingredients.append(Ingredient(name: "Cilantro", calorific: 0, category: nil))
-        
+
         list.ingredients.forEach {
             ingredientService.add($0)
         }
-        
+
         // ShoppingList
-        
+
         shoppingListService.add(GroceryItem(ingredient: list["Squash"].ingredient!, amount: Float(451), marked: false))
         shoppingListService.add(GroceryItem(ingredient: list["Lime"].ingredient!, amount: 150, marked: false))
         shoppingListService.add(GroceryItem(ingredient: list["Egg"].ingredient!, amount: 999, marked: false))
         shoppingListService.add(GroceryItem(ingredient: list["Mixed salad greens"].ingredient!, amount: 1001, marked: false))
-        
+
         return list
     }
-    
+
     private func createMealPlans(_ service: PersistenceService, _ ingredientList: StubIngredientList) {
         var recipes = [Recipe]()
+
         // MARK: - Day: 1
+
         var muesli = Recipe(name: "Muesli with Raspberries",
                             image: "http://images.media-allrecipes.com/userphotos/960x960/5486559.jpg",
                             timeForPreparing: "30 min",
@@ -77,7 +78,7 @@ extension AppDelegate {
         muesli.ingredients.append(ingredientList["Muesli"])
         muesli.ingredients.append(ingredientList["Raspberries"])
         recipes.append(muesli)
-        
+
         var whiteBeans = Recipe(name: "White Bean & Veggie Salad",
                                 image: "http://images.media-allrecipes.com/userphotos/960x960/4548021.jpg",
                                 timeForPreparing: "20 min",
@@ -91,7 +92,7 @@ extension AppDelegate {
         whiteBeans.ingredients.append(ingredientList["Salt"])
         whiteBeans.ingredients.append(ingredientList["Freshly ground pepper"])
         recipes.append(whiteBeans)
-        
+
         var dijonChicken = Recipe(name: "Balsamic-Dijon Chicken",
                                   image: "http://images.media-allrecipes.com/userphotos/960x960/5180145.jpg",
                                   timeForPreparing: "50 min",
@@ -102,8 +103,9 @@ extension AppDelegate {
         dijonChicken.ingredients.append(ingredientList["Balsamic vinegar"])
         dijonChicken.ingredients.append(ingredientList["Basil"])
         recipes.append(dijonChicken)
-        
+
         // MARK: - Day: 2
+
         var avocadoToast = Recipe(name: "Avocado-Egg Toast",
                                   image: "http://images.media-allrecipes.com/userphotos/960x960/5631902.jpg",
                                   timeForPreparing: "40 min",
@@ -117,7 +119,7 @@ extension AppDelegate {
         avocadoToast.ingredients.append(ingredientList["Sriracha"])
         avocadoToast.ingredients.append(ingredientList["Scallion"])
         recipes.append(avocadoToast)
-        
+
         var redCurry = Recipe(name: "Squash & Red Lentil Curry",
                               image: "http://images.media-allrecipes.com/userphotos/960x960/3759121.jpg",
                               timeForPreparing: "25 min",
@@ -136,67 +138,69 @@ extension AppDelegate {
         redCurry.ingredients.append(ingredientList["Lime"])
         redCurry.ingredients.append(ingredientList["Cilantro"])
         recipes.append(redCurry)
-        
+
         recipes.forEach {
             service.add($0, update: true)
         }
-        
+
         // MARK: - 1st Plans
+
         var firstBreakfast = Meal(mealtime: .breakfast, recipe: muesli)
         var firstLunch = Meal(mealtime: .lunch, recipe: whiteBeans)
         var firstDinner = Meal(mealtime: .dinner, recipe: dijonChicken)
-        
+
         service.add(firstBreakfast, update: true)
         service.add(firstLunch, update: true)
         service.add(firstDinner, update: true)
-        
+
         var firstDayPlan = DailyPlan(dayNumber: 1, meals: [firstBreakfast, firstLunch, firstDinner])
-        
+
         service.add(firstDayPlan, update: true)
-        
+
         var secondBreakfast = Meal(mealtime: .breakfast, recipe: avocadoToast)
         var secondLunch = Meal(mealtime: .lunch, recipe: dijonChicken)
         var secondDinner = Meal(mealtime: .dinner, recipe: redCurry)
-        
+
         service.add(secondBreakfast, update: true)
         service.add(secondLunch, update: true)
         service.add(secondDinner, update: true)
-        
+
         var secondDayPlan = DailyPlan(dayNumber: 2, meals: [secondBreakfast, secondLunch, secondDinner])
-        
+
         service.add(secondDayPlan, update: true)
-        
+
         let plan = MealPlan(name: "Plan #1", dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan, update: true)
-        
+
         // MARK: - 2st Plans
+
         firstBreakfast = Meal(mealtime: .breakfast, recipe: avocadoToast)
         firstLunch = Meal(mealtime: .lunch, recipe: whiteBeans)
         firstDinner = Meal(mealtime: .dinner, recipe: redCurry)
-        
+
         service.add(firstBreakfast, update: true)
         service.add(firstLunch, update: true)
         service.add(firstDinner, update: true)
-        
+
         firstDayPlan = DailyPlan(dayNumber: 1, meals: [firstBreakfast, firstLunch, firstDinner])
-        
+
         service.add(firstDayPlan, update: true)
-        
+
         secondBreakfast = Meal(mealtime: .breakfast, recipe: muesli)
         secondLunch = Meal(mealtime: .lunch, recipe: dijonChicken)
         secondDinner = Meal(mealtime: .dinner, recipe: redCurry)
-        
+
         service.add(secondBreakfast, update: true)
         service.add(secondLunch, update: true)
         service.add(secondDinner, update: true)
-        
+
         secondDayPlan = DailyPlan(dayNumber: 2, meals: [secondBreakfast, secondLunch, secondDinner])
-        
+
         service.add(secondDayPlan, update: true)
-        
+
         let plan2 = MealPlan(name: "Plan #2", dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan2, update: true)
-        
+
         let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: plan)
         let selectedPlan2 = SelectedMealPlan(startDate: Date(), mealPlan: plan2)
         service.add(selectedPlan, update: true)

@@ -7,13 +7,13 @@ protocol MealPlanRouterType {
 
 class MealPlanRouter: MealPlanRouterType {
     weak var viewController: UIViewController?
-    
+
     private let factory: ViewControllerFactory
-    
+
     init(factory: ViewControllerFactory) {
         self.factory = factory
     }
-    
+
     func navigateToConfirmation(mealPlan: MealPlan) {
         let vc = factory.makeMealPlanConfirmationViewController(mealPlan: mealPlan)
         viewController?.navigationController?.pushViewController(vc, animated: true)

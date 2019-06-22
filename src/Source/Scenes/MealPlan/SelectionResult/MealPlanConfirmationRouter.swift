@@ -16,7 +16,7 @@ protocol MealPlanConfirmationRouterType {
 
 class MealPlanConfirmationRouter: MealPlanConfirmationRouterType {
     weak var viewController: UIViewController?
-    
+
     func dismiss() {
         viewController?.navigationController?.popToRootViewController(animated: true)
     }

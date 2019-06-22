@@ -718,10 +718,11 @@
 			buildConfigurationList = 02EB0C9F229EDEF300A84E4C /* Build configuration list for PBXNativeTarget "GoodMealsTests" */;
 			buildPhases = (
 				6A98FF55E527C358250EF490 /* [CP] Check Pods Manifest.lock */,
+				02EB0CA2229EDF8000A84E4C /* Sourcery */,
 				02EB0C94229EDEF300A84E4C /* Sources */,
+				020B572722BE4F1A0098E57C /* Swiftformat */,
 				02EB0C95229EDEF300A84E4C /* Frameworks */,
 				02EB0C96229EDEF300A84E4C /* Resources */,
-				02EB0CA2229EDF8000A84E4C /* Sourcery */,
 				07EBD56FAFBC2378BE75E932 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -793,6 +794,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		020B572722BE4F1A0098E57C /* Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftformat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
+		};
 		02EB0CA2229EDF8000A84E4C /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

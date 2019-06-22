@@ -1,36 +1,35 @@
 import Foundation
-import RxSwift
-import RxCocoa
 import RealmSwift
+import RxCocoa
+import RxSwift
 
 final class TodayMenuViewModel {
-    
     var router: TodayMenuRouterType?
-    
+
     // MARK: - Input
-    
+
     var mealPlanService: MealPlanServiceType
     var showMealPlans = PublishRelay<Void>()
-    
+
     // MARK: - Output
-    
+
     var items: BehaviorSubject<[DailyPlan]> = BehaviorSubject(value: [])
-    
+
     // MARK: - Private properties
-    
+
     private let disposeBag = DisposeBag()
-    
+
     // MARK: - Init
-    
+
     init(mealPlanService: MealPlanServiceType) {
         self.mealPlanService = mealPlanService
         mealPlanService.subscribeCollection(subscriber: self)
-        
-        showMealPlans.subscribe(onNext: { item in
+
+        showMealPlans.subscribe(onNext: { _ in
             self.router?.navigateToMealPlansList()
         }).disposed(by: disposeBag)
     }
-    
+
     private func updateMealPlan() {
         let currentMealPlan = mealPlanService.getCurrentMealPlan()
         if let dailyPlans = currentMealPlan?.mealPlan?.dailyPlans {

@@ -9,24 +9,24 @@ import Foundation
 
 struct RecipeCategory {
     // MARK: - Properties
-    
+
     var id: String
     var name: String = ""
-    
+
     // MARK: Convenience Init
-    
+
     init(name: String) {
-        self.id = UUID().uuidString
+        id = UUID().uuidString
         self.name = name
     }
 }
 
 extension RecipeCategory: Persistable {
     init(managedObject: RecipeCategoryObject) {
-        self.id = managedObject.id
-        self.name = managedObject.name
+        id = managedObject.id
+        name = managedObject.name
     }
-    
+
     var managedObject: RecipeCategoryObject {
         return RecipeCategoryObject(id: id, name: name)
     }

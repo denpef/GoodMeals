@@ -9,7 +9,7 @@ enum RealmDefaultConfiguration {
                                                      in: .userDomainMask,
                                                      appropriateFor: nil,
                                                      create: false).appendingPathComponent(fileName)
-        } catch let error {
+        } catch {
             fatalError("Failed finding expected path: \(error)")
         }
         return Realm.Configuration(fileURL: libraryUrl)

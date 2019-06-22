@@ -2,10 +2,11 @@ import Foundation
 
 struct SelectedMealPlan {
     // MARK: - Properties
+
     var id: String
     var startDate: Date
     var mealPlan: MealPlan?
-    
+
     var finishDate: Date {
         if
             let daysCount = mealPlan?.dailyPlans.count,
@@ -17,10 +18,11 @@ struct SelectedMealPlan {
             return startDate
         }
     }
-    
+
     // MARK: Convenience Init
+
     init(startDate: Date, mealPlan: MealPlan?) {
-        self.id = UUID().uuidString
+        id = UUID().uuidString
         self.startDate = startDate
         self.mealPlan = mealPlan
     }
@@ -28,13 +30,13 @@ struct SelectedMealPlan {
 
 extension SelectedMealPlan: Persistable {
     init(managedObject: SelectedMealPlanObject) {
-        self.id = managedObject.id
-        self.startDate = managedObject.startDate
+        id = managedObject.id
+        startDate = managedObject.startDate
         if let mealPlanObject = managedObject.mealPlan {
-            self.mealPlan = MealPlan(managedObject: mealPlanObject)
+            mealPlan = MealPlan(managedObject: mealPlanObject)
         }
     }
-    
+
     var managedObject: SelectedMealPlanObject {
         return SelectedMealPlanObject(id: id, startDate: startDate,
                                       mealPlan: mealPlan?.managedObject)

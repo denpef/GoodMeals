@@ -1,5 +1,3 @@
 import UIKit
 
-class IngredientCell: UITableViewCell {
-    
-}
+class IngredientCell: UITableViewCell {}

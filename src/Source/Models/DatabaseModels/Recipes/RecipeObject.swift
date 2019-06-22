@@ -2,23 +2,26 @@ import RealmSwift
 
 @objcMembers final class RecipeObject: Object {
     // MARK: - Properties
+
     dynamic var id: String = ""
     dynamic var name: String = ""
     dynamic var image: String = ""
     dynamic var timeForPreparing: String = ""
     var ingredients: List<IngredientAmountObject> = List<IngredientAmountObject>()
-    
+
     dynamic var category: RecipeCategoryObject?
-    
+
     dynamic var calorific: Int = 0
-    
+
     // MARK: - Meta
+
     override static func primaryKey() -> String? {
         return "id"
     }
-    
+
     // MARK: Convenience Init
-    convenience required init(id: String,
+
+    required convenience init(id: String,
                               name: String,
                               image: String,
                               timeForPreparing: String,

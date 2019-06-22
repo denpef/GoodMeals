@@ -10,15 +10,15 @@ import Foundation
 
 struct IngredientAmount {
     // MARK: - Properties
-    
+
     var id: String
     var ingredient: Ingredient?
     var amount: Float = 0
-    
+
     // MARK: Init
-    
+
     init(ingredient: Ingredient?, amount: Float) {
-        self.id = UUID().uuidString
+        id = UUID().uuidString
         self.ingredient = ingredient
         self.amount = amount
     }
@@ -26,13 +26,13 @@ struct IngredientAmount {
 
 extension IngredientAmount: Persistable {
     init(managedObject: IngredientAmountObject) {
-        self.id = managedObject.id
+        id = managedObject.id
         if let ingredient = managedObject.ingredient {
             self.ingredient = Ingredient(managedObject: ingredient)
         }
-        self.amount = managedObject.amount
+        amount = managedObject.amount
     }
-    
+
     var managedObject: IngredientAmountObject {
         return IngredientAmountObject(id: id, ingredient: ingredient?.managedObject, amount: amount)
     }

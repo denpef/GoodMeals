@@ -7,32 +7,35 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 class RecipeViewModel {
     var recipe: Recipe
-    
+
     // MARK: - Input
+
     let name: BehaviorRelay<String>
     let serving = BehaviorRelay<Int>(value: 2)
     let addToShoppingList = PublishRelay<Void>()
     let inShoppingList = BehaviorRelay<Bool>(value: false)
     let items: BehaviorSubject<[RecipeSection]>
-    
+
     // MARK: - Private properties
+
     private let disposeBag = DisposeBag()
     private let recipesService: RecipesServiceType
     private let shoppingListService: ShoppingListServiceType
-    
+
     // MARK: - Init
+
     init(recipesService: RecipesServiceType, shoppingListService: ShoppingListServiceType, recipeId: String) {
         self.recipesService = recipesService
         self.shoppingListService = shoppingListService
-        self.recipe = recipesService.getModel(by: recipeId)!
-        
+        recipe = recipesService.getModel(by: recipeId)!
+
         name = BehaviorRelay(value: recipe.name)
-        
+
         var items = [RecipeItem]()
         items.append(.RecipeInfoItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
         items.append(.ServingItem)
@@ -40,7 +43,7 @@ class RecipeViewModel {
             items.append(.IngredientItem(ingredient: $0))
         }
         self.items = BehaviorSubject(value: [RecipeSection(items: items)])
-        
+
         addToShoppingList.subscribe(onNext: { [weak self] _ in
             guard let self = self else {
                 return

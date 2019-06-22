@@ -14,10 +14,10 @@ final class ServiceContainer: ServiceContainerType {
     let recipesService: RecipesServiceType
     let mealPlanService: MealPlanServiceType
     var shoppingListService: ShoppingListServiceType
-    
+
     init() {
-        persistenceService = RealmPersistenceService.init(configuration: RealmDefaultConfiguration.config)
-        
+        persistenceService = RealmPersistenceService(configuration: RealmDefaultConfiguration.config)
+
         ingredientsService = IngredientsService(persistenceService: persistenceService)
         recipesService = RecipesService(persistenceService: persistenceService)
         mealPlanService = MealPlanService(persistenceService: persistenceService)

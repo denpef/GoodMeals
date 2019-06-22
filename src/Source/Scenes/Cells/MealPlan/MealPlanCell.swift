@@ -8,16 +8,16 @@ final class MealPlanCell: UITableViewCell {
         view.clipsToBounds = true
         return view
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupImageView()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupImageView() {
         contentView.addSubview(titleIMageView)
         titleIMageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,7 @@ final class MealPlanCell: UITableViewCell {
                                      titleIMageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
                                      titleIMageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)])
     }
-    
+
     func configure(with plans: [DailyPlan]?) {
         if let imagePath = plans?.first?.meals.first?.recipe?.image {
             titleIMageView.loadImage(from: imagePath)
