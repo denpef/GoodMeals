@@ -8,7 +8,7 @@ final class RecipesListViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
-        view.rowHeight = 264
+        view.rowHeight = 320
         view.backgroundColor = .clear
         view.separatorStyle = .none
         view.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
