@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		020B572322BC901D0098E57C /* TodayMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B572222BC901D0098E57C /* TodayMenuRouter.swift */; };
+		02146E7822BFB80D005BE192 /* RecipeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02146E7722BFB80D005BE192 /* RecipeCellView.swift */; };
+		02146E7B22BFE068005BE192 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02146E7A22BFE068005BE192 /* RecipeCollectionViewCell.swift */; };
 		021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021ED876223E0EE0009FA238 /* AppDelegate.swift */; };
 		021ED87E223E0EE1009FA238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021ED87D223E0EE1009FA238 /* Assets.xcassets */; };
 		021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4922664042001CA0A3 /* RootRouter.swift */; };
@@ -107,6 +109,8 @@
 
 /* Begin PBXFileReference section */
 		020B572222BC901D0098E57C /* TodayMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuRouter.swift; sourceTree = "<group>"; };
+		02146E7722BFB80D005BE192 /* RecipeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellView.swift; sourceTree = "<group>"; };
+		02146E7A22BFE068005BE192 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		021ED873223E0EE0009FA238 /* GoodMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		021ED876223E0EE0009FA238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		021ED87D223E0EE1009FA238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +226,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02146E7922BFDFBF005BE192 /* RecipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				023CDD3122A03841003ACDF3 /* RecipeCell.swift */,
+				02146E7A22BFE068005BE192 /* RecipeCollectionViewCell.swift */,
+				02146E7722BFB80D005BE192 /* RecipeCellView.swift */,
+			);
+			path = RecipeCell;
+			sourceTree = "<group>";
+		};
 		021ED86A223E0EE0009FA238 = {
 			isa = PBXGroup;
 			children = (
@@ -416,7 +430,7 @@
 		02674C9E22B0AB6B005F940D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				023CDD3122A03841003ACDF3 /* RecipeCell.swift */,
+				02146E7922BFDFBF005BE192 /* RecipeCell */,
 				025E074F22B649BB0086458A /* RecipeSections */,
 				025A06BE228C86A80008258F /* IngredientCell.swift */,
 				02E93E5D22BBF82A00D18DE4 /* MealPlan */,
@@ -700,6 +714,7 @@
 			buildPhases = (
 				61F5CD432899E6729F032DD0 /* [CP] Check Pods Manifest.lock */,
 				021ED86F223E0EE0009FA238 /* Sources */,
+				02146E7C22BFE2F2005BE192 /* Swiftformat */,
 				021ED870223E0EE0009FA238 /* Frameworks */,
 				021ED871223E0EE0009FA238 /* Resources */,
 				2957F05312F0EA35934ABF30 /* [CP] Embed Pods Frameworks */,
@@ -720,7 +735,7 @@
 				6A98FF55E527C358250EF490 /* [CP] Check Pods Manifest.lock */,
 				02EB0CA2229EDF8000A84E4C /* Sourcery */,
 				02EB0C94229EDEF300A84E4C /* Sources */,
-				020B572722BE4F1A0098E57C /* Swiftformat */,
+				02146E7D22BFE343005BE192 /* Swiftformat */,
 				02EB0C95229EDEF300A84E4C /* Frameworks */,
 				02EB0C96229EDEF300A84E4C /* Resources */,
 				07EBD56FAFBC2378BE75E932 /* [CP] Embed Pods Frameworks */,
@@ -794,7 +809,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		020B572722BE4F1A0098E57C /* Swiftformat */ = {
+		02146E7C22BFE2F2005BE192 /* Swiftformat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -810,7 +825,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n        echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
+		};
+		02146E7D22BFE343005BE192 /* Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftformat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n        echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
 		};
 		02EB0CA2229EDF8000A84E4C /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -981,11 +1014,13 @@
 				025FFD102264D79F00CBD0EC /* DependencyContainer.swift in Sources */,
 				028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */,
 				023CDD2622A03206003ACDF3 /* RecipeViewModel.swift in Sources */,
+				02146E7822BFB80D005BE192 /* RecipeCellView.swift in Sources */,
 				025E075622B64AD20086458A /* IngredientCollectionViewCell.swift in Sources */,
 				025E08F722B802BC0086458A /* ShoppingListService.swift in Sources */,
 				028C86BD228FEB140051E852 /* Ingredient.swift in Sources */,
 				021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */,
 				027F655222A963410033D29D /* ShoppingListViewController.swift in Sources */,
+				02146E7B22BFE068005BE192 /* RecipeCollectionViewCell.swift in Sources */,
 				02E87BAD22B0134600237CD2 /* MealPlansListRouter.swift in Sources */,
 				02BEF98922AD139200E8C741 /* DailyPlan.swift in Sources */,
 				025A06BF228C86A80008258F /* IngredientCell.swift in Sources */,

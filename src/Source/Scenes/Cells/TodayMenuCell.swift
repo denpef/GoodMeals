@@ -41,7 +41,7 @@ final class TodayMenuCell: UITableViewCell {
     }
 
     private func setupCollectionView() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        collectionView.register(RecipeCollectionViewCell.self, forCellWithReuseIdentifier: RecipeCollectionViewCell.reuseIdentifier)
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,24 +64,10 @@ final class TodayMenuCell: UITableViewCell {
         pageControl.numberOfPages = plans?.count ?? 0
 
         Observable.from(optional: plans)
-            .bind(to: collectionView.rx
-                .items(cellIdentifier: "UICollectionViewCell")) { _, item, cell in
-                cell.backgroundColor = .clear
-                let imageView = UIImageView(frame: .zero)
-                imageView.backgroundColor = .orange
-                imageView.contentMode = .scaleAspectFill
-                cell.addSubview(imageView)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    imageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 16),
-                    imageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -16),
-                    imageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 16),
-                    imageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -16),
-                ])
-                imageView.clipsToBounds = true
-                imageView.layer.cornerRadius = 15
-                if let path = item.recipe?.image {
-                    imageView.loadImage(from: path)
+            .bind(to: collectionView.rx.items(cellIdentifier: RecipeCollectionViewCell.reuseIdentifier,
+                                              cellType: RecipeCollectionViewCell.self)) { _, plan, cell in
+                if let recipe = plan.recipe {
+                    cell.configure(with: recipe)
                 }
             }.disposed(by: disposeBag)
     }
