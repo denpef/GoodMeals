@@ -10,6 +10,7 @@
 		020B572322BC901D0098E57C /* TodayMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B572222BC901D0098E57C /* TodayMenuRouter.swift */; };
 		02146E7822BFB80D005BE192 /* RecipeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02146E7722BFB80D005BE192 /* RecipeCellView.swift */; };
 		02146E7B22BFE068005BE192 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02146E7A22BFE068005BE192 /* RecipeCollectionViewCell.swift */; };
+		02146EE322BFF013005BE192 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02146EE222BFF013005BE192 /* Assets.swift */; };
 		021ED877223E0EE0009FA238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021ED876223E0EE0009FA238 /* AppDelegate.swift */; };
 		021ED87E223E0EE1009FA238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021ED87D223E0EE1009FA238 /* Assets.xcassets */; };
 		021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4922664042001CA0A3 /* RootRouter.swift */; };
@@ -111,6 +112,7 @@
 		020B572222BC901D0098E57C /* TodayMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuRouter.swift; sourceTree = "<group>"; };
 		02146E7722BFB80D005BE192 /* RecipeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellView.swift; sourceTree = "<group>"; };
 		02146E7A22BFE068005BE192 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		02146EE222BFF013005BE192 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		021ED873223E0EE0009FA238 /* GoodMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		021ED876223E0EE0009FA238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		021ED87D223E0EE1009FA238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				021ED87D223E0EE1009FA238 /* Assets.xcassets */,
+				02146EE222BFF013005BE192 /* Assets.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 			buildConfigurationList = 021ED89B223E0EE1009FA238 /* Build configuration list for PBXNativeTarget "GoodMeals" */;
 			buildPhases = (
 				61F5CD432899E6729F032DD0 /* [CP] Check Pods Manifest.lock */,
+				02146EE122BFEE39005BE192 /* Swiftgen */,
 				021ED86F223E0EE0009FA238 /* Sources */,
 				02146E7C22BFE2F2005BE192 /* Swiftformat */,
 				021ED870223E0EE0009FA238 /* Frameworks */,
@@ -845,6 +849,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n        echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
 		};
+		02146EE122BFEE39005BE192 /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen xcassets -t swift4 -o ${SRCROOT}/Resources/Assets/Assets.swift ${SRCROOT}/Resources/Assets/Assets.xcassets\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi ${SRCROOT}/Resources/Assets/Assets.swift ${SRCROOT}/Resources/Assets/Assets.xcassets\n";
+		};
 		02EB0CA2229EDF8000A84E4C /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -976,6 +998,7 @@
 				02451F5022B91F0D00DD1F95 /* Ingredient+Equitable.swift in Sources */,
 				02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */,
 				02BEF98422AD02DE00E8C741 /* MealObject.swift in Sources */,
+				02146EE322BFF013005BE192 /* Assets.swift in Sources */,
 				025E08F122B7FC2D0086458A /* GroceryItem.swift in Sources */,
 				0269D0AF229473F400503C85 /* IngredientViewController.swift in Sources */,
 				027F655622A963CF0033D29D /* ShoppingListViewModel.swift in Sources */,

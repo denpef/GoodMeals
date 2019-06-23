@@ -4,6 +4,14 @@ import UIKit
 final class TodayMenuCell: UITableViewCell {
     private var disposeBag = DisposeBag()
 
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        return label
+    }()
+
     private let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -27,6 +35,7 @@ final class TodayMenuCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        setupLabel()
         setupCollectionView()
         setupPageControl()
     }
@@ -40,27 +49,48 @@ final class TodayMenuCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
 
+    private func setupLabel() {
+        contentView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            titleLabel.heightAnchor.constraint(equalToConstant: 24),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
+    }
+
     private func setupCollectionView() {
         collectionView.register(RecipeCollectionViewCell.self, forCellWithReuseIdentifier: RecipeCollectionViewCell.reuseIdentifier)
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                                     collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-                                     collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                                     collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
     }
 
     private func setupPageControl() {
         contentView.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 4),
-                                     pageControl.heightAnchor.constraint(equalToConstant: 16),
-                                     pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
-                                     pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor)])
+        NSLayoutConstraint.activate([
+            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 6),
+            pageControl.heightAnchor.constraint(equalToConstant: 14),
+            pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+            pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+        ])
     }
 
-    func configure(with plans: [Meal]?) {
+    func configure(with plans: [Meal]?, dayNumber: Int) {
+        switch dayNumber {
+        case 1:
+            titleLabel.text = "Today menu"
+        default:
+            titleLabel.text = "Day \(dayNumber) menu"
+        }
         pageControl.numberOfPages = plans?.count ?? 0
 
         Observable.from(optional: plans)

@@ -7,7 +7,7 @@ final class TodayMenuViewController: UIViewController {
 
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
-        view.rowHeight = 284
+        view.rowHeight = 304
         view.backgroundColor = .clear
         view.separatorStyle = .none
         view.allowsSelection = false
@@ -49,7 +49,7 @@ final class TodayMenuViewController: UIViewController {
         viewModel.items
             .bind(to: tableView.rx
                 .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { _, item, cell in
-                cell.configure(with: item.meals)
+                cell.configure(with: item.meals, dayNumber: item.dayNumber)
             }.disposed(by: disposeBag)
 
         navigationItem.rightBarButtonItem?.rx
