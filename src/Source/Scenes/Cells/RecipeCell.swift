@@ -22,7 +22,7 @@ final class RecipeCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 24, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .light)
         return label
     }()
 

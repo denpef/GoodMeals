@@ -39,11 +39,4 @@ class RecipesListViewModelTests: XCTestCase {
         XCTAssertEqual(router.navigateToRecipeRecipeIdCallsCount, 1, "routing is failed")
         XCTAssertEqual(router.navigateToRecipeRecipeIdReceivedRecipeId, recipe.id, "incorrect id when navigation is beginnig")
     }
-
-    func testAddNewItem() {
-        let addNewItem = sut?.addNewItem.asObserver()
-        addNewItem?.onNext(())
-        XCTAssertTrue(router.navigateToRecipeRecipeIdCalled, "routing is failed")
-        XCTAssertEqual(router.navigateToRecipeRecipeIdCallsCount, 1, "routing is failed")
-    }
 }
