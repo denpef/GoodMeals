@@ -47,22 +47,18 @@ final class MealPlanViewController: UIViewController {
 
         view.addSubview(selectButton)
         selectButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            selectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            selectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            selectButton.heightAnchor.constraint(equalToConstant: 50),
-            selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        NSLayoutConstraint.activate([selectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     selectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     selectButton.heightAnchor.constraint(equalToConstant: 50),
+                                     selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
 
         tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: selectButton.topAnchor),
-        ])
+        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     tableView.bottomAnchor.constraint(equalTo: selectButton.topAnchor)])
 
         bind()
     }
@@ -74,13 +70,11 @@ final class MealPlanViewController: UIViewController {
             .bind(to: viewModel.tap)
             .disposed(by: disposeBag)
 
-        let dataSource = RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>(
-            configureCell: { _, tableView, _, recipe in
-                let cell = tableView.dequeueReusableCell(withIdentifier: RecipeCell.reuseIdentifier) as! RecipeCell
-                cell.configure(with: recipe)
-                return cell
-            }
-        )
+        let dataSource = RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>(configureCell: { _, tableView, _, recipe in
+            let cell = tableView.dequeueReusableCell(withIdentifier: RecipeCell.reuseIdentifier) as! RecipeCell
+            cell.configure(with: recipe)
+            return cell
+        })
 
         dataSource.titleForHeaderInSection = { dataSource, index in
             dataSource.sectionModels[index].header

@@ -1,11 +1,3 @@
-//
-//  Ingredient.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/18/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import Foundation
 
 struct Ingredient {

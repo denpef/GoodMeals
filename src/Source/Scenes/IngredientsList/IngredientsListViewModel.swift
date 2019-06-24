@@ -1,11 +1,3 @@
-//
-//  IngredientsListViewModel.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/12/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import Foundation
 import RxCocoa
 import RxDataSources
@@ -55,12 +47,10 @@ extension IngredientsListViewModel: PersistenceNotificationOutput {
     func didChanged<T>(_ changes: PersistenceNotification<T>) {
         if let changes = changes as? PersistenceNotification<Ingredient> {
             switch changes {
-            case let .error(error):
+            case .initial, .update:
+                items.on(.next(ingredientsService.all()))
+            default:
                 break
-            case let .initial(objects):
-                items.on(.next(ingredientsService.all()))
-            case let .update(objects, deletions, insertions, modifications):
-                items.on(.next(ingredientsService.all()))
             }
         }
     }

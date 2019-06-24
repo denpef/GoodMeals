@@ -52,12 +52,10 @@ final class TodayMenuCell: UITableViewCell {
     private func setupLabel() {
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+                                     titleLabel.heightAnchor.constraint(equalToConstant: 24),
+                                     titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+                                     titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
 
     private func setupCollectionView() {
@@ -65,23 +63,19 @@ final class TodayMenuCell: UITableViewCell {
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
-            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+                                     collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+                                     collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                                     collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
 
     private func setupPageControl() {
         contentView.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 6),
-            pageControl.heightAnchor.constraint(equalToConstant: 14),
-            pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
-            pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
-        ])
+        NSLayoutConstraint.activate([pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 6),
+                                     pageControl.heightAnchor.constraint(equalToConstant: 14),
+                                     pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+                                     pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor)])
     }
 
     func configure(with plans: [Meal]?, dayNumber: Int) {

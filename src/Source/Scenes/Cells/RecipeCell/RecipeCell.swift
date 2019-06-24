@@ -1,11 +1,3 @@
-//
-//  RecipeCell.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/30/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import UIKit
 
 final class RecipeCell: UITableViewCell {
@@ -16,12 +8,10 @@ final class RecipeCell: UITableViewCell {
         selectionStyle = .none
         addSubview(recipeCellView)
         recipeCellView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            recipeCellView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            recipeCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            recipeCellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            recipeCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-        ])
+        NSLayoutConstraint.activate([recipeCellView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+                                     recipeCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+                                     recipeCellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+                                     recipeCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)])
     }
 
     required init?(coder _: NSCoder) {

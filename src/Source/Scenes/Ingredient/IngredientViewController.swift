@@ -45,21 +45,17 @@ final class IngredientViewController: UIViewController {
         title = "Ingredient"
 
         view.addSubview(nameTextField)
-        NSLayoutConstraint.activate([
-            nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            nameTextField.heightAnchor.constraint(equalToConstant: 30),
-        ])
+        NSLayoutConstraint.activate([nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                                     nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
+                                     nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
+                                     nameTextField.heightAnchor.constraint(equalToConstant: 30)])
 
         view.addSubview(saveButton)
-        NSLayoutConstraint.activate([
-            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            saveButton.heightAnchor.constraint(equalToConstant: 24),
-            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26),
-        ])
+        NSLayoutConstraint.activate([saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
+                                     saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
+                                     saveButton.heightAnchor.constraint(equalToConstant: 24),
+                                     saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26)])
 
         nameTextField.text = viewModel.name.value
 

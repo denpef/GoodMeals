@@ -76,39 +76,31 @@ final class RecipeServingCell: UICollectionViewCell {
     private func configureLabel() {
         addSubview(countLabel)
         countLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            countLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            countLabel.widthAnchor.constraint(equalToConstant: 100),
-        ])
+        NSLayoutConstraint.activate([countLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+                                     countLabel.widthAnchor.constraint(equalToConstant: 100)])
     }
 
     private func configureButtons() {
         addSubview(plusButton)
         plusButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            plusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            plusButton.heightAnchor.constraint(equalToConstant: 50),
-            plusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 132),
-            plusButton.widthAnchor.constraint(equalToConstant: 50),
-        ])
+        NSLayoutConstraint.activate([plusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     plusButton.heightAnchor.constraint(equalToConstant: 50),
+                                     plusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 132),
+                                     plusButton.widthAnchor.constraint(equalToConstant: 50)])
 
         addSubview(minusButton)
         minusButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            minusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            minusButton.heightAnchor.constraint(equalToConstant: 50),
-            minusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 198),
-            minusButton.widthAnchor.constraint(equalToConstant: 50),
-        ])
+        NSLayoutConstraint.activate([minusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     minusButton.heightAnchor.constraint(equalToConstant: 50),
+                                     minusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 198),
+                                     minusButton.widthAnchor.constraint(equalToConstant: 50)])
 
         addSubview(addToShoppingListButton)
         addToShoppingListButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            addToShoppingListButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            addToShoppingListButton.heightAnchor.constraint(equalToConstant: 50),
-            addToShoppingListButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 260),
-            addToShoppingListButton.widthAnchor.constraint(equalToConstant: 50),
-        ])
+        NSLayoutConstraint.activate([addToShoppingListButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     addToShoppingListButton.heightAnchor.constraint(equalToConstant: 50),
+                                     addToShoppingListButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 260),
+                                     addToShoppingListButton.widthAnchor.constraint(equalToConstant: 50)])
     }
 }

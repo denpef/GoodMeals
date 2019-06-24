@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 
-public protocol PersistenceNotificationOutput: class {
+public protocol PersistenceNotificationOutput: AnyObject {
     func didChanged<T: Persistable>(_ changes: PersistenceNotification<T>)
 }
 

@@ -52,40 +52,38 @@ final class RecipeViewController: UIViewController {
     }
 
     private func configureDataSource() {
-        dataSource = RxCollectionViewSectionedReloadDataSource<RecipeSection>(
-            configureCell: { _, collectionView, indexPath, item in
-                switch item {
-                case let .IngredientItem(ingredient: ingredientAmount):
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
-                    cell.configure(ingredientAmount: ingredientAmount)
-                    self.viewModel.serving
-                        .bind(to: cell.serving)
-                        .disposed(by: self.disposeBag)
-                    return cell
-                case let .RecipeInfoItem(calorific: calorific, timeForPreparing: time):
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeInfoCell.reuseIdentifier, for: indexPath) as! RecipeInfoCell
-                    cell.configure(calorifical: calorific, timeForPreparing: time)
-                    return cell
-                case .ServingItem:
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
-                    cell.countOfServing
-                        .bind(to: self.viewModel.serving)
-                        .disposed(by: cell.disposeBag)
-                    cell.addToShoppingListButton.rx
-                        .tap
-                        .bind(to: self.viewModel.addToShoppingList)
-                        .disposed(by: cell.disposeBag)
-                    return cell
-                }
-            }, configureSupplementaryView: { _, collectionView, kind, indexPath -> UICollectionReusableView in
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                             withReuseIdentifier: "HeaderId",
-                                                                             for: indexPath) as! RecipeHeaderView
-                header.setImage(self.viewModel.recipe.image)
-
-                return header
+        dataSource = RxCollectionViewSectionedReloadDataSource<RecipeSection>(configureCell: { _, collectionView, indexPath, item in
+            switch item {
+            case let .IngredientItem(ingredient: ingredientAmount):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
+                cell.configure(ingredientAmount: ingredientAmount)
+                self.viewModel.serving
+                    .bind(to: cell.serving)
+                    .disposed(by: self.disposeBag)
+                return cell
+            case let .RecipeInfoItem(calorific: calorific, timeForPreparing: time):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeInfoCell.reuseIdentifier, for: indexPath) as! RecipeInfoCell
+                cell.configure(calorifical: calorific, timeForPreparing: time)
+                return cell
+            case .ServingItem:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
+                cell.countOfServing
+                    .bind(to: self.viewModel.serving)
+                    .disposed(by: cell.disposeBag)
+                cell.addToShoppingListButton.rx
+                    .tap
+                    .bind(to: self.viewModel.addToShoppingList)
+                    .disposed(by: cell.disposeBag)
+                return cell
             }
-        )
+        }, configureSupplementaryView: { _, collectionView, kind, indexPath -> UICollectionReusableView in
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: "HeaderId",
+                                                                         for: indexPath) as! RecipeHeaderView
+            header.setImage(self.viewModel.recipe.image)
+
+            return header
+        })
     }
 
     func bind() {
@@ -100,12 +98,10 @@ final class RecipeViewController: UIViewController {
 
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
+        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                                     collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
 
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
 

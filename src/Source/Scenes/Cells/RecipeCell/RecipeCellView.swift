@@ -68,50 +68,40 @@ final class RecipeCellView: UIView {
     private func setupImageView() {
         addSubview(titleImageView)
         titleImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleImageView.topAnchor.constraint(equalTo: topAnchor, constant: 38),
-            titleImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -42),
-            titleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            titleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-        ])
+        NSLayoutConstraint.activate([titleImageView.topAnchor.constraint(equalTo: topAnchor, constant: 38),
+                                     titleImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -42),
+                                     titleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+                                     titleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)])
     }
 
     private func setupLabels() {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24),
-        ])
+        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+                                     titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+                                     titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+                                     titleLabel.heightAnchor.constraint(equalToConstant: 24)])
 
         addSubview(calorificalLabel)
         calorificalLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            calorificalLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            calorificalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            calorificalLabel.heightAnchor.constraint(equalToConstant: 26),
-            calorificalLabel.widthAnchor.constraint(equalToConstant: 80),
-        ])
+        NSLayoutConstraint.activate([calorificalLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+                                     calorificalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+                                     calorificalLabel.heightAnchor.constraint(equalToConstant: 26),
+                                     calorificalLabel.widthAnchor.constraint(equalToConstant: 80)])
 
         addSubview(timeForPreparingLabel)
         timeForPreparingLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            timeForPreparingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            timeForPreparingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            timeForPreparingLabel.heightAnchor.constraint(equalToConstant: 26),
-            timeForPreparingLabel.widthAnchor.constraint(equalToConstant: 80),
-        ])
+        NSLayoutConstraint.activate([timeForPreparingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+                                     timeForPreparingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+                                     timeForPreparingLabel.heightAnchor.constraint(equalToConstant: 26),
+                                     timeForPreparingLabel.widthAnchor.constraint(equalToConstant: 80)])
 
         addSubview(breakfastLabel)
         breakfastLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            breakfastLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            breakfastLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            breakfastLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            breakfastLabel.heightAnchor.constraint(equalToConstant: 26),
-        ])
+        NSLayoutConstraint.activate([breakfastLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+                                     breakfastLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+                                     breakfastLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+                                     breakfastLabel.heightAnchor.constraint(equalToConstant: 26)])
     }
 
     func configure(with recipe: Recipe?) {

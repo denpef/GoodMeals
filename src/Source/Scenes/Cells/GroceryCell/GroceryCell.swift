@@ -62,20 +62,16 @@ final class GroceryCell: UITableViewCell {
     private func configureButton() {
         addSubview(markedButton)
         markedButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            markedButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            markedButton.heightAnchor.constraint(equalToConstant: 20),
-            markedButton.widthAnchor.constraint(equalToConstant: 20),
-            markedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-        ])
+        NSLayoutConstraint.activate([markedButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     markedButton.heightAnchor.constraint(equalToConstant: 20),
+                                     markedButton.widthAnchor.constraint(equalToConstant: 20),
+                                     markedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)])
 
         addSubview(deleteButton)
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            deleteButton.heightAnchor.constraint(equalToConstant: 20),
-            deleteButton.widthAnchor.constraint(equalToConstant: 20),
-            deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-        ])
+        NSLayoutConstraint.activate([deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     deleteButton.heightAnchor.constraint(equalToConstant: 20),
+                                     deleteButton.widthAnchor.constraint(equalToConstant: 20),
+                                     deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)])
     }
 }

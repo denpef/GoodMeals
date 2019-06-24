@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 3/17/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

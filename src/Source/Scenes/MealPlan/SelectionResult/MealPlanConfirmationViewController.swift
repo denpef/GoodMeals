@@ -40,20 +40,16 @@ final class MealPlanConfirmationViewController: UIViewController {
 
         view.addSubview(infoLabel)
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            infoLabel.widthAnchor.constraint(equalToConstant: 250),
-        ])
+        NSLayoutConstraint.activate([infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                                     infoLabel.widthAnchor.constraint(equalToConstant: 250)])
 
         view.addSubview(acceptButton)
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            acceptButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            acceptButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            acceptButton.heightAnchor.constraint(equalToConstant: 50),
-            acceptButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        NSLayoutConstraint.activate([acceptButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     acceptButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     acceptButton.heightAnchor.constraint(equalToConstant: 50),
+                                     acceptButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
 
         bind()
     }
