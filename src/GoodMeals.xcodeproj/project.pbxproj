@@ -865,7 +865,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen xcassets -t swift4 -o ${SRCROOT}/Resources/Assets/Assets.swift ${SRCROOT}/Resources/Assets/Assets.xcassets\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi ${SRCROOT}/Resources/Assets/Assets.swift ${SRCROOT}/Resources/Assets/Assets.xcassets\n";
+			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen xcassets -t swift4 -o ${SRCROOT}/Resources/Assets/Assets.swift ${SRCROOT}/Resources/Assets/Assets.xcassets\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
 		};
 		02EB0CA2229EDF8000A84E4C /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;
