@@ -716,9 +716,10 @@
 			buildConfigurationList = 021ED89B223E0EE1009FA238 /* Build configuration list for PBXNativeTarget "GoodMeals" */;
 			buildPhases = (
 				61F5CD432899E6729F032DD0 /* [CP] Check Pods Manifest.lock */,
-				02146EE122BFEE39005BE192 /* Swiftgen */,
+				02146E7C22BFE2F2005BE192 /* SwiftFormat */,
+				02146EE522C0BA42005BE192 /* SwiftLint */,
+				02146EE122BFEE39005BE192 /* SwiftGen */,
 				021ED86F223E0EE0009FA238 /* Sources */,
-				02146E7C22BFE2F2005BE192 /* Swiftformat */,
 				021ED870223E0EE0009FA238 /* Frameworks */,
 				021ED871223E0EE0009FA238 /* Resources */,
 				2957F05312F0EA35934ABF30 /* [CP] Embed Pods Frameworks */,
@@ -737,9 +738,9 @@
 			buildConfigurationList = 02EB0C9F229EDEF300A84E4C /* Build configuration list for PBXNativeTarget "GoodMealsTests" */;
 			buildPhases = (
 				6A98FF55E527C358250EF490 /* [CP] Check Pods Manifest.lock */,
+				02146E7D22BFE343005BE192 /* SwiftFormat */,
 				02EB0CA2229EDF8000A84E4C /* Sourcery */,
 				02EB0C94229EDEF300A84E4C /* Sources */,
-				02146E7D22BFE343005BE192 /* Swiftformat */,
 				02EB0C95229EDEF300A84E4C /* Frameworks */,
 				02EB0C96229EDEF300A84E4C /* Resources */,
 				07EBD56FAFBC2378BE75E932 /* [CP] Embed Pods Frameworks */,
@@ -813,7 +814,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02146E7C22BFE2F2005BE192 /* Swiftformat */ = {
+		02146E7C22BFE2F2005BE192 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -822,7 +823,7 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftformat;
+			name = SwiftFormat;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -831,7 +832,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n        echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
 		};
-		02146E7D22BFE343005BE192 /* Swiftformat */ = {
+		02146E7D22BFE343005BE192 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -840,16 +841,16 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftformat;
+			name = SwiftFormat;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n        echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftformat >/dev/null; then\n        swiftformat .\n    else\n        echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n    fi\nfi\n";
 		};
-		02146EE122BFEE39005BE192 /* Swiftgen */ = {
+		02146EE122BFEE39005BE192 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -858,7 +859,7 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftgen;
+			name = SwiftGen;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -866,6 +867,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen xcassets -t swift4 -o ${SRCROOT}/Resources/Assets/Assets.swift ${SRCROOT}/Resources/Assets/Assets.xcassets\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+		02146EE522C0BA42005BE192 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
 		};
 		02EB0CA2229EDF8000A84E4C /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;

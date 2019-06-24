@@ -29,10 +29,10 @@ class RecipeViewModel {
         name = BehaviorRelay(value: recipe.name)
 
         var items = [RecipeItem]()
-        items.append(.RecipeInfoItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
-        items.append(.ServingItem)
+        items.append(.recipeInfoItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
+        items.append(.servingItem)
         recipe.ingredients.forEach {
-            items.append(.IngredientItem(ingredient: $0))
+            items.append(.ingredientItem(ingredient: $0))
         }
         self.items = BehaviorSubject(value: [RecipeSection(items: items)])
 

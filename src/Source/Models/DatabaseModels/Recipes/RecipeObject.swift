@@ -25,9 +25,9 @@ import RealmSwift
                               name: String,
                               image: String,
                               timeForPreparing: String,
+                              calorific: Int,
                               ingredients: [IngredientAmountObject] = [],
-                              category: RecipeCategoryObject? = nil,
-                              calorific: Int) {
+                              category: RecipeCategoryObject? = nil) {
         self.init()
         self.id = id
         self.name = name

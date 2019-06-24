@@ -1,7 +1,7 @@
 import Foundation
 
 enum RecipeItem {
-    case RecipeInfoItem(calorific: Int, timeForPreparing: String)
-    case IngredientItem(ingredient: IngredientAmount)
-    case ServingItem
+    case recipeInfoItem(calorific: Int, timeForPreparing: String)
+    case ingredientItem(ingredient: IngredientAmount)
+    case servingItem
 }

@@ -6,7 +6,7 @@ extension UIImageView {
     ///
     /// - Parameters:
     ///   - path: URL path.
-    public func loadImage(from path: String) {
+    func loadImage(from path: String) {
         sd_setImage(with: URL(string: path))
     }
 
@@ -19,7 +19,7 @@ extension UIImageView {
     ///        super.prepareForReuse()
     ///        iconImageView.cancelImageLoading()
     ///    }
-    public func cancelImageLoading() {
+    func cancelImageLoading() {
         sd_cancelCurrentImageLoad()
     }
 }

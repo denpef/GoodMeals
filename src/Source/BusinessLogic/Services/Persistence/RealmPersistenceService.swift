@@ -14,7 +14,7 @@ public enum PersistenceNotification<T> {
 final class RealmPersistenceService: PersistenceService {
     private var config: Realm.Configuration
 
-    public convenience init(inMemoryIdentifier: String) {
+    convenience init(inMemoryIdentifier: String) {
         var configuration = Realm.Configuration()
         configuration.inMemoryIdentifier = inMemoryIdentifier
         self.init(configuration: configuration)
@@ -126,13 +126,14 @@ final class RealmPersistenceService: PersistenceService {
         }
     }
 
-    // MARK: -Private functions
+    // MARK: - Private functions
 
     private func write(realm: Realm?, _ block: () -> Void) {
         if let realm = realm {
             if realm.isInWriteTransaction {
                 block()
             } else {
+                // swiftlint:disable force_try
                 try! realm.write(block)
             }
         } else {

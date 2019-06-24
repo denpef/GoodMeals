@@ -16,6 +16,7 @@ class RecipesListViewModelTests: XCTestCase {
     // MARK: - Override test methods
 
     override func setUp() {
+        super.setUp()
         recipe.id = "0"
         service.subscribeCollectionSubscriberCallsCount = 0
         service.allReturnValue = [recipe]

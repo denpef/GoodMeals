@@ -4,7 +4,7 @@ import RealmSwift
     // MARK: - Properties
 
     dynamic var id: String = ""
-    dynamic var startDate: Date = Date()
+    dynamic var startDate = Date()
     dynamic var mealPlan: MealPlanObject?
 
     // MARK: - Meta

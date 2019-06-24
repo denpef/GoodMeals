@@ -25,7 +25,7 @@ final class IngredientCollectionViewCell: UICollectionViewCell {
     }
 
     private func bind() {
-        serving.map { (val) -> String in
+        serving.map { val -> String in
             String(Float(val) * self.amount)
         }.bind(to: amountLabel.rx.text)
             .disposed(by: disposeBag)

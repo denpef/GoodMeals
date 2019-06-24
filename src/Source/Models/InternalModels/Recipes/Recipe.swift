@@ -41,8 +41,8 @@ extension Recipe: Persistable {
                             name: name,
                             image: image,
                             timeForPreparing: timeForPreparing,
+                            calorific: calorific,
                             ingredients: ingredients.map { $0.managedObject },
-                            category: category?.managedObject,
-                            calorific: calorific)
+                            category: category?.managedObject)
     }
 }

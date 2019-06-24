@@ -51,21 +51,22 @@ final class RecipeViewController: UIViewController {
         bind()
     }
 
+    // swiftlint:disable force_cast
     private func configureDataSource() {
         dataSource = RxCollectionViewSectionedReloadDataSource<RecipeSection>(configureCell: { _, collectionView, indexPath, item in
             switch item {
-            case let .IngredientItem(ingredient: ingredientAmount):
+            case let .ingredientItem(ingredient: ingredientAmount):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
                 cell.configure(ingredientAmount: ingredientAmount)
                 self.viewModel.serving
                     .bind(to: cell.serving)
                     .disposed(by: self.disposeBag)
                 return cell
-            case let .RecipeInfoItem(calorific: calorific, timeForPreparing: time):
+            case let .recipeInfoItem(calorific: calorific, timeForPreparing: time):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeInfoCell.reuseIdentifier, for: indexPath) as! RecipeInfoCell
                 cell.configure(calorifical: calorific, timeForPreparing: time)
                 return cell
-            case .ServingItem:
+            case .servingItem:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
                 cell.countOfServing
                     .bind(to: self.viewModel.serving)

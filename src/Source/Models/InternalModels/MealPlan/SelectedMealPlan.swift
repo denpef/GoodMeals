@@ -38,7 +38,8 @@ extension SelectedMealPlan: Persistable {
     }
 
     var managedObject: SelectedMealPlanObject {
-        return SelectedMealPlanObject(id: id, startDate: startDate,
+        return SelectedMealPlanObject(id: id,
+                                      startDate: startDate,
                                       mealPlan: mealPlan?.managedObject)
     }
 }

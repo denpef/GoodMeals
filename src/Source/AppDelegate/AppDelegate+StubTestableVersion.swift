@@ -1,5 +1,6 @@
 import Foundation
 
+// swiftlint:disable all
 extension AppDelegate {
     private struct StubIngredientList {
         var ingredients = [Ingredient]()
