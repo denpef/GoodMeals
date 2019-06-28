@@ -5,7 +5,7 @@ import RealmSwift
 
     dynamic var id: String = ""
     dynamic var name: String = ""
-    dynamic var dailyPlans: List<DailyPlanObject> = List<DailyPlanObject>()
+    let dailyPlans: List<DailyPlanObject> = List<DailyPlanObject>()
 
     // MARK: - Meta
 

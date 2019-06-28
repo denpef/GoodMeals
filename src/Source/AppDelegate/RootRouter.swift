@@ -17,7 +17,7 @@ final class RootRouter {
         recipesList.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
 
         let shoppingList = UINavigationController(rootViewController: factory.makeShoppingListViewController())
-        shoppingList.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        shoppingList.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
 
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
         tabBarController.viewControllers = [todayMenu, shoppingList, recipesList]

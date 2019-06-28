@@ -5,7 +5,7 @@ import RealmSwift
 
     dynamic var id: String = ""
     dynamic var dayNumber: Int = 0
-    dynamic var meals: List<MealObject> = List<MealObject>()
+    let meals: List<MealObject> = List<MealObject>()
 
     // MARK: - Meta
 
