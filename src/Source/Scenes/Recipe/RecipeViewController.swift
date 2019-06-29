@@ -29,7 +29,6 @@ final class RecipeViewController: UIViewController {
     init(viewModel: RecipeViewModel) {
         self.viewModel = viewModel
         collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
-        collectionView.register(RecipeInfoCell.self, forCellWithReuseIdentifier: RecipeInfoCell.reuseIdentifier)
         collectionView.register(RecipeServingCell.self, forCellWithReuseIdentifier: RecipeServingCell.reuseIdentifier)
         super.init(nibName: nil, bundle: nil)
     }
@@ -62,12 +61,9 @@ final class RecipeViewController: UIViewController {
                     .bind(to: cell.serving)
                     .disposed(by: self.disposeBag)
                 return cell
-            case let .recipeInfoItem(calorific: calorific, timeForPreparing: time):
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeInfoCell.reuseIdentifier, for: indexPath) as! RecipeInfoCell
-                cell.configure(calorifical: calorific, timeForPreparing: time)
-                return cell
-            case .servingItem:
+            case let .servingItem(calorific, time):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
+                cell.configure(calorifical: calorific, timeForPreparing: time)
                 cell.countOfServing
                     .bind(to: self.viewModel.serving)
                     .disposed(by: cell.disposeBag)
@@ -117,7 +113,11 @@ extension RecipeViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: view.frame.width, height: 300)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt _: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+            return CGSize(width: collectionView.frame.width, height: 70)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 40)
+        }
     }
 }

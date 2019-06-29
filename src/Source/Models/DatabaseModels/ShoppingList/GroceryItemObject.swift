@@ -5,7 +5,7 @@ import RealmSwift
 
     dynamic var id: String = ""
     dynamic var ingredient: IngredientObject?
-    dynamic var amount: Float = 0
+    dynamic var amount: Int = 0
     dynamic var marked: Bool = false
 
     // MARK: - Meta
@@ -16,7 +16,7 @@ import RealmSwift
 
     // MARK: Convenience Init
 
-    required convenience init(id: String, ingredient: IngredientObject?, amount: Float, marked: Bool) {
+    required convenience init(id: String, ingredient: IngredientObject?, amount: Int, marked: Bool) {
         self.init()
         self.id = id
         self.ingredient = ingredient

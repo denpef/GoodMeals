@@ -6,19 +6,30 @@ final class GroceryCell: UITableViewCell {
     var viewModel: GroceryCellViewModel?
     var disposeBag = DisposeBag()
 
-    lazy var markedButton: UIButton = {
+    private lazy var markedButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
+        button.setImage(Asset.image.image, tintColor: .green)
         return button
     }()
 
-    lazy var deleteButton: UIButton = {
+    private lazy var deleteButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
+        button.setImage(Asset.cancel.image, tintColor: UIColor.Common.deleteItem)
         return button
+    }()
+
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+
+    private lazy var amountLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        return label
     }()
 
     override func prepareForReuse() {
@@ -40,8 +51,14 @@ final class GroceryCell: UITableViewCell {
         guard let item = self.viewModel?.item else {
             return
         }
-        textLabel?.text = "\(item.ingredient?.name ?? "")"
-        markedButton.backgroundColor = item.marked ? .black : .green
+        titleLabel.text = "\(item.ingredient?.name ?? "")"
+        titleLabel.textColor = item.marked ? UIColor.Common.markedText : UIColor.Common.controlBackground
+
+        amountLabel.text = item.amount.formattedMass
+
+        markedButton.tintColor = item.marked ? UIColor.Common.ghostWhite : .green
+        deleteButton.tintColor = item.marked ? UIColor.Common.ghostWhite : UIColor.Common.deleteItem
+
         bind()
     }
 
@@ -62,16 +79,29 @@ final class GroceryCell: UITableViewCell {
     private func configureButton() {
         addSubview(markedButton)
         markedButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([markedButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     markedButton.heightAnchor.constraint(equalToConstant: 20),
-                                     markedButton.widthAnchor.constraint(equalToConstant: 20),
-                                     markedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)])
+        markedButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        markedButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        markedButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        markedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
 
         addSubview(deleteButton)
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     deleteButton.heightAnchor.constraint(equalToConstant: 20),
-                                     deleteButton.widthAnchor.constraint(equalToConstant: 20),
-                                     deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)])
+        deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+
+        addSubview(amountLabel)
+        amountLabel.translatesAutoresizingMaskIntoConstraints = false
+        amountLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        amountLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        amountLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48).isActive = true
+
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -106).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48).isActive = true
     }
 }

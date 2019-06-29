@@ -5,11 +5,11 @@ struct IngredientAmount {
 
     var id: String
     var ingredient: Ingredient?
-    var amount: Float = 0
+    var amount: Int = 0
 
     // MARK: Init
 
-    init(ingredient: Ingredient?, amount: Float) {
+    init(ingredient: Ingredient?, amount: Int) {
         id = UUID().uuidString
         self.ingredient = ingredient
         self.amount = amount

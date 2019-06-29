@@ -29,8 +29,8 @@ class RecipeViewModel {
         name = BehaviorRelay(value: recipe.name)
 
         var items = [RecipeItem]()
-        items.append(.recipeInfoItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
-        items.append(.servingItem)
+        items.append(.servingItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
+//        items.append(.servingItem)
         recipe.ingredients.forEach {
             items.append(.ingredientItem(ingredient: $0))
         }
@@ -42,7 +42,7 @@ class RecipeViewModel {
             }
             self.recipe.ingredients.forEach {
                 let item = GroceryItem(ingredient: $0.ingredient,
-                                       amount: $0.amount * Float(self.serving.value),
+                                       amount: $0.amount * self.serving.value,
                                        marked: false)
                 self.shoppingListService.add(item)
             }

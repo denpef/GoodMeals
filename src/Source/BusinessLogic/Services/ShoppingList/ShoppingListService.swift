@@ -18,7 +18,7 @@ protocol ShoppingListServiceType {
 }
 
 final class ShoppingListService: ShoppingListServiceType {
-    typealias Item = (ingredient: Ingredient, amount: Float)
+    typealias Item = (ingredient: Ingredient, amount: Int)
 
     private let persistenceService: PersistenceService
     var token: NotificationToken?
@@ -102,7 +102,9 @@ final class ShoppingListService: ShoppingListServiceType {
     }
 
     func all() -> [GroceryItem] {
-        return persistenceService.objects(GroceryItem.self, filter: nil, sortDescriptors: nil)
+        let sort = [SortDescriptor(keyPath: #keyPath(GroceryItemObject.marked), ascending: true),
+                    SortDescriptor(keyPath: #keyPath(GroceryItemObject.ingredient.name), ascending: true)]
+        return persistenceService.objects(GroceryItem.self, filter: nil, sortDescriptors: sort)
     }
 
     func subscribeCollection(subscriber: PersistenceNotificationOutput) {

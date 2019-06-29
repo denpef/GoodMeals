@@ -42,7 +42,7 @@ class IngredientViewModel {
             .disposed(by: disposeBag)
 
         tap.subscribe(onNext: {
-            if let _ = self.ingredientId {
+            if self.ingredientId != nil {
                 self.ingredientsService.update(self.ingredient)
             } else {
                 self.ingredientsService.add(self.ingredient)

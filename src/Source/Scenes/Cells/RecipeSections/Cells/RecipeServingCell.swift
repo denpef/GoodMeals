@@ -7,45 +7,51 @@ final class RecipeServingCell: UICollectionViewCell {
 
     var disposeBag: DisposeBag
 
-    private var countLabel: UILabel = {
+    private var servingLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+
+    private let calorificalLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+
+    private let timeForPreparingLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return label
     }()
 
     private let plusButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.backgroundColor = UIColor.Common.controlBackground
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("+", for: .normal)
+        button.setImage(Asset.plus.image, tintColor: UIColor.Common.controlBackground)
+        button.contentMode = .scaleAspectFill
         return button
     }()
 
     private let minusButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.backgroundColor = UIColor.Common.controlBackground
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("-", for: .normal)
+        button.setImage(Asset.minus.image, tintColor: UIColor.Common.controlBackground)
         return button
     }()
 
     let addToShoppingListButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.backgroundColor = UIColor.Common.controlBackground
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Add", for: .normal)
+        button.setImage(Asset.shoppingBag.image, tintColor: UIColor.Common.controlText)
         return button
     }()
 
     override init(frame: CGRect) {
         disposeBag = DisposeBag()
         super.init(frame: frame)
-        configureLabel()
+        configureInfoLabels()
+        configureServing()
         configureButtons()
         bind()
     }
@@ -60,9 +66,15 @@ final class RecipeServingCell: UICollectionViewCell {
     }
 
     private func bind() {
-        countOfServing.map { String($0) }
-            .bind(to: countLabel.rx.text)
-            .disposed(by: disposeBag)
+        countOfServing.map {
+            let regularAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)]
+            let boldAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold)]
+            let attributedText = NSMutableAttributedString(string: "Serving: ", attributes: regularAttributes)
+            attributedText.append(NSMutableAttributedString(string: "\($0)", attributes: boldAttributes))
+            return attributedText
+        }
+        .bind(to: servingLabel.rx.attributedText)
+        .disposed(by: disposeBag)
 
         plusButton.rx.tap.subscribe(onNext: {
             self.countOfServing.accept(self.countOfServing.value + 1)
@@ -73,34 +85,71 @@ final class RecipeServingCell: UICollectionViewCell {
         }).disposed(by: disposeBag)
     }
 
-    private func configureLabel() {
-        addSubview(countLabel)
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([countLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-                                     countLabel.widthAnchor.constraint(equalToConstant: 100)])
+    func configure(calorifical: Int, timeForPreparing: String) {
+        calorificalLabel.text = "\(calorifical.description) KCal"
+        timeForPreparingLabel.text = timeForPreparing
+    }
+
+    private func configureInfoLabels() {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.contentMode = .scaleAspectFit
+        stackView.spacing = 6
+        addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+
+        stackView.addArrangedSubview(calorificalLabel)
+        stackView.addArrangedSubview(timeForPreparingLabel)
+    }
+
+    private func configureServing() {
+        let buttonView = UIView()
+
+        buttonView.addSubview(minusButton)
+        buttonView.addSubview(plusButton)
+        plusButton.translatesAutoresizingMaskIntoConstraints = false
+        plusButton.widthAnchor.constraint(equalTo: plusButton.heightAnchor, multiplier: 1).isActive = true
+        plusButton.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive = true
+        plusButton.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor).isActive = true
+        plusButton.leadingAnchor.constraint(equalTo: buttonView.centerXAnchor, constant: 10).isActive = true
+
+        minusButton.translatesAutoresizingMaskIntoConstraints = false
+        minusButton.widthAnchor.constraint(equalTo: minusButton.heightAnchor, multiplier: 1).isActive = true
+        minusButton.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive = true
+        minusButton.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor).isActive = true
+        minusButton.trailingAnchor.constraint(equalTo: buttonView.centerXAnchor, constant: -10).isActive = true
+
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.contentMode = .scaleAspectFit
+        stackView.spacing = 6
+        addSubview(stackView)
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+
+        stackView.addArrangedSubview(servingLabel)
+        stackView.addArrangedSubview(buttonView)
     }
 
     private func configureButtons() {
-        addSubview(plusButton)
-        plusButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([plusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     plusButton.heightAnchor.constraint(equalToConstant: 50),
-                                     plusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 132),
-                                     plusButton.widthAnchor.constraint(equalToConstant: 50)])
-
-        addSubview(minusButton)
-        minusButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([minusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     minusButton.heightAnchor.constraint(equalToConstant: 50),
-                                     minusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 198),
-                                     minusButton.widthAnchor.constraint(equalToConstant: 50)])
-
         addSubview(addToShoppingListButton)
         addToShoppingListButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([addToShoppingListButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     addToShoppingListButton.heightAnchor.constraint(equalToConstant: 50),
-                                     addToShoppingListButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 260),
-                                     addToShoppingListButton.widthAnchor.constraint(equalToConstant: 50)])
+        addToShoppingListButton.widthAnchor.constraint(equalTo: addToShoppingListButton.heightAnchor,
+                                                       multiplier: 1).isActive = true
+        addToShoppingListButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        addToShoppingListButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        addToShoppingListButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
 }

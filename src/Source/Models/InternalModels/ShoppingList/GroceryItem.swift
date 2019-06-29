@@ -6,12 +6,12 @@ struct GroceryItem {
 
     var id: String
     var ingredient: Ingredient?
-    var amount: Float = 0
+    var amount: Int = 0
     var marked: Bool = false
 
     // MARK: Init
 
-    init(ingredient: Ingredient?, amount: Float, marked: Bool) {
+    init(ingredient: Ingredient?, amount: Int, marked: Bool) {
         id = UUID().uuidString
         self.ingredient = ingredient
         self.amount = amount

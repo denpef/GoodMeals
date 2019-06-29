@@ -58,7 +58,7 @@ extension AppDelegate {
 
         // ShoppingList
 
-        shoppingListService.add(GroceryItem(ingredient: list["Squash"].ingredient!, amount: Float(451), marked: false))
+        shoppingListService.add(GroceryItem(ingredient: list["Squash"].ingredient!, amount: 451, marked: false))
         shoppingListService.add(GroceryItem(ingredient: list["Lime"].ingredient!, amount: 150, marked: false))
         shoppingListService.add(GroceryItem(ingredient: list["Egg"].ingredient!, amount: 999, marked: false))
         shoppingListService.add(GroceryItem(ingredient: list["Mixed salad greens"].ingredient!, amount: 1001, marked: false))
