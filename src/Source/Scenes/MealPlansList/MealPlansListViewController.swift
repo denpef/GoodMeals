@@ -35,10 +35,10 @@ final class MealPlansListViewController: UIViewController {
         tableView.register(MealPlanCell.self, forCellReuseIdentifier: MealPlanCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.topAnchor),
-                                     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
 
     private func bind() {

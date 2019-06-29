@@ -11,11 +11,10 @@ final class RecipeHeaderView: UICollectionReusableView {
     func setImage(_ image: String) {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(
-            [imageView.topAnchor.constraint(equalTo: topAnchor),
-             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-             imageView.trailingAnchor.constraint(equalTo: trailingAnchor)])
+        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.sd_setImage(with: URL(string: image))
     }
 

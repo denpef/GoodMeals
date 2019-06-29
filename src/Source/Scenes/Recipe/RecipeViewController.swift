@@ -95,10 +95,10 @@ final class RecipeViewController: UIViewController {
 
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-                                     collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
 

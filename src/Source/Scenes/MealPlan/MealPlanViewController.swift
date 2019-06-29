@@ -47,18 +47,18 @@ final class MealPlanViewController: UIViewController {
 
         view.addSubview(selectButton)
         selectButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([selectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     selectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     selectButton.heightAnchor.constraint(equalToConstant: 50),
-                                     selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+        selectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        selectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        selectButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     tableView.bottomAnchor.constraint(equalTo: selectButton.topAnchor)])
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: selectButton.topAnchor).isActive = true
 
         bind()
     }

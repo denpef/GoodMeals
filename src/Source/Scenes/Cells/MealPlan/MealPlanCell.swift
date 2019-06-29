@@ -21,10 +21,10 @@ final class MealPlanCell: UITableViewCell {
     private func setupImageView() {
         contentView.addSubview(titleIMageView)
         titleIMageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([titleIMageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-                                     titleIMageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-                                     titleIMageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-                                     titleIMageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)])
+        titleIMageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        titleIMageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        titleIMageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        titleIMageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
 
     func configure(with plans: [DailyPlan]?) {

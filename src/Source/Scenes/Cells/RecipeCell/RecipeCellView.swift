@@ -68,40 +68,40 @@ final class RecipeCellView: UIView {
     private func setupImageView() {
         addSubview(titleImageView)
         titleImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([titleImageView.topAnchor.constraint(equalTo: topAnchor, constant: 38),
-                                     titleImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -42),
-                                     titleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-                                     titleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)])
+        titleImageView.topAnchor.constraint(equalTo: topAnchor, constant: 38).isActive = true
+        titleImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -42).isActive = true
+        titleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        titleImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
     }
 
     private func setupLabels() {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-                                     titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-                                     titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-                                     titleLabel.heightAnchor.constraint(equalToConstant: 24)])
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
         addSubview(calorificalLabel)
         calorificalLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([calorificalLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-                                     calorificalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-                                     calorificalLabel.heightAnchor.constraint(equalToConstant: 26),
-                                     calorificalLabel.widthAnchor.constraint(equalToConstant: 80)])
+        calorificalLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        calorificalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        calorificalLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        calorificalLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
 
         addSubview(timeForPreparingLabel)
         timeForPreparingLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([timeForPreparingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-                                     timeForPreparingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-                                     timeForPreparingLabel.heightAnchor.constraint(equalToConstant: 26),
-                                     timeForPreparingLabel.widthAnchor.constraint(equalToConstant: 80)])
+        timeForPreparingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        timeForPreparingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
+        timeForPreparingLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        timeForPreparingLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
 
         addSubview(breakfastLabel)
         breakfastLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([breakfastLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-                                     breakfastLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-                                     breakfastLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-                                     breakfastLabel.heightAnchor.constraint(equalToConstant: 26)])
+        breakfastLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        breakfastLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+        breakfastLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
+        breakfastLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
 
     func configure(with recipe: Recipe?) {

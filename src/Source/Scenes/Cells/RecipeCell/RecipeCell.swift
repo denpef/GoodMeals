@@ -8,10 +8,10 @@ final class RecipeCell: UITableViewCell {
         selectionStyle = .none
         addSubview(recipeCellView)
         recipeCellView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([recipeCellView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-                                     recipeCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-                                     recipeCellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-                                     recipeCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)])
+        recipeCellView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        recipeCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        recipeCellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        recipeCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
     }
 
     required init?(coder _: NSCoder) {

@@ -45,17 +45,17 @@ final class IngredientViewController: UIViewController {
         title = "Ingredient"
 
         view.addSubview(nameTextField)
-        NSLayoutConstraint.activate([nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                                     nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-                                     nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-                                     nameTextField.heightAnchor.constraint(equalToConstant: 30)])
+        nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
+        nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        nameTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
         view.addSubview(saveButton)
-        NSLayoutConstraint.activate([saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-                                     saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-                                     saveButton.heightAnchor.constraint(equalToConstant: 24),
-                                     saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26)])
+        saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
+        saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        saveButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
 
         nameTextField.text = viewModel.name.value
 

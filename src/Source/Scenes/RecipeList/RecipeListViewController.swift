@@ -15,10 +15,6 @@ final class RecipesListViewController: UIViewController {
         return view
     }()
 
-//    private lazy var addNewItemButton = {
-//        return UIButton()
-//    }()
-
     init(viewModel: RecipesListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -37,10 +33,10 @@ final class RecipesListViewController: UIViewController {
 
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         bind()
     }
@@ -50,11 +46,6 @@ final class RecipesListViewController: UIViewController {
             .bind(to: tableView.rx.items(cellIdentifier: RecipeCell.reuseIdentifier, cellType: RecipeCell.self)) { _, recipe, cell in
                 cell.configure(with: recipe)
             }.disposed(by: disposeBag)
-
-//        navigationItem.rightBarButtonItem?.rx.tap
-//            .throttle(0.5, scheduler: MainScheduler.instance)
-//            .bind(to: viewModel.addNewItem)
-//            .disposed(by: disposeBag)
 
         tableView.rx.modelSelected(Recipe.self)
             .bind(to: viewModel.selectItem)

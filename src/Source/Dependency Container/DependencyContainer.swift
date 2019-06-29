@@ -31,16 +31,6 @@ extension DependencyContainer: ViewControllerFactory {
         return IngredientViewController(viewModel: vm)
     }
 
-    func makeIngredientsListViewController() -> IngredientsListViewController {
-        let vm = makeIngredientsListViewModel()
-        let router = IngredientsListRouter(factory: self)
-        let vc = IngredientsListViewController(viewModel: vm)
-
-        vm.router = router
-        router.viewController = vc
-        return vc
-    }
-
     func makeTodayMenuViewController() -> TodayMenuViewController {
         let vm = makeTodayMenuViewModel()
         let router = TodayMenuRouter(factory: self)
@@ -94,10 +84,6 @@ extension DependencyContainer {
     func makeIngredientViewModel(_ ingredientId: String?) -> IngredientViewModel {
         return IngredientViewModel(ingredientsService: serviceContainer.ingredientsService,
                                    ingredientId: ingredientId)
-    }
-
-    func makeIngredientsListViewModel() -> IngredientsListViewModel {
-        return IngredientsListViewModel(ingredientsService: serviceContainer.ingredientsService)
     }
 
     func makeRecipeViewModel(_ recipeId: String) -> RecipeViewModel {
