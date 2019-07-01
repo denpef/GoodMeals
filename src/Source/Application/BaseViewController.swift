@@ -22,8 +22,12 @@ class ViewController<ViewModelType>: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupInterface()
         bind()
     }
+
+    /// Method to describe subview, controls and constrints
+    func setupInterface() {}
 
     /// There must be a binding to the ViewModel
     /// required condition - overriding func

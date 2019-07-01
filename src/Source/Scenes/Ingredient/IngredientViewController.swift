@@ -28,8 +28,7 @@ final class IngredientViewController: ViewController<IngredientViewModel> {
         return button
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         title = "Ingredient"
 
         view.addSubview(nameTextField)
@@ -46,8 +45,6 @@ final class IngredientViewController: ViewController<IngredientViewModel> {
         saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
 
         nameTextField.text = viewModel.name.value
-
-        bind()
     }
 
     override func viewDidAppear(_ animated: Bool) {

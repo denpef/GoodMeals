@@ -28,15 +28,13 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         return .lightContent
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
         collectionView.register(RecipeServingCell.self, forCellWithReuseIdentifier: RecipeServingCell.reuseIdentifier)
         title = viewModel.recipe.name
         navigationItem.largeTitleDisplayMode = .never
         configureCollectionView()
         configureDataSource()
-        bind()
     }
 
     // swiftlint:disable force_cast

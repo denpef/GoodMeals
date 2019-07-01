@@ -34,8 +34,7 @@ final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmat
         return button
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         title = "Select date"
         view.backgroundColor = UIColor.Common.white
 
@@ -61,8 +60,6 @@ final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmat
         acceptButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
         acceptButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         acceptButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 24).isActive = true
-
-        bind()
     }
 
     override func bind() {

@@ -37,9 +37,7 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
 
     private var buttonCenterYConstraint: NSLayoutConstraint?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func setupInterface() {
         title = viewModel.title
 
         tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
@@ -58,8 +56,6 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
 
         buttonCenterYConstraint = selectButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
         buttonCenterYConstraint?.isActive = true
-
-        bind()
     }
 
     override func bind() {

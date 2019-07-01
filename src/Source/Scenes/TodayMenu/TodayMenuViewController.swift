@@ -12,14 +12,10 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
         return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         title = "Today menu"
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
-
         setupTableView()
-        bind()
     }
 
     private func setupTableView() {

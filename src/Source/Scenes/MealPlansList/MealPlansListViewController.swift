@@ -11,11 +11,9 @@ final class MealPlansListViewController: ViewController<MealPlansListViewModel> 
         return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         title = "Meal plans"
         setupTableView()
-        bind()
     }
 
     private func setupTableView() {

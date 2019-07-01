@@ -12,8 +12,7 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
         return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         title = "Shopping list"
 
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -28,8 +27,6 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-
-        bind()
     }
 
     override func bind() {

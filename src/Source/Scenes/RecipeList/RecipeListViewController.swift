@@ -12,8 +12,7 @@ final class RecipesListViewController: ViewController<RecipesListViewModel> {
         return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupInterface() {
         title = "Recipes"
 
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -25,8 +24,6 @@ final class RecipesListViewController: ViewController<RecipesListViewModel> {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-
-        bind()
     }
 
     override func bind() {
