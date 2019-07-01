@@ -170,7 +170,8 @@ extension AppDelegate {
 
         service.add(secondDayPlan, update: true)
 
-        let plan = MealPlan(name: "Plan #1", dailyPlans: [firstDayPlan, secondDayPlan])
+        var imagePath = "http://ew.content.allrecipes.com/sites/default/files/2019-04/summer-clean-eating-meal-plan-1200-calories-960.jpg"
+        let plan = MealPlan(name: "Plan #1", image: imagePath, dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan, update: true)
 
         // MARK: - 2st Plans
@@ -199,7 +200,8 @@ extension AppDelegate {
 
         service.add(secondDayPlan, update: true)
 
-        let plan2 = MealPlan(name: "Plan #2", dailyPlans: [firstDayPlan, secondDayPlan])
+        imagePath = "http://ew.content.allrecipes.com/sites/default/files/2019-03/1200-calorie-weight-loss-meal-plan-for-summer-960.jpg"
+        let plan2 = MealPlan(name: "Plan #2", image: imagePath, dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan2, update: true)
 
         let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: plan)

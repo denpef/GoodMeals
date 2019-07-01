@@ -3,10 +3,11 @@ import RxCocoa
 import RxSwift
 
 class MealPlanConfirmationViewModel {
+    let mealPlan: MealPlan
+
     var router: MealPlanConfirmationRouterType?
 
     private let mealPlanService: MealPlanServiceType
-    private let mealPlan: MealPlan
 
     // MARK: - Input
 

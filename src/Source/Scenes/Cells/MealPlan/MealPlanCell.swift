@@ -11,6 +11,7 @@ final class MealPlanCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         setupImageView()
     }
 
@@ -27,9 +28,7 @@ final class MealPlanCell: UITableViewCell {
         titleIMageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
 
-    func configure(with plans: [DailyPlan]?) {
-        if let imagePath = plans?.first?.meals.first?.recipe?.image {
-            titleIMageView.loadImage(from: imagePath)
-        }
+    func configure(with image: String) {
+        titleIMageView.loadImage(from: image)
     }
 }

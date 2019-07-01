@@ -7,7 +7,7 @@ final class MealPlansListViewController: UIViewController {
 
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
-        view.rowHeight = 264
+        view.rowHeight = 186
         view.backgroundColor = .clear
         view.separatorStyle = .none
         return view
@@ -45,7 +45,7 @@ final class MealPlansListViewController: UIViewController {
         viewModel.items
             .bind(to: tableView.rx.items(cellIdentifier: MealPlanCell.reuseIdentifier,
                                          cellType: MealPlanCell.self)) { _, item, cell in
-                cell.configure(with: item.dailyPlans)
+                cell.configure(with: item.image)
             }.disposed(by: disposeBag)
 
         tableView.rx

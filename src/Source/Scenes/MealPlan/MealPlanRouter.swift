@@ -3,6 +3,7 @@ import UIKit
 // sourcery:begin: AutoMockable
 protocol MealPlanRouterType {
     func navigateToConfirmation(mealPlan: MealPlan)
+    func navigateToRecipe(recipeId: String)
 }
 
 class MealPlanRouter: MealPlanRouterType {
@@ -16,6 +17,11 @@ class MealPlanRouter: MealPlanRouterType {
 
     func navigateToConfirmation(mealPlan: MealPlan) {
         let vc = factory.makeMealPlanConfirmationViewController(mealPlan: mealPlan)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func navigateToRecipe(recipeId: String) {
+        let vc = factory.makeRecipeViewController(recipeId: recipeId)
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

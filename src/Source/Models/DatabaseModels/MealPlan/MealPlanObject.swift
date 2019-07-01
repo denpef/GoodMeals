@@ -5,6 +5,7 @@ import RealmSwift
 
     dynamic var id: String = ""
     dynamic var name: String = ""
+    dynamic var image: String = ""
     let dailyPlans: List<DailyPlanObject> = List<DailyPlanObject>()
 
     // MARK: - Meta
@@ -15,10 +16,11 @@ import RealmSwift
 
     // MARK: Convenience Init
 
-    required convenience init(id: String, name: String, dailyPlans: [DailyPlanObject]) {
+    required convenience init(id: String, name: String, image: String, dailyPlans: [DailyPlanObject]) {
         self.init()
         self.id = id
         self.name = name
+        self.image = image
         self.dailyPlans.append(objectsIn: dailyPlans)
     }
 }

@@ -57,8 +57,8 @@ final class RecipeCellView: UIView {
         layer.masksToBounds = false
         layer.shadowOpacity = 0.15
         layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        layer.shadowRadius = 6
-        layer.cornerRadius = 13
+        layer.shadowRadius = 4
+        layer.cornerRadius = 8
     }
 
     required init?(coder _: NSCoder) {

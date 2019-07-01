@@ -3,11 +3,12 @@ import UIKit
 
 final class TodayMenuCell: UITableViewCell {
     private var disposeBag = DisposeBag()
+//    private var viewModel: TodayMenuCellViewModel
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .left
+        label.textColor = UIColor.Common.controlBackground
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         return label
     }()
@@ -52,7 +53,7 @@ final class TodayMenuCell: UITableViewCell {
     private func setupLabel() {
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
@@ -63,7 +64,7 @@ final class TodayMenuCell: UITableViewCell {
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30).isActive = true
+        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 38).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
@@ -94,6 +95,12 @@ final class TodayMenuCell: UITableViewCell {
                     cell.configure(with: recipe)
                 }
             }.disposed(by: disposeBag)
+
+        // TODO: - navigation to recipe
+//        collectionView.rx.modelSelected(Recipe.self)
+//            .map{ $0.id }
+//            .bind(to: viewModel.recipe)
+//            .disposed(by: disposeBag)
     }
 }
 
@@ -110,3 +117,18 @@ extension TodayMenuCell: UICollectionViewDelegateFlowLayout {
         pageControl.currentPage = Int(targetContentOffset.pointee.x / collectionView.frame.width)
     }
 }
+
+// final class TodayMenuCellViewModel {
+//    var router: MealPlanRouterType?
+//    var recipe = PublishSubject<String>()
+//
+//    private let disposeBag = DisposeBag()
+//
+//    // MARK: - Init
+//
+//    init() {
+//        recipe.subscribe(onNext: { [weak self] recipeId in
+//            self?.router?.navigateToRecipe(recipeId: recipeId)
+//        }).disposed(by: disposeBag)
+//    }
+// }

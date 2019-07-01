@@ -4,6 +4,7 @@ import RxSwift
 
 class MealPlanViewModel {
     var router: MealPlanRouterType?
+    var recipe = PublishSubject<String>()
     var mealPlan: MealPlan
     var title: String
 
@@ -27,7 +28,7 @@ class MealPlanViewModel {
         self.mealPlan = mealPlan
         title = mealPlan.name
 
-        tap.subscribe(onNext: {
+        tap.subscribe(onNext: { _ in
             self.router?.navigateToConfirmation(mealPlan: self.mealPlan)
         }).disposed(by: disposeBag)
 
@@ -35,5 +36,9 @@ class MealPlanViewModel {
             let section = MealPlanTableViewSection(header: "Day \(dailyPlan.dayNumber)", items: dailyPlan.meals.compactMap { $0.recipe })
             sections.append(section)
         }
+
+        recipe.subscribe(onNext: { [weak self] recipeId in
+            self?.router?.navigateToRecipe(recipeId: recipeId)
+        }).disposed(by: disposeBag)
     }
 }
