@@ -1,11 +1,12 @@
+import RxCocoa
 import RxSwift
 import UIKit
 
 final class TodayMenuCell: UITableViewCell {
-    private var disposeBag = DisposeBag()
-//    private var viewModel: TodayMenuCellViewModel
+    var disposeBag = DisposeBag()
+    var recipeSelected = PublishRelay<Recipe?>()
 
-    private lazy var titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.Common.controlBackground
         label.textAlignment = .center
@@ -13,7 +14,7 @@ final class TodayMenuCell: UITableViewCell {
         return label
     }()
 
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -35,7 +36,6 @@ final class TodayMenuCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         setupLabel()
         setupCollectionView()
         setupPageControl()
@@ -48,6 +48,31 @@ final class TodayMenuCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
+    }
+
+    func configure(with plans: [Meal]?, dayNumber: Int, numberOfPages: Int) {
+        // TODO: - make helper
+        switch dayNumber {
+        case 1:
+            titleLabel.text = "Today menu"
+        default:
+            titleLabel.text = "Day \(dayNumber) menu"
+        }
+        pageControl.numberOfPages = numberOfPages
+
+        Observable.from(optional: plans)
+            .bind(to: collectionView.rx.items(cellIdentifier: RecipeCollectionViewCell.reuseIdentifier,
+                                              cellType: RecipeCollectionViewCell.self)) { _, plan, cell in
+                if let recipe = plan.recipe {
+                    cell.configure(with: recipe)
+                }
+            }.disposed(by: disposeBag)
+
+        collectionView.rx
+            .modelSelected(Meal.self)
+            .map { $0.recipe }
+            .bind(to: recipeSelected)
+            .disposed(by: disposeBag)
     }
 
     private func setupLabel() {
@@ -77,30 +102,6 @@ final class TodayMenuCell: UITableViewCell {
         pageControl.heightAnchor.constraint(equalToConstant: 14).isActive = true
         pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor).isActive = true
         pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor).isActive = true
-    }
-
-    func configure(with plans: [Meal]?, dayNumber: Int) {
-        switch dayNumber {
-        case 1:
-            titleLabel.text = "Today menu"
-        default:
-            titleLabel.text = "Day \(dayNumber) menu"
-        }
-        pageControl.numberOfPages = plans?.count ?? 0
-
-        Observable.from(optional: plans)
-            .bind(to: collectionView.rx.items(cellIdentifier: RecipeCollectionViewCell.reuseIdentifier,
-                                              cellType: RecipeCollectionViewCell.self)) { _, plan, cell in
-                if let recipe = plan.recipe {
-                    cell.configure(with: recipe)
-                }
-            }.disposed(by: disposeBag)
-
-        // TODO: - navigation to recipe
-//        collectionView.rx.modelSelected(Recipe.self)
-//            .map{ $0.id }
-//            .bind(to: viewModel.recipe)
-//            .disposed(by: disposeBag)
     }
 }
 

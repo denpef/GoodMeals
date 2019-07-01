@@ -1,6 +1,7 @@
 import UIKit
 
 final class RecipeCollectionViewCell: UICollectionViewCell {
+    var recipe: Recipe?
     private let recipeCellView = RecipeCellView()
 
     override init(frame: CGRect) {
@@ -18,6 +19,7 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with recipe: Recipe?) {
+        self.recipe = recipe
         recipeCellView.configure(with: recipe)
     }
 }

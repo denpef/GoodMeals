@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Scenes/Cells/RecipeSections/Cells/IngredientCollectionViewCell.swift"
-            timestampString = "583701156.671652"
+            timestampString = "583704089.4551359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Scenes/Recipe/RecipeViewController.swift"
-            timestampString = "583701156.671712"
+            timestampString = "583704089.455198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Scenes/Recipe/RecipeViewController.swift"
-            timestampString = "583701156.671759"
+            timestampString = "583704089.455251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -74,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Scenes/MealPlan/MealPlanViewController.swift"
-            timestampString = "583701156.671805"
+            timestampString = "583704089.455301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "setupInterface()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Source/Scenes/TodayMenu/TodayMenuViewModel.swift"
+            timestampString = "583704089.455698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "init(mealPlanService:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

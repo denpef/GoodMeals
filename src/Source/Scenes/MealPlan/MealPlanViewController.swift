@@ -72,17 +72,15 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
             return cell
         })
 
-//        dataSource.titleForHeaderInSection = { dataSource, index in
-//            dataSource.sectionModels[index].header
-//        }
-
         tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
 
-        Observable.just(viewModel.sections)
-            .bind(to: tableView.rx.items(dataSource: dataSource!))
-            .disposed(by: disposeBag)
+        if let dataSource = dataSource {
+            Observable.just(viewModel.sections)
+                .bind(to: tableView.rx.items(dataSource: dataSource))
+                .disposed(by: disposeBag)
+        }
 
         tableView.rx.modelSelected(Recipe.self)
             .map { $0.id }

@@ -9,6 +9,7 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
         view.backgroundColor = .clear
         view.separatorStyle = .none
         view.allowsSelection = false
+        view.register(TodayMenuCell.self, forCellReuseIdentifier: TodayMenuCell.reuseIdentifier)
         return view
     }()
 
@@ -19,7 +20,6 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     }
 
     private func setupTableView() {
-        tableView.register(TodayMenuCell.self, forCellReuseIdentifier: TodayMenuCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -31,8 +31,14 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     override func bind() {
         viewModel.items
             .bind(to: tableView.rx
-                .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { _, item, cell in
-                cell.configure(with: item.meals, dayNumber: item.dayNumber)
+                .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { [weak self] _, item, cell in
+                guard let self = self else {
+                    return
+                }
+                cell.configure(with: item.meals, dayNumber: item.dayNumber, numberOfPages: item.meals.count)
+                cell.recipeSelected
+                    .bind(to: self.viewModel.recipeSelected)
+                    .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
 
         navigationItem.rightBarButtonItem?.rx

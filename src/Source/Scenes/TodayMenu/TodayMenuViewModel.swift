@@ -10,6 +10,7 @@ final class TodayMenuViewModel {
 
     var mealPlanService: MealPlanServiceType
     var showMealPlans = PublishRelay<Void>()
+    var recipeSelected = PublishRelay<Recipe?>()
 
     // MARK: - Output
 
@@ -27,6 +28,13 @@ final class TodayMenuViewModel {
 
         showMealPlans.subscribe(onNext: { _ in
             self.router?.navigateToMealPlansList()
+        }).disposed(by: disposeBag)
+
+        recipeSelected.subscribe(onNext: { recipe in
+            guard let recipe = recipe else {
+                return
+            }
+            self.router?.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
     }
 
