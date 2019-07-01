@@ -6,7 +6,7 @@ final class MealPlansListViewController: ViewController<MealPlansListViewModel> 
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.rowHeight = 186
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         view.separatorStyle = .none
         return view
     }()
@@ -17,6 +17,7 @@ final class MealPlansListViewController: ViewController<MealPlansListViewModel> 
     }
 
     private func setupTableView() {
+        view.backgroundColor = .white
         tableView.register(MealPlanCell.self, forCellReuseIdentifier: MealPlanCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

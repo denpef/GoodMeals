@@ -15,7 +15,7 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.rowHeight = 264
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         view.separatorStyle = .none
         return view
     }()
@@ -39,6 +39,7 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
 
     override func setupInterface() {
         title = viewModel.title
+        view.backgroundColor = .white
 
         tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         view.addSubview(tableView)
