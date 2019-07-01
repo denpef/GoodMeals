@@ -10,9 +10,7 @@ import RxSwift
 //
 import UIKit
 
-final class RecipeViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var viewModel: RecipeViewModel
+final class RecipeViewController: ViewController<RecipeViewModel> {
     private var dataSource: RxCollectionViewSectionedReloadDataSource<RecipeSection>?
 
     let collectionView: UICollectionView = {
@@ -26,23 +24,14 @@ final class RecipeViewController: UIViewController {
         return view
     }()
 
-    init(viewModel: RecipeViewModel) {
-        self.viewModel = viewModel
-        collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
-        collectionView.register(RecipeServingCell.self, forCellWithReuseIdentifier: RecipeServingCell.reuseIdentifier)
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
+        collectionView.register(RecipeServingCell.self, forCellWithReuseIdentifier: RecipeServingCell.reuseIdentifier)
         title = viewModel.recipe.name
         navigationItem.largeTitleDisplayMode = .never
         configureCollectionView()
@@ -83,7 +72,7 @@ final class RecipeViewController: UIViewController {
         })
     }
 
-    func bind() {
+    override func bind() {
         viewModel.items
             .bind(to: collectionView.rx.items(dataSource: dataSource!))
             .disposed(by: disposeBag)

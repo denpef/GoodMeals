@@ -2,10 +2,7 @@ import RxDataSources
 import RxSwift
 import UIKit
 
-final class RecipesListViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var viewModel: RecipesListViewModel
-
+final class RecipesListViewController: ViewController<RecipesListViewModel> {
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.rowHeight = 320
@@ -14,15 +11,6 @@ final class RecipesListViewController: UIViewController {
         view.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         return view
     }()
-
-    init(viewModel: RecipesListViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +29,7 @@ final class RecipesListViewController: UIViewController {
         bind()
     }
 
-    func bind() {
+    override func bind() {
         viewModel.items
             .bind(to: tableView.rx.items(cellIdentifier: RecipeCell.reuseIdentifier, cellType: RecipeCell.self)) { _, recipe, cell in
                 cell.configure(with: recipe)

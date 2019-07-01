@@ -9,9 +9,7 @@ import RxSwift
 //
 import UIKit
 
-final class MealPlanViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var viewModel: MealPlanViewModel
+final class MealPlanViewController: ViewController<MealPlanViewModel> {
     private var dataSource: RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>?
 
     private lazy var tableView: UITableView = {
@@ -39,15 +37,6 @@ final class MealPlanViewController: UIViewController {
 
     private var buttonCenterYConstraint: NSLayoutConstraint?
 
-    init(viewModel: MealPlanViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,7 +62,7 @@ final class MealPlanViewController: UIViewController {
         bind()
     }
 
-    func bind() {
+    override func bind() {
         selectButton.rx
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)

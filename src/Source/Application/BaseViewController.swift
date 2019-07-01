@@ -3,13 +3,13 @@ import UIKit
 
 /**
  Class define UIViewController matching MVVM pattern
-*/
+ */
 class ViewController<ViewModelType>: UIViewController {
     /// ViewModel responsible for the business logic of the module
-    var viewModel: ViewModelType?
+    var viewModel: ViewModelType
 
     /// Thread safe bag that disposes added disposables on `deinit`
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
 
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")

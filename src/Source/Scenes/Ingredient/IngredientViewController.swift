@@ -8,10 +8,7 @@ import RxSwift
 //
 import UIKit
 
-final class IngredientViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var viewModel: IngredientViewModel
-
+final class IngredientViewController: ViewController<IngredientViewModel> {
     private var nameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -30,15 +27,6 @@ final class IngredientViewController: UIViewController {
         button.setTitle("Save", for: .normal)
         return button
     }()
-
-    init(viewModel: IngredientViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +55,7 @@ final class IngredientViewController: UIViewController {
         nameTextField.becomeFirstResponder()
     }
 
-    func bind() {
+    override func bind() {
         nameTextField.rx
             .text
             .orEmpty

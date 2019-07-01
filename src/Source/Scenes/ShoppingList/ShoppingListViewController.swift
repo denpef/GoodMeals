@@ -1,10 +1,7 @@
 import RxSwift
 import UIKit
 
-final class ShoppingListViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var viewModel: ShoppingListViewModel
-
+final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.rowHeight = 60
@@ -14,19 +11,6 @@ final class ShoppingListViewController: UIViewController {
         view.register(GroceryCell.self, forCellReuseIdentifier: GroceryCell.reuseIdentifier)
         return view
     }()
-
-    init(viewModel: ShoppingListViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc func tap() {
-        print("tap")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +32,7 @@ final class ShoppingListViewController: UIViewController {
         bind()
     }
 
-    func bind() {
+    override func bind() {
         viewModel.items
             .bind(to: tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier, cellType: GroceryCell.self)) { _, item, cell in
                 let vm = GroceryCellViewModel(with: item)

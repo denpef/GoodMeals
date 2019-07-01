@@ -1,10 +1,7 @@
 import RxSwift
 import UIKit
 
-final class MealPlanConfirmationViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var viewModel: MealPlanConfirmationViewModel
-
+final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmationViewModel> {
     private var infoLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.Common.controlBackground
@@ -37,15 +34,6 @@ final class MealPlanConfirmationViewController: UIViewController {
         return button
     }()
 
-    init(viewModel: MealPlanConfirmationViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Select date"
@@ -77,7 +65,7 @@ final class MealPlanConfirmationViewController: UIViewController {
         bind()
     }
 
-    func bind() {
+    override func bind() {
         acceptButton.rx
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)
