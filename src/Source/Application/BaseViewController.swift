@@ -25,6 +25,8 @@ class ViewController<ViewModelType>: UIViewController {
         bind()
     }
 
+    /// There must be a binding to the ViewModel
+    /// required condition - overriding func
     func bind() {
         fatalError("bind is not overriden")
     }
