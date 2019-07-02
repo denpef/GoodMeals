@@ -28,7 +28,7 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
 
     override func bind() {
         viewModel.items
-            .bind(to: tableView.rx
+            .drive(tableView.rx
                 .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { [weak self] _, item, cell in
                 guard let self = self else {
                     return

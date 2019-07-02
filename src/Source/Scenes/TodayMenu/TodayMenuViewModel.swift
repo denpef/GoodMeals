@@ -1,15 +1,21 @@
 import RxCocoa
 import RxSwift
 
+/**
+ Current meal plan module - show recipes by today
+ */
 final class TodayMenuViewModel {
-    // MARK: - Input
-
+    /// Handle meal plan action control event
     var mealPlansAction = PublishRelay<Void>()
+
+    /// Action handle selection and navigate to any recipe from current plan
     var recipeSelected = PublishRelay<Recipe>()
 
-    // MARK: - Output
+    /// Current plan daily menu items
+//    var items = BehaviorSubject<[DailyPlan]>(value: [])
+    var items: Driver<[DailyPlan]>
 
-    var items = BehaviorSubject<[DailyPlan]>(value: [])
+    var reload = PublishRelay<Void>()
 
     // MARK: - Private properties
 
@@ -22,6 +28,8 @@ final class TodayMenuViewModel {
     init(mealPlanService: MealPlanServiceType, router: TodayMenuRouterType) {
         self.mealPlanService = mealPlanService
         self.router = router
+        items = Observable.from([]).asDriver(onErrorJustReturn: [])
+
         mealPlanService.subscribeCollection(subscriber: self)
 
         mealPlansAction.subscribe(onNext: { _ in
@@ -31,15 +39,11 @@ final class TodayMenuViewModel {
         recipeSelected.subscribe(onNext: { recipe in
             self.router.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
-    }
 
-    private func updateMealPlan() {
-        let currentMealPlan = mealPlanService.getCurrentMealPlan()
-        if let dailyPlans = currentMealPlan?.mealPlan?.dailyPlans {
-            items.onNext(dailyPlans)
-        } else {
-            items.onNext([])
-        }
+        items = reload
+            .flatMapLatest {
+                Observable.from(optional: mealPlanService.getCurrentMealPlan()?.mealPlan?.dailyPlans)
+            }.asDriver(onErrorJustReturn: [])
     }
 }
 
@@ -48,7 +52,7 @@ extension TodayMenuViewModel: PersistenceNotificationOutput {
         if let changes = changes as? PersistenceNotification<SelectedMealPlan> {
             switch changes {
             case .initial, .update:
-                updateMealPlan()
+                reload.accept(())
             default:
                 break
             }
