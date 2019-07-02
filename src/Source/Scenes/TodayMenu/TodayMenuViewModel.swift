@@ -4,19 +4,18 @@ import RxSwift
 final class TodayMenuViewModel {
     // MARK: - Input
 
-    private var router: TodayMenuRouterType
-    private var mealPlanService: MealPlanServiceType
-
-    var showMealPlans = PublishRelay<Void>()
-    var recipeSelected = PublishRelay<Recipe?>()
+    var mealPlansAction = PublishRelay<Void>()
+    var recipeSelected = PublishRelay<Recipe>()
 
     // MARK: - Output
 
-    var items: BehaviorSubject<[DailyPlan]> = BehaviorSubject(value: [])
+    var items = BehaviorSubject<[DailyPlan]>(value: [])
 
     // MARK: - Private properties
 
     private let disposeBag = DisposeBag()
+    private var router: TodayMenuRouterType
+    private var mealPlanService: MealPlanServiceType
 
     // MARK: - Init
 
@@ -25,14 +24,11 @@ final class TodayMenuViewModel {
         self.router = router
         mealPlanService.subscribeCollection(subscriber: self)
 
-        showMealPlans.subscribe(onNext: { _ in
+        mealPlansAction.subscribe(onNext: { _ in
             self.router.navigateToMealPlansList()
         }).disposed(by: disposeBag)
 
         recipeSelected.subscribe(onNext: { recipe in
-            guard let recipe = recipe else {
-                return
-            }
             self.router.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
     }

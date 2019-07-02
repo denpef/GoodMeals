@@ -35,13 +35,14 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
                 }
                 cell.configure(with: item.meals, dayNumber: item.dayNumber, numberOfPages: item.meals.count)
                 cell.recipeSelected
+                    .flatMap { Observable.from(optional: $0) }
                     .bind(to: self.viewModel.recipeSelected)
                     .disposed(by: cell.disposeBag)
             }.disposed(by: disposeBag)
 
         navigationItem.rightBarButtonItem?.rx
             .tap
-            .bind(to: viewModel.showMealPlans)
+            .bind(to: viewModel.mealPlansAction)
             .disposed(by: disposeBag)
     }
 }
