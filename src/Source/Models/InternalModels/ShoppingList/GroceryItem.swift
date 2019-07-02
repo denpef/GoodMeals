@@ -1,5 +1,4 @@
 import Foundation
-import RxSwift
 
 struct GroceryItem {
     // MARK: - Properties

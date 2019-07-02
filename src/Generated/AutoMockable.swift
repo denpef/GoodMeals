@@ -12,23 +12,6 @@ import RxCocoa
 
 @testable import GoodMeals
 
-class IngredientsListRouterTypeMock: IngredientsListRouterType {
-    //MARK: - navigateToIngredient
-
-    var navigateToIngredientIngredientIdCallsCount = 0
-    var navigateToIngredientIngredientIdCalled: Bool {
-        return navigateToIngredientIngredientIdCallsCount > 0
-    }
-    var navigateToIngredientIngredientIdReceivedIngredientId: String?
-    var navigateToIngredientIngredientIdReceivedInvocations: [String?] = []
-    var navigateToIngredientIngredientIdClosure: ((String?) -> Void)?
-    func navigateToIngredient(ingredientId: String?) {
-        navigateToIngredientIngredientIdCallsCount += 1
-        navigateToIngredientIngredientIdReceivedIngredientId = ingredientId
-        navigateToIngredientIngredientIdReceivedInvocations.append(ingredientId)
-        navigateToIngredientIngredientIdClosure?(ingredientId)
-    }
-}
 class IngredientsServiceTypeMock: IngredientsServiceType {
     //MARK: - getModel
 
@@ -158,6 +141,21 @@ class MealPlanRouterTypeMock: MealPlanRouterType {
         navigateToConfirmationMealPlanReceivedMealPlan = mealPlan
         navigateToConfirmationMealPlanReceivedInvocations.append(mealPlan)
         navigateToConfirmationMealPlanClosure?(mealPlan)
+    }
+    //MARK: - navigateToRecipe
+
+    var navigateToRecipeRecipeIdCallsCount = 0
+    var navigateToRecipeRecipeIdCalled: Bool {
+        return navigateToRecipeRecipeIdCallsCount > 0
+    }
+    var navigateToRecipeRecipeIdReceivedRecipeId: String?
+    var navigateToRecipeRecipeIdReceivedInvocations: [String] = []
+    var navigateToRecipeRecipeIdClosure: ((String) -> Void)?
+    func navigateToRecipe(recipeId: String) {
+        navigateToRecipeRecipeIdCallsCount += 1
+        navigateToRecipeRecipeIdReceivedRecipeId = recipeId
+        navigateToRecipeRecipeIdReceivedInvocations.append(recipeId)
+        navigateToRecipeRecipeIdClosure?(recipeId)
     }
 }
 class MealPlanServiceTypeMock: MealPlanServiceType {
@@ -496,5 +494,20 @@ class TodayMenuRouterTypeMock: TodayMenuRouterType {
     func navigateToMealPlansList() {
         navigateToMealPlansListCallsCount += 1
         navigateToMealPlansListClosure?()
+    }
+    //MARK: - navigateToRecipe
+
+    var navigateToRecipeRecipeIdCallsCount = 0
+    var navigateToRecipeRecipeIdCalled: Bool {
+        return navigateToRecipeRecipeIdCallsCount > 0
+    }
+    var navigateToRecipeRecipeIdReceivedRecipeId: String?
+    var navigateToRecipeRecipeIdReceivedInvocations: [String] = []
+    var navigateToRecipeRecipeIdClosure: ((String) -> Void)?
+    func navigateToRecipe(recipeId: String) {
+        navigateToRecipeRecipeIdCallsCount += 1
+        navigateToRecipeRecipeIdReceivedRecipeId = recipeId
+        navigateToRecipeRecipeIdReceivedInvocations.append(recipeId)
+        navigateToRecipeRecipeIdClosure?(recipeId)
     }
 }

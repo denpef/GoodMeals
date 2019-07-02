@@ -1,13 +1,6 @@
-//
-import RxCocoa
 import RxDataSources
 import RxSwift
-//  RecipeViewController.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/21/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
+
 import UIKit
 
 final class RecipeViewController: ViewController<RecipeViewModel> {

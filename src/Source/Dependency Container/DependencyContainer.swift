@@ -12,7 +12,7 @@ class DependencyContainer {
 
 extension DependencyContainer: ViewControllerFactory {
     func makeRecipesListViewController() -> RecipesListViewController {
-        let vm = makeRecipesListViewModel()
+        let vm = RecipesListViewModel(recipesService: serviceContainer.recipesService)
         let router = RecipesListRouter(factory: self)
         let vc = RecipesListViewController(viewModel: vm)
 
@@ -22,17 +22,20 @@ extension DependencyContainer: ViewControllerFactory {
     }
 
     func makeRecipeViewController(recipeId: String) -> RecipeViewController {
-        let vm = makeRecipeViewModel(recipeId)
+        let vm = RecipeViewModel(recipesService: serviceContainer.recipesService,
+                                 shoppingListService: serviceContainer.shoppingListService,
+                                 recipeId: recipeId)
         return RecipeViewController(viewModel: vm)
     }
 
     func makeIngredientViewController(ingredientId: String?) -> IngredientViewController {
-        let vm = makeIngredientViewModel(ingredientId)
+        let vm = IngredientViewModel(ingredientsService: serviceContainer.ingredientsService,
+                                     ingredientId: ingredientId)
         return IngredientViewController(viewModel: vm)
     }
 
     func makeTodayMenuViewController() -> TodayMenuViewController {
-        let vm = makeTodayMenuViewModel()
+        let vm = TodayMenuViewModel(mealPlanService: serviceContainer.mealPlanService)
         let router = TodayMenuRouter(factory: self)
         let vc = TodayMenuViewController(viewModel: vm)
 
@@ -42,12 +45,12 @@ extension DependencyContainer: ViewControllerFactory {
     }
 
     func makeShoppingListViewController() -> ShoppingListViewController {
-        let vm = makeShoppingListViewModel()
+        let vm = ShoppingListViewModel(shoppingListService: serviceContainer.shoppingListService)
         return ShoppingListViewController(viewModel: vm)
     }
 
     func makeMealPlansListViewController() -> MealPlansListViewController {
-        let vm = makeMealPlansListViewModel()
+        let vm = MealPlansListViewModel(persistanceService: serviceContainer.persistenceService)
         let router = MealPlansListRouter(factory: self)
         let vc = MealPlansListViewController(viewModel: vm)
 
@@ -57,7 +60,7 @@ extension DependencyContainer: ViewControllerFactory {
     }
 
     func makeMealPlanViewController(mealPlan: MealPlan) -> MealPlanViewController {
-        let vm = makeMealPlanViewModel(mealPlan: mealPlan)
+        let vm = MealPlanViewModel(mealPlanService: serviceContainer.mealPlanService, mealPlan: mealPlan)
         let router = MealPlanRouter(factory: self)
         let vc = MealPlanViewController(viewModel: vm)
 
@@ -75,41 +78,6 @@ extension DependencyContainer: ViewControllerFactory {
         vm.router = router
         router.viewController = vc
         return vc
-    }
-}
-
-// MARK: - ViewModel Factory -
-
-extension DependencyContainer {
-    func makeIngredientViewModel(_ ingredientId: String?) -> IngredientViewModel {
-        return IngredientViewModel(ingredientsService: serviceContainer.ingredientsService,
-                                   ingredientId: ingredientId)
-    }
-
-    func makeRecipeViewModel(_ recipeId: String) -> RecipeViewModel {
-        return RecipeViewModel(recipesService: serviceContainer.recipesService,
-                               shoppingListService: serviceContainer.shoppingListService,
-                               recipeId: recipeId)
-    }
-
-    func makeRecipesListViewModel() -> RecipesListViewModel {
-        return RecipesListViewModel(recipesService: serviceContainer.recipesService)
-    }
-
-    func makeTodayMenuViewModel() -> TodayMenuViewModel {
-        return TodayMenuViewModel(mealPlanService: serviceContainer.mealPlanService)
-    }
-
-    func makeShoppingListViewModel() -> ShoppingListViewModel {
-        return ShoppingListViewModel(shoppingListService: serviceContainer.shoppingListService)
-    }
-
-    func makeMealPlansListViewModel() -> MealPlansListViewModel {
-        return MealPlansListViewModel(persistanceService: serviceContainer.persistenceService)
-    }
-
-    func makeMealPlanViewModel(mealPlan: MealPlan) -> MealPlanViewModel {
-        return MealPlanViewModel(mealPlanService: serviceContainer.mealPlanService, mealPlan: mealPlan)
     }
 }
 

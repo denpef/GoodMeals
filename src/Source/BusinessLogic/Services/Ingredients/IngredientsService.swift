@@ -1,7 +1,4 @@
-import Foundation
 import RealmSwift
-import RxCocoa
-import RxSwift
 
 // sourcery:begin: AutoMockable
 protocol IngredientsServiceType {

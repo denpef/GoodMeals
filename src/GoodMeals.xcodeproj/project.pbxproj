@@ -59,6 +59,7 @@
 		028ACD1D22C73FB10027F490 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028ACD1C22C73FB10027F490 /* Int+Extensions.swift */; };
 		028ACD6922C74C950027F490 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028ACD6822C74C950027F490 /* UIButton+Extensions.swift */; };
 		028ACE4322CA88F10027F490 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028ACE4222CA88F10027F490 /* BaseViewController.swift */; };
+		028ACE9222CB92EC0027F490 /* UIColor+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */; };
 		028C86B5228FDE420051E852 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86B4228FDE420051E852 /* Persistable.swift */; };
 		028C86BB228FE7D20051E852 /* IngredientCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BA228FE7D20051E852 /* IngredientCategory.swift */; };
 		028C86BD228FEB140051E852 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028C86BC228FEB140051E852 /* Ingredient.swift */; };
@@ -77,7 +78,7 @@
 		02BEF98F22AD3A3000E8C741 /* SelectedMealPlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */; };
 		02BEF99122AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF99022AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift */; };
 		02BEF9FB22AE3BC400E8C741 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */; };
-		02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */; };
+		02E5F69922643D3B00DD04AF /* Cell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F69822643D3B00DD04AF /* Cell+Extensions.swift */; };
 		02E7D4CD227B1393000F0576 /* IngredientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4CC227B1393000F0576 /* IngredientsService.swift */; };
 		02E7D4D1227B7539000F0576 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D0227B7539000F0576 /* PersistenceService.swift */; };
 		02E7D4D3227B7541000F0576 /* RealmPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */; };
@@ -88,7 +89,6 @@
 		02E87BB222B013B800237CD2 /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E87BB122B013B800237CD2 /* MealPlanViewModel.swift */; };
 		02E87BB522B0142100237CD2 /* MealPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E87BB422B0142100237CD2 /* MealPlanService.swift */; };
 		02E93E5F22BBF83800D18DE4 /* MealPlanTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E93E5E22BBF83800D18DE4 /* MealPlanTableViewSection.swift */; };
-		02EB0C9B229EDEF300A84E4C /* IngredientsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */; };
 		02EB0CA7229EEAF900A84E4C /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB0CA6229EEAF900A84E4C /* AutoMockable.swift */; };
 		02EEE7F822BBA535008ED084 /* CellViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEE7F722BBA535008ED084 /* CellViewModelFactory.swift */; };
 		02EEE7FB22BBA9D8008ED084 /* GroceryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEE7FA22BBA9D8008ED084 /* GroceryCellViewModel.swift */; };
@@ -161,6 +161,7 @@
 		028ACD1C22C73FB10027F490 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		028ACD6822C74C950027F490 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		028ACE4222CA88F10027F490 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Styles.swift"; sourceTree = "<group>"; };
 		028C86B4228FDE420051E852 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		028C86BA228FE7D20051E852 /* IngredientCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategory.swift; sourceTree = "<group>"; };
 		028C86BC228FEB140051E852 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -179,7 +180,7 @@
 		02BEF98E22AD3A3000E8C741 /* SelectedMealPlanObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMealPlanObject.swift; sourceTree = "<group>"; };
 		02BEF99022AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+StubTestableVersion.swift"; sourceTree = "<group>"; };
 		02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Helpers.swift"; sourceTree = "<group>"; };
+		02E5F69822643D3B00DD04AF /* Cell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Extensions.swift"; sourceTree = "<group>"; };
 		02E7D4CC227B1393000F0576 /* IngredientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsService.swift; sourceTree = "<group>"; };
 		02E7D4D0227B7539000F0576 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		02E7D4D2227B7541000F0576 /* RealmPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistenceService.swift; sourceTree = "<group>"; };
@@ -191,7 +192,6 @@
 		02E87BB422B0142100237CD2 /* MealPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanService.swift; sourceTree = "<group>"; };
 		02E93E5E22BBF83800D18DE4 /* MealPlanTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewSection.swift; sourceTree = "<group>"; };
 		02EB0C98229EDEF300A84E4C /* GoodMealsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodMealsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListViewModelTests.swift; sourceTree = "<group>"; };
 		02EB0C9C229EDEF300A84E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02EB0CA6229EEAF900A84E4C /* AutoMockable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
 		02EEE7F722BBA535008ED084 /* CellViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModelFactory.swift; sourceTree = "<group>"; };
@@ -299,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				028ACD1C22C73FB10027F490 /* Int+Extensions.swift */,
+				028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */,
 				0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */,
 				0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */,
 				02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */,
@@ -569,7 +570,7 @@
 			children = (
 				025A06BC228C86620008258F /* ReusableView.swift */,
 				02B41EFC22B3E12A004E93A4 /* StretchyHeaderLayout.swift */,
-				02E5F69822643D3B00DD04AF /* Cell+Helpers.swift */,
+				02E5F69822643D3B00DD04AF /* Cell+Extensions.swift */,
 				0225EFD5226C68BA004A4F60 /* Extensions */,
 			);
 			path = Utils;
@@ -649,7 +650,6 @@
 			isa = PBXGroup;
 			children = (
 				02EB0CA5229EEA4B00A84E4C /* Generated */,
-				02EB0C9A229EDEF300A84E4C /* IngredientsListViewModelTests.swift */,
 				02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */,
 				02EB0C9C229EDEF300A84E4C /* Info.plist */,
 			);
@@ -988,6 +988,7 @@
 				025E08F922B80AA30086458A /* GroceryCell.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
+				028ACE9222CB92EC0027F490 /* UIColor+Styles.swift in Sources */,
 				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
 				02674C3122B02C76005F940D /* MealPlanConfirmationViewController.swift in Sources */,
 				025E074C22B6337C0086458A /* IngredientAmount.swift in Sources */,
@@ -1024,7 +1025,7 @@
 				028C86C122915EC30051E852 /* RealmDefaultConfiguration.swift in Sources */,
 				020B572322BC901D0098E57C /* TodayMenuRouter.swift in Sources */,
 				02674C3522B02C88005F940D /* MealPlanConfirmationRouter.swift in Sources */,
-				02E5F69922643D3B00DD04AF /* Cell+Helpers.swift in Sources */,
+				02E5F69922643D3B00DD04AF /* Cell+Extensions.swift in Sources */,
 				023CDD2B22A032BB003ACDF3 /* RecipesService.swift in Sources */,
 				0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */,
 				023CDD2122A031BE003ACDF3 /* RecipeListViewModel.swift in Sources */,
@@ -1064,7 +1065,6 @@
 			files = (
 				02EB0CA7229EEAF900A84E4C /* AutoMockable.swift in Sources */,
 				02AE962322A03DAA00F3CD1B /* RecipesListViewModelTests.swift in Sources */,
-				02EB0C9B229EDEF300A84E4C /* IngredientsListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

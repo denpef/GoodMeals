@@ -1,4 +1,3 @@
-import Foundation
 import RealmSwift
 
 public protocol PersistenceNotificationOutput: AnyObject {

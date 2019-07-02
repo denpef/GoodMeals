@@ -1,5 +1,3 @@
-import Foundation
-
 protocol ServiceContainerType {
     var persistenceService: PersistenceService { get }
     var ingredientsService: IngredientsServiceType { get }

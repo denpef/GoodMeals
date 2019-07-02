@@ -1,11 +1,4 @@
-//
 import RxSwift
-//  IngredientViewController.swift
-//  GoodMeals
-//
-//  Created by Denis Efimov on 5/21/19.
-//  Copyright © 2019 Denis Efimov. All rights reserved.
-//
 import UIKit
 
 final class IngredientViewController: ViewController<IngredientViewModel> {
