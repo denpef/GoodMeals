@@ -30,11 +30,11 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         configureDataSource()
     }
 
-    // swiftlint:disable force_cast
     private func configureDataSource() {
         dataSource = RxCollectionViewSectionedReloadDataSource<RecipeSection>(configureCell: { _, collectionView, indexPath, item in
             switch item {
             case let .ingredientItem(ingredient: ingredientAmount):
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
                 cell.configure(ingredientAmount: ingredientAmount)
                 self.viewModel.serving
@@ -42,6 +42,7 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
                     .disposed(by: self.disposeBag)
                 return cell
             case let .servingItem(calorific, time):
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
                 cell.configure(calorifical: calorific, timeForPreparing: time)
                 cell.countOfServing
@@ -54,9 +55,8 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
                 return cell
             }
         }, configureSupplementaryView: { _, collectionView, kind, indexPath -> UICollectionReusableView in
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: "HeaderId",
-                                                                         for: indexPath) as! RecipeHeaderView
+            // swiftlint:disable:next force_cast
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderId", for: indexPath) as! RecipeHeaderView
             header.setImage(self.viewModel.image)
 
             return header
