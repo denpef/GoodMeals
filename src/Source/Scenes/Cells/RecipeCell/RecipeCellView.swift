@@ -3,7 +3,7 @@ import UIKit
 final class RecipeCellView: UIView {
     private lazy var breakfastLabel: UILabel = {
         let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        label.textColor = UIColor.Common.subtitleLabelText
         label.textAlignment = .center
         label.text = "Breakfast"
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
@@ -22,7 +22,7 @@ final class RecipeCellView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         label.textColor = .white
-        label.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2981592466)
+        label.backgroundColor = UIColor.Common.infoLabelText
         label.textAlignment = .center
         label.layer.cornerRadius = 13
         label.clipsToBounds = true
@@ -33,7 +33,7 @@ final class RecipeCellView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         label.textColor = .white
-        label.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2981592466)
+        label.backgroundColor = UIColor.Common.infoLabelText
         label.textAlignment = .center
         label.layer.cornerRadius = 13
         label.clipsToBounds = true

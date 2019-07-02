@@ -1,6 +1,7 @@
 import RealmSwift
 
-@objcMembers final class RecipeCategoryObject: Object {
+@objcMembers
+final class RecipeCategoryObject: Object {
     // MARK: - Properties
 
     dynamic var id: String = ""

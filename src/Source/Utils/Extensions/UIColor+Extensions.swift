@@ -26,6 +26,14 @@ extension UIColor {
         static var deleteItem: UIColor {
             return #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1) // #E87AA4
         }
+
+        static var subtitleLabelText: UIColor {
+            return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1) // #41464D
+        }
+
+        static var infoLabelText: UIColor {
+            return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3) // #000000 alpha: 0.3
+        }
     }
 
     /**

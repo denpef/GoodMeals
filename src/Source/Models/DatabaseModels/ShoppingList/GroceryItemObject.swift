@@ -1,6 +1,7 @@
 import RealmSwift
 
-@objcMembers final class GroceryItemObject: Object {
+@objcMembers
+final class GroceryItemObject: Object {
     // MARK: - Properties
 
     dynamic var id: String = ""

@@ -3,7 +3,10 @@ import RxCocoa
 import RxSwift
 
 class RecipeViewModel {
-    var recipe: Recipe
+    private var recipe: Recipe
+
+    var image: String
+    var title: String
 
     // MARK: - Input
 
@@ -24,13 +27,20 @@ class RecipeViewModel {
     init(recipesService: RecipesServiceType, shoppingListService: ShoppingListServiceType, recipeId: String) {
         self.recipesService = recipesService
         self.shoppingListService = shoppingListService
-        recipe = recipesService.getModel(by: recipeId)!
+
+        guard let recipe = recipesService.getModel(by: recipeId) else {
+            fatalError("Can't get recipe from database by id: \(recipeId)")
+        }
+
+        self.recipe = recipe
+
+        image = recipe.image
+        title = recipe.name
 
         name = BehaviorRelay(value: recipe.name)
 
         var items = [RecipeItem]()
         items.append(.servingItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
-//        items.append(.servingItem)
         recipe.ingredients.forEach {
             items.append(.ingredientItem(ingredient: $0))
         }

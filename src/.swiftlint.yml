@@ -42,7 +42,6 @@ opt_in_rules:
   - no_extension_access_modifier
   # - no_grouping_extension # enable after refactoring RxDataSource extensions
   # - nslocalizedstring_key # enable after localization
-  - number_separator
   - operator_usage_whitespace
   - overridden_super_call
   - override_in_extension

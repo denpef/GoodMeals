@@ -31,7 +31,7 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
     override func setupInterface() {
         collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
         collectionView.register(RecipeServingCell.self, forCellWithReuseIdentifier: RecipeServingCell.reuseIdentifier)
-        title = viewModel.recipe.name
+        title = viewModel.title
         navigationItem.largeTitleDisplayMode = .never
         configureCollectionView()
         configureDataSource()
@@ -64,15 +64,18 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "HeaderId",
                                                                          for: indexPath) as! RecipeHeaderView
-            header.setImage(self.viewModel.recipe.image)
+            header.setImage(self.viewModel.image)
 
             return header
         })
     }
 
     override func bind() {
+        guard let dataSource = dataSource else {
+            return
+        }
         viewModel.items
-            .bind(to: collectionView.rx.items(dataSource: dataSource!))
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 

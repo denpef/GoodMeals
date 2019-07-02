@@ -108,7 +108,7 @@ extension MealPlanViewController: UITableViewDelegate {
 
         // get the title from the dataSource
         sectionLabel.text = dataSource?.sectionModels[section].header
-        sectionLabel.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        sectionLabel.textColor = UIColor.Common.subtitleLabelText
         sectionLabel.textAlignment = .center
         sectionLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
 

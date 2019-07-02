@@ -1,6 +1,7 @@
 import RealmSwift
 
-@objcMembers class MealObject: Object {
+@objcMembers
+class MealObject: Object {
     dynamic var id: String = ""
     dynamic var mealtime: Int = 0
     dynamic var recipe: RecipeObject?
