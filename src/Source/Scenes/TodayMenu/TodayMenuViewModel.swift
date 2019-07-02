@@ -6,31 +6,36 @@ import RxSwift
  */
 final class TodayMenuViewModel {
     /// Handle meal plan action control event
-    var mealPlansAction = PublishRelay<Void>()
+    let mealPlansAction = PublishRelay<Void>()
 
     /// Action handle selection and navigate to any recipe from current plan
-    var recipeSelected = PublishRelay<Recipe>()
+    let recipeSelected = PublishRelay<Recipe>()
 
     /// Current plan daily menu items
-//    var items = BehaviorSubject<[DailyPlan]>(value: [])
-    var items: Driver<[DailyPlan]>
+    let items: Driver<[DailyPlan]>
 
-    var reload = PublishRelay<Void>()
+    /// Signal to request item data source (such as when data source updates)
+    let reload = PublishRelay<Void>()
 
     // MARK: - Private properties
 
+    private weak var mealPlanService: MealPlanServiceType?
+
     private let disposeBag = DisposeBag()
     private var router: TodayMenuRouterType
-    private var mealPlanService: MealPlanServiceType
 
     // MARK: - Init
 
-    init(mealPlanService: MealPlanServiceType, router: TodayMenuRouterType) {
+    init(mealPlanService: MealPlanServiceType?, router: TodayMenuRouterType) {
         self.mealPlanService = mealPlanService
         self.router = router
-        items = Observable.from([]).asDriver(onErrorJustReturn: [])
 
-        mealPlanService.subscribeCollection(subscriber: self)
+        items = reload
+            .flatMapLatest {
+                Observable.from(optional: mealPlanService?.getCurrentMealPlan()?.mealPlan?.dailyPlans)
+            }.asDriver(onErrorJustReturn: [])
+
+        mealPlanService?.subscribeCollection(subscriber: self)
 
         mealPlansAction.subscribe(onNext: { _ in
             self.router.navigateToMealPlansList()
@@ -39,11 +44,6 @@ final class TodayMenuViewModel {
         recipeSelected.subscribe(onNext: { recipe in
             self.router.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
-
-        items = reload
-            .flatMapLatest {
-                Observable.from(optional: mealPlanService.getCurrentMealPlan()?.mealPlan?.dailyPlans)
-            }.asDriver(onErrorJustReturn: [])
     }
 }
 

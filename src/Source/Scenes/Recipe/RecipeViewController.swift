@@ -34,31 +34,37 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         dataSource = RxCollectionViewSectionedReloadDataSource<RecipeSection>(configureCell: { _, collectionView, indexPath, item in
             switch item {
             case let .ingredientItem(ingredient: ingredientAmount):
-                // swiftlint:disable:next force_cast
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier, for: indexPath) as! IngredientCollectionViewCell
-                cell.configure(ingredientAmount: ingredientAmount)
-                self.viewModel.serving
-                    .bind(to: cell.serving)
-                    .disposed(by: self.disposeBag)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier,
+                                                              for: indexPath)
+                if let cell = cell as? IngredientCollectionViewCell {
+                    cell.configure(ingredientAmount: ingredientAmount)
+                    self.viewModel.serving
+                        .bind(to: cell.serving)
+                        .disposed(by: self.disposeBag)
+                }
                 return cell
             case let .servingItem(calorific, time):
-                // swiftlint:disable:next force_cast
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier, for: indexPath) as! RecipeServingCell
-                cell.configure(calorifical: calorific, timeForPreparing: time)
-                cell.countOfServing
-                    .bind(to: self.viewModel.serving)
-                    .disposed(by: cell.disposeBag)
-                cell.addToShoppingListButton.rx
-                    .tap
-                    .bind(to: self.viewModel.addToShoppingList)
-                    .disposed(by: cell.disposeBag)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeServingCell.reuseIdentifier,
+                                                              for: indexPath)
+                if let cell = cell as? RecipeServingCell {
+                    cell.configure(calorifical: calorific, timeForPreparing: time)
+                    cell.countOfServing
+                        .bind(to: self.viewModel.serving)
+                        .disposed(by: cell.disposeBag)
+                    cell.addToShoppingListButton.rx
+                        .tap
+                        .bind(to: self.viewModel.addToShoppingList)
+                        .disposed(by: cell.disposeBag)
+                }
                 return cell
             }
         }, configureSupplementaryView: { _, collectionView, kind, indexPath -> UICollectionReusableView in
-            // swiftlint:disable:next force_cast
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderId", for: indexPath) as! RecipeHeaderView
-            header.setImage(self.viewModel.image)
-
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: "HeaderId",
+                                                                         for: indexPath)
+            if let header = header as? RecipeHeaderView {
+                header.setImage(self.viewModel.image)
+            }
             return header
         })
     }

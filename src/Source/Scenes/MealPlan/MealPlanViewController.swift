@@ -61,9 +61,11 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
             .disposed(by: disposeBag)
 
         dataSource = RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>(configureCell: { _, tableView, indexPath, recipe in
-            // swiftlint:disable:next force_cast
-            let cell = tableView.dequeueReusableCell(withIdentifier: RecipeCell.reuseIdentifier, for: indexPath) as! RecipeCell
-            cell.configure(with: recipe)
+            let cell = tableView.dequeueReusableCell(withIdentifier: RecipeCell.reuseIdentifier,
+                                                     for: indexPath)
+            if let cell = cell as? RecipeCell {
+                cell.configure(with: recipe)
+            }
             return cell
         })
 

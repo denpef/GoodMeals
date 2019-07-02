@@ -1,7 +1,7 @@
 import RealmSwift
 
 // sourcery:begin: AutoMockable
-protocol MealPlanServiceType {
+protocol MealPlanServiceType: AnyObject {
     func getCurrentMealPlan() -> SelectedMealPlan?
     func add(_ selectedMealPlan: SelectedMealPlan)
     func subscribeCollection(subscriber: PersistenceNotificationOutput)

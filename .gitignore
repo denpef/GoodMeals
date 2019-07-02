@@ -52,5 +52,5 @@ playground.xcworkspace
 .build/
 
 # CocoaPods
-src/Pods/
-src/Podfile.lock
+#src/Pods/
+#src/Podfile.lock

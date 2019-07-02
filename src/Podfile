@@ -3,9 +3,9 @@ inhibit_all_warnings!
 use_frameworks!
 
 def shared_pods
-  pod 'RxSwift', '~> 4.0'
-  pod 'RxCocoa', '~> 4.0'
-  pod 'RxDataSources', '~> 3.0'
+  pod 'RxSwift', '~> 4.4'
+  pod 'RxCocoa', '~> 4.4'
+  pod 'RxDataSources', '~> 3.1'
   pod 'RealmSwift', '~> 3.14'
   pod 'SDWebImage', '~> 5.0'
 end
@@ -16,4 +16,8 @@ end
 
 target 'GoodMealsTests' do
   shared_pods
+  
+  # Pods for testing
+  pod 'RxBlocking', '= 4.4.2'
+  pod 'RxTest', '= 4.4.2'
 end

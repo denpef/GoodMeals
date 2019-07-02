@@ -20,8 +20,7 @@ class RecipesListViewModelTests: XCTestCase {
         recipe.id = "0"
         service.subscribeCollectionSubscriberCallsCount = 0
         service.allReturnValue = [recipe]
-        sut = RecipesListViewModel(recipesService: service)
-        sut?.router = router
+        sut = RecipesListViewModel(recipesService: service, router: router)
         router.navigateToRecipeRecipeIdCallsCount = 0
     }
 
