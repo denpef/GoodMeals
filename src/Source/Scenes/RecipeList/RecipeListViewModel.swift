@@ -1,8 +1,6 @@
 import RxSwift
 
 class RecipesListViewModel {
-    var router: RecipesListRouterType?
-
     // MARK: - Input
 
     /// Call to show add new item screen
@@ -19,18 +17,20 @@ class RecipesListViewModel {
 
     private let disposeBag = DisposeBag()
     private let recipesService: RecipesServiceType
+    private let router: RecipesListRouterType
 
     // MARK: - Init
 
-    init(recipesService: RecipesServiceType) {
+    init(recipesService: RecipesServiceType, router: RecipesListRouterType) {
         self.recipesService = recipesService
+        self.router = router
 
         items = BehaviorSubject(value: recipesService.all())
 
         recipesService.subscribeCollection(subscriber: self)
 
         selectItem.subscribe(onNext: { [weak self] recipe in
-            self?.router?.navigateToRecipe(recipeId: recipe.id)
+            self?.router.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
     }
 }

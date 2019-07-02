@@ -1,7 +1,7 @@
 import RxSwift
 
 final class MealPlansListViewModel {
-    var router: MealPlansListRouterType?
+    private let router: MealPlansListRouterType
 
     // MARK: - Input
 
@@ -17,12 +17,14 @@ final class MealPlansListViewModel {
 
     // MARK: - Init
 
-    init(persistanceService: PersistenceService) {
+    init(persistanceService: PersistenceService, router: MealPlansListRouterType) {
+        self.router = router
+
         let plans = persistanceService.objects(MealPlan.self, filter: nil, sortDescriptors: nil)
         items = BehaviorSubject(value: plans)
 
         mealPlan.subscribe(onNext: { [weak self] plan in
-            self?.router?.navigateToMealPlan(mealPlan: plan)
+            self?.router.navigateToMealPlan(mealPlan: plan)
         }).disposed(by: disposeBag)
     }
 }

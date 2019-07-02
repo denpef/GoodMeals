@@ -2,11 +2,11 @@ import RxCocoa
 import RxSwift
 
 final class TodayMenuViewModel {
-    var router: TodayMenuRouterType?
-
     // MARK: - Input
 
-    var mealPlanService: MealPlanServiceType
+    private var router: TodayMenuRouterType
+    private var mealPlanService: MealPlanServiceType
+
     var showMealPlans = PublishRelay<Void>()
     var recipeSelected = PublishRelay<Recipe?>()
 
@@ -20,19 +20,20 @@ final class TodayMenuViewModel {
 
     // MARK: - Init
 
-    init(mealPlanService: MealPlanServiceType) {
+    init(mealPlanService: MealPlanServiceType, router: TodayMenuRouterType) {
         self.mealPlanService = mealPlanService
+        self.router = router
         mealPlanService.subscribeCollection(subscriber: self)
 
         showMealPlans.subscribe(onNext: { _ in
-            self.router?.navigateToMealPlansList()
+            self.router.navigateToMealPlansList()
         }).disposed(by: disposeBag)
 
         recipeSelected.subscribe(onNext: { recipe in
             guard let recipe = recipe else {
                 return
             }
-            self.router?.navigateToRecipe(recipeId: recipe.id)
+            self.router.navigateToRecipe(recipeId: recipe.id)
         }).disposed(by: disposeBag)
     }
 

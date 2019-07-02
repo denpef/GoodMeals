@@ -13,7 +13,6 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     }()
 
     override func setupInterface() {
-        title = "Today menu"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
         setupTableView()
     }

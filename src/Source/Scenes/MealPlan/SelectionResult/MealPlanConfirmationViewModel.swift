@@ -4,10 +4,6 @@ import RxSwift
 class MealPlanConfirmationViewModel {
     let mealPlan: MealPlan
 
-    var router: MealPlanConfirmationRouterType?
-
-    private let mealPlanService: MealPlanServiceType
-
     // MARK: - Input
 
     let accept = PublishRelay<Void>()
@@ -15,10 +11,13 @@ class MealPlanConfirmationViewModel {
     // MARK: - Private properties
 
     private let disposeBag = DisposeBag()
+    private let router: MealPlanConfirmationRouterType
+    private let mealPlanService: MealPlanServiceType
 
     // MARK: - Init
 
-    init(mealPlanService: MealPlanServiceType, mealPlan: MealPlan) {
+    init(mealPlanService: MealPlanServiceType, mealPlan: MealPlan, router: MealPlanConfirmationRouterType) {
+        self.router = router
         self.mealPlanService = mealPlanService
         self.mealPlan = mealPlan
 
@@ -30,6 +29,6 @@ class MealPlanConfirmationViewModel {
     private func savePlan() {
         let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: mealPlan)
         mealPlanService.add(selectedPlan)
-        router?.dismiss()
+        router.dismiss()
     }
 }
