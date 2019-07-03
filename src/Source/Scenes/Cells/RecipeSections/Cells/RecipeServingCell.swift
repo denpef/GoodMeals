@@ -7,19 +7,8 @@ final class RecipeServingCell: UICollectionViewCell {
 
     var disposeBag: DisposeBag
 
-    private var servingLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        return label
-    }()
-
-    private let calorificalLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        return label
-    }()
+    private var servingLabel = UILabel(style: Stylesheet.ServingCell.info)
+    private let calorificalLabel = UILabel(style: Stylesheet.ServingCell.info)
 
     private let timeForPreparingLabel: UILabel = {
         let label = UILabel()
