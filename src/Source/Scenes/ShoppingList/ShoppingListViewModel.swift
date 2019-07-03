@@ -1,16 +1,24 @@
 import RxCocoa
 import RxSwift
 
+/**
+ Represent shopping list screen and related actions - remove, mark and clear
+ */
 final class ShoppingListViewModel {
-    // MARK: - Input
+    /// Handle the item mark action
+    let markedItem = PublishRelay<GroceryItem>()
 
-    var markedItem = PublishRelay<GroceryItem>()
-    var deleteItem = PublishRelay<GroceryItem>()
-    var deleteAllList = PublishRelay<Void>()
+    /// Handle the item delete action
+    let deleteItem = PublishRelay<GroceryItem>()
 
-    // MARK: - Output
+    /// Handle clear all shopping list action
+    let deleteAllList = PublishRelay<Void>()
 
-    var items: BehaviorSubject<[GroceryItem]>
+    /// Shopping list items (list of ingredients and amount)
+    var items: Driver<[GroceryItem]>
+
+    /// Signal to request item data source (such as when data source updates)
+    let reload = PublishRelay<Void>()
 
     // MARK: - Private properties
 
@@ -22,7 +30,9 @@ final class ShoppingListViewModel {
     init(shoppingListService: ShoppingListServiceType) {
         self.shoppingListService = shoppingListService
 
-        items = BehaviorSubject(value: shoppingListService.all())
+        items = reload
+            .flatMapLatest { Observable.from(optional: shoppingListService.all()) }
+            .asDriver(onErrorJustReturn: [])
 
         shoppingListService.subscribeCollection(subscriber: self)
 
@@ -45,8 +55,7 @@ extension ShoppingListViewModel: PersistenceNotificationOutput {
         if let changes = changes as? PersistenceNotification<GroceryItem> {
             switch changes {
             case .initial, .update:
-                let newItems = shoppingListService.all()
-                items.onNext(newItems)
+                reload.accept(())
             default:
                 break
             }

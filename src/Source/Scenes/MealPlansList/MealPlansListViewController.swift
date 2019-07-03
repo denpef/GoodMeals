@@ -28,8 +28,8 @@ final class MealPlansListViewController: ViewController<MealPlansListViewModel> 
 
     override func bind() {
         viewModel.items
-            .bind(to: tableView.rx.items(cellIdentifier: MealPlanCell.reuseIdentifier,
-                                         cellType: MealPlanCell.self)) { _, item, cell in
+            .drive(tableView.rx.items(cellIdentifier: MealPlanCell.reuseIdentifier,
+                                      cellType: MealPlanCell.self)) { _, item, cell in
                 cell.configure(with: item.image)
             }.disposed(by: disposeBag)
 

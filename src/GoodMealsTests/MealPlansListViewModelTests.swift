@@ -6,13 +6,13 @@ import XCTest
 @testable import GoodMeals
 
 // swiftlint:disable implicitly_unwrapped_optional
-class TodayMenuViewModelTests: XCTestCase {
-    var router: TodayMenuRouterType!
+class MealPlansListViewModelTests: XCTestCase {
     var service: MealPlanServiceTypeMock!
     var scheduler: TestScheduler!
     var disposeBag: DisposeBag!
+    var router: MealPlansListRouterTypeMock!
 
-    var sut: TodayMenuViewModel!
+    var sut: MealPlansListViewModel!
 
     // MARK: - Override test methods
 
@@ -21,15 +21,15 @@ class TodayMenuViewModelTests: XCTestCase {
         scheduler = TestScheduler(initialClock: 0)
         disposeBag = DisposeBag()
         service = MealPlanServiceTypeMock()
-        router = TodayMenuRouterTypeMock()
-        sut = TodayMenuViewModel(mealPlanService: service, router: router)
+        router = MealPlansListRouterTypeMock()
+        sut = MealPlansListViewModel(mealPlanService: service, router: router)
     }
 
     override func tearDown() {
         sut = nil
         service = nil
-        router = nil
         scheduler = nil
+        router = nil
         disposeBag = nil
         super.tearDown()
     }
@@ -39,27 +39,26 @@ class TodayMenuViewModelTests: XCTestCase {
     func testFetchSelectedMealPlan() {
         let recipe = Recipe(name: "", image: "", timeForPreparing: "")
         let meal = Meal(mealtime: .breakfast, recipe: recipe)
-        let expectedPlans: [DailyPlan] = [DailyPlan(dayNumber: 1, meals: [meal])]
-        let mealPlan = MealPlan(name: "", image: "", dailyPlans: expectedPlans)
-        let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: mealPlan)
+        let dailyPlan = [DailyPlan(dayNumber: 1, meals: [meal])]
+        let expectedItems: [MealPlan] = [MealPlan(name: "", image: "", dailyPlans: dailyPlan)]
 
-        service.getCurrentMealPlanReturnValue = selectedPlan
+        service.allReturnValue = expectedItems
 
         // create scheduler
-        let plans = scheduler.createObserver([DailyPlan].self)
+        let items = scheduler.createObserver([MealPlan].self)
 
         // bind the result
         sut.items
-            .drive(plans)
+            .drive(items)
             .disposed(by: disposeBag)
 
         // mock a reload
-        scheduler.createColdObservable([.next(10, ()), .next(30, ())])
+        scheduler.createColdObservable([.next(15, ()), .next(20, ())])
             .bind(to: sut.reload)
             .disposed(by: disposeBag)
 
         scheduler.start()
 
-        XCTAssertEqual(plans.events, [.next(10, expectedPlans), .next(30, expectedPlans)])
+        XCTAssertEqual(items.events, [.next(15, expectedItems), .next(20, expectedItems)])
     }
 }

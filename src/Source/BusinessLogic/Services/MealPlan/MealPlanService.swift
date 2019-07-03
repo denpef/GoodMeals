@@ -5,6 +5,7 @@ protocol MealPlanServiceType: AnyObject {
     func getCurrentMealPlan() -> SelectedMealPlan?
     func add(_ selectedMealPlan: SelectedMealPlan)
     func subscribeCollection(subscriber: PersistenceNotificationOutput)
+    func all() -> [MealPlan]
 }
 
 final class MealPlanService: MealPlanServiceType {
@@ -32,5 +33,9 @@ final class MealPlanService: MealPlanServiceType {
                                                        subscriber: subscriber,
                                                        filter: nil,
                                                        sortDescriptors: nil)
+    }
+
+    func all() -> [MealPlan] {
+        return persistenceService.objects(MealPlan.self, filter: nil, sortDescriptors: nil)
     }
 }

@@ -28,3 +28,9 @@ extension MealPlan: Persistable {
         return MealPlanObject(id: id, name: name, image: image, dailyPlans: dailyPlans.map { $0.managedObject })
     }
 }
+
+extension MealPlan: Equatable {
+    static func == (lhs: MealPlan, rhs: MealPlan) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

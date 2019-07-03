@@ -27,7 +27,8 @@ final class RecipesListViewController: ViewController<RecipesListViewModel> {
 
     override func bind() {
         viewModel.items
-            .bind(to: tableView.rx.items(cellIdentifier: RecipeCell.reuseIdentifier, cellType: RecipeCell.self)) { _, recipe, cell in
+            .drive(tableView.rx.items(cellIdentifier: RecipeCell.reuseIdentifier,
+                                      cellType: RecipeCell.self)) { _, recipe, cell in
                 cell.configure(with: recipe)
             }.disposed(by: disposeBag)
 

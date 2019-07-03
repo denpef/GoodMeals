@@ -1,4 +1,4 @@
-import RxCocoa
+import RxBlocking
 import RxSwift
 import RxTest
 import XCTest
@@ -6,13 +6,12 @@ import XCTest
 @testable import GoodMeals
 
 // swiftlint:disable implicitly_unwrapped_optional
-class RecipesListViewModelTests: XCTestCase {
-    var service: RecipesServiceTypeMock!
+class ShoppingListViewModelTests: XCTestCase {
+    var service: ShoppingListServiceTypeMock!
     var scheduler: TestScheduler!
     var disposeBag: DisposeBag!
-    var router: RecipesListRouterTypeMock!
 
-    var sut: RecipesListViewModel!
+    var sut: ShoppingListViewModel!
 
     // MARK: - Override test methods
 
@@ -20,16 +19,14 @@ class RecipesListViewModelTests: XCTestCase {
         super.setUp()
         scheduler = TestScheduler(initialClock: 0)
         disposeBag = DisposeBag()
-        service = RecipesServiceTypeMock()
-        router = RecipesListRouterTypeMock()
-        sut = RecipesListViewModel(recipesService: service, router: router)
+        service = ShoppingListServiceTypeMock()
+        sut = ShoppingListViewModel(shoppingListService: service)
     }
 
     override func tearDown() {
         sut = nil
         service = nil
         scheduler = nil
-        router = nil
         disposeBag = nil
         super.tearDown()
     }
@@ -37,12 +34,13 @@ class RecipesListViewModelTests: XCTestCase {
     // MARK: - Test functions
 
     func testFetchSelectedMealPlan() {
-        let expectedItems: [Recipe] = [Recipe(name: "", image: "", timeForPreparing: "")]
+        let ingredient = Ingredient(name: "")
+        let expectedItems: [GroceryItem] = [GroceryItem(ingredient: ingredient, amount: 0, marked: false)]
 
         service.allReturnValue = expectedItems
 
         // create scheduler
-        let items = scheduler.createObserver([Recipe].self)
+        let items = scheduler.createObserver([GroceryItem].self)
 
         // bind the result
         sut.items

@@ -1,17 +1,18 @@
+import RxCocoa
 import RxSwift
 
 class RecipesListViewModel {
-    // MARK: - Input
-
     /// Call to show add new item screen
     let addNewItem = PublishSubject<Void>()
 
     /// Call to open item page
     let selectItem = PublishSubject<Recipe>()
 
-    // MARK: - Output
+    /// Shopping list items (list of ingredients and amount)
+    let items: Driver<[Recipe]>
 
-    var items: BehaviorSubject<[Recipe]>
+    /// Signal to request item data source (such as when data source updates)
+    let reload = PublishRelay<Void>()
 
     // MARK: - Private properties
 
@@ -25,7 +26,9 @@ class RecipesListViewModel {
         self.recipesService = recipesService
         self.router = router
 
-        items = BehaviorSubject(value: recipesService.all())
+        items = reload
+            .flatMapLatest { Observable.from(optional: recipesService.all()) }
+            .asDriver(onErrorJustReturn: [])
 
         recipesService.subscribeCollection(subscriber: self)
 
@@ -40,7 +43,7 @@ extension RecipesListViewModel: PersistenceNotificationOutput {
         if let changes = changes as? PersistenceNotification<Recipe> {
             switch changes {
             case .initial, .update:
-                items.on(.next(recipesService.all()))
+                reload.accept(())
             default:
                 break
             }

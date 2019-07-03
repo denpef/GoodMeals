@@ -46,3 +46,9 @@ extension Recipe: Persistable {
                             category: category?.managedObject)
     }
 }
+
+extension Recipe: Equatable {
+    static func == (lhs: Recipe, rhs: Recipe) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

@@ -1,27 +1,33 @@
+import RxCocoa
 import RxSwift
 
 final class MealPlansListViewModel {
-    private let router: MealPlansListRouterType
-
     // MARK: - Input
 
-    var mealPlan = PublishSubject<MealPlan>()
+    let mealPlan = PublishSubject<MealPlan>()
 
     // MARK: - Output
 
-    var items: BehaviorSubject<[MealPlan]>
+    let items: Driver<[MealPlan]>
+
+    /// Signal to request item data source (such as when data source updates)
+    let reload = PublishRelay<Void>()
 
     // MARK: - Private properties
 
     private let disposeBag = DisposeBag()
+    private let router: MealPlansListRouterType
 
     // MARK: - Init
 
-    init(persistanceService: PersistenceService, router: MealPlansListRouterType) {
+    init(mealPlanService: MealPlanServiceType, router: MealPlansListRouterType) {
         self.router = router
 
-        let plans = persistanceService.objects(MealPlan.self, filter: nil, sortDescriptors: nil)
-        items = BehaviorSubject(value: plans)
+        items = reload
+            .flatMapLatest {
+                Observable.from(optional: mealPlanService.all())
+            }
+            .asDriver(onErrorJustReturn: [])
 
         mealPlan.subscribe(onNext: { [weak self] plan in
             self?.router.navigateToMealPlan(mealPlan: plan)

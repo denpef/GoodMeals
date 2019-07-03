@@ -201,6 +201,18 @@ class MealPlanServiceTypeMock: MealPlanServiceType {
         subscribeCollectionSubscriberReceivedInvocations.append(subscriber)
         subscribeCollectionSubscriberClosure?(subscriber)
     }
+    //MARK: - all
+
+    var allCallsCount = 0
+    var allCalled: Bool {
+        return allCallsCount > 0
+    }
+    var allReturnValue: [MealPlan]!
+    var allClosure: (() -> [MealPlan])?
+    func all() -> [MealPlan] {
+        allCallsCount += 1
+        return allClosure.map({ $0() }) ?? allReturnValue
+    }
 }
 class MealPlansListRouterTypeMock: MealPlansListRouterType {
     //MARK: - navigateToMealPlan

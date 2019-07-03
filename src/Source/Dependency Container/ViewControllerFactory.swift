@@ -1,12 +1,9 @@
-import UIKit
-
 protocol ViewControllerFactory {
+    func makeRecipesListViewController() -> RecipesListViewController
+    func makeMealPlansListViewController() -> MealPlansListViewController
+    func makeShoppingListViewController() -> ShoppingListViewController
     func makeMealPlanConfirmationViewController(mealPlan: MealPlan) -> MealPlanConfirmationViewController
     func makeMealPlanViewController(mealPlan: MealPlan) -> MealPlanViewController
-    func makeMealPlansListViewController() -> MealPlansListViewController
     func makeTodayMenuViewController() -> TodayMenuViewController
-    func makeShoppingListViewController() -> ShoppingListViewController
-    func makeIngredientViewController(ingredientId: String?) -> IngredientViewController
-    func makeRecipesListViewController() -> RecipesListViewController
     func makeRecipeViewController(recipeId: String) -> RecipeViewController
 }

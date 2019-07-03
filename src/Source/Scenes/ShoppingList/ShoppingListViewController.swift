@@ -31,7 +31,7 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
 
     override func bind() {
         viewModel.items
-            .bind(to: tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier, cellType: GroceryCell.self)) { _, item, cell in
+            .drive(tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier, cellType: GroceryCell.self)) { _, item, cell in
                 let vm = GroceryCellViewModel(with: item)
                 cell.configure(with: vm)
                 vm.markedChange

@@ -32,3 +32,9 @@ extension GroceryItem: Persistable {
         return GroceryItemObject(id: id, ingredient: ingredient?.managedObject, amount: amount, marked: marked)
     }
 }
+
+extension GroceryItem: Equatable {
+    static func == (lhs: GroceryItem, rhs: GroceryItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
