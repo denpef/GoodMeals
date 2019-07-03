@@ -49,5 +49,7 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
             .tap
             .bind(to: viewModel.deleteAllList)
             .disposed(by: disposeBag)
+
+        viewModel.reload.accept(())
     }
 }

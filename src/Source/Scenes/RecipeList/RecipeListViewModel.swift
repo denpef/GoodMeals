@@ -27,7 +27,9 @@ class RecipesListViewModel {
         self.router = router
 
         items = reload
-            .flatMapLatest { Observable.from(optional: recipesService.all()) }
+            .flatMapLatest {
+                Observable.from(optional: recipesService.all())
+            }
             .asDriver(onErrorJustReturn: [])
 
         recipesService.subscribeCollection(subscriber: self)
@@ -42,7 +44,7 @@ extension RecipesListViewModel: PersistenceNotificationOutput {
     func didChanged<T>(_ changes: PersistenceNotification<T>) {
         if let changes = changes as? PersistenceNotification<Recipe> {
             switch changes {
-            case .initial, .update:
+            case .update:
                 reload.accept(())
             default:
                 break

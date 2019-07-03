@@ -54,7 +54,7 @@ extension ShoppingListViewModel: PersistenceNotificationOutput {
     func didChanged<T>(_ changes: PersistenceNotification<T>) {
         if let changes = changes as? PersistenceNotification<GroceryItem> {
             switch changes {
-            case .initial, .update:
+            case .update:
                 reload.accept(())
             default:
                 break

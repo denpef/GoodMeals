@@ -44,5 +44,7 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
             .tap
             .bind(to: viewModel.mealPlansAction)
             .disposed(by: disposeBag)
+
+        viewModel.reload.accept(())
     }
 }

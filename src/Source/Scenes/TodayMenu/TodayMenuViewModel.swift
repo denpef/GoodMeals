@@ -51,7 +51,7 @@ extension TodayMenuViewModel: PersistenceNotificationOutput {
     func didChanged<T>(_ changes: PersistenceNotification<T>) {
         if let changes = changes as? PersistenceNotification<SelectedMealPlan> {
             switch changes {
-            case .initial, .update:
+            case .update:
                 reload.accept(())
             default:
                 break

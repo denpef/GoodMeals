@@ -35,5 +35,7 @@ final class RecipesListViewController: ViewController<RecipesListViewModel> {
         tableView.rx.modelSelected(Recipe.self)
             .bind(to: viewModel.selectItem)
             .disposed(by: disposeBag)
+
+        viewModel.reload.accept(())
     }
 }
