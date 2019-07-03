@@ -51,7 +51,7 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
                     cell.countOfServing
                         .bind(to: self.viewModel.serving)
                         .disposed(by: cell.disposeBag)
-                    cell.addToShoppingListButton.rx
+                    cell.addShoppingButton.rx
                         .tap
                         .bind(to: self.viewModel.addToShoppingList)
                         .disposed(by: cell.disposeBag)

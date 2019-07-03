@@ -568,8 +568,8 @@
 			isa = PBXGroup;
 			children = (
 				02E2069922CCB63C00C7CE82 /* Style.swift */,
-				02E2069D22CCB68A00C7CE82 /* Stylesheet.swift */,
 				02E2069B22CCB66900C7CE82 /* UIView+Style.swift */,
+				02E2069D22CCB68A00C7CE82 /* Stylesheet.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";

@@ -7,34 +7,16 @@ final class RecipeServingCell: UICollectionViewCell {
 
     var disposeBag: DisposeBag
 
-    private var servingLabel = UILabel(style: Stylesheet.ServingCell.info)
+    let addShoppingButton = UIButton(style: Stylesheet.ServingCell.addToShoppingList)
+
+    private let servingLabel = UILabel(style: Stylesheet.ServingCell.info)
     private let calorificalLabel = UILabel(style: Stylesheet.ServingCell.info)
-
-    private let timeForPreparingLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        return label
-    }()
-
-    private let plusButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(Asset.plus.image, tintColor: UIColor.Common.controlBackground)
-        button.contentMode = .scaleAspectFill
-        return button
-    }()
-
-    private let minusButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(Asset.minus.image, tintColor: UIColor.Common.controlBackground)
-        return button
-    }()
-
-    let addToShoppingListButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(Asset.shoppingBag.image, tintColor: UIColor.Common.controlText)
-        return button
-    }()
+    private let timeForPreparingLabel = UILabel(style: Stylesheet.ServingCell.info)
+    private let plusButton = UIButton(style: Stylesheet.ServingCell.plus)
+    private let minusButton = UIButton(style: Stylesheet.ServingCell.minus)
+    private let buttonsView = UIView()
+    private let labelsStack = UIStackView(style: Stylesheet.ServingCell.verticalStack)
+    private let buttonsStack = UIStackView(style: Stylesheet.ServingCell.verticalStack)
 
     override init(frame: CGRect) {
         disposeBag = DisposeBag()
@@ -80,65 +62,51 @@ final class RecipeServingCell: UICollectionViewCell {
     }
 
     private func configureInfoLabels() {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.contentMode = .scaleAspectFit
-        stackView.spacing = 6
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        stackView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        addSubview(labelsStack)
+        labelsStack.translatesAutoresizingMaskIntoConstraints = false
+        labelsStack.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        labelsStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        labelsStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        labelsStack.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-        stackView.addArrangedSubview(calorificalLabel)
-        stackView.addArrangedSubview(timeForPreparingLabel)
+        labelsStack.addArrangedSubview(calorificalLabel)
+        labelsStack.addArrangedSubview(timeForPreparingLabel)
     }
 
     private func configureServing() {
-        let buttonView = UIView()
+        buttonsView.addSubview(minusButton)
+        buttonsView.addSubview(plusButton)
 
-        buttonView.addSubview(minusButton)
-        buttonView.addSubview(plusButton)
         plusButton.translatesAutoresizingMaskIntoConstraints = false
         plusButton.widthAnchor.constraint(equalTo: plusButton.heightAnchor, multiplier: 1).isActive = true
-        plusButton.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive = true
-        plusButton.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor).isActive = true
-        plusButton.leadingAnchor.constraint(equalTo: buttonView.centerXAnchor, constant: 10).isActive = true
+        plusButton.topAnchor.constraint(equalTo: buttonsView.topAnchor).isActive = true
+        plusButton.bottomAnchor.constraint(equalTo: buttonsView.bottomAnchor).isActive = true
+        plusButton.leadingAnchor.constraint(equalTo: buttonsView.centerXAnchor, constant: 10).isActive = true
 
         minusButton.translatesAutoresizingMaskIntoConstraints = false
         minusButton.widthAnchor.constraint(equalTo: minusButton.heightAnchor, multiplier: 1).isActive = true
-        minusButton.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive = true
-        minusButton.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor).isActive = true
-        minusButton.trailingAnchor.constraint(equalTo: buttonView.centerXAnchor, constant: -10).isActive = true
+        minusButton.topAnchor.constraint(equalTo: buttonsView.topAnchor).isActive = true
+        minusButton.bottomAnchor.constraint(equalTo: buttonsView.bottomAnchor).isActive = true
+        minusButton.trailingAnchor.constraint(equalTo: buttonsView.centerXAnchor, constant: -10).isActive = true
 
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.contentMode = .scaleAspectFit
-        stackView.spacing = 6
-        addSubview(stackView)
+        addSubview(buttonsStack)
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStack.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        buttonsStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        buttonsStack.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        buttonsStack.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-        stackView.addArrangedSubview(servingLabel)
-        stackView.addArrangedSubview(buttonView)
+        buttonsStack.addArrangedSubview(servingLabel)
+        buttonsStack.addArrangedSubview(buttonsView)
     }
 
     private func configureButtons() {
-        addSubview(addToShoppingListButton)
-        addToShoppingListButton.translatesAutoresizingMaskIntoConstraints = false
-        addToShoppingListButton.widthAnchor.constraint(equalTo: addToShoppingListButton.heightAnchor,
-                                                       multiplier: 1).isActive = true
-        addToShoppingListButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        addToShoppingListButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        addToShoppingListButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+        addSubview(addShoppingButton)
+        addShoppingButton.translatesAutoresizingMaskIntoConstraints = false
+        addShoppingButton.widthAnchor.constraint(equalTo: addShoppingButton.heightAnchor, multiplier: 1).isActive = true
+        addShoppingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        addShoppingButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        addShoppingButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
 }
