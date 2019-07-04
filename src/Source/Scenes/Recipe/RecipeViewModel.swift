@@ -2,18 +2,12 @@ import RxCocoa
 import RxSwift
 
 class RecipeViewModel {
-    private var recipe: Recipe
+    let image: Observable<String>
+    let title: Driver<String>
+    let items: Driver<[RecipeSection]>
 
-    var image: String
-    var title: String
-
-    // MARK: - Input
-
-    let name: BehaviorRelay<String>
     let serving = BehaviorRelay<Int>(value: 2)
     let addToShoppingList = PublishRelay<Void>()
-    let inShoppingList = BehaviorRelay<Bool>(value: false)
-    let items: BehaviorSubject<[RecipeSection]>
 
     // MARK: - Private properties
 
@@ -27,34 +21,34 @@ class RecipeViewModel {
         self.recipesService = recipesService
         self.shoppingListService = shoppingListService
 
-        guard let recipe = recipesService.getModel(by: recipeId) else {
-            fatalError("Can't get recipe from database by id: \(recipeId)")
-        }
+        let recipe = Observable.from(optional: recipesService.getModel(by: recipeId))
 
-        self.recipe = recipe
+        image = recipe.map { $0.image }
 
-        image = recipe.image
-        title = recipe.name
+        title = recipe.map { $0.name }.asDriver(onErrorJustReturn: "")
 
-        name = BehaviorRelay(value: recipe.name)
-
-        var items = [RecipeItem]()
-        items.append(.servingItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
-        recipe.ingredients.forEach {
-            items.append(.ingredientItem(ingredient: $0))
-        }
-        self.items = BehaviorSubject(value: [RecipeSection(items: items)])
-
-        addToShoppingList.subscribe(onNext: { [weak self] _ in
-            guard let self = self else {
-                return
+        items = recipe.map { recipe -> [RecipeSection] in
+            var recipeItems = [RecipeItem]()
+            recipeItems.append(.servingItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
+            recipe.ingredients.forEach {
+                recipeItems.append(.ingredientItem(ingredient: $0))
             }
-            self.recipe.ingredients.forEach {
-                let item = GroceryItem(ingredient: $0.ingredient,
-                                       amount: $0.amount * self.serving.value,
-                                       marked: false)
-                self.shoppingListService.add(item)
-            }
-        }).disposed(by: disposeBag)
+            return [RecipeSection(items: recipeItems)]
+        }.asDriver(onErrorJustReturn: [])
+
+        Observable.combineLatest(addToShoppingList, recipe, serving)
+            .flatMap { _, recipe, serving -> Observable<[GroceryItem]> in
+                var items = [GroceryItem]()
+                recipe.ingredients.forEach {
+                    items.append(GroceryItem(ingredient: $0.ingredient,
+                                             amount: $0.amount * serving,
+                                             marked: false))
+                }
+                return Observable.from(optional: items)
+            }.subscribe(onNext: { groceryItems in
+                groceryItems.forEach {
+                    self.shoppingListService.add($0)
+                }
+            }).disposed(by: disposeBag)
     }
 }

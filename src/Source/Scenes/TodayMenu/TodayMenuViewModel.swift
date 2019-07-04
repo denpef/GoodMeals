@@ -31,8 +31,11 @@ final class TodayMenuViewModel {
         self.router = router
 
         items = reload
-            .flatMapLatest {
-                Observable.from(optional: mealPlanService?.getCurrentMealPlan()?.mealPlan?.dailyPlans)
+            .flatMapLatest { _ -> Observable<[DailyPlan]> in
+                guard let currentPlan = mealPlanService?.getCurrentMealPlan() else {
+                    return Observable.just([])
+                }
+                return Observable.from(optional: currentPlan.mealPlan?.dailyPlans)
             }.asDriver(onErrorJustReturn: [])
 
         mealPlanService?.subscribeCollection(subscriber: self)

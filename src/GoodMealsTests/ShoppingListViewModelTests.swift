@@ -33,7 +33,7 @@ class ShoppingListViewModelTests: XCTestCase {
 
     // MARK: - Test functions
 
-    func testFetchSelectedMealPlan() {
+    func testFetchShoppingList() {
         let ingredient = Ingredient(name: "")
         let expectedItems: [GroceryItem] = [GroceryItem(ingredient: ingredient, amount: 0, marked: false)]
 
@@ -55,5 +55,92 @@ class ShoppingListViewModelTests: XCTestCase {
         scheduler.start()
 
         XCTAssertEqual(items.events, [.next(15, expectedItems), .next(20, expectedItems)])
+    }
+
+    func testWithEmptyShoppingList() {
+        service.allReturnValue = []
+
+        // create scheduler
+        let items = scheduler.createObserver([GroceryItem].self)
+
+        sut.items
+            .drive(items)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: sut.reload)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(items.events, [.next(10, [])])
+    }
+
+    func testMarkedItem() {
+        XCTAssertFalse(service.markedCalled)
+
+        let expectedItem = GroceryItem(ingredient: Ingredient(name: ""), amount: 0, marked: false)
+
+        let action = scheduler.createObserver(GroceryItem.self)
+
+        sut.markedItem
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, expectedItem),
+                                        .next(20, expectedItem),
+                                        .next(30, expectedItem)])
+            .bind(to: sut.markedItem)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events, [.next(10, expectedItem),
+                                       .next(20, expectedItem),
+                                       .next(30, expectedItem)])
+        XCTAssertTrue(service.markedCalled)
+    }
+
+    func testDeleteItem() {
+        XCTAssertFalse(service.deleteCalled)
+
+        let expectedItem = GroceryItem(ingredient: Ingredient(name: ""), amount: 0, marked: false)
+
+        let action = scheduler.createObserver(GroceryItem.self)
+
+        sut.deleteItem
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, expectedItem),
+                                        .next(20, expectedItem),
+                                        .next(30, expectedItem)])
+            .bind(to: sut.deleteItem)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events, [.next(10, expectedItem),
+                                       .next(20, expectedItem),
+                                       .next(30, expectedItem)])
+        XCTAssertTrue(service.deleteCalled)
+    }
+
+    func testDeleteAllList() {
+        XCTAssertFalse(service.deleteAllListCalled)
+        let action = scheduler.createObserver(Void.self)
+
+        sut.deleteAllList
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: sut.deleteAllList)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events.count, 1)
+        XCTAssertTrue(service.deleteAllListCalled)
     }
 }

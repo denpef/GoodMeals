@@ -1,6 +1,5 @@
 import RxDataSources
 import RxSwift
-
 import UIKit
 
 final class RecipeViewController: ViewController<RecipeViewModel> {
@@ -24,7 +23,6 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
     override func setupInterface() {
         collectionView.register(IngredientCollectionViewCell.self, forCellWithReuseIdentifier: IngredientCollectionViewCell.reuseIdentifier)
         collectionView.register(RecipeServingCell.self, forCellWithReuseIdentifier: RecipeServingCell.reuseIdentifier)
-        title = viewModel.title
         navigationItem.largeTitleDisplayMode = .never
         configureCollectionView()
         configureDataSource()
@@ -59,22 +57,27 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
                 return cell
             }
         }, configureSupplementaryView: { _, collectionView, kind, indexPath -> UICollectionReusableView in
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: "HeaderId",
-                                                                         for: indexPath)
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderId", for: indexPath)
             if let header = header as? RecipeHeaderView {
-                header.setImage(self.viewModel.image)
+                self.viewModel.image.subscribe(onNext: { image in
+                    header.setImage(image)
+                }).disposed(by: self.disposeBag)
+//                header.setImage(self.viewModel.image)
             }
             return header
         })
     }
 
     override func bind() {
+        viewModel.title
+            .drive(rx.title)
+            .disposed(by: disposeBag)
+
         guard let dataSource = dataSource else {
             return
         }
         viewModel.items
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .drive(collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 

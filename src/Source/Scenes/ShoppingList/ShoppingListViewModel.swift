@@ -31,7 +31,7 @@ final class ShoppingListViewModel {
         self.shoppingListService = shoppingListService
 
         items = reload
-            .flatMapLatest { Observable.from(optional: shoppingListService.all()) }
+            .map { shoppingListService.all() }
             .asDriver(onErrorJustReturn: [])
 
         shoppingListService.subscribeCollection(subscriber: self)

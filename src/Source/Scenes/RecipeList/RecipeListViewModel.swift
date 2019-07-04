@@ -2,9 +2,6 @@ import RxCocoa
 import RxSwift
 
 class RecipesListViewModel {
-    /// Call to show add new item screen
-    let addNewItem = PublishSubject<Void>()
-
     /// Call to open item page
     let selectItem = PublishSubject<Recipe>()
 

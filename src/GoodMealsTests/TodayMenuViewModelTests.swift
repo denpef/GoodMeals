@@ -7,7 +7,7 @@ import XCTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 class TodayMenuViewModelTests: XCTestCase {
-    var router: TodayMenuRouterType!
+    var router: TodayMenuRouterTypeMock!
     var service: MealPlanServiceTypeMock!
     var scheduler: TestScheduler!
     var disposeBag: DisposeBag!
@@ -61,5 +61,63 @@ class TodayMenuViewModelTests: XCTestCase {
         scheduler.start()
 
         XCTAssertEqual(plans.events, [.next(10, expectedPlans), .next(30, expectedPlans)])
+    }
+
+    func testWithEmptyDailyPlans() {
+        service.getCurrentMealPlanReturnValue = nil
+
+        // create scheduler
+        let plans = scheduler.createObserver([DailyPlan].self)
+
+        sut.items
+            .drive(plans)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: sut.reload)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(plans.events, [.next(10, [])])
+    }
+
+    func testMealPlansAction() {
+        XCTAssertFalse(router.navigateToMealPlansListCalled)
+        let action = scheduler.createObserver(Void.self)
+
+        sut.mealPlansAction
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: sut.mealPlansAction)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events.count, 1)
+        XCTAssertTrue(router.navigateToMealPlansListCalled)
+    }
+
+    func testRecipeSelected() {
+        XCTAssertFalse(router.navigateToRecipeRecipeIdCalled)
+
+        let expectedRecipe = Recipe(name: "", image: "", timeForPreparing: "")
+
+        let action = scheduler.createObserver(Recipe.self)
+
+        sut.recipeSelected
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, expectedRecipe)])
+            .bind(to: sut.recipeSelected)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events, [.next(10, expectedRecipe)])
+        XCTAssertTrue(router.navigateToRecipeRecipeIdCalled)
     }
 }

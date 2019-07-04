@@ -36,7 +36,7 @@ class RecipesListViewModelTests: XCTestCase {
 
     // MARK: - Test functions
 
-    func testFetchSelectedMealPlan() {
+    func testFetchRecipeList() {
         let expectedItems: [Recipe] = [Recipe(name: "", image: "", timeForPreparing: "")]
 
         service.allReturnValue = expectedItems
@@ -57,5 +57,49 @@ class RecipesListViewModelTests: XCTestCase {
         scheduler.start()
 
         XCTAssertEqual(items.events, [.next(15, expectedItems), .next(20, expectedItems)])
+    }
+
+    func testWithEmptyRecipeList() {
+        service.allReturnValue = []
+
+        // create scheduler
+        let items = scheduler.createObserver([Recipe].self)
+
+        sut.items
+            .drive(items)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: sut.reload)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(items.events, [.next(10, [])])
+    }
+
+    func testSelectItem() {
+        XCTAssertFalse(router.navigateToRecipeRecipeIdCalled)
+
+        let expectedRecipe = Recipe(name: "", image: "", timeForPreparing: "")
+
+        let action = scheduler.createObserver(Recipe.self)
+
+        sut.selectItem
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, expectedRecipe),
+                                        .next(20, expectedRecipe),
+                                        .next(30, expectedRecipe)])
+            .bind(to: sut.selectItem)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events, [.next(10, expectedRecipe),
+                                       .next(20, expectedRecipe),
+                                       .next(30, expectedRecipe)])
+        XCTAssertTrue(router.navigateToRecipeRecipeIdCalled)
     }
 }

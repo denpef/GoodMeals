@@ -36,7 +36,7 @@ class MealPlansListViewModelTests: XCTestCase {
 
     // MARK: - Test functions
 
-    func testFetchSelectedMealPlan() {
+    func testFetchMealPlanList() {
         let recipe = Recipe(name: "", image: "", timeForPreparing: "")
         let meal = Meal(mealtime: .breakfast, recipe: recipe)
         let dailyPlan = [DailyPlan(dayNumber: 1, meals: [meal])]
@@ -60,5 +60,52 @@ class MealPlansListViewModelTests: XCTestCase {
         scheduler.start()
 
         XCTAssertEqual(items.events, [.next(15, expectedItems), .next(20, expectedItems)])
+    }
+
+    func testWithEmptyMealPlanList() {
+        service.allReturnValue = []
+
+        // create scheduler
+        let items = scheduler.createObserver([MealPlan].self)
+
+        sut.items
+            .drive(items)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: sut.reload)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(items.events, [.next(10, [])])
+    }
+
+    func testMealPlan() {
+        XCTAssertFalse(router.navigateToMealPlanMealPlanCalled)
+
+        let recipe = Recipe(name: "", image: "", timeForPreparing: "")
+        let meal = Meal(mealtime: .breakfast, recipe: recipe)
+        let dailyPlan = [DailyPlan(dayNumber: 1, meals: [meal])]
+        let expectedPlan = MealPlan(name: "", image: "", dailyPlans: dailyPlan)
+
+        let action = scheduler.createObserver(MealPlan.self)
+
+        sut.mealPlan
+            .bind(to: action)
+            .disposed(by: disposeBag)
+
+        scheduler.createColdObservable([.next(10, expectedPlan),
+                                        .next(20, expectedPlan),
+                                        .next(30, expectedPlan)])
+            .bind(to: sut.mealPlan)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(action.events, [.next(10, expectedPlan),
+                                       .next(20, expectedPlan),
+                                       .next(30, expectedPlan)])
+        XCTAssertTrue(router.navigateToMealPlanMealPlanCalled)
     }
 }

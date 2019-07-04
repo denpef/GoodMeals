@@ -9,12 +9,15 @@ final class RecipeServingCell: UICollectionViewCell {
 
     let addShoppingButton = UIButton(style: Stylesheet.ServingCell.addToShoppingList)
 
+    private let plusButton = UIButton(style: Stylesheet.ServingCell.plus)
+    private let minusButton = UIButton(style: Stylesheet.ServingCell.minus)
+
+    private let buttonsView = UIView()
+
     private let servingLabel = UILabel(style: Stylesheet.ServingCell.info)
     private let calorificalLabel = UILabel(style: Stylesheet.ServingCell.info)
     private let timeForPreparingLabel = UILabel(style: Stylesheet.ServingCell.info)
-    private let plusButton = UIButton(style: Stylesheet.ServingCell.plus)
-    private let minusButton = UIButton(style: Stylesheet.ServingCell.minus)
-    private let buttonsView = UIView()
+
     private let labelsStack = UIStackView(style: Stylesheet.ServingCell.verticalStack)
     private let buttonsStack = UIStackView(style: Stylesheet.ServingCell.verticalStack)
 
