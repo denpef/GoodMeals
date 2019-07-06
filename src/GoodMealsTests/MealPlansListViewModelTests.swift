@@ -107,5 +107,7 @@ class MealPlansListViewModelTests: XCTestCase {
                                        .next(20, expectedPlan),
                                        .next(30, expectedPlan)])
         XCTAssertTrue(router.navigateToMealPlanMealPlanCalled)
+        XCTAssertEqual(router.navigateToMealPlanMealPlanReceivedMealPlan, expectedPlan)
+        XCTAssertEqual(router.navigateToMealPlanMealPlanReceivedInvocations, [expectedPlan, expectedPlan, expectedPlan])
     }
 }

@@ -12,6 +12,8 @@ class RecipesListViewModelTests: XCTestCase {
     var disposeBag: DisposeBag!
     var router: RecipesListRouterTypeMock!
 
+    let expectedRecipe = Recipe(name: "", image: "", timeForPreparing: "")
+
     var sut: RecipesListViewModel!
 
     // MARK: - Override test methods
@@ -20,7 +22,10 @@ class RecipesListViewModelTests: XCTestCase {
         super.setUp()
         scheduler = TestScheduler(initialClock: 0)
         disposeBag = DisposeBag()
+
         service = RecipesServiceTypeMock()
+        service.getModelByReturnValue = expectedRecipe
+
         router = RecipesListRouterTypeMock()
         sut = RecipesListViewModel(recipesService: service, router: router)
     }
@@ -80,8 +85,6 @@ class RecipesListViewModelTests: XCTestCase {
 
     func testSelectItem() {
         XCTAssertFalse(router.navigateToRecipeRecipeIdCalled)
-
-        let expectedRecipe = Recipe(name: "", image: "", timeForPreparing: "")
 
         let action = scheduler.createObserver(Recipe.self)
 

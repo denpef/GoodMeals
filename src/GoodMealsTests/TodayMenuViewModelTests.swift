@@ -104,6 +104,7 @@ class TodayMenuViewModelTests: XCTestCase {
         XCTAssertFalse(router.navigateToRecipeRecipeIdCalled)
 
         let expectedRecipe = Recipe(name: "", image: "", timeForPreparing: "")
+        let expectedId = expectedRecipe.id
 
         let action = scheduler.createObserver(Recipe.self)
 
@@ -111,13 +112,21 @@ class TodayMenuViewModelTests: XCTestCase {
             .bind(to: action)
             .disposed(by: disposeBag)
 
-        scheduler.createColdObservable([.next(10, expectedRecipe)])
+        scheduler.createColdObservable([.next(10, expectedRecipe),
+                                        .next(20, expectedRecipe),
+                                        .next(30, expectedRecipe)])
             .bind(to: sut.recipeSelected)
             .disposed(by: disposeBag)
 
         scheduler.start()
 
-        XCTAssertEqual(action.events, [.next(10, expectedRecipe)])
+        XCTAssertEqual(action.events, [.next(10, expectedRecipe),
+                                       .next(20, expectedRecipe),
+                                       .next(30, expectedRecipe)])
         XCTAssertTrue(router.navigateToRecipeRecipeIdCalled)
+        XCTAssertEqual(router.navigateToRecipeRecipeIdReceivedRecipeId, expectedId)
+        XCTAssertEqual(router.navigateToRecipeRecipeIdReceivedInvocations, [expectedId,
+                                                                            expectedId,
+                                                                            expectedId])
     }
 }
