@@ -98,6 +98,7 @@
 		02EEE7FB22BBA9D8008ED084 /* GroceryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEE7FA22BBA9D8008ED084 /* GroceryCellViewModel.swift */; };
 		02FE251422D091FA00644597 /* RecipeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE251322D091FA00644597 /* RecipeViewModelTests.swift */; };
 		02FE25AE22D26FCE00644597 /* GroceryCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE25AD22D26FCE00644597 /* GroceryCellViewModelTests.swift */; };
+		02FE25B022D2868700644597 /* MealPlanConfirmationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE25AF22D2868700644597 /* MealPlanConfirmationViewModelTests.swift */; };
 		36E76791921953295D91A8D2 /* Pods_GoodMeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39925A69B0069389B512434 /* Pods_GoodMeals.framework */; };
 		4B21AEFFA2DC8CBC7C07FEDC /* Pods_GoodMealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3192538777E9FF9732F633FF /* Pods_GoodMealsTests.framework */; };
 /* End PBXBuildFile section */
@@ -208,6 +209,7 @@
 		02EEE7FA22BBA9D8008ED084 /* GroceryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCellViewModel.swift; sourceTree = "<group>"; };
 		02FE251322D091FA00644597 /* RecipeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewModelTests.swift; sourceTree = "<group>"; };
 		02FE25AD22D26FCE00644597 /* GroceryCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCellViewModelTests.swift; sourceTree = "<group>"; };
+		02FE25AF22D2868700644597 /* MealPlanConfirmationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanConfirmationViewModelTests.swift; sourceTree = "<group>"; };
 		3192538777E9FF9732F633FF /* Pods_GoodMealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5875AF701E1A3BC4F07F2EAA /* Pods-GoodMeals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMeals.release.xcconfig"; path = "Target Support Files/Pods-GoodMeals/Pods-GoodMeals.release.xcconfig"; sourceTree = "<group>"; };
 		7E42017043D7595947AFA95E /* Pods-GoodMealsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 			children = (
 				02EB0CA5229EEA4B00A84E4C /* Generated */,
 				02AE962222A03DAA00F3CD1B /* RecipesListViewModelTests.swift */,
+				02FE25AF22D2868700644597 /* MealPlanConfirmationViewModelTests.swift */,
 				02FE25AD22D26FCE00644597 /* GroceryCellViewModelTests.swift */,
 				02FE251322D091FA00644597 /* RecipeViewModelTests.swift */,
 				02E2064B22CCA11200C7CE82 /* ShoppingListViewModelTests.swift */,
@@ -1087,6 +1090,7 @@
 				02EB0CA7229EEAF900A84E4C /* AutoMockable.swift in Sources */,
 				02AE962322A03DAA00F3CD1B /* RecipesListViewModelTests.swift in Sources */,
 				02FE251422D091FA00644597 /* RecipeViewModelTests.swift in Sources */,
+				02FE25B022D2868700644597 /* MealPlanConfirmationViewModelTests.swift in Sources */,
 				02FE25AE22D26FCE00644597 /* GroceryCellViewModelTests.swift in Sources */,
 				02E2069622CCA58B00C7CE82 /* MealPlansListViewModelTests.swift in Sources */,
 			);
