@@ -1,5 +1,3 @@
-import RxBlocking
-import RxCocoa
 import RxSwift
 import RxTest
 import XCTest
@@ -25,28 +23,6 @@ class GroceryCellViewModelTests: XCTestCase {
         scheduler = nil
         disposeBag = nil
     }
-
-//    func testInitialMarkedValues() {
-//        let expectedMarkedItem = GroceryItem(ingredient: expectedIngredient, amount: 380, marked: true)
-//
-//        // mock initial value
-//        sut.shoppingItem.accept(expectedMarkedItem)
-//
-//        XCTAssertEqual(try sut?.amount.toBlocking().first(), expectedMarkedItem.amount.formattedMass)
-//        XCTAssertEqual(try sut?.marked.toBlocking().first(), expectedMarkedItem.marked)
-//        XCTAssertEqual(try sut?.title.toBlocking().first(), expectedIngredient.name)
-//    }
-//
-//    func testInitialUnmarkedValues() {
-//        let expectedUnmarkedItem = GroceryItem(ingredient: expectedIngredient, amount: 500, marked: false)
-//
-//        // mock initial value
-//        sut.shoppingItem.accept(expectedUnmarkedItem)
-//
-//        XCTAssertEqual(try sut?.amount.toBlocking().first(), expectedUnmarkedItem.amount.formattedMass)
-//        XCTAssertEqual(try sut?.marked.toBlocking().first(), expectedUnmarkedItem.marked)
-//        XCTAssertEqual(try sut?.title.toBlocking().first(), expectedIngredient.name)
-//    }
 
     func testMarkedValue() {
         let expectedMarkedItem = GroceryItem(ingredient: expectedIngredient, amount: 380, marked: true)
