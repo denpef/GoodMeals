@@ -1,6 +1,6 @@
 import RxDataSources
 
-struct MealPlanTableViewSection {
+struct MealPlanTableViewSection: Equatable {
     var header: String
     var items: [Recipe]
 }
