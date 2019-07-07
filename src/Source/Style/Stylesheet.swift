@@ -31,6 +31,65 @@ enum Stylesheet {
         }
     }
 
+    enum MealPlanCell {
+        static let titleImage = Style<UIImageView> {
+            $0.contentMode = .scaleAspectFill
+            $0.layer.cornerRadius = 15
+            $0.clipsToBounds = true
+        }
+    }
+
+    enum IngredientCollectionViewCell {
+        static let name = Style<UILabel> {
+            $0.textAlignment = .left
+            $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        }
+
+        static let amount = Style<UILabel> {
+            $0.textAlignment = .right
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        }
+    }
+
+    enum RecipeCell {
+        static let breakfast = Style<UILabel> {
+            $0.textColor = UIColor.Common.subtitleLabelText
+            $0.textAlignment = .center
+            $0.text = "Breakfast"
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        }
+
+        static let title = Style<UILabel> {
+            $0.textColor = .black
+            $0.textAlignment = .left
+            $0.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        }
+
+        static let calorifical = Style<UILabel> {
+            $0.font = UIFont.systemFont(ofSize: 14, weight: .light)
+            $0.textColor = .white
+            $0.backgroundColor = UIColor.Common.infoLabelText
+            $0.textAlignment = .center
+            $0.layer.cornerRadius = 13
+            $0.clipsToBounds = true
+        }
+
+        static let timeForPreparing = Style<UILabel> {
+            $0.font = UIFont.systemFont(ofSize: 14, weight: .light)
+            $0.textColor = .white
+            $0.backgroundColor = UIColor.Common.infoLabelText
+            $0.textAlignment = .center
+            $0.layer.cornerRadius = 13
+            $0.clipsToBounds = true
+        }
+
+        static let titleImage = Style<UIImageView> {
+            $0.contentMode = .scaleAspectFill
+            $0.layer.cornerRadius = 12
+            $0.clipsToBounds = true
+        }
+    }
+
     enum ShoppingList {
         static let tableView = Style<UITableView> {
             $0.rowHeight = 60
@@ -91,7 +150,6 @@ enum Stylesheet {
             $0.rowHeight = 320
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
-            $0.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         }
     }
 

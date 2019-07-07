@@ -10,19 +10,8 @@ final class IngredientCollectionViewCell: UICollectionViewCell {
 
     private var disposeBag = DisposeBag()
 
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        return label
-    }()
-
-    private let amountLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        return label
-    }()
+    private let nameLabel = UILabel(style: Stylesheet.IngredientCollectionViewCell.name)
+    private let amountLabel = UILabel(style: Stylesheet.IngredientCollectionViewCell.amount)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -7,6 +7,8 @@ final class RecipesListViewController: ViewController<RecipesListViewModel> {
     override func setupInterface() {
         title = "Recipes"
 
+        tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
 

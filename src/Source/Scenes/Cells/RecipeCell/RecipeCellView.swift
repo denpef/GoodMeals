@@ -1,52 +1,11 @@
 import UIKit
 
 final class RecipeCellView: UIView {
-    private lazy var breakfastLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.Common.subtitleLabelText
-        label.textAlignment = .center
-        label.text = "Breakfast"
-        label.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        return label
-    }()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
-        return label
-    }()
-
-    private lazy var calorificalLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        label.textColor = .white
-        label.backgroundColor = UIColor.Common.infoLabelText
-        label.textAlignment = .center
-        label.layer.cornerRadius = 13
-        label.clipsToBounds = true
-        return label
-    }()
-
-    private lazy var timeForPreparingLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        label.textColor = .white
-        label.backgroundColor = UIColor.Common.infoLabelText
-        label.textAlignment = .center
-        label.layer.cornerRadius = 13
-        label.clipsToBounds = true
-        return label
-    }()
-
-    private lazy var titleImageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFill
-        view.layer.cornerRadius = 12
-        view.clipsToBounds = true
-        return view
-    }()
+    private lazy var breakfastLabel = UILabel(style: Stylesheet.RecipeCell.breakfast)
+    private lazy var titleLabel = UILabel(style: Stylesheet.RecipeCell.title)
+    private lazy var calorificalLabel = UILabel(style: Stylesheet.RecipeCell.calorifical)
+    private lazy var timeForPreparingLabel = UILabel(style: Stylesheet.RecipeCell.timeForPreparing)
+    private lazy var titleImageView = UIImageView(style: Stylesheet.RecipeCell.titleImage)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

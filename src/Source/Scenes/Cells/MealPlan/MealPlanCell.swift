@@ -1,13 +1,7 @@
 import UIKit
 
 final class MealPlanCell: UITableViewCell {
-    private lazy var titleIMageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFill
-        view.layer.cornerRadius = 15
-        view.clipsToBounds = true
-        return view
-    }()
+    private lazy var titleImageView = UIImageView(style: Stylesheet.MealPlanCell.titleImage)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,15 +14,15 @@ final class MealPlanCell: UITableViewCell {
     }
 
     private func setupImageView() {
-        contentView.addSubview(titleIMageView)
-        titleIMageView.translatesAutoresizingMaskIntoConstraints = false
-        titleIMageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        titleIMageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-        titleIMageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-        titleIMageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        contentView.addSubview(titleImageView)
+        titleImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        titleImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        titleImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        titleImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
 
     func configure(with image: String) {
-        titleIMageView.loadImage(from: image)
+        titleImageView.loadImage(from: image)
     }
 }
