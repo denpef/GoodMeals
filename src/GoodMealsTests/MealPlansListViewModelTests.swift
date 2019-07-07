@@ -5,7 +5,6 @@ import XCTest
 
 @testable import GoodMeals
 
-// swiftlint:disable implicitly_unwrapped_optional
 class MealPlansListViewModelTests: XCTestCase {
     var service: MealPlanServiceTypeMock!
     var scheduler: TestScheduler!

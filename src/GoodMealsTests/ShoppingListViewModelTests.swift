@@ -5,7 +5,6 @@ import XCTest
 
 @testable import GoodMeals
 
-// swiftlint:disable implicitly_unwrapped_optional
 class ShoppingListViewModelTests: XCTestCase {
     var service: ShoppingListServiceTypeMock!
     var scheduler: TestScheduler!
@@ -142,5 +141,9 @@ class ShoppingListViewModelTests: XCTestCase {
 
         XCTAssertEqual(action.events.count, 1)
         XCTAssertTrue(service.deleteAllListCalled)
+    }
+
+    func testTitle() {
+        XCTAssertEqual(try sut.title.toBlocking().first(), "Shopping list")
     }
 }

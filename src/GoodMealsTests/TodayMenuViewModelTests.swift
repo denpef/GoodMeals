@@ -5,7 +5,6 @@ import XCTest
 
 @testable import GoodMeals
 
-// swiftlint:disable implicitly_unwrapped_optional
 class TodayMenuViewModelTests: XCTestCase {
     var router: TodayMenuRouterTypeMock!
     var service: MealPlanServiceTypeMock!
