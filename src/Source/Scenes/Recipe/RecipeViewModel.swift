@@ -5,6 +5,7 @@ class RecipeViewModel {
     let image: Observable<String>
     let title: Driver<String>
     let items: Driver<[RecipeSection]>
+    var recipe: Observable<Recipe>
 
     let serving = BehaviorRelay<Int>(value: 2)
     let addToShoppingList = PublishRelay<Void>()
@@ -21,7 +22,7 @@ class RecipeViewModel {
         self.recipesService = recipesService
         self.shoppingListService = shoppingListService
 
-        let recipe = Observable.from(optional: recipesService.getModel(by: recipeId))
+        recipe = Observable.from(optional: recipesService.getModel(by: recipeId))
 
         image = recipe.map { $0.image }
 
@@ -37,7 +38,7 @@ class RecipeViewModel {
         }.asDriver(onErrorJustReturn: [])
 
         Observable.combineLatest(addToShoppingList, recipe, serving)
-            .flatMap { _, recipe, serving -> Observable<[GroceryItem]> in
+            .flatMapLatest { _, recipe, serving -> Observable<[GroceryItem]> in
                 var items = [GroceryItem]()
                 recipe.ingredients.forEach {
                     items.append(GroceryItem(ingredient: $0.ingredient,
