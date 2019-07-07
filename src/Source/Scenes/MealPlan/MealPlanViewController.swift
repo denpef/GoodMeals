@@ -6,28 +6,8 @@ import UIKit
 final class MealPlanViewController: ViewController<MealPlanViewModel> {
     private var dataSource: RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>?
 
-    private lazy var tableView: UITableView = {
-        let view = UITableView(frame: .zero)
-        view.rowHeight = 264
-        view.backgroundColor = .white
-        view.separatorStyle = .none
-        return view
-    }()
-
-    private var selectButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.textAlignment = .center
-        button.titleLabel?.textColor = UIColor.Common.controlText
-        button.backgroundColor = UIColor.Common.controlBackground
-        button.setTitle("Select plan", for: .normal)
-        button.layer.shadowOpacity = 0.15
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.layer.shadowRadius = 8
-        button.layer.cornerRadius = 12
-        button.layer.opacity = 0.95
-        return button
-    }()
+    private lazy var tableView = UITableView(style: Stylesheet.MealPlan.table)
+    private var selectButton = UIButton(style: Stylesheet.MealPlan.selectButton)
 
     private var buttonCenterYConstraint: NSLayoutConstraint?
 

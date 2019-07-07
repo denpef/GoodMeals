@@ -4,15 +4,12 @@ import UIKit
 final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
-        view.rowHeight = 304
-        view.backgroundColor = .clear
-        view.separatorStyle = .none
-        view.allowsSelection = false
-        view.register(TodayMenuCell.self, forCellReuseIdentifier: TodayMenuCell.reuseIdentifier)
+        view.apply(Stylesheet.TodayMenu.table)
         return view
     }()
 
     override func setupInterface() {
+        tableView.register(TodayMenuCell.self, forCellReuseIdentifier: TodayMenuCell.reuseIdentifier)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
         setupTableView()
     }

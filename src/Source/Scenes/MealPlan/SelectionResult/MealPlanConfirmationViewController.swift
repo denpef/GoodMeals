@@ -2,37 +2,9 @@ import RxSwift
 import UIKit
 
 final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmationViewModel> {
-    private var infoLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.Common.controlBackground
-        label.text = "Would you like to choose this meal plan starting today?"
-        label.textAlignment = .center
-        label.numberOfLines = 3
-        return label
-    }()
-
-    private let planImageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFill
-        view.layer.cornerRadius = 12
-        view.clipsToBounds = true
-        return view
-    }()
-
-    private var acceptButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.textAlignment = .center
-        button.titleLabel?.textColor = UIColor.Common.controlText
-        button.backgroundColor = UIColor.Common.controlBackground
-        button.setTitle("Yes", for: .normal)
-        button.layer.shadowOpacity = 0.15
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.layer.shadowRadius = 8
-        button.layer.cornerRadius = 12
-        button.layer.opacity = 0.95
-        return button
-    }()
+    private let infoLabel = UILabel(style: Stylesheet.MealPlanConfirmation.infoLabel)
+    private let planImageView = UIImageView(style: Stylesheet.MealPlanConfirmation.planImage)
+    private let acceptButton = UIButton(style: Stylesheet.MealPlanConfirmation.acceptButton)
 
     override func setupInterface() {
         view.backgroundColor = UIColor.Common.white

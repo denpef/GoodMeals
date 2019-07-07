@@ -4,9 +4,7 @@ import UIKit
 final class MealPlansListViewController: ViewController<MealPlansListViewModel> {
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
-        view.rowHeight = 186
-        view.backgroundColor = .white
-        view.separatorStyle = .none
+        view.apply(Stylesheet.MealPlansList.table)
         return view
     }()
 

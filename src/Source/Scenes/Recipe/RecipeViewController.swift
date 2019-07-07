@@ -9,10 +9,7 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         let flowLayout = StretchyHeaderLayout()
         flowLayout.scrollDirection = .vertical
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        view.backgroundColor = .white
-        view.alwaysBounceVertical = true
-        view.alwaysBounceHorizontal = false
-        view.showsHorizontalScrollIndicator = false
+        view.apply(Stylesheet.Recipe.collection)
         return view
     }()
 
@@ -62,7 +59,6 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
                 self.viewModel.image.subscribe(onNext: { image in
                     header.setImage(image)
                 }).disposed(by: self.disposeBag)
-//                header.setImage(self.viewModel.image)
             }
             return header
         })
