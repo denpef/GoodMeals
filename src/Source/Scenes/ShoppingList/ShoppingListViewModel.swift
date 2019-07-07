@@ -5,6 +5,9 @@ import RxSwift
  Represent shopping list screen and related actions - remove, mark and clear
  */
 final class ShoppingListViewModel {
+    /// Title of shopping list screen
+    let title: Driver<String>
+
     /// Handle the item mark action
     let markedItem = PublishRelay<GroceryItem>()
 
@@ -29,6 +32,8 @@ final class ShoppingListViewModel {
 
     init(shoppingListService: ShoppingListServiceType) {
         self.shoppingListService = shoppingListService
+
+        title = Driver.of("Shopping list")
 
         items = reload
             .map { shoppingListService.all() }

@@ -2,34 +2,13 @@ import RxSwift
 import UIKit
 
 final class GroceryCell: UITableViewCell {
-    var viewModel: GroceryCellViewModel?
+    weak var viewModel: GroceryCellViewModel?
     var disposeBag = DisposeBag()
 
-    private lazy var markedButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Asset.image.image, tintColor: .green)
-        return button
-    }()
-
-    private lazy var deleteButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Asset.cancel.image, tintColor: UIColor.Common.deleteItem)
-        return button
-    }()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        return label
-    }()
-
-    private lazy var amountLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
-        return label
-    }()
+    private lazy var markedButton = UIButton()
+    private lazy var deleteButton = UIButton()
+    private lazy var titleLabel = UILabel()
+    private lazy var amountLabel = UILabel()
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -47,16 +26,16 @@ final class GroceryCell: UITableViewCell {
 
     func configure(with viewModel: GroceryCellViewModel) {
         self.viewModel = viewModel
-        guard let item = self.viewModel?.item else {
-            return
-        }
-        titleLabel.text = "\(item.ingredient?.name ?? "")"
-        titleLabel.textColor = item.marked ? UIColor.Common.markedText : UIColor.Common.controlBackground
+//        guard let item = self.viewModel?.item else {
+//            return
+//        }
+//        titleLabel.text = "\(item.ingredient?.name ?? "")"
+//        titleLabel.textColor = item.marked ? UIColor.Common.markedText : UIColor.Common.controlBackground
 
-        amountLabel.text = item.amount.formattedMass
+//        amountLabel.text = item.amount.formattedMass
 
-        markedButton.tintColor = item.marked ? UIColor.Common.ghostWhite : .green
-        deleteButton.tintColor = item.marked ? UIColor.Common.ghostWhite : UIColor.Common.deleteItem
+//        markedButton.tintColor = item.marked ? UIColor.Common.ghostWhite : .green
+//        deleteButton.tintColor = item.marked ? UIColor.Common.ghostWhite : UIColor.Common.deleteItem
 
         bind()
     }
@@ -67,12 +46,38 @@ final class GroceryCell: UITableViewCell {
         }
 
         markedButton.rx.tap
-            .bind(to: viewModel.markedChange)
+            .bind(to: viewModel.markedAction)
             .disposed(by: disposeBag)
 
         deleteButton.rx.tap
-            .bind(to: viewModel.delete)
+            .bind(to: viewModel.deleteAction)
             .disposed(by: disposeBag)
+
+        viewModel.title
+            .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.amount
+            .drive(amountLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.marked.drive(onNext: { [weak self] marked in
+            guard let self = self else {
+                return
+            }
+            switch marked {
+            case true:
+                self.markedButton.apply(Stylesheet.GroceryCell.markButtonMarked)
+                self.deleteButton.apply(Stylesheet.GroceryCell.deleteButtonMarked)
+                self.amountLabel.apply(Stylesheet.GroceryCell.amountLabelMarked)
+                self.titleLabel.apply(Stylesheet.GroceryCell.titleLabelMarked)
+            case false:
+                self.markedButton.apply(Stylesheet.GroceryCell.markButtonUnmarked)
+                self.deleteButton.apply(Stylesheet.GroceryCell.deleteButtonUnmarked)
+                self.amountLabel.apply(Stylesheet.GroceryCell.amountLabelUnmarked)
+                self.titleLabel.apply(Stylesheet.GroceryCell.titleLabelUnmarked)
+            }
+        }).disposed(by: disposeBag)
     }
 
     private func configureButton() {

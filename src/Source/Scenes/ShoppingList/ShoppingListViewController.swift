@@ -2,18 +2,10 @@ import RxSwift
 import UIKit
 
 final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
-    private lazy var tableView: UITableView = {
-        let view = UITableView(frame: .zero)
-        view.rowHeight = 60
-        view.allowsSelection = false
-        view.backgroundColor = .clear
-        view.separatorStyle = .none
-        view.register(GroceryCell.self, forCellReuseIdentifier: GroceryCell.reuseIdentifier)
-        return view
-    }()
+    private lazy var tableView = UITableView(style: Stylesheet.ShoppingList.tableView)
 
     override func setupInterface() {
-        title = "Shopping list"
+        tableView.register(GroceryCell.self, forCellReuseIdentifier: GroceryCell.reuseIdentifier)
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
@@ -30,19 +22,26 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
     }
 
     override func bind() {
+        viewModel.title
+            .drive(rx.title)
+            .disposed(by: disposeBag)
+
         viewModel.items
-            .drive(tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier, cellType: GroceryCell.self)) { _, item, cell in
-                let vm = GroceryCellViewModel(with: item)
+            .drive(tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier,
+                                      cellType: GroceryCell.self)) { _, item, cell in
+                let vm = GroceryCellViewModel()
+
                 cell.configure(with: vm)
-                vm.markedChange
-                    .map { vm.item }
+
+                vm.itemMarked
                     .bind(to: self.viewModel.markedItem)
                     .disposed(by: cell.disposeBag)
 
-                vm.delete
-                    .map { vm.item }
+                vm.itemDeleted
                     .bind(to: self.viewModel.deleteItem)
                     .disposed(by: cell.disposeBag)
+
+                vm.shoppingItem.accept(item)
             }.disposed(by: disposeBag)
 
         navigationItem.rightBarButtonItem?.rx
