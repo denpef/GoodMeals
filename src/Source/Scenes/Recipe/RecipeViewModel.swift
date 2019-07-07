@@ -34,27 +34,36 @@ class RecipeViewModel {
 
         recipe = Observable.from(optional: recipesService.getModel(by: recipeId))
 
-        image = recipe.map { $0.image }
+        image = recipe
+            .map { $0.image }
 
-        title = recipe.map { $0.name }.asDriver(onErrorJustReturn: "")
+        title = recipe
+            .map { $0.name }
+            .asDriver(onErrorJustReturn: "")
 
         items = recipe.map { recipe -> [RecipeSection] in
             var recipeItems = [RecipeItem]()
-            recipeItems.append(.servingItem(calorific: recipe.calorific, timeForPreparing: recipe.timeForPreparing))
+            
+            recipeItems.append(.servingItem(calorific: recipe.calorific,
+                                            timeForPreparing: recipe.timeForPreparing))
+            
             recipe.ingredients.forEach {
                 recipeItems.append(.ingredientItem(ingredient: $0))
             }
+            
             return [RecipeSection(items: recipeItems)]
         }.asDriver(onErrorJustReturn: [])
 
         Observable.combineLatest(addToShoppingListAction, recipe, serving)
             .flatMapLatest { _, recipe, serving -> Observable<[GroceryItem]> in
                 var items = [GroceryItem]()
+                
                 recipe.ingredients.forEach {
                     items.append(GroceryItem(ingredient: $0.ingredient,
                                              amount: $0.amount * serving,
                                              marked: false))
                 }
+                
                 return Observable.from(optional: items)
             }.subscribe(onNext: { groceryItems in
                 groceryItems.forEach {
