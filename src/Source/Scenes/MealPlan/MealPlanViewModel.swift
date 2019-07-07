@@ -1,44 +1,57 @@
 import RxCocoa
 import RxSwift
 
+/*
+ Meal plan screen logic
+ */
 class MealPlanViewModel {
-    var recipe = PublishSubject<String>()
-    var mealPlan: MealPlan
-    var title: String
+    /// Handle selection recipe from current meal plan
+    let showRecipe = PublishRelay<String>()
+
+    // Initial meal plan
+    let mealPlan = PublishSubject<MealPlan>()
+
+    // Screen title
+    let title: Driver<String>
 
     // MARK: - Input
 
-    let tap = PublishRelay<Void>()
+    let setMealPlanCurrent = PublishRelay<Void>()
 
     // MARK: - Output
 
-    var sections = [MealPlanTableViewSection]()
+    // Section represent daily recipes of selected plan
+    let sections: Observable<[MealPlanTableViewSection]>
 
     // MARK: - Private properties
 
     private let disposeBag = DisposeBag()
-    private let mealPlanService: MealPlanServiceType
     private let router: MealPlanRouterType
 
     // MARK: - Init
 
-    init(mealPlanService: MealPlanServiceType, mealPlan: MealPlan, router: MealPlanRouterType) {
-        self.mealPlanService = mealPlanService
-        self.mealPlan = mealPlan
+    init(mealPlan: MealPlan, router: MealPlanRouterType) {
         self.router = router
-        title = mealPlan.name
 
-        tap.subscribe(onNext: { _ in
-            self.router.navigateToConfirmation(mealPlan: self.mealPlan)
-        }).disposed(by: disposeBag)
+        title = self.mealPlan
+            .map { $0.name }
+            .asDriver(onErrorJustReturn: "")
 
-        mealPlan.dailyPlans.forEach { dailyPlan in
-            let section = MealPlanTableViewSection(header: "Day \(dailyPlan.dayNumber)", items: dailyPlan.meals.compactMap { $0.recipe })
-            sections.append(section)
-        }
+        sections = self.mealPlan
+            .flatMapLatest { plan -> Observable<[MealPlanTableViewSection]> in
+                Observable.from(optional: plan.makeSections)
+            }
 
-        recipe.subscribe(onNext: { [weak self] recipeId in
+        setMealPlanCurrent.withLatestFrom(self.mealPlan)
+            .flatMapLatest { Observable.from(optional: $0) }
+            .subscribe(onNext: { plan in
+                self.router.navigateToConfirmation(mealPlan: plan)
+            }).disposed(by: disposeBag)
+
+        showRecipe.subscribe(onNext: { [weak self] recipeId in
             self?.router.navigateToRecipe(recipeId: recipeId)
         }).disposed(by: disposeBag)
+
+        self.mealPlan.on(.next(mealPlan))
     }
 }

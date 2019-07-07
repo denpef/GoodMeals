@@ -14,6 +14,14 @@ struct MealPlan {
         self.image = image
         self.dailyPlans = dailyPlans
     }
+
+    /// Sections to display plan details
+    var makeSections: [MealPlanTableViewSection] {
+        return dailyPlans.map { dailyPlan -> MealPlanTableViewSection in
+            let items = dailyPlan.meals.compactMap { $0.recipe }
+            return MealPlanTableViewSection(header: "Day \(dailyPlan.dayNumber)", items: items)
+        }
+    }
 }
 
 extension MealPlan: Persistable {

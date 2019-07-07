@@ -32,7 +32,6 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
     private var buttonCenterYConstraint: NSLayoutConstraint?
 
     override func setupInterface() {
-        title = viewModel.title
         view.backgroundColor = .white
 
         tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
@@ -54,10 +53,14 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
     }
 
     override func bind() {
+        viewModel.title
+            .drive(rx.title)
+            .disposed(by: disposeBag)
+
         selectButton.rx
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.tap)
+            .bind(to: viewModel.setMealPlanCurrent)
             .disposed(by: disposeBag)
 
         dataSource = RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>(configureCell: { _, tableView, indexPath, recipe in
@@ -74,14 +77,14 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
             .disposed(by: disposeBag)
 
         if let dataSource = dataSource {
-            Observable.just(viewModel.sections)
+            viewModel.sections
                 .bind(to: tableView.rx.items(dataSource: dataSource))
                 .disposed(by: disposeBag)
         }
 
         tableView.rx.modelSelected(Recipe.self)
             .map { $0.id }
-            .bind(to: viewModel.recipe)
+            .bind(to: viewModel.showRecipe)
             .disposed(by: disposeBag)
 
         tableView.rx.didScroll.map {
