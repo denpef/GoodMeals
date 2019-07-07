@@ -2,11 +2,14 @@ import RxCocoa
 import RxSwift
 
 class MealPlanConfirmationViewModel {
-    let mealPlan: MealPlan
+    /// Title of shopping list screen
+    let title: Driver<String>
 
-    // MARK: - Input
+    /// Plan's image
+    let planImage: Driver<String>
 
-    let accept = PublishRelay<Void>()
+    /// Handle confirmation action
+    let acceptAction = PublishRelay<Void>()
 
     // MARK: - Private properties
 
@@ -19,16 +22,22 @@ class MealPlanConfirmationViewModel {
     init(mealPlanService: MealPlanServiceType, mealPlan: MealPlan, router: MealPlanConfirmationRouterType) {
         self.router = router
         self.mealPlanService = mealPlanService
-        self.mealPlan = mealPlan
 
-        accept.subscribe(onNext: { [weak self] _ in
-            self?.savePlan()
-        }).disposed(by: disposeBag)
-    }
+        let savedPlan = Observable.of(mealPlan)
 
-    private func savePlan() {
-        let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: mealPlan)
-        mealPlanService.add(selectedPlan)
-        router.dismiss()
+        planImage = savedPlan
+            .map { $0.image }
+            .asDriver(onErrorJustReturn: "")
+
+        title = savedPlan
+            .map { $0.name }
+            .asDriver(onErrorJustReturn: "")
+
+        acceptAction.withLatestFrom(savedPlan)
+            .flatMapLatest { Observable.from(optional: $0) }
+            .subscribe(onNext: { plan in
+                self.mealPlanService.add(SelectedMealPlan(startDate: Date(), mealPlan: plan))
+                self.router.dismiss()
+            }).disposed(by: disposeBag)
     }
 }

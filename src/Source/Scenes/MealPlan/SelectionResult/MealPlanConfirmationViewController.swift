@@ -35,10 +35,7 @@ final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmat
     }()
 
     override func setupInterface() {
-        title = "Select date"
         view.backgroundColor = UIColor.Common.white
-
-        planImageView.loadImage(from: viewModel.mealPlan.image)
 
         view.addSubview(planImageView)
         planImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,10 +60,19 @@ final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmat
     }
 
     override func bind() {
+        viewModel.title
+            .drive(rx.title)
+            .disposed(by: disposeBag)
+
+        viewModel.planImage
+            .drive(onNext: { [weak self] image in
+                self?.planImageView.loadImage(from: image)
+            }).disposed(by: disposeBag)
+
         acceptButton.rx
             .tap
             .debounce(0.2, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.accept)
+            .bind(to: viewModel.acceptAction)
             .disposed(by: disposeBag)
     }
 }
