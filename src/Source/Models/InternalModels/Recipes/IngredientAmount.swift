@@ -1,6 +1,6 @@
 import Foundation
 
-struct IngredientAmount {
+struct IngredientAmount: Equatable {
     // MARK: - Properties
 
     var id: String
