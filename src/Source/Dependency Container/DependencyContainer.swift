@@ -52,7 +52,7 @@ extension DependencyContainer: ViewControllerFactory {
 
     func makeMealPlanViewController(mealPlan: MealPlan) -> MealPlanViewController {
         let router = MealPlanRouter(factory: self)
-        let vm = MealPlanViewModel(mealPlanService: serviceContainer.mealPlanService, mealPlan: mealPlan, router: router)
+        let vm = MealPlanViewModel(mealPlan: mealPlan, router: router)
         let vc = MealPlanViewController(viewModel: vm)
 
         router.viewController = vc
