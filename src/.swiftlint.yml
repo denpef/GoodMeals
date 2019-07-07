@@ -76,6 +76,7 @@ excluded:
   - Generated
   - Templates
   - ../templates
+  - GoodMealsTests
 
 attributes:
   always_on_same_line: ["@objc", "@IBAction", "@NSManaged"]
