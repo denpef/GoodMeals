@@ -90,14 +90,14 @@ class MealPlansListViewModelTests: XCTestCase {
 
         let action = scheduler.createObserver(MealPlan.self)
 
-        sut.mealPlan
+        sut.mealPlanDidSelect
             .bind(to: action)
             .disposed(by: disposeBag)
 
         scheduler.createColdObservable([.next(10, expectedPlan),
                                         .next(20, expectedPlan),
                                         .next(30, expectedPlan)])
-            .bind(to: sut.mealPlan)
+            .bind(to: sut.mealPlanDidSelect)
             .disposed(by: disposeBag)
 
         scheduler.start()

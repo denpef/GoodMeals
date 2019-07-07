@@ -1,13 +1,14 @@
 import RxCocoa
 import RxSwift
 
+/*
+ Meal plans list screen logic
+ */
 final class MealPlansListViewModel {
-    // MARK: - Input
+    /// Handle selection meal plan item
+    let mealPlanDidSelect = PublishSubject<MealPlan>()
 
-    let mealPlan = PublishSubject<MealPlan>()
-
-    // MARK: - Output
-
+    /// Meal plans to display on screen
     let items: Driver<[MealPlan]>
 
     /// Signal to request item data source (such as when data source updates)
@@ -29,7 +30,7 @@ final class MealPlansListViewModel {
             }
             .asDriver(onErrorJustReturn: [])
 
-        mealPlan.subscribe(onNext: { [weak self] plan in
+        mealPlanDidSelect.subscribe(onNext: { [weak self] plan in
             self?.router.navigateToMealPlan(mealPlan: plan)
         }).disposed(by: disposeBag)
     }

@@ -2,13 +2,23 @@ import RxCocoa
 import RxSwift
 
 class RecipeViewModel {
+    /// Image url adress
     let image: Observable<String>
+    
+    /// Title of screen
     let title: Driver<String>
+    
+    /// Recipe info and action items (add to shopping list) plus list of ingredients
     let items: Driver<[RecipeSection]>
+    
+    /// Initial recipe value
     var recipe: Observable<Recipe>
 
+    /// Count of serving for calculation ingredients amount
     let serving = BehaviorRelay<Int>(value: 2)
-    let addToShoppingList = PublishRelay<Void>()
+    
+    /// Handle control action add all ingredients to shopping list
+    let addToShoppingListAction = PublishRelay<Void>()
 
     // MARK: - Private properties
 
@@ -37,7 +47,7 @@ class RecipeViewModel {
             return [RecipeSection(items: recipeItems)]
         }.asDriver(onErrorJustReturn: [])
 
-        Observable.combineLatest(addToShoppingList, recipe, serving)
+        Observable.combineLatest(addToShoppingListAction, recipe, serving)
             .flatMapLatest { _, recipe, serving -> Observable<[GroceryItem]> in
                 var items = [GroceryItem]()
                 recipe.ingredients.forEach {

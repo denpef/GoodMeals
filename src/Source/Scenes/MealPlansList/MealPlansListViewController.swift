@@ -35,7 +35,7 @@ final class MealPlansListViewController: ViewController<MealPlansListViewModel> 
 
         tableView.rx
             .modelSelected(MealPlan.self)
-            .bind(to: viewModel.mealPlan)
+            .bind(to: viewModel.mealPlanDidSelect)
             .disposed(by: disposeBag)
 
         viewModel.reload.accept(())
