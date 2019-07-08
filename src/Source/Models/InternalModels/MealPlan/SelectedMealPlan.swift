@@ -1,10 +1,13 @@
 import Foundation
 
 struct SelectedMealPlan {
-    // MARK: - Properties
-
+    /// Identificator
     var id: String
+    
+    /// Start diet date
     var startDate: Date
+    
+    /// Details of daily plans
     var mealPlan: MealPlan?
 
     var finishDate: Date {

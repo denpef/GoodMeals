@@ -1,14 +1,25 @@
 import Foundation
 
 struct Recipe {
-    // MARK: - Properties
-
+    /// Identificator
     var id: String
+    
+    /// List of using ingredients
     var ingredients = [IngredientAmount]()
+    
+    /// Object name
     var name: String = ""
+    
+    /// Recipe calorific info (kcal)
     var calorific: Int = 0
+    
+    /// Recipe time for prepearing
     var timeForPreparing: String = ""
+    
+    /// Category of recip (not implemented for now)
     var category: RecipeCategory?
+    
+    /// Recipe title image
     var image: String = ""
 
     // MARK: Init

@@ -105,7 +105,6 @@ final class ShoppingListService: ShoppingListServiceType {
     }
 
     func subscribeCollection(subscriber: PersistenceNotificationOutput) {
-        // TODO: - token invalidation
         token = persistenceService.subscribeCollection(GroceryItem.self,
                                                        subscriber: subscriber,
                                                        filter: nil,

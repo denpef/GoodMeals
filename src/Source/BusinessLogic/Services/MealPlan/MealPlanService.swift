@@ -28,7 +28,6 @@ final class MealPlanService: MealPlanServiceType {
     }
 
     func subscribeCollection(subscriber: PersistenceNotificationOutput) {
-        // TODO: - token invalidation
         token = persistenceService.subscribeCollection(SelectedMealPlan.self,
                                                        subscriber: subscriber,
                                                        filter: nil,

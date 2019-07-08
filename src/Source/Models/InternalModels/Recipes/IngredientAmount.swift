@@ -1,10 +1,13 @@
 import Foundation
 
 struct IngredientAmount: Equatable {
-    // MARK: - Properties
-
+    /// Identificator
     var id: String
+    
+    /// Ingredient value
     var ingredient: Ingredient?
+    
+    /// Amount of mass (gramm)
     var amount: Int = 0
 
     // MARK: Init

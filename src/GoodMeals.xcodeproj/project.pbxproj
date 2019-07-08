@@ -15,7 +15,6 @@
 		021ED87E223E0EE1009FA238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021ED87D223E0EE1009FA238 /* Assets.xcassets */; };
 		021EFD4A22664042001CA0A3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EFD4922664042001CA0A3 /* RootRouter.swift */; };
 		0225EFD7226C68DC004A4F60 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */; };
-		0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */; };
 		02367DB5225BCA4800BD1217 /* IngredientObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB4225BCA4800BD1217 /* IngredientObject.swift */; };
 		02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DB6225BCAEF00BD1217 /* IngredientCategoryObject.swift */; };
 		02367DBB225BCB8A00BD1217 /* RecipeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02367DBA225BCB8A00BD1217 /* RecipeObject.swift */; };
@@ -126,7 +125,6 @@
 		021ED882223E0EE1009FA238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		021EFD4922664042001CA0A3 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		02367DB4225BCA4800BD1217 /* IngredientObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientObject.swift; sourceTree = "<group>"; };
 		02367DB6225BCAEF00BD1217 /* IngredientCategoryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCategoryObject.swift; sourceTree = "<group>"; };
 		02367DBA225BCB8A00BD1217 /* RecipeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeObject.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 				02FE25FF22D320E200644597 /* Date+Extensions.swift */,
 				028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */,
 				0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */,
-				0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */,
 				02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */,
 				028ACD6822C74C950027F490 /* UIButton+Extensions.swift */,
 			);
@@ -1015,7 +1012,6 @@
 				025E08F922B80AA30086458A /* GroceryCell.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
 				02FE264D22D3238400644597 /* Date+Extensions.swift in Sources */,
-				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
 				028ACE9222CB92EC0027F490 /* UIColor+Styles.swift in Sources */,
 				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
 				02674C3122B02C76005F940D /* MealPlanConfirmationViewController.swift in Sources */,

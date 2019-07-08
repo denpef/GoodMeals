@@ -1,11 +1,16 @@
 import Foundation
 
 struct MealPlan {
-    // MARK: - Properties
-
+    /// Identificator
     var id: String
+    
+    /// Object name
     var name: String
+    
+    /// Details of meal plan by days
     var dailyPlans = [DailyPlan]()
+    
+    /// Title image adress
     var image: String
 
     init(name: String, image: String, dailyPlans: [DailyPlan]) {

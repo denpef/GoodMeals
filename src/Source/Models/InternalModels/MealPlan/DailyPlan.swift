@@ -1,10 +1,13 @@
 import Foundation
 
 struct DailyPlan {
-    // MARK: - Properties
-
+    /// Identificator
     var id: String
+    
+    /// Day number in plan
     var dayNumber: Int
+    
+    /// Recipes by meal time
     var meals = [Meal]()
 
     init(dayNumber: Int, meals: [Meal]) {

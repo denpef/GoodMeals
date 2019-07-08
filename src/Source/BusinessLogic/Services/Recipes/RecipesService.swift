@@ -4,11 +4,9 @@ import RealmSwift
 protocol RecipesServiceType {
     func getModel(by id: String) -> Recipe?
     func add(_ recipe: Recipe)
-    func remove(_ recipe: Recipe)
     func update(_ recipe: Recipe)
     func all() -> [Recipe]
     func subscribeCollection(subscriber: PersistenceNotificationOutput)
-    func clearAll()
 }
 
 final class RecipesService: RecipesServiceType {
@@ -30,10 +28,6 @@ final class RecipesService: RecipesServiceType {
         persistenceService.add(recipe, update: false)
     }
 
-    func remove(_ recipe: Recipe) {
-        persistenceService.delete(recipe)
-    }
-
     func update(_ recipe: Recipe) {
         persistenceService.add(recipe, update: true)
     }
@@ -46,14 +40,9 @@ final class RecipesService: RecipesServiceType {
     }
 
     func subscribeCollection(subscriber: PersistenceNotificationOutput) {
-        // TODO: - token invalidation
         token = persistenceService.subscribeCollection(Recipe.self,
                                                        subscriber: subscriber,
                                                        filter: nil,
                                                        sortDescriptors: nil)
-    }
-
-    func clearAll() {
-        persistenceService.clearAll()
     }
 }

@@ -1,9 +1,10 @@
 import Foundation
 
 struct IngredientCategory {
-    // MARK: - Properties
-
+    /// Identificator
     var id: String
+    
+    /// Object name
     var name: String = ""
 
     // MARK: Convenience Init
