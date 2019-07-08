@@ -38,9 +38,11 @@ class TodayMenuViewModelTests: XCTestCase {
     func testFetchSelectedMealPlan() {
         let recipe = Recipe(name: "", image: "", timeForPreparing: "")
         let meal = Meal(mealtime: .breakfast, recipe: recipe)
-        let expectedPlans: [DailyPlan] = [DailyPlan(dayNumber: 1, meals: [meal])]
-        let mealPlan = MealPlan(name: "", image: "", dailyPlans: expectedPlans)
+        let dailyPlans: [DailyPlan] = [DailyPlan(dayNumber: 1, meals: [meal])]
+        let mealPlan = MealPlan(name: "", image: "", dailyPlans: dailyPlans)
         let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: mealPlan)
+
+        let expectedPlans = selectedPlan.dailyPlansForToday
 
         service.getCurrentMealPlanReturnValue = selectedPlan
 

@@ -40,16 +40,9 @@ class MealPlanViewModelTests: XCTestCase {
             .bind(to: sections)
             .disposed(by: disposeBag)
 
-        // mock a reload
-        scheduler.createColdObservable([.next(15, expectedPlan),
-                                        .next(20, expectedPlan)])
-            .bind(to: sut.mealPlan)
-            .disposed(by: disposeBag)
-
         scheduler.start()
 
-        XCTAssertEqual(sections.events, [.next(15, expectedSections),
-                                         .next(20, expectedSections)])
+        XCTAssertEqual(sections.events, [.next(0, expectedSections), .completed(0)])
     }
 
     func testRecipeSelection() {
