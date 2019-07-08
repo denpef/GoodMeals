@@ -142,8 +142,4 @@ class ShoppingListViewModelTests: XCTestCase {
         XCTAssertEqual(action.events.count, 1)
         XCTAssertTrue(service.deleteAllListCalled)
     }
-
-    func testTitle() {
-        XCTAssertEqual(try sut.title.toBlocking().first(), "Shopping list")
-    }
 }

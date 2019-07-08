@@ -5,6 +5,8 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
     private lazy var tableView = UITableView(style: Stylesheet.ShoppingList.tableView)
 
     override func setupInterface() {
+        title = "Shopping list"
+
         tableView.register(GroceryCell.self, forCellReuseIdentifier: GroceryCell.reuseIdentifier)
 
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -22,10 +24,6 @@ final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
     }
 
     override func bind() {
-        viewModel.title
-            .drive(rx.title)
-            .disposed(by: disposeBag)
-
         viewModel.items
             .drive(tableView.rx.items(cellIdentifier: GroceryCell.reuseIdentifier,
                                       cellType: GroceryCell.self)) { _, item, cell in
