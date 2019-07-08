@@ -8,9 +8,6 @@ class MealPlanViewModel {
     /// Handle selection recipe from current meal plan
     let showRecipe = PublishRelay<String>()
 
-    // Initial meal plan
-    let mealPlan = PublishSubject<MealPlan>()
-
     // Screen title
     let title: Driver<String>
 
@@ -33,16 +30,18 @@ class MealPlanViewModel {
     init(mealPlan: MealPlan, router: MealPlanRouterType) {
         self.router = router
 
-        title = self.mealPlan
+        let pendingMealPlan = Observable.of(mealPlan)
+
+        title = pendingMealPlan
             .map { $0.name }
             .asDriver(onErrorJustReturn: "")
 
-        sections = self.mealPlan
+        sections = pendingMealPlan
             .flatMapLatest { plan -> Observable<[MealPlanTableViewSection]> in
                 Observable.from(optional: plan.makeSections)
             }
 
-        setMealPlanCurrent.withLatestFrom(self.mealPlan)
+        setMealPlanCurrent.withLatestFrom(pendingMealPlan)
             .flatMapLatest { Observable.from(optional: $0) }
             .subscribe(onNext: { plan in
                 self.router.navigateToConfirmation(mealPlan: plan)
@@ -51,7 +50,5 @@ class MealPlanViewModel {
         showRecipe.subscribe(onNext: { [weak self] recipeId in
             self?.router.navigateToRecipe(recipeId: recipeId)
         }).disposed(by: disposeBag)
-
-        self.mealPlan.on(.next(mealPlan))
     }
 }

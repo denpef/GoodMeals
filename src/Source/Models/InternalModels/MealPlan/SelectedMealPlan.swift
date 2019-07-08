@@ -26,6 +26,15 @@ struct SelectedMealPlan {
         self.startDate = startDate
         self.mealPlan = mealPlan
     }
+
+    var dailyPlansForToday: [DailyPlan] {
+        guard let days = startDate.diffDaysFromToday, let plans = mealPlan?.dailyPlans else {
+            return []
+        }
+        var filteredPlan = plans.filter { $0.dayNumber > days }
+        filteredPlan.sort { $0.dayNumber < $1.dayNumber }
+        return filteredPlan
+    }
 }
 
 extension SelectedMealPlan: Persistable {

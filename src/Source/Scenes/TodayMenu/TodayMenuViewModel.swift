@@ -35,7 +35,7 @@ final class TodayMenuViewModel {
                 guard let currentPlan = mealPlanService?.getCurrentMealPlan() else {
                     return Observable.just([])
                 }
-                return Observable.from(optional: currentPlan.mealPlan?.dailyPlans)
+                return Observable.from(optional: currentPlan.dailyPlansForToday)
             }.asDriver(onErrorJustReturn: [])
 
         mealPlanService?.subscribeCollection(subscriber: self)

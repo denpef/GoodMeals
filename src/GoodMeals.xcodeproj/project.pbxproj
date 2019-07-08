@@ -100,6 +100,7 @@
 		02FE25AE22D26FCE00644597 /* GroceryCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE25AD22D26FCE00644597 /* GroceryCellViewModelTests.swift */; };
 		02FE25B022D2868700644597 /* MealPlanConfirmationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE25AF22D2868700644597 /* MealPlanConfirmationViewModelTests.swift */; };
 		02FE25B222D2933400644597 /* MealPlanViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE25B122D2933400644597 /* MealPlanViewModelTests.swift */; };
+		02FE264D22D3238400644597 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE25FF22D320E200644597 /* Date+Extensions.swift */; };
 		36E76791921953295D91A8D2 /* Pods_GoodMeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39925A69B0069389B512434 /* Pods_GoodMeals.framework */; };
 		4B21AEFFA2DC8CBC7C07FEDC /* Pods_GoodMealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3192538777E9FF9732F633FF /* Pods_GoodMealsTests.framework */; };
 /* End PBXBuildFile section */
@@ -212,6 +213,7 @@
 		02FE25AD22D26FCE00644597 /* GroceryCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCellViewModelTests.swift; sourceTree = "<group>"; };
 		02FE25AF22D2868700644597 /* MealPlanConfirmationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanConfirmationViewModelTests.swift; sourceTree = "<group>"; };
 		02FE25B122D2933400644597 /* MealPlanViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModelTests.swift; sourceTree = "<group>"; };
+		02FE25FF22D320E200644597 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		3192538777E9FF9732F633FF /* Pods_GoodMealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodMealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5875AF701E1A3BC4F07F2EAA /* Pods-GoodMeals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMeals.release.xcconfig"; path = "Target Support Files/Pods-GoodMeals/Pods-GoodMeals.release.xcconfig"; sourceTree = "<group>"; };
 		7E42017043D7595947AFA95E /* Pods-GoodMealsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodMealsTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodMealsTests/Pods-GoodMealsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				028ACD1C22C73FB10027F490 /* Int+Extensions.swift */,
+				02FE25FF22D320E200644597 /* Date+Extensions.swift */,
 				028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */,
 				0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */,
 				0225EFD8226C828C004A4F60 /* UIView+Extensions.swift */,
@@ -1011,6 +1014,7 @@
 				02674CA022B0AB98005F940D /* MealPlanCell.swift in Sources */,
 				025E08F922B80AA30086458A /* GroceryCell.swift in Sources */,
 				027932F9226A3F7700401912 /* ViewControllerFactory.swift in Sources */,
+				02FE264D22D3238400644597 /* Date+Extensions.swift in Sources */,
 				0225EFD9226C828C004A4F60 /* UIView+Extensions.swift in Sources */,
 				028ACE9222CB92EC0027F490 /* UIColor+Styles.swift in Sources */,
 				02367DB7225BCAEF00BD1217 /* IngredientCategoryObject.swift in Sources */,
