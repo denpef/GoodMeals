@@ -4,35 +4,18 @@ import UIKit
 
 final class TodayMenuCell: UITableViewCell {
     var disposeBag = DisposeBag()
-    var recipeSelected = PublishRelay<Recipe?>()
-
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.Common.controlBackground
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        return label
-    }()
+    let recipeSelected = PublishRelay<Recipe?>()
 
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        view.backgroundColor = .clear
-        view.alwaysBounceVertical = false
-        view.alwaysBounceHorizontal = true
-        view.showsHorizontalScrollIndicator = false
-        view.isPagingEnabled = true
+        view.apply(Stylesheet.TodayMenuCell.collection)
         return view
     }()
 
-    private let pageControl: UIPageControl = {
-        let pageControl = UIPageControl(frame: .zero)
-        pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = .magenta
-        pageControl.pageIndicatorTintColor = .black
-        return pageControl
-    }()
+    private let titleLabel = UILabel(style: Stylesheet.TodayMenuCell.title)
+    private let pageControl = UIPageControl(style: Stylesheet.TodayMenuCell.pageControl)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

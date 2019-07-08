@@ -26,17 +26,6 @@ final class GroceryCell: UITableViewCell {
 
     func configure(with viewModel: GroceryCellViewModel) {
         self.viewModel = viewModel
-//        guard let item = self.viewModel?.item else {
-//            return
-//        }
-//        titleLabel.text = "\(item.ingredient?.name ?? "")"
-//        titleLabel.textColor = item.marked ? UIColor.Common.markedText : UIColor.Common.controlBackground
-
-//        amountLabel.text = item.amount.formattedMass
-
-//        markedButton.tintColor = item.marked ? UIColor.Common.ghostWhite : .green
-//        deleteButton.tintColor = item.marked ? UIColor.Common.ghostWhite : UIColor.Common.deleteItem
-
         bind()
     }
 

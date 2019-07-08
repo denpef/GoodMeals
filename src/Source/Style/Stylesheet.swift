@@ -90,6 +90,28 @@ enum Stylesheet {
         }
     }
 
+    enum TodayMenuCell {
+        static let title = Style<UILabel> {
+            $0.textColor = UIColor.Common.controlBackground
+            $0.textAlignment = .center
+            $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        }
+
+        static let collection = Style<UICollectionView> {
+            $0.backgroundColor = .clear
+            $0.alwaysBounceVertical = false
+            $0.alwaysBounceHorizontal = true
+            $0.showsHorizontalScrollIndicator = false
+            $0.isPagingEnabled = true
+        }
+
+        static let pageControl = Style<UIPageControl> {
+            $0.currentPage = 0
+            $0.currentPageIndicatorTintColor = .magenta
+            $0.pageIndicatorTintColor = .black
+        }
+    }
+
     enum ShoppingList {
         static let tableView = Style<UITableView> {
             $0.rowHeight = 60
