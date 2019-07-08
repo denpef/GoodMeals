@@ -1,6 +1,13 @@
 import UIKit
 
 enum Stylesheet {
+    enum Bars {
+        static let common = Style<UIView> {
+            $0.backgroundColor = UIColor.Common.mintCream
+            $0.tintColor = UIColor.Common.englishGreen
+        }
+    }
+
     enum ServingCell {
         static let info = Style<UILabel> {
             $0.textAlignment = .center
@@ -67,8 +74,8 @@ enum Stylesheet {
 
         static let calorifical = Style<UILabel> {
             $0.font = UIFont.systemFont(ofSize: 14, weight: .light)
-            $0.textColor = .white
-            $0.backgroundColor = UIColor.Common.infoLabelText
+            $0.textColor = UIColor.Common.englishGreen
+            $0.backgroundColor = UIColor.Common.maize
             $0.textAlignment = .center
             $0.layer.cornerRadius = 13
             $0.clipsToBounds = true
@@ -76,8 +83,8 @@ enum Stylesheet {
 
         static let timeForPreparing = Style<UILabel> {
             $0.font = UIFont.systemFont(ofSize: 14, weight: .light)
-            $0.textColor = .white
-            $0.backgroundColor = UIColor.Common.infoLabelText
+            $0.textColor = UIColor.Common.englishGreen
+            $0.backgroundColor = UIColor.Common.maize
             $0.textAlignment = .center
             $0.layer.cornerRadius = 13
             $0.clipsToBounds = true
@@ -98,7 +105,7 @@ enum Stylesheet {
         }
 
         static let collection = Style<UICollectionView> {
-            $0.backgroundColor = .clear
+            $0.backgroundColor = UIColor.Common.mintCream
             $0.alwaysBounceVertical = false
             $0.alwaysBounceHorizontal = true
             $0.showsHorizontalScrollIndicator = false
@@ -116,7 +123,7 @@ enum Stylesheet {
         static let tableView = Style<UITableView> {
             $0.rowHeight = 60
             $0.allowsSelection = false
-            $0.backgroundColor = .clear
+            $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
         }
     }
@@ -170,16 +177,16 @@ enum Stylesheet {
     enum RecipeList {
         static let table = Style<UITableView> {
             $0.rowHeight = 320
-            $0.backgroundColor = .clear
             $0.separatorStyle = .none
+            $0.backgroundColor = UIColor.Common.mintCream
         }
     }
 
     enum MealPlansList {
         static let table = Style<UITableView> {
             $0.rowHeight = 186
-            $0.backgroundColor = .white
             $0.separatorStyle = .none
+            $0.backgroundColor = UIColor.Common.mintCream
         }
     }
 
@@ -211,17 +218,25 @@ enum Stylesheet {
     }
 
     enum MealPlan {
+        static let headerLabel = Style<UILabel> {
+            $0.clipsToBounds = true
+            $0.backgroundColor = UIColor.Common.maize
+            $0.textAlignment = .center
+            $0.textColor = UIColor.Common.englishGreen
+            $0.textAlignment = .center
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        }
+
         static let table = Style<UITableView> {
             $0.rowHeight = 264
-            $0.backgroundColor = .white
+            $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
         }
 
         static let selectButton = Style<UIButton> {
-            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.setTitleColor(UIColor.Common.mintCream, for: .normal)
             $0.titleLabel?.textAlignment = .center
-            $0.titleLabel?.textColor = UIColor.Common.controlText
-            $0.backgroundColor = UIColor.Common.controlBackground
+            $0.backgroundColor = UIColor.Common.pictonBlue
             $0.setTitle("Select plan", for: .normal)
             $0.layer.shadowOpacity = 0.15
             $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -234,7 +249,7 @@ enum Stylesheet {
     enum TodayMenu {
         static let table = Style<UITableView> {
             $0.rowHeight = 304
-            $0.backgroundColor = .clear
+            $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
             $0.allowsSelection = false
         }
@@ -242,7 +257,7 @@ enum Stylesheet {
 
     enum Recipe {
         static let collection = Style<UICollectionView> {
-            $0.backgroundColor = .white
+            $0.backgroundColor = UIColor.Common.mintCream
             $0.alwaysBounceVertical = true
             $0.alwaysBounceHorizontal = false
             $0.showsHorizontalScrollIndicator = false

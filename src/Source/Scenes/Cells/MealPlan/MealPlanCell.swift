@@ -5,6 +5,7 @@ final class MealPlanCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = UIColor.Common.mintCream
         selectionStyle = .none
         setupImageView()
     }

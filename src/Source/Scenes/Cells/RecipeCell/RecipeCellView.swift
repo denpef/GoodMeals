@@ -11,7 +11,7 @@ final class RecipeCellView: UIView {
         super.init(frame: frame)
         setupImageView()
         setupLabels()
-        backgroundColor = .white
+        backgroundColor = UIColor.Common.mintCream
         clipsToBounds = false
         layer.masksToBounds = false
         layer.shadowOpacity = 0.15

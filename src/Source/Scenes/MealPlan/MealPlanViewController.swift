@@ -83,18 +83,14 @@ extension MealPlanViewController: UITableViewDelegate {
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 42)
         let headerView = UIView(frame: frame)
-        headerView.backgroundColor = .darkGray
 
-        let sectionLabel = UILabel(frame: frame)
-        sectionLabel.textAlignment = .center
-
+        let sectionLabel = UILabel(frame: CGRect(origin: frame.origin, size: CGSize(width: 100, height: frame.height - 8)))
+        sectionLabel.center = headerView.center
+        sectionLabel.layer.cornerRadius = (frame.height - 8) / 2
         sectionLabel.text = dataSource?.sectionModels[section].header
-        sectionLabel.textColor = UIColor.Common.subtitleLabelText
-        sectionLabel.textAlignment = .center
-        sectionLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        sectionLabel.apply(Stylesheet.MealPlan.headerLabel)
 
         headerView.addSubview(sectionLabel)
-        headerView.backgroundColor = .white
 
         return headerView
     }

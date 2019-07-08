@@ -6,6 +6,7 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor.Common.mintCream
         addSubview(recipeCellView)
         recipeCellView.translatesAutoresizingMaskIntoConstraints = false
         recipeCellView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true

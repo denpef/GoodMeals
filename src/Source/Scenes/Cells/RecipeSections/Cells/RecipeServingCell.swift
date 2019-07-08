@@ -24,6 +24,7 @@ final class RecipeServingCell: UICollectionViewCell {
     override init(frame: CGRect) {
         disposeBag = DisposeBag()
         super.init(frame: frame)
+        backgroundColor = UIColor.Common.mintCream
         configureInfoLabels()
         configureServing()
         configureButtons()

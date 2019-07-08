@@ -19,6 +19,7 @@ class ViewController<ViewModelType>: UIViewController {
     required init(viewModel: ViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = UIColor.Common.mintCream
     }
 
     override func viewDidLoad() {

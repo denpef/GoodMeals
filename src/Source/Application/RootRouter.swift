@@ -12,17 +12,19 @@ final class RootRouter {
     func showRootViewController() {
         let todayMenu = UINavigationController(rootViewController: factory.makeTodayMenuViewController())
         todayMenu.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 3)
-//        todayMenu.navigationBar.backgroundColor = UIColor.Common.controlText
+        todayMenu.navigationBar.apply(Stylesheet.Bars.common)
 
         let recipesList = UINavigationController(rootViewController: factory.makeRecipesListViewController())
         recipesList.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        recipesList.navigationBar.apply(Stylesheet.Bars.common)
 
         let shoppingList = UINavigationController(rootViewController: factory.makeShoppingListViewController())
         shoppingList.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        shoppingList.navigationBar.apply(Stylesheet.Bars.common)
 
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
         tabBarController.viewControllers = [todayMenu, shoppingList, recipesList]
-//        tabBarController.tabBar.backgroundColor = UIColor.Common.controlText
+        tabBarController.tabBar.apply(Stylesheet.Bars.common)
 
         transition(to: tabBarController)
     }
