@@ -3,13 +3,13 @@ import Foundation
 struct MealPlan {
     /// Identificator
     var id: String
-    
+
     /// Object name
     var name: String
-    
+
     /// Details of meal plan by days
     var dailyPlans = [DailyPlan]()
-    
+
     /// Title image adress
     var image: String
 

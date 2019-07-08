@@ -3,6 +3,9 @@ import RxSwift
 
 import UIKit
 
+/**
+ Represent recipe list of plan and let to choose plan as current
+ */
 final class MealPlanViewController: ViewController<MealPlanViewModel> {
     private var dataSource: RxTableViewSectionedReloadDataSource<MealPlanTableViewSection>?
 
@@ -85,7 +88,6 @@ extension MealPlanViewController: UITableViewDelegate {
         let sectionLabel = UILabel(frame: frame)
         sectionLabel.textAlignment = .center
 
-        // get the title from the dataSource
         sectionLabel.text = dataSource?.sectionModels[section].header
         sectionLabel.textColor = UIColor.Common.subtitleLabelText
         sectionLabel.textAlignment = .center

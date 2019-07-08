@@ -7,10 +7,10 @@ enum Mealtime: Int {
 struct Meal {
     /// Identificator
     var id: String
-    
+
     /// Meal time (breakfast, brunch, lunch, snack, dinner)
     var mealtime: Mealtime?
-    
+
     /// Recipe details
     var recipe: Recipe?
 

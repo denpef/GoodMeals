@@ -3,13 +3,13 @@ import Foundation
 struct Ingredient {
     /// Identificator
     var id: String
-    
+
     /// Object name
     var name: String = ""
-    
+
     /// Ingredient calorific by 100 gramm (not implemented for now)
     var calorific: Int = 0
-    
+
     /// Category of Ingredient, (not implemented for now)
     var category: IngredientCategory?
 

@@ -1,6 +1,9 @@
 import RxSwift
 import UIKit
 
+/**
+ Screen of all recipe list
+ */
 final class RecipesListViewController: ViewController<RecipesListViewModel> {
     private lazy var tableView = UITableView(style: Stylesheet.RecipeList.table)
 

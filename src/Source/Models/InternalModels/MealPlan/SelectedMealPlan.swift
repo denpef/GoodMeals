@@ -3,10 +3,10 @@ import Foundation
 struct SelectedMealPlan {
     /// Identificator
     var id: String
-    
+
     /// Start diet date
     var startDate: Date
-    
+
     /// Details of daily plans
     var mealPlan: MealPlan?
 

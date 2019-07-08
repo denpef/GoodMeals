@@ -1,6 +1,9 @@
 import RxSwift
 import UIKit
 
+/**
+ Available meal plan list screen
+ */
 final class MealPlansListViewController: ViewController<MealPlansListViewModel> {
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)

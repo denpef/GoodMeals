@@ -3,7 +3,7 @@ import Foundation
 struct RecipeCategory {
     /// Identificator
     var id: String
-    
+
     /// Object name
     var name: String = ""
 

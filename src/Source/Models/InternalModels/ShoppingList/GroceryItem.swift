@@ -3,13 +3,13 @@ import Foundation
 struct GroceryItem {
     /// Identificator
     var id: String
-    
+
     /// Ingredien object
     var ingredient: Ingredient?
-    
+
     /// Mass amount (gramm)
     var amount: Int = 0
-    
+
     /// Sign of buy mark
     var marked: Bool = false
 

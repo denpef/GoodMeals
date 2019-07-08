@@ -1,6 +1,9 @@
 import RxSwift
 import UIKit
 
+/**
+ Shopping list screen
+ */
 final class ShoppingListViewController: ViewController<ShoppingListViewModel> {
     private lazy var tableView = UITableView(style: Stylesheet.ShoppingList.tableView)
 

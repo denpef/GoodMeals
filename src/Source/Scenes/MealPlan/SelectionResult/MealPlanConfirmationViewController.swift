@@ -1,6 +1,9 @@
 import RxSwift
 import UIKit
 
+/**
+ Screen of confirmation to change current meal plan
+ */
 final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmationViewModel> {
     private let infoLabel = UILabel(style: Stylesheet.MealPlanConfirmation.infoLabel)
     private let planImageView = UIImageView(style: Stylesheet.MealPlanConfirmation.planImage)

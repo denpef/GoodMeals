@@ -1,6 +1,9 @@
 import RxSwift
 import UIKit
 
+/**
+ Screen show current meal plan recipes by days begin from today
+ */
 final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     private var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)

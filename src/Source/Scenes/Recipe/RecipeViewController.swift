@@ -2,6 +2,9 @@ import RxDataSources
 import RxSwift
 import UIKit
 
+/**
+ Recipe screen with list of ingredients and opportunity add them to shopping list
+ */
 final class RecipeViewController: ViewController<RecipeViewModel> {
     private var dataSource: RxCollectionViewSectionedReloadDataSource<RecipeSection>?
 
