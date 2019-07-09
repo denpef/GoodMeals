@@ -8,6 +8,17 @@ enum Stylesheet {
             $0.textColor = UIColor.Common.englishGreen
             $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
+
+        static let onboardingButton = Style<UIButton> {
+            $0.titleLabel?.textAlignment = .center
+            $0.titleLabel?.textColor = UIColor.Common.mintCream
+            $0.backgroundColor = UIColor.Common.englishGreen
+            $0.layer.shadowOpacity = 0.15
+            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            $0.layer.shadowRadius = 8
+            $0.layer.cornerRadius = 12
+            $0.layer.opacity = 0.95
+        }
     }
 
     enum Bars {
@@ -261,17 +272,6 @@ enum Stylesheet {
             $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
             $0.allowsSelection = false
-        }
-
-        static let select = Style<UIButton> {
-            $0.titleLabel?.textAlignment = .center
-            $0.titleLabel?.textColor = UIColor.Common.mintCream
-            $0.backgroundColor = UIColor.Common.englishGreen
-            $0.layer.shadowOpacity = 0.15
-            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-            $0.layer.shadowRadius = 8
-            $0.layer.cornerRadius = 12
-            $0.layer.opacity = 0.95
         }
     }
 

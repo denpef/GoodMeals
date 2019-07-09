@@ -12,7 +12,7 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     }()
 
     private let onboardingLabel = UILabel(style: Stylesheet.Common.onboarding)
-    private let selectPlanButton = UIButton(style: Stylesheet.TodayMenu.select)
+    private let selectPlanButton = UIButton(style: Stylesheet.Common.onboardingButton)
 
     override func setupInterface() {
         tableView.register(TodayMenuCell.self, forCellReuseIdentifier: TodayMenuCell.reuseIdentifier)
