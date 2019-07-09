@@ -17,7 +17,7 @@ final class MealPlansListViewController: ViewController<MealPlansListViewModel> 
     }
 
     private func setupTableView() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.Common.mintCream
         tableView.register(MealPlanCell.self, forCellReuseIdentifier: MealPlanCell.reuseIdentifier)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

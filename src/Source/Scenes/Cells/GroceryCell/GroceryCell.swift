@@ -61,6 +61,7 @@ final class GroceryCell: UITableViewCell {
                 self.deleteButton.apply(Stylesheet.GroceryCell.deleteButtonMarked)
                 self.amountLabel.apply(Stylesheet.GroceryCell.amountLabelMarked)
                 self.titleLabel.apply(Stylesheet.GroceryCell.titleLabelMarked)
+                self.setStrikethroughStyle(label: self.titleLabel)
             case false:
                 self.markedButton.apply(Stylesheet.GroceryCell.markButtonUnmarked)
                 self.deleteButton.apply(Stylesheet.GroceryCell.deleteButtonUnmarked)
@@ -97,5 +98,15 @@ final class GroceryCell: UITableViewCell {
         titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -106).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48).isActive = true
+    }
+
+    private func setStrikethroughStyle(label: UILabel) {
+        if let text = label.text {
+            let attributeString = NSMutableAttributedString(string: text)
+            attributeString.addAttribute(.strikethroughStyle,
+                                         value: 2,
+                                         range: NSRange(location: 0, length: attributeString.length))
+            label.attributedText = attributeString
+        }
     }
 }

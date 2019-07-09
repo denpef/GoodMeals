@@ -10,7 +10,7 @@ final class MealPlanConfirmationViewController: ViewController<MealPlanConfirmat
     private let acceptButton = UIButton(style: Stylesheet.MealPlanConfirmation.acceptButton)
 
     override func setupInterface() {
-        view.backgroundColor = UIColor.Common.white
+        view.backgroundColor = UIColor.Common.mintCream
 
         view.addSubview(planImageView)
         planImageView.translatesAutoresizingMaskIntoConstraints = false

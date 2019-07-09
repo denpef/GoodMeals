@@ -15,7 +15,7 @@ final class MealPlanViewController: ViewController<MealPlanViewModel> {
     private var buttonCenterYConstraint: NSLayoutConstraint?
 
     override func setupInterface() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.Common.mintCream
 
         tableView.register(RecipeCell.self, forCellReuseIdentifier: RecipeCell.reuseIdentifier)
         view.addSubview(tableView)

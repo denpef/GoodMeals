@@ -20,7 +20,7 @@ final class RecipeHeaderView: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = UIColor.Common.mintCream
     }
 
     required init?(coder _: NSCoder) {

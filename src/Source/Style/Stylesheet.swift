@@ -15,17 +15,17 @@ enum Stylesheet {
         }
 
         static let plus = Style<UIButton> {
-            $0.setImage(Asset.plus.image, tintColor: UIColor.Common.controlBackground)
+            $0.setImage(Asset.plus.image, tintColor: UIColor.Common.englishGreen)
             $0.contentMode = .scaleAspectFill
         }
 
         static let minus = Style<UIButton> {
-            $0.setImage(Asset.minus.image, tintColor: UIColor.Common.controlBackground)
+            $0.setImage(Asset.minus.image, tintColor: UIColor.Common.englishGreen)
             $0.contentMode = .scaleAspectFill
         }
 
         static let addToShoppingList = Style<UIButton> {
-            $0.setImage(Asset.shoppingBag.image, tintColor: UIColor.Common.controlText)
+            $0.setImage(Asset.shoppingBag.image, tintColor: UIColor.Common.pastelRed)
             $0.contentMode = .scaleAspectFill
         }
 
@@ -60,31 +60,31 @@ enum Stylesheet {
 
     enum RecipeCell {
         static let breakfast = Style<UILabel> {
-            $0.textColor = UIColor.Common.subtitleLabelText
+//            $0.textColor = UIColor.Common.englishGreen
             $0.textAlignment = .center
             $0.text = "Breakfast"
-            $0.font = UIFont.systemFont(ofSize: 16, weight: .light)
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
 
         static let title = Style<UILabel> {
-            $0.textColor = .black
             $0.textAlignment = .left
-            $0.font = UIFont.systemFont(ofSize: 20, weight: .light)
+//            $0.textColor = UIColor.Common.englishGreen
+            $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         }
 
         static let calorifical = Style<UILabel> {
-            $0.font = UIFont.systemFont(ofSize: 14, weight: .light)
-            $0.textColor = UIColor.Common.englishGreen
-            $0.backgroundColor = UIColor.Common.maize
+            $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            $0.textColor = UIColor.Common.mintCream
+            $0.backgroundColor = UIColor.Common.englishGreenLight
             $0.textAlignment = .center
             $0.layer.cornerRadius = 13
             $0.clipsToBounds = true
         }
 
         static let timeForPreparing = Style<UILabel> {
-            $0.font = UIFont.systemFont(ofSize: 14, weight: .light)
-            $0.textColor = UIColor.Common.englishGreen
-            $0.backgroundColor = UIColor.Common.maize
+            $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            $0.textColor = UIColor.Common.mintCream
+            $0.backgroundColor = UIColor.Common.englishGreenLight
             $0.textAlignment = .center
             $0.layer.cornerRadius = 13
             $0.clipsToBounds = true
@@ -99,9 +99,12 @@ enum Stylesheet {
 
     enum TodayMenuCell {
         static let title = Style<UILabel> {
-            $0.textColor = UIColor.Common.controlBackground
+            $0.textColor = UIColor.Common.mintCream
+            $0.backgroundColor = UIColor.Common.pictonBlue
             $0.textAlignment = .center
             $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 16
         }
 
         static let collection = Style<UICollectionView> {
@@ -114,8 +117,8 @@ enum Stylesheet {
 
         static let pageControl = Style<UIPageControl> {
             $0.currentPage = 0
-            $0.currentPageIndicatorTintColor = .magenta
-            $0.pageIndicatorTintColor = .black
+            $0.currentPageIndicatorTintColor = UIColor.Common.englishGreen
+            $0.pageIndicatorTintColor = UIColor.Common.englishGreenLight
         }
     }
 
@@ -130,46 +133,42 @@ enum Stylesheet {
 
     enum GroceryCell {
         static let markButtonMarked = Style<UIButton> {
-            $0.setImage(Asset.image.image, tintColor: .green)
-            $0.tintColor = UIColor.Common.ghostWhite
+            $0.setImage(Asset.image.image, tintColor: UIColor.Common.pictonBlueLight)
         }
 
         static let deleteButtonMarked = Style<UIButton> {
-            $0.setImage(Asset.cancel.image, tintColor: UIColor.Common.deleteItem)
-            $0.tintColor = UIColor.Common.ghostWhite
+            $0.setImage(Asset.cancel.image, tintColor: UIColor.Common.pastelRedLight)
         }
 
         static let titleLabelMarked = Style<UILabel> {
             $0.textAlignment = .left
-            $0.textColor = UIColor.Common.markedText
+            $0.textColor = UIColor.Common.englishGreenLight
             $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
 
         static let amountLabelMarked = Style<UILabel> {
             $0.textAlignment = .right
-            $0.textColor = UIColor.Common.markedText
+            $0.textColor = UIColor.Common.englishGreenLight
             $0.font = UIFont.systemFont(ofSize: 12, weight: .light)
         }
 
         static let markButtonUnmarked = Style<UIButton> {
-            $0.setImage(Asset.image.image, tintColor: .green)
-            $0.tintColor = UIColor.Common.controlText
+            $0.setImage(Asset.image.image, tintColor: UIColor.Common.pictonBlue)
         }
 
         static let deleteButtonUnmarked = Style<UIButton> {
-            $0.setImage(Asset.cancel.image, tintColor: UIColor.Common.deleteItem)
-            $0.tintColor = UIColor.Common.deleteItem
+            $0.setImage(Asset.cancel.image, tintColor: UIColor.Common.pastelRed)
         }
 
         static let titleLabelUnmarked = Style<UILabel> {
             $0.textAlignment = .left
-            $0.textColor = UIColor.Common.controlBackground
+            $0.textColor = UIColor.Common.englishGreen
             $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
 
         static let amountLabelUnmarked = Style<UILabel> {
             $0.textAlignment = .right
-            $0.textColor = UIColor.Common.controlBackground
+            $0.textColor = UIColor.Common.englishGreen
             $0.font = UIFont.systemFont(ofSize: 12, weight: .light)
         }
     }
@@ -192,7 +191,7 @@ enum Stylesheet {
 
     enum MealPlanConfirmation {
         static let infoLabel = Style<UILabel> {
-            $0.textColor = UIColor.Common.controlBackground
+            $0.textColor = UIColor.Common.englishGreen
             $0.text = "Would you like to choose this meal plan starting today?"
             $0.textAlignment = .center
             $0.numberOfLines = 3
@@ -206,8 +205,8 @@ enum Stylesheet {
 
         static let acceptButton = Style<UIButton> {
             $0.titleLabel?.textAlignment = .center
-            $0.titleLabel?.textColor = UIColor.Common.controlText
-            $0.backgroundColor = UIColor.Common.controlBackground
+            $0.titleLabel?.textColor = UIColor.Common.mintCream
+            $0.backgroundColor = UIColor.Common.englishGreen
             $0.setTitle("Yes", for: .normal)
             $0.layer.shadowOpacity = 0.15
             $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -220,9 +219,9 @@ enum Stylesheet {
     enum MealPlan {
         static let headerLabel = Style<UILabel> {
             $0.clipsToBounds = true
-            $0.backgroundColor = UIColor.Common.maize
+            $0.backgroundColor = UIColor.Common.pictonBlue
             $0.textAlignment = .center
-            $0.textColor = UIColor.Common.englishGreen
+            $0.textColor = UIColor.Common.mintCream
             $0.textAlignment = .center
             $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         }
@@ -236,7 +235,7 @@ enum Stylesheet {
         static let selectButton = Style<UIButton> {
             $0.setTitleColor(UIColor.Common.mintCream, for: .normal)
             $0.titleLabel?.textAlignment = .center
-            $0.backgroundColor = UIColor.Common.pictonBlue
+            $0.backgroundColor = UIColor.Common.englishGreen
             $0.setTitle("Select plan", for: .normal)
             $0.layer.shadowOpacity = 0.15
             $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -248,7 +247,7 @@ enum Stylesheet {
 
     enum TodayMenu {
         static let table = Style<UITableView> {
-            $0.rowHeight = 304
+            $0.rowHeight = 424
             $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
             $0.allowsSelection = false

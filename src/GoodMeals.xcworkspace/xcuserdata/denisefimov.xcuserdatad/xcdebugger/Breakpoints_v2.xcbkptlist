@@ -9,14 +9,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/MealPlan/MealPlanViewModel.swift"
-            timestampString = "584275726.1929851"
+            filePath = "Source/Scenes/Cells/TodayMenuCell.swift"
+            timestampString = "584380573.881627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "init(mealPlan:router:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "configure(with:dayNumber:numberOfPages:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoodMeals.TodayMenuCell.configure(with: Swift.Optional&lt;Swift.Array&lt;GoodMeals.Meal&gt;&gt;, dayNumber: Swift.Int, numberOfPages: Swift.Int) -&gt; ()"
+                  moduleName = "GoodMeals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/Scenes/Cells/TodayMenuCell.swift"
+                  timestampString = "584290774.350489"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "274">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoodMeals.TodayMenuCell.configure(with: Swift.Optional&lt;Swift.Array&lt;GoodMeals.Meal&gt;&gt;, dayNumber: Swift.Int, numberOfPages: Swift.Int) -&gt; ()"
+                  moduleName = "GoodMeals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/Scenes/Cells/TodayMenuCell.swift"
+                  timestampString = "584290774.352033"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,29 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/MealPlan/MealPlanViewModel.swift"
-            timestampString = "584275726.193332"
+            filePath = "Source/Scenes/Cells/TodayMenuCell.swift"
+            timestampString = "584380573.881696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "init(mealPlan:router:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Source/Scenes/MealPlan/MealPlanViewModel.swift"
-            timestampString = "584275726.193396"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "init(mealPlan:router:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "setupLabel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

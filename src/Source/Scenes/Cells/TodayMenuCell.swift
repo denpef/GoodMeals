@@ -62,10 +62,10 @@ final class TodayMenuCell: UITableViewCell {
     private func setupLabel() {
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
 
     private func setupCollectionView() {
@@ -73,7 +73,7 @@ final class TodayMenuCell: UITableViewCell {
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 38).isActive = true
+        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 44).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
@@ -102,18 +102,3 @@ extension TodayMenuCell: UICollectionViewDelegateFlowLayout {
         pageControl.currentPage = Int(targetContentOffset.pointee.x / collectionView.frame.width)
     }
 }
-
-// final class TodayMenuCellViewModel {
-//    var router: MealPlanRouterType?
-//    var recipe = PublishSubject<String>()
-//
-//    private let disposeBag = DisposeBag()
-//
-//    // MARK: - Init
-//
-//    init() {
-//        recipe.subscribe(onNext: { [weak self] recipeId in
-//            self?.router?.navigateToRecipe(recipeId: recipeId)
-//        }).disposed(by: disposeBag)
-//    }
-// }
