@@ -17,6 +17,12 @@ final class ShoppingListViewModel {
     /// Shopping list items (list of ingredients and amount)
     var items: Driver<[GroceryItem]>
 
+    /// When items are empty need to show onboarding UI
+    let hideOnboarding: Driver<Bool>
+
+    /// Onboarding message
+    let onboardingText: Driver<String>
+
     /// Signal to request item data source (such as when data source updates)
     let reload = PublishRelay<Void>()
 
@@ -33,6 +39,14 @@ final class ShoppingListViewModel {
         items = reload
             .map { shoppingListService.all() }
             .asDriver(onErrorJustReturn: [])
+
+        hideOnboarding = items.map { !$0.isEmpty }
+
+        onboardingText = Observable.of("""
+        Your shopping list is empty,
+        you can add the ingredients to the list from recipe details screen
+        """)
+            .asDriver(onErrorJustReturn: "")
 
         shoppingListService.subscribeCollection(subscriber: self)
 

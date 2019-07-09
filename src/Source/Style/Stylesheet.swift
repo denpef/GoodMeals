@@ -1,6 +1,15 @@
 import UIKit
 
 enum Stylesheet {
+    enum Common {
+        static let onboarding = Style<UILabel> {
+            $0.textAlignment = .center
+            $0.numberOfLines = 0
+            $0.textColor = UIColor.Common.englishGreen
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        }
+    }
+
     enum Bars {
         static let common = Style<UIView> {
             $0.backgroundColor = UIColor.Common.mintCream
@@ -61,7 +70,6 @@ enum Stylesheet {
 
     enum RecipeCell {
         static let breakfast = Style<UILabel> {
-//            $0.textColor = UIColor.Common.englishGreen
             $0.textAlignment = .center
             $0.text = "Breakfast"
             $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -69,7 +77,6 @@ enum Stylesheet {
 
         static let title = Style<UILabel> {
             $0.textAlignment = .left
-//            $0.textColor = UIColor.Common.englishGreen
             $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         }
 
@@ -239,7 +246,7 @@ enum Stylesheet {
             $0.setTitleColor(UIColor.Common.mintCream, for: .normal)
             $0.titleLabel?.textAlignment = .center
             $0.backgroundColor = UIColor.Common.englishGreen
-            $0.setTitle("Select plan", for: .normal)
+            $0.setTitle("Choose this plan", for: .normal)
             $0.layer.shadowOpacity = 0.15
             $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
             $0.layer.shadowRadius = 8
@@ -254,6 +261,17 @@ enum Stylesheet {
             $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
             $0.allowsSelection = false
+        }
+
+        static let select = Style<UIButton> {
+            $0.titleLabel?.textAlignment = .center
+            $0.titleLabel?.textColor = UIColor.Common.mintCream
+            $0.backgroundColor = UIColor.Common.englishGreen
+            $0.layer.shadowOpacity = 0.15
+            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            $0.layer.shadowRadius = 8
+            $0.layer.cornerRadius = 12
+            $0.layer.opacity = 0.95
         }
     }
 

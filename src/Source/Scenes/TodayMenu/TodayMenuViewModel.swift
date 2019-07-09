@@ -20,6 +20,15 @@ final class TodayMenuViewModel {
     /// Signal to request item data source (such as when data source updates)
     let reload = PublishRelay<Void>()
 
+    /// When items are empty need to show onboarding UI
+    let hideOnboarding: Driver<Bool>
+
+    /// Onboarding message
+    let onboardingText: Driver<String>
+
+    /// Select plan action text
+    let selectPlanText: Driver<String>
+
     // MARK: - Private properties
 
     private weak var mealPlanService: MealPlanServiceType?
@@ -43,8 +52,18 @@ final class TodayMenuViewModel {
                 Observable.from(optional: plan.dailyPlansForToday)
             }.asDriver(onErrorJustReturn: [])
 
+        hideOnboarding = items.map { !$0.isEmpty }
+
         title = plan
             .map { $0.mealPlan?.name ?? "" }
+            .asDriver(onErrorJustReturn: "")
+
+        onboardingText = Observable.of("""
+        It looks like you haven't chosen a food plan yet,
+        you can see and select all available plans by clicking on the button
+        """).asDriver(onErrorJustReturn: "")
+
+        selectPlanText = Observable.of("Select plan")
             .asDriver(onErrorJustReturn: "")
 
         mealPlanService?.subscribeCollection(subscriber: self)

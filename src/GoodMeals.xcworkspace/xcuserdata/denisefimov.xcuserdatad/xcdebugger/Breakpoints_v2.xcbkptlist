@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Scenes/Cells/TodayMenuCell.swift"
-            timestampString = "584388054.145583"
+            timestampString = "584394132.1441931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Scenes/Cells/TodayMenuCell.swift"
-            timestampString = "584388054.14566"
+            timestampString = "584394132.1442471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Style/Stylesheet.swift"
-            timestampString = "584388054.145718"
+            timestampString = "584394132.144291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
@@ -90,13 +90,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodMealsTests/TodayMenuViewModelTests.swift"
-            timestampString = "584388054.146102"
+            timestampString = "584394132.1446331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "testWithEmptyDailyPlans()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Source/Scenes/ShoppingList/ShoppingListViewModel.swift"
+            timestampString = "584394132.144681"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "init(shoppingListService:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoodMeals.ShoppingListViewModel.init(shoppingListService: GoodMeals.ShoppingListServiceType) -&gt; GoodMeals.ShoppingListViewModel"
+                  moduleName = "GoodMeals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/Scenes/ShoppingList/ShoppingListViewModel.swift"
+                  timestampString = "584393696.512493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "926">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;GoodMeals.GroceryItem&gt;) -&gt; Swift.Bool in GoodMeals.ShoppingListViewModel.init(shoppingListService: GoodMeals.ShoppingListServiceType) -&gt; GoodMeals.ShoppingListViewModel"
+                  moduleName = "GoodMeals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denisefimov/Documents/GoodMeals/src/Source/Scenes/ShoppingList/ShoppingListViewModel.swift"
+                  timestampString = "584393696.514673"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

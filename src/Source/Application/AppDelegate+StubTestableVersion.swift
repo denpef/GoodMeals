@@ -204,9 +204,9 @@ extension AppDelegate {
         let plan2 = MealPlan(name: "Plan #2", image: imagePath, dailyPlans: [firstDayPlan, secondDayPlan])
         service.add(plan2, update: true)
 
-        let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: plan)
-        let selectedPlan2 = SelectedMealPlan(startDate: Date(), mealPlan: plan2)
-        service.add(selectedPlan, update: true)
-        service.add(selectedPlan2, update: true)
+//        let selectedPlan = SelectedMealPlan(startDate: Date(), mealPlan: plan)
+//        let selectedPlan2 = SelectedMealPlan(startDate: Date(), mealPlan: plan2)
+//        service.add(selectedPlan, update: true)
+//        service.add(selectedPlan2, update: true)
     }
 }
