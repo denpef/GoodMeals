@@ -40,6 +40,7 @@ enum Stylesheet {
 
     enum MealPlanCell {
         static let titleImage = Style<UIImageView> {
+            $0.backgroundColor = UIColor.Common.englishGreenLight
             $0.contentMode = .scaleAspectFill
             $0.layer.cornerRadius = 15
             $0.clipsToBounds = true
@@ -92,6 +93,7 @@ enum Stylesheet {
 
         static let titleImage = Style<UIImageView> {
             $0.contentMode = .scaleAspectFill
+            $0.backgroundColor = UIColor.Common.englishGreenLight
             $0.layer.cornerRadius = 12
             $0.clipsToBounds = true
         }
@@ -199,6 +201,7 @@ enum Stylesheet {
 
         static let planImage = Style<UIImageView> {
             $0.contentMode = .scaleAspectFill
+            $0.backgroundColor = UIColor.Common.englishGreenLight
             $0.layer.cornerRadius = 12
             $0.clipsToBounds = true
         }
@@ -260,6 +263,14 @@ enum Stylesheet {
             $0.alwaysBounceVertical = true
             $0.alwaysBounceHorizontal = false
             $0.showsHorizontalScrollIndicator = false
+        }
+    }
+
+    enum RecipeHeader {
+        static let image = Style<UIImageView> {
+            $0.backgroundColor = UIColor.Common.englishGreenLight
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
         }
     }
 }

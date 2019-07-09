@@ -80,7 +80,7 @@ class TodayMenuViewModelTests: XCTestCase {
 
         scheduler.start()
 
-        XCTAssertEqual(plans.events, [.next(10, [])])
+        XCTAssert(plans.events.isEmpty)
     }
 
     func testMealPlansAction() {

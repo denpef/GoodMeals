@@ -1,12 +1,7 @@
 import UIKit
 
 final class RecipeHeaderView: UICollectionReusableView {
-    private var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    private var imageView = UIImageView(style: Stylesheet.RecipeHeader.image)
 
     func setImage(_ image: String) {
         addSubview(imageView)
