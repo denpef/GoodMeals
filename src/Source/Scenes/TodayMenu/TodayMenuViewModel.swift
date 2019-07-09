@@ -5,6 +5,9 @@ import RxSwift
  Current meal plan module - show recipes by today
  */
 final class TodayMenuViewModel {
+    /// Title of today meal plan screen
+    let title: Driver<String>
+
     /// Handle meal plan action control event
     let mealPlansAction = PublishRelay<Void>()
 
@@ -30,13 +33,19 @@ final class TodayMenuViewModel {
         self.mealPlanService = mealPlanService
         self.router = router
 
-        items = reload
-            .flatMapLatest { _ -> Observable<[DailyPlan]> in
-                guard let currentPlan = mealPlanService?.getCurrentMealPlan() else {
-                    return Observable.just([])
-                }
-                return Observable.from(optional: currentPlan.dailyPlansForToday)
+        let plan = reload
+            .flatMapLatest {
+                Observable.from(optional: mealPlanService?.getCurrentMealPlan())
+            }
+
+        items = plan
+            .flatMapLatest { plan -> Observable<[DailyPlan]> in
+                Observable.from(optional: plan.dailyPlansForToday)
             }.asDriver(onErrorJustReturn: [])
+
+        title = plan
+            .map { $0.mealPlan?.name ?? "" }
+            .asDriver(onErrorJustReturn: "")
 
         mealPlanService?.subscribeCollection(subscriber: self)
 

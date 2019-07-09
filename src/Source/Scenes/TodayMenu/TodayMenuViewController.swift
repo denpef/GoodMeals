@@ -27,6 +27,10 @@ final class TodayMenuViewController: ViewController<TodayMenuViewModel> {
     }
 
     override func bind() {
+        viewModel.title
+            .drive(rx.title)
+            .disposed(by: disposeBag)
+
         viewModel.items
             .drive(tableView.rx
                 .items(cellIdentifier: TodayMenuCell.reuseIdentifier, cellType: TodayMenuCell.self)) { [weak self] _, item, cell in
