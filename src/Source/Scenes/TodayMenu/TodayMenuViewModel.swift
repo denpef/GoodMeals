@@ -63,7 +63,7 @@ final class TodayMenuViewModel {
         you can see and select all available plans by clicking on the button
         """).asDriver(onErrorJustReturn: "")
 
-        selectPlanText = Observable.of("Select plan")
+        selectPlanText = Observable.of("Choose a plan")
             .asDriver(onErrorJustReturn: "")
 
         mealPlanService?.subscribeCollection(subscriber: self)

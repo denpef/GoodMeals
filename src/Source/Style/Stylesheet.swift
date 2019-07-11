@@ -195,7 +195,7 @@ enum Stylesheet {
 
     enum RecipeList {
         static let table = Style<UITableView> {
-            $0.rowHeight = 340
+            $0.rowHeight = 300
             $0.separatorStyle = .none
             $0.backgroundColor = UIColor.Common.mintCream
         }
@@ -248,7 +248,7 @@ enum Stylesheet {
         }
 
         static let table = Style<UITableView> {
-            $0.rowHeight = 340
+            $0.rowHeight = 300
             $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
         }
@@ -268,7 +268,7 @@ enum Stylesheet {
 
     enum TodayMenu {
         static let table = Style<UITableView> {
-            $0.rowHeight = 384
+            $0.rowHeight = 344
             $0.backgroundColor = UIColor.Common.mintCream
             $0.separatorStyle = .none
             $0.allowsSelection = false

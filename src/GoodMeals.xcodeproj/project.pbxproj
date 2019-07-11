@@ -284,8 +284,8 @@
 		021ED8A4223E2C88009FA238 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				02E7D4CA227B1349000F0576 /* Services */,
 				02CBF5A8223E37340009158E /* Scenes */,
-				02CBF5A7223E371D0009158E /* BusinessLogic */,
 				02CBF5A6223E37110009158E /* Application */,
 				02E2069822CCB63200C7CE82 /* Style */,
 				025FFD0C2264D71100CBD0EC /* Dependency Container */,
@@ -539,14 +539,6 @@
 				02BEF99022AD5EAF00E8C741 /* AppDelegate+StubTestableVersion.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		02CBF5A7223E371D0009158E /* BusinessLogic */ = {
-			isa = PBXGroup;
-			children = (
-				02E7D4CA227B1349000F0576 /* Services */,
-			);
-			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
 		02CBF5A8223E37340009158E /* Scenes */ = {
