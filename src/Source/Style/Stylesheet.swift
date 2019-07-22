@@ -282,6 +282,26 @@ enum Stylesheet {
             $0.alwaysBounceHorizontal = false
             $0.showsHorizontalScrollIndicator = false
         }
+
+        static let infoLabel = Style<UILabel> {
+            $0.backgroundColor = UIColor.Common.mintCream
+            $0.textAlignment = .center
+            $0.textColor = UIColor.Common.englishGreen
+            $0.textAlignment = .center
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        }
+
+        static let infoView = Style<UIView> {
+            $0.backgroundColor = UIColor.Common.mintCream
+            $0.isHidden = true
+            $0.alpha = 0
+            $0.layer.cornerRadius = 8
+            $0.clipsToBounds = true
+            $0.layer.masksToBounds = false
+            $0.layer.shadowOpacity = 0.15
+            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            $0.layer.shadowRadius = 4
+        }
     }
 
     enum RecipeHeader {

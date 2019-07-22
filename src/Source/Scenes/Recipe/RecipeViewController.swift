@@ -6,15 +6,18 @@ import UIKit
  Recipe screen with list of ingredients and opportunity add them to shopping list
  */
 final class RecipeViewController: ViewController<RecipeViewModel> {
-    private var dataSource: RxCollectionViewSectionedReloadDataSource<RecipeSection>?
-
-    let collectionView: UICollectionView = {
+    private let infoView = UIView(style: Stylesheet.Recipe.infoView)
+    private let infoLabel = UILabel(style: Stylesheet.Recipe.infoLabel)
+    private let collectionView: UICollectionView = {
         let flowLayout = StretchyHeaderLayout()
         flowLayout.scrollDirection = .vertical
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.apply(Stylesheet.Recipe.collection)
         return view
     }()
+    
+    private var dataSource: RxCollectionViewSectionedReloadDataSource<RecipeSection>?
+    private var infoTimer: Timer?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -26,6 +29,7 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         navigationItem.largeTitleDisplayMode = .never
         configureCollectionView()
         configureDataSource()
+        configureInfoView()
     }
 
     private func configureDataSource() {
@@ -78,6 +82,30 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         viewModel.items
             .drive(collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+
+        viewModel.addToShoppingListAction.subscribe(onNext: { [weak self] _ in
+            UIView.animate(withDuration: 1) {
+                self?.showInfoView()
+            }
+        }).disposed(by: disposeBag)
+    }
+
+    private func showInfoView() {
+        infoView.isHidden = false
+        infoView.alpha = 1
+        infoTimer?.invalidate()
+        infoTimer = Timer.scheduledTimer(timeInterval: 2,
+                                         target: self,
+                                         selector: #selector(hideInfoView),
+                                         userInfo: nil,
+                                         repeats: true)
+    }
+
+    @objc private func hideInfoView() {
+        infoTimer?.invalidate()
+        UIView.animate(withDuration: 1,
+                       animations: { self.infoView.alpha = 0 },
+                       completion: { _ in self.infoView.isHidden = true })
     }
 
     private func configureCollectionView() {
@@ -96,6 +124,21 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         collectionView.register(RecipeHeaderView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: "HeaderId")
+    }
+
+    private func configureInfoView() {
+        view.addSubview(infoView)
+        infoView.translatesAutoresizingMaskIntoConstraints = false
+        infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
+        infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        infoView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+        infoView.addSubview(infoLabel)
+        infoLabel.text = "The recipe has been added"
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.centerXAnchor.constraint(equalTo: infoView.centerXAnchor).isActive = true
+        infoLabel.centerYAnchor.constraint(equalTo: infoView.centerYAnchor).isActive = true
     }
 }
 

@@ -317,7 +317,6 @@
 			children = (
 				028ACD1C22C73FB10027F490 /* Int+Extensions.swift */,
 				02FE25FF22D320E200644597 /* Date+Extensions.swift */,
-				028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */,
 				0225EFD6226C68DC004A4F60 /* UIColor+Extensions.swift */,
 				02BEF9FA22AE3BC400E8C741 /* UIImageView+Extensions.swift */,
 				028ACD6822C74C950027F490 /* UIButton+Extensions.swift */,
@@ -570,6 +569,7 @@
 				02E2069922CCB63C00C7CE82 /* Style.swift */,
 				02E2069B22CCB66900C7CE82 /* UIView+Style.swift */,
 				02E2069D22CCB68A00C7CE82 /* Stylesheet.swift */,
+				028ACE9122CB92EC0027F490 /* UIColor+Styles.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
