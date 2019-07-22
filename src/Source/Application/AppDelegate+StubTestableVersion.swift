@@ -67,6 +67,11 @@ extension AppDelegate {
     }
 
     private func createMealPlans(_ service: PersistenceService, _ ingredientList: StubIngredientList) {
+        let meatCategory = RecipeCategory(name: "Meat")
+        let vegetarianCategory = RecipeCategory(name: "Vegetarian")
+        let pastaCategory = RecipeCategory(name: "Pasta")
+        let snackCategory = RecipeCategory(name: "Snack")
+
         var recipes = [Recipe]()
 
         // MARK: - Day: 1
@@ -75,7 +80,7 @@ extension AppDelegate {
                             image: "http://images.media-allrecipes.com/userphotos/960x960/5486559.jpg",
                             timeForPreparing: "30 min",
                             calorific: 287,
-                            category: nil)
+                            category: vegetarianCategory)
         muesli.ingredients.append(ingredientList["Muesli"])
         muesli.ingredients.append(ingredientList["Raspberries"])
         recipes.append(muesli)
@@ -84,7 +89,7 @@ extension AppDelegate {
                                 image: "http://images.media-allrecipes.com/userphotos/960x960/4548021.jpg",
                                 timeForPreparing: "20 min",
                                 calorific: 360,
-                                category: nil)
+                                category: vegetarianCategory)
         whiteBeans.ingredients.append(ingredientList["Mixed salad greens"])
         whiteBeans.ingredients.append(ingredientList["Cherry tomatoes"])
         whiteBeans.ingredients.append(ingredientList["White beans"])
@@ -98,7 +103,7 @@ extension AppDelegate {
                                   image: "http://images.media-allrecipes.com/userphotos/960x960/5180145.jpg",
                                   timeForPreparing: "50 min",
                                   calorific: 161,
-                                  category: nil)
+                                  category: meatCategory)
         dijonChicken.ingredients.append(ingredientList["Dijon-style mustard"])
         dijonChicken.ingredients.append(ingredientList["Boneless chicken breast halves"])
         dijonChicken.ingredients.append(ingredientList["Balsamic vinegar"])
@@ -111,7 +116,7 @@ extension AppDelegate {
                                   image: "http://images.media-allrecipes.com/userphotos/960x960/5631902.jpg",
                                   timeForPreparing: "40 min",
                                   calorific: 271,
-                                  category: nil)
+                                  category: snackCategory)
         avocadoToast.ingredients.append(ingredientList["Avocado"])
         avocadoToast.ingredients.append(ingredientList["Ground pepper"])
         avocadoToast.ingredients.append(ingredientList["Garlic powder"])
@@ -125,7 +130,7 @@ extension AppDelegate {
                               image: "http://images.media-allrecipes.com/userphotos/960x960/3759121.jpg",
                               timeForPreparing: "25 min",
                               calorific: 326,
-                              category: nil)
+                              category: vegetarianCategory)
         redCurry.ingredients.append(ingredientList["Canola oil"])
         redCurry.ingredients.append(ingredientList["Diced onion"])
         redCurry.ingredients.append(ingredientList["Garlic"])

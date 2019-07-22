@@ -15,7 +15,7 @@ final class RecipeViewController: ViewController<RecipeViewModel> {
         view.apply(Stylesheet.Recipe.collection)
         return view
     }()
-    
+
     private var dataSource: RxCollectionViewSectionedReloadDataSource<RecipeSection>?
     private var infoTimer: Timer?
 

@@ -1,7 +1,7 @@
 import UIKit
 
 final class RecipeCellView: UIView {
-    private lazy var breakfastLabel = UILabel(style: Stylesheet.RecipeCell.breakfast)
+    private lazy var categoryLabel = UILabel(style: Stylesheet.RecipeCell.category)
     private lazy var titleLabel = UILabel(style: Stylesheet.RecipeCell.title)
     private lazy var calorificalLabel = UILabel(style: Stylesheet.RecipeCell.calorifical)
     private lazy var timeForPreparingLabel = UILabel(style: Stylesheet.RecipeCell.timeForPreparing)
@@ -55,12 +55,12 @@ final class RecipeCellView: UIView {
         timeForPreparingLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
         timeForPreparingLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
 
-        addSubview(breakfastLabel)
-        breakfastLabel.translatesAutoresizingMaskIntoConstraints = false
-        breakfastLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-        breakfastLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
-        breakfastLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
-        breakfastLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        addSubview(categoryLabel)
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        categoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        categoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+        categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
+        categoryLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
 
     func configure(with recipe: Recipe?) {
@@ -68,6 +68,7 @@ final class RecipeCellView: UIView {
             titleImageView.loadImage(from: recipe.image)
             calorificalLabel.text = "\(recipe.calorific.description) kcal"
             timeForPreparingLabel.text = "\(recipe.timeForPreparing.description)"
+            categoryLabel.text = recipe.category?.name
             titleLabel.text = recipe.name
         }
     }

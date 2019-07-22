@@ -29,24 +29,41 @@ enum Stylesheet {
     }
 
     enum ServingCell {
-        static let info = Style<UILabel> {
+        static let serving = Style<UILabel> {
             $0.textAlignment = .center
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        }
+
+        static let info = Style<UILabel> {
+            $0.textAlignment = .left
             $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
 
         static let plus = Style<UIButton> {
             $0.setImage(Asset.plus.image, tintColor: UIColor.Common.englishGreen)
             $0.contentMode = .scaleAspectFill
+            $0.layer.shadowOpacity = 0.3
+            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            $0.layer.shadowRadius = 8
+            $0.layer.opacity = 0.95
         }
 
         static let minus = Style<UIButton> {
             $0.setImage(Asset.minus.image, tintColor: UIColor.Common.englishGreen)
             $0.contentMode = .scaleAspectFill
+            $0.layer.shadowOpacity = 0.2
+            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            $0.layer.shadowRadius = 8
+            $0.layer.opacity = 0.95
         }
 
         static let addToShoppingList = Style<UIButton> {
-            $0.setImage(Asset.shoppingBag.image, tintColor: UIColor.Common.pastelRed)
+            $0.setImage(Asset.shoppingBag.image, tintColor: UIColor.Common.englishGreen)
             $0.contentMode = .scaleAspectFill
+            $0.layer.shadowOpacity = 0.2
+            $0.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            $0.layer.shadowRadius = 8
+            $0.layer.opacity = 0.95
         }
 
         static let verticalStack = Style<UIStackView> {
@@ -80,9 +97,8 @@ enum Stylesheet {
     }
 
     enum RecipeCell {
-        static let breakfast = Style<UILabel> {
+        static let category = Style<UILabel> {
             $0.textAlignment = .center
-            $0.text = "Breakfast"
             $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
 
@@ -153,11 +169,7 @@ enum Stylesheet {
 
     enum GroceryCell {
         static let markButtonMarked = Style<UIButton> {
-            $0.setImage(Asset.image.image, tintColor: UIColor.Common.pictonBlueLight)
-        }
-
-        static let deleteButtonMarked = Style<UIButton> {
-            $0.setImage(Asset.cancel.image, tintColor: UIColor.Common.pastelRedLight)
+            $0.setImage(Asset.shoppingChecked.image, tintColor: UIColor.Common.englishGreen)
         }
 
         static let titleLabelMarked = Style<UILabel> {
@@ -173,10 +185,10 @@ enum Stylesheet {
         }
 
         static let markButtonUnmarked = Style<UIButton> {
-            $0.setImage(Asset.image.image, tintColor: UIColor.Common.pictonBlue)
+            $0.setImage(Asset.shoppingUnchecked.image, tintColor: UIColor.Common.englishGreen)
         }
 
-        static let deleteButtonUnmarked = Style<UIButton> {
+        static let deleteButton = Style<UIButton> {
             $0.setImage(Asset.cancel.image, tintColor: UIColor.Common.pastelRed)
         }
 

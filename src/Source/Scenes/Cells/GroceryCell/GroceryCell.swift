@@ -5,8 +5,8 @@ final class GroceryCell: UITableViewCell {
     weak var viewModel: GroceryCellViewModel?
     var disposeBag = DisposeBag()
 
+    private lazy var deleteButton = UIButton(style: Stylesheet.GroceryCell.deleteButton)
     private lazy var markedButton = UIButton()
-    private lazy var deleteButton = UIButton()
     private lazy var titleLabel = UILabel()
     private lazy var amountLabel = UILabel()
 
@@ -58,15 +58,14 @@ final class GroceryCell: UITableViewCell {
             switch marked {
             case true:
                 self.markedButton.apply(Stylesheet.GroceryCell.markButtonMarked)
-                self.deleteButton.apply(Stylesheet.GroceryCell.deleteButtonMarked)
                 self.amountLabel.apply(Stylesheet.GroceryCell.amountLabelMarked)
                 self.titleLabel.apply(Stylesheet.GroceryCell.titleLabelMarked)
-                self.setStrikethroughStyle(label: self.titleLabel)
+                self.setStyle(label: self.titleLabel, key: .strikethroughStyle)
             case false:
                 self.markedButton.apply(Stylesheet.GroceryCell.markButtonUnmarked)
-                self.deleteButton.apply(Stylesheet.GroceryCell.deleteButtonUnmarked)
                 self.amountLabel.apply(Stylesheet.GroceryCell.amountLabelUnmarked)
                 self.titleLabel.apply(Stylesheet.GroceryCell.titleLabelUnmarked)
+                self.setStyle(label: self.titleLabel, key: .accessibilityTextCustom)
             }
         }).disposed(by: disposeBag)
     }
@@ -100,10 +99,10 @@ final class GroceryCell: UITableViewCell {
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48).isActive = true
     }
 
-    private func setStrikethroughStyle(label: UILabel) {
+    private func setStyle(label: UILabel, key: NSAttributedString.Key) {
         if let text = label.text {
             let attributeString = NSMutableAttributedString(string: text)
-            attributeString.addAttribute(.strikethroughStyle,
+            attributeString.addAttribute(key,
                                          value: 2,
                                          range: NSRange(location: 0, length: attributeString.length))
             label.attributedText = attributeString

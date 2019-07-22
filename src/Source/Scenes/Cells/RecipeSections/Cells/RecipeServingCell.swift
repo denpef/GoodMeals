@@ -14,7 +14,7 @@ final class RecipeServingCell: UICollectionViewCell {
 
     private let buttonsView = UIView()
 
-    private let servingLabel = UILabel(style: Stylesheet.ServingCell.info)
+    private let servingLabel = UILabel(style: Stylesheet.ServingCell.serving)
     private let calorificalLabel = UILabel(style: Stylesheet.ServingCell.info)
     private let timeForPreparingLabel = UILabel(style: Stylesheet.ServingCell.info)
 
@@ -106,10 +106,11 @@ final class RecipeServingCell: UICollectionViewCell {
     }
 
     private func configureButtons() {
+        addShoppingButton.setTitle("Add to shopping list", for: .normal)
         addSubview(addShoppingButton)
         addShoppingButton.translatesAutoresizingMaskIntoConstraints = false
         addShoppingButton.widthAnchor.constraint(equalTo: addShoppingButton.heightAnchor, multiplier: 1).isActive = true
-        addShoppingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        addShoppingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
         addShoppingButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         addShoppingButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
