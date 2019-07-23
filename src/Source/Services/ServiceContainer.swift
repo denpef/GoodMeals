@@ -14,7 +14,7 @@ final class ServiceContainer: ServiceContainerType {
     var shoppingListService: ShoppingListServiceType
 
     init() {
-        persistenceService = RealmPersistenceService(configuration: RealmDefaultConfiguration.config)
+        persistenceService = RealmPersistenceService(configuration: RealmDefaultConfiguration.inBundle)
 
         ingredientsService = IngredientsService(persistenceService: persistenceService)
         recipesService = RecipesService(persistenceService: persistenceService)

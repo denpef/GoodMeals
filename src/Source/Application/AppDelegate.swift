@@ -12,10 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let serviceContainer = ServiceContainer()
 
-        #if DEBUG
-            setupStubTestableVersion(serviceContainer)
-        #endif
-
         let factory = DependencyContainer(serviceContainer: serviceContainer)
         let router = RootRouter(window: window, factory: factory)
         router.showRootViewController()
